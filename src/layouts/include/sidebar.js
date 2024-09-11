@@ -1,23 +1,22 @@
 import React from 'react'
 import { Link,useLocation } from 'react-router-dom'
 function Sidebar() {
+    const activeMenu=(e)=>{
+        document.querySelectorAll('.nav-item').forEach(
+            function(e){
+                e.classList.remove('menu-open');
+            }
+        )
+        const childElement = e.target.parentElement.querySelector('.nav-item');
+        if(childElement && childElement.classList.contains('nav-item')){
+            childElement.classList.add('menu-open');
+        }
+    }
 
-	// const activeMenu=(e)=>{
-    //     document.querySelectorAll('.nav-treeview').forEach(
-    //         function(e){
-    //             e.classList.remove('menu-open');
-    //         }
-    //     )
-    //     const childElement = e.target.parentElement.querySelector('.nav-treeview');
-    //     if(childElement && childElement.classList.contains('nav-treeview')){
-    //         childElement.classList.add('menu-open');
-    //     }
-    // }
-
-	// const location = useLocation();
-	// const isLinkActive = (path)=>{
-    //     return location.pathname == path ? 'menu-open' : "";
-    // }
+	const location = useLocation();
+	const isLinkActive = (path)=>{
+        return location.pathname == path ? 'menu-open' : "";
+    }
   return (
     
     <>
