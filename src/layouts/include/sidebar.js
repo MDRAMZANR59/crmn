@@ -58,24 +58,23 @@ function Sidebar() {
                 {/* Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library */}
                 <li className={`nav-item menu-open`} onClick={activeMenu}>
-                    <a href="#" className="nav-link active" >
+                    <a href="" className="nav-link active" >
                         <i className="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard<i className="right fas fa-angle-left"></i></p>
                     </a>
-                    <ul className={`nav nav-treeview ${isLinkActive("/Dashboard1")}`}>
+                    <ul className={`nav nav-treeview ${isLinkActive("/")} ${isLinkActive("/Dashboard1")} `}>
                         <li className="nav-item">
-                            
-                               <Link to={"/Dashboard1"}>
-                                    <i className="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v1</p>
-                               </Link>
-                           
+                            <Link to="/" className="nav-link">
+                                <i className="far fa-circle nav-icon"></i>
+                                <p>Dashboard v1</p>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a href="./index.html" className="nav-link">
+                            <Link to="/dashboard" className="nav-link">
                                 <i className="far fa-circle nav-icon"></i>
-                                <p>Dashboard v2</p>
-                            </a>
+                                <p>Dashboard 2</p>
+                            </Link>
+                            
                         </li>
                         <li className="nav-item">
                             <a href="./index3.html" className="nav-link">
