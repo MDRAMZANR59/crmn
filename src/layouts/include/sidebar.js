@@ -54,7 +54,7 @@ function Sidebar() {
 
             {/* Sidebar Menu */}
             <nav className="mt-2">
-                <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 {/* Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library */}
                 <li className={`nav-item menu-open`} onClick={activeMenu}>
@@ -62,25 +62,12 @@ function Sidebar() {
                         <i className="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard<i className="right fas fa-angle-left"></i></p>
                     </a>
-                    <ul className={`nav nav-treeview ${isLinkActive("/")} ${isLinkActive("/Dashboard1")} `}>
+                    <ul className={`nav nav-treeview ${isLinkActive("/")}`}>
                         <li className="nav-item">
                             <Link to="/" className="nav-link">
                                 <i className="far fa-circle nav-icon"></i>
                                 <p>Dashboard v1</p>
                             </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/dashboard" className="nav-link">
-                                <i className="far fa-circle nav-icon"></i>
-                                <p>Dashboard 2</p>
-                            </Link>
-                            
-                        </li>
-                        <li className="nav-item">
-                            <a href="./index3.html" className="nav-link">
-                                <i className="far fa-circle nav-icon"></i>
-                                <p>Dashboard v3</p>
-                            </a>
                         </li>
                     </ul>
                 </li>
@@ -88,7 +75,7 @@ function Sidebar() {
                     <a href="pages/widgets.html" className="nav-link">
                     <i className="nav-icon fas fa-th"></i>
                     <p>
-                        Widgets
+                        User
                         <span className="right badge badge-danger">New</span>
                     </p>
                     </a>
@@ -97,7 +84,7 @@ function Sidebar() {
                     <a href="#" className="nav-link">
                     <i className="nav-icon fas fa-copy"></i>
                     <p>
-                        Layout Options
+                        Inbox
                         <i className="fas fa-angle-left right"></i>
                         <span className="badge badge-info right">6</span>
                     </p>
@@ -106,49 +93,19 @@ function Sidebar() {
                     <li className="nav-item">
                         <a href="pages/layout/top-nav.html" className="nav-link">
                         <i className="far fa-circle nav-icon"></i>
-                        <p>Top Navigation</p>
+                        <p>Information</p>
                         </a>
                     </li>
                     <li className="nav-item">
                         <a href="pages/layout/top-nav-sidebar.html" className="nav-link">
                         <i className="far fa-circle nav-icon"></i>
-                        <p>Top Navigation + Sidebar</p>
+                        <p>Complain</p>
                         </a>
                     </li>
                     <li className="nav-item">
                         <a href="pages/layout/boxed.html" className="nav-link">
                         <i className="far fa-circle nav-icon"></i>
-                        <p>Boxed</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/layout/fixed-sidebar.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Fixed Sidebar</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/layout/fixed-sidebar-custom.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/layout/fixed-topnav.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Fixed Navbar</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/layout/fixed-footer.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Fixed Footer</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/layout/collapsed-sidebar.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Collapsed Sidebar</p>
+                        <p>Suggestion</p>
                         </a>
                     </li>
                     </ul>
@@ -157,7 +114,7 @@ function Sidebar() {
                     <a href="#" className="nav-link">
                     <i className="nav-icon fas fa-chart-pie"></i>
                     <p>
-                        Charts
+                        Staff
                         <i className="right fas fa-angle-left"></i>
                     </p>
                     </a>
@@ -165,25 +122,19 @@ function Sidebar() {
                     <li className="nav-item">
                         <a href="pages/charts/chartjs.html" className="nav-link">
                         <i className="far fa-circle nav-icon"></i>
-                        <p>ChartJS</p>
+                        <p>Web Application Devoloper</p>
                         </a>
                     </li>
                     <li className="nav-item">
                         <a href="pages/charts/flot.html" className="nav-link">
                         <i className="far fa-circle nav-icon"></i>
-                        <p>Flot</p>
+                        <p>Android Deboloper</p>
                         </a>
                     </li>
                     <li className="nav-item">
                         <a href="pages/charts/inline.html" className="nav-link">
                         <i className="far fa-circle nav-icon"></i>
-                        <p>Inline</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/charts/uplot.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>uPlot</p>
+                        <p>PC App Deboloper</p>
                         </a>
                     </li>
                     </ul>
@@ -192,7 +143,7 @@ function Sidebar() {
                     <a href="#" className="nav-link">
                     <i className="nav-icon fas fa-tree"></i>
                     <p>
-                        UI Elements
+                        Service
                         <i className="fas fa-angle-left right"></i>
                     </p>
                     </a>
@@ -200,49 +151,19 @@ function Sidebar() {
                     <li className="nav-item">
                         <a href="pages/UI/general.html" className="nav-link">
                         <i className="far fa-circle nav-icon"></i>
-                        <p>General</p>
+                        <p>Web Application</p>
                         </a>
                     </li>
                     <li className="nav-item">
                         <a href="pages/UI/icons.html" className="nav-link">
                         <i className="far fa-circle nav-icon"></i>
-                        <p>Icons</p>
+                        <p>Android Debolopment</p>
                         </a>
                     </li>
                     <li className="nav-item">
                         <a href="pages/UI/buttons.html" className="nav-link">
                         <i className="far fa-circle nav-icon"></i>
-                        <p>Buttons</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/UI/sliders.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Sliders</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/UI/modals.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Modals & Alerts</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/UI/navbar.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Navbar & Tabs</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/UI/timeline.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Timeline</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/UI/ribbons.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Ribbons</p>
+                        <p>PC App Debolopment</p>
                         </a>
                     </li>
                     </ul>
@@ -250,43 +171,14 @@ function Sidebar() {
                 <li className="nav-item">
                     <a href="#" className="nav-link">
                     <i className="nav-icon fas fa-edit"></i>
-                    <p>
-                        Forms
-                        <i className="fas fa-angle-left right"></i>
-                    </p>
+                    <p>Customer</p>
                     </a>
-                    <ul className="nav nav-treeview">
-                    <li className="nav-item">
-                        <a href="pages/forms/general.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>General Elements</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/forms/advanced.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Advanced Elements</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/forms/editors.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Editors</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/forms/validation.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Validation</p>
-                        </a>
-                    </li>
-                    </ul>
                 </li>
                 <li className="nav-item">
                     <a href="#" className="nav-link">
                     <i className="nav-icon fas fa-table"></i>
                     <p>
-                        Tables
+                        Work
                         <i className="fas fa-angle-left right"></i>
                     </p>
                     </a>
@@ -294,48 +186,34 @@ function Sidebar() {
                     <li className="nav-item">
                         <a href="pages/tables/simple.html" className="nav-link">
                         <i className="far fa-circle nav-icon"></i>
-                        <p>Simple Tables</p>
+                        <p> Proposal</p>
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a href="pages/tables/simple.html" className="nav-link">
+                        <i className="far fa-circle nav-icon"></i>
+                        <p> Cancel Proposal</p>
                         </a>
                     </li>
                     <li className="nav-item">
                         <a href="pages/tables/data.html" className="nav-link">
                         <i className="far fa-circle nav-icon"></i>
-                        <p>DataTables</p>
+                        <p>Store Work</p>
                         </a>
                     </li>
                     <li className="nav-item">
                         <a href="pages/tables/jsgrid.html" className="nav-link">
                         <i className="far fa-circle nav-icon"></i>
-                        <p>jsGrid</p>
+                        <p>Pending Work</p>
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a href="pages/tables/jsgrid.html" className="nav-link">
+                        <i className="far fa-circle nav-icon"></i>
+                        <p>Delivary Work</p>
                         </a>
                     </li>
                     </ul>
-                </li>
-                <li className="nav-header">EXAMPLES</li>
-                <li className="nav-item">
-                    <a href="pages/calendar.html" className="nav-link">
-                    <i className="nav-icon far fa-calendar-alt"></i>
-                    <p>
-                        Calendar
-                        <span className="badge badge-info right">2</span>
-                    </p>
-                    </a>
-                </li>
-                <li className="nav-item">
-                    <a href="pages/gallery.html" className="nav-link">
-                    <i className="nav-icon far fa-image"></i>
-                    <p>
-                        Gallery
-                    </p>
-                    </a>
-                </li>
-                <li className="nav-item">
-                    <a href="pages/kanban.html" className="nav-link">
-                    <i className="nav-icon fas fa-columns"></i>
-                    <p>
-                        Kanban Board
-                    </p>
-                    </a>
                 </li>
                 <li className="nav-item">
                     <a href="#" className="nav-link">
