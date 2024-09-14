@@ -1,578 +1,284 @@
-import React from 'react'
-import { Link,useLocation } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+
 function Sidebar() {
-    const activeMenu=(e)=>{
-        document.querySelectorAll('.nav-item').forEach(
-            function(e){
-                e.classList.remove('menu-open');
-            }
-        )
-        const childElement = e.target.parentElement.querySelector('.nav-item');
-        if(childElement && childElement.classList.contains('nav-item')){
-            childElement.classList.add('menu-open');
-        }
-    }
+    // State to track open menus
+    const [openMenu, setOpenMenu] = useState(null);
 
-	const location = useLocation();
-	const isLinkActive = (path)=>{
-        return location.pathname == path ? 'menu-open' : "";
-    }
-  return (
-    
-    <>
-        {/* Main Sidebar Container */}
-        <aside className="main-sidebar sidebar-dark-primary elevation-4">
-            {/* Brand Logo */}
-            <a href="index3.html" className="brand-link">
-            <img src="assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{opacity: ".8"}}/>
-            <span className="brand-text font-weight-light">AdminLTE 3</span>
-            </a>
+    // Hook to get the current path location
+    const location = useLocation();
 
-            {/* Sidebar */}
-            <div className="sidebar">
-            {/* Sidebar user panel (optional) */}
-            <div className="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div className="image">
-                <img src="assets/dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image"/>
-                </div>
-                <div className="info">
-                <a href="#" className="d-block">Alexander Pierce</a>
-                </div>
-            </div>
+    // Function to handle menu click
+    const handleMenuClick = (menu) => {
+        setOpenMenu(openMenu === menu ? null : menu);
+    };
 
-            {/* SidebarSearch Form */}
-            <div className="form-inline">
-                <div className="input-group" data-widget="sidebar-search">
-                <input className="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search"/>
-                <div className="input-group-append">
-                    <button className="btn btn-sidebar">
-                    <i className="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
-                </div>
-            </div>
+    // Function to check if the link is active
+    const isLinkActive = (path) => {
+        return location.pathname === path ? 'active' : '';
+    };
 
-            {/* Sidebar Menu */}
-            <nav className="mt-2">
-            <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                {/* Add icons to the links using the .nav-icon class
-                    with font-awesome or any other icon font library */}
-                <li className={`nav-item menu-open`} onClick={activeMenu}>
-                    <a href="" className="nav-link active" >
-                        <i className="nav-icon fas fa-tachometer-alt"></i>
-                        <p>Dashboard<i className="right fas fa-angle-left"></i></p>
-                    </a>
-                    <ul className={`nav nav-treeview ${isLinkActive("/")}`}>
-                        <li className="nav-item">
-                            <Link to="/" className="nav-link">
-                                <i className="far fa-circle nav-icon"></i>
-                                <p>Dashboard v1</p>
-                            </Link>
-                        </li>
-                    </ul>
-                </li>
-                <li className="nav-item">
-                    <a href="pages/widgets.html" className="nav-link">
-                    <i className="nav-icon fas fa-th"></i>
-                    <p>
-                        User
-                        <span className="right badge badge-danger">New</span>
-                    </p>
-                    </a>
-                </li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">
-                    <i className="nav-icon fas fa-copy"></i>
-                    <p>
-                        Inbox
-                        <i className="fas fa-angle-left right"></i>
-                        <span className="badge badge-info right">6</span>
-                    </p>
-                    </a>
-                    <ul className="nav nav-treeview">
-                    <li className="nav-item">
-                        <a href="pages/layout/top-nav.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Information</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/layout/top-nav-sidebar.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Complain</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/layout/boxed.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Suggestion</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">
-                    <i className="nav-icon fas fa-chart-pie"></i>
-                    <p>
-                        Staff
-                        <i className="right fas fa-angle-left"></i>
-                    </p>
-                    </a>
-                    <ul className="nav nav-treeview">
-                    <li className="nav-item">
-                        <a href="pages/charts/chartjs.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Web Application Devoloper</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/charts/flot.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Android Deboloper</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/charts/inline.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>PC App Deboloper</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">
-                    <i className="nav-icon fas fa-tree"></i>
-                    <p>
-                        Service
-                        <i className="fas fa-angle-left right"></i>
-                    </p>
-                    </a>
-                    <ul className="nav nav-treeview">
-                    <li className="nav-item">
-                        <a href="pages/UI/general.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Web Application</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/UI/icons.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Android Debolopment</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/UI/buttons.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>PC App Debolopment</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">
-                    <i className="nav-icon fas fa-edit"></i>
-                    <p>Customer</p>
-                    </a>
-                </li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">
-                    <i className="nav-icon fas fa-table"></i>
-                    <p>
-                        Work
-                        <i className="fas fa-angle-left right"></i>
-                    </p>
-                    </a>
-                    <ul className="nav nav-treeview">
-                    <li className="nav-item">
-                        <a href="pages/tables/simple.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p> Proposal</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/tables/simple.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p> Cancel Proposal</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/tables/data.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Store Work</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/tables/jsgrid.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Pending Work</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/tables/jsgrid.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Delivary Work</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">
-                    <i className="nav-icon far fa-envelope"></i>
-                    <p>
-                        Mailbox
-                        <i className="fas fa-angle-left right"></i>
-                    </p>
-                    </a>
-                    <ul className="nav nav-treeview">
-                    <li className="nav-item">
-                        <a href="pages/mailbox/mailbox.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Inbox</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/mailbox/compose.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Compose</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/mailbox/read-mail.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Read</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">
-                    <i className="nav-icon fas fa-book"></i>
-                    <p>
-                        Pages
-                        <i className="fas fa-angle-left right"></i>
-                    </p>
-                    </a>
-                    <ul className="nav nav-treeview">
-                    <li className="nav-item">
-                        <a href="pages/examples/invoice.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Invoice</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/examples/profile.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Profile</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/examples/e-commerce.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>E-commerce</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/examples/projects.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Projects</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/examples/project-add.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Project Add</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/examples/project-edit.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Project Edit</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/examples/project-detail.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Project Detail</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/examples/contacts.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Contacts</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/examples/faq.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>FAQ</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/examples/contact-us.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Contact us</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">
-                    <i className="nav-icon far fa-plus-square"></i>
-                    <p>
-                        Extras
-                        <i className="fas fa-angle-left right"></i>
-                    </p>
-                    </a>
-                    <ul className="nav nav-treeview">
-                    <li className="nav-item">
-                        <a href="#" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>
-                            Login & Register v1
-                            <i className="fas fa-angle-left right"></i>
-                        </p>
-                        </a>
-                        <ul className="nav nav-treeview">
-                        <li className="nav-item">
-                            <a href="pages/examples/login.html" className="nav-link">
-                            <i className="far fa-circle nav-icon"></i>
-                            <p>Login v1</p>
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="pages/examples/register.html" className="nav-link">
-                            <i className="far fa-circle nav-icon"></i>
-                            <p>Register v1</p>
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="pages/examples/forgot-password.html" className="nav-link">
-                            <i className="far fa-circle nav-icon"></i>
-                            <p>Forgot Password v1</p>
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="pages/examples/recover-password.html" className="nav-link">
-                            <i className="far fa-circle nav-icon"></i>
-                            <p>Recover Password v1</p>
-                            </a>
-                        </li>
+    return (
+        <>
+            {/* Main Sidebar Container */}
+            <aside className="main-sidebar sidebar-dark-primary elevation-4">
+                
+                {/* Brand Logo */}
+                <a href="index3.html" className="brand-link">
+                    <img src="assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{ opacity: '.8' }} />
+                    <span className="brand-text font-weight-light">AdminLTE 3</span>
+                </a>
+
+                {/* Sidebar */}
+                <div className="sidebar">
+                    
+                    {/* Sidebar User Panel */}
+                    <div className="user-panel mt-3 pb-3 mb-3 d-flex">
+                        <div className="image">
+                            <img src="assets/dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User" />
+                        </div>
+                        <div className="info">
+                            <a href="#" className="d-block">Alexander Pierce</a>
+                        </div>
+                    </div>
+
+                    {/* Sidebar Search Form */}
+                    <div className="form-inline">
+                        <div className="input-group" data-widget="sidebar-search">
+                            <input className="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search" />
+                            <div className="input-group-append">
+                                <button className="btn btn-sidebar">
+                                    <i className="fas fa-search fa-fw"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Sidebar Menu */}
+                    <nav className="mt-2">
+                        <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            
+                            {/* Dashboard Section */}
+                            <li className={`nav-item ${openMenu === 'dashboard' ? 'menu-open' : ''}`}>
+                                <a href="#" className="nav-link" onClick={() => handleMenuClick('dashboard')}>
+                                <li className={`nav-item ${isLinkActive('/')}`}>
+                                        <Link to="/" className="nav-link active">
+                                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                                            <p>Dashboard</p>
+                                        </Link>
+                                    </li>
+                                </a>
+                            </li>
+
+                            {/* User Section */}
+                            <li className={`nav-item ${openMenu === 'user' ? 'menu-open' : ''}`}>
+                                <a href="#" className="nav-link" onClick={() => handleMenuClick('user')}>
+                                    <i className="nav-icon fas fa-user"></i>
+                                    <p>
+                                        User
+                                        <i className="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul className="nav nav-treeview">
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Add User</p>
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>User List</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            {/* Mail Section */}
+                            <li className={`nav-item ${openMenu === 'mail' ? 'menu-open' : ''}`}>
+                                <a href="#" className="nav-link" onClick={() => handleMenuClick('mail')}>
+                                    <i className="nav-icon fas fa-envelope"></i>
+                                    <p>
+                                        Mail
+                                        <i className="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul className="nav nav-treeview">
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Inbox</p>
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Suggestion</p>
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Complain</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            {/* Staff Section */}
+                            <li className={`nav-item ${openMenu === 'staff' ? 'menu-open' : ''}`}>
+                                <a href="#" className="nav-link" onClick={() => handleMenuClick('staff')}>
+                                    <i className="nav-icon fas fa-users"></i>
+                                    <p>
+                                        Staff
+                                        <i className="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul className="nav nav-treeview">
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Add Staff</p>
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Staff List</p>
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Warning Staff</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            {/* Services Section */}
+                            <li className="nav-header">Service</li>
+                            <li className="nav-item">
+                                <a href="#" className="nav-link">
+                                    <i className="fas fa-circle nav-icon"></i>
+                                    <p>Service Add</p>
+                                </a>
+                            </li>
+                            <li className={`nav-item ${openMenu === 'serviceList' ? 'menu-open' : ''}`}>
+                                <a href="#" className="nav-link" onClick={() => handleMenuClick('serviceList')}>
+                                    <i className="nav-icon fas fa-circle"></i>
+                                    <p>
+                                        Service List
+                                        <i className="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul className="nav nav-treeview">
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Web Application Development</p>
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Android App Development</p>
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>PC App Development</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            {/* Customer List Section */}
+                            <li className="nav-header">Customer List</li>
+                            <li className={`nav-item ${openMenu === 'customerList' ? 'menu-open' : ''}`}>
+                                <a href="#" className="nav-link" onClick={() => handleMenuClick('customerList')}>
+                                    <i className="nav-icon fas fa-copy"></i>
+                                    <p>
+                                        Proposal
+                                        <i className="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul className="nav nav-treeview">
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Canceled Proposal</p>
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Accepted Proposal</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            {/* Income Section */}
+                            <li className={`nav-item ${openMenu === 'income' ? 'menu-open' : ''}`}>
+                                <a href="#" className="nav-link" onClick={() => handleMenuClick('income')}>
+                                    <i className="nav-icon fas fa-copy"></i>
+                                    <p>
+                                        Income
+                                        <i className="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul className="nav nav-treeview">
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Daily Income</p>
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Capital Income</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            {/* Report Section */}
+                            <li className={`nav-item ${openMenu === 'report' ? 'menu-open' : ''}`}>
+                                <a href="#" className="nav-link" onClick={() => handleMenuClick('report')}>
+                                    <i className="nav-icon fas fa-copy"></i>
+                                    <p>
+                                        Report
+                                        <i className="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul className="nav nav-treeview">
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Income Report</p>
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Expenses Report</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            {/* Support Section */}
+                            <li className="nav-header">Support</li>
                         </ul>
-                    </li>
-                    <li className="nav-item">
-                        <a href="#" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>
-                            Login & Register v2
-                            <i className="fas fa-angle-left right"></i>
-                        </p>
-                        </a>
-                        <ul className="nav nav-treeview">
-                        <li className="nav-item">
-                            <a href="pages/examples/login-v2.html" className="nav-link">
-                            <i className="far fa-circle nav-icon"></i>
-                            <p>Login v2</p>
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="pages/examples/register-v2.html" className="nav-link">
-                            <i className="far fa-circle nav-icon"></i>
-                            <p>Register v2</p>
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="pages/examples/forgot-password-v2.html" className="nav-link">
-                            <i className="far fa-circle nav-icon"></i>
-                            <p>Forgot Password v2</p>
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="pages/examples/recover-password-v2.html" className="nav-link">
-                            <i className="far fa-circle nav-icon"></i>
-                            <p>Recover Password v2</p>
-                            </a>
-                        </li>
-                        </ul>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/examples/lockscreen.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Lockscreen</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/examples/legacy-user-menu.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Legacy User Menu</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/examples/language-menu.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Language Menu</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/examples/404.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Error 404</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/examples/500.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Error 500</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/examples/pace.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Pace</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/examples/blank.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Blank Page</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="starter.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Starter Page</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">
-                    <i className="nav-icon fas fa-search"></i>
-                    <p>
-                        Search
-                        <i className="fas fa-angle-left right"></i>
-                    </p>
-                    </a>
-                    <ul className="nav nav-treeview">
-                    <li className="nav-item">
-                        <a href="pages/search/simple.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Simple Search</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="pages/search/enhanced.html" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Enhanced</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li className="nav-header">MISCELLANEOUS</li>
-                <li className="nav-item">
-                    <a href="iframe.html" className="nav-link">
-                    <i className="nav-icon fas fa-ellipsis-h"></i>
-                    <p>Tabbed IFrame Plugin</p>
-                    </a>
-                </li>
-                <li className="nav-item">
-                    <a href="https://adminlte.io/docs/3.1/" className="nav-link">
-                    <i className="nav-icon fas fa-file"></i>
-                    <p>Documentation</p>
-                    </a>
-                </li>
-                <li className="nav-header">MULTI LEVEL EXAMPLE</li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">
-                    <i className="fas fa-circle nav-icon"></i>
-                    <p>Level 1</p>
-                    </a>
-                </li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">
-                    <i className="nav-icon fas fa-circle"></i>
-                    <p>
-                        Level 1
-                        <i className="right fas fa-angle-left"></i>
-                    </p>
-                    </a>
-                    <ul className="nav nav-treeview">
-                    <li className="nav-item">
-                        <a href="#" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Level 2</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="#" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>
-                            Level 2
-                            <i className="right fas fa-angle-left"></i>
-                        </p>
-                        </a>
-                        <ul className="nav nav-treeview">
-                        <li className="nav-item">
-                            <a href="#" className="nav-link">
-                            <i className="far fa-dot-circle nav-icon"></i>
-                            <p>Level 3</p>
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="#" className="nav-link">
-                            <i className="far fa-dot-circle nav-icon"></i>
-                            <p>Level 3</p>
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="#" className="nav-link">
-                            <i className="far fa-dot-circle nav-icon"></i>
-                            <p>Level 3</p>
-                            </a>
-                        </li>
-                        </ul>
-                    </li>
-                    <li className="nav-item">
-                        <a href="#" className="nav-link">
-                        <i className="far fa-circle nav-icon"></i>
-                        <p>Level 2</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">
-                    <i className="fas fa-circle nav-icon"></i>
-                    <p>Level 1</p>
-                    </a>
-                </li>
-                <li className="nav-header">LABELS</li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">
-                    <i className="nav-icon far fa-circle text-danger"></i>
-                    <p className="text">Important</p>
-                    </a>
-                </li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">
-                    <i className="nav-icon far fa-circle text-warning"></i>
-                    <p>Warning</p>
-                    </a>
-                </li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">
-                    <i className="nav-icon far fa-circle text-info"></i>
-                    <p>Informational</p>
-                    </a>
-                </li>
-                </ul>
-            </nav>
-            {/* /.sidebar-menu */}
-            </div>
-            {/* /.sidebar */}
-        </aside>  
-    </>
-
-  )
+                    </nav>
+                </div>
+            </aside>
+        </>
+    );
 }
 
 export default Sidebar;
