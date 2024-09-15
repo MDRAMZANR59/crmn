@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Dashboard from './pages/Dashboard';
-import Dashboard1 from './pages/Dashboard1';
-import Dashboard2 from './pages/Dashboard2';
+import User from './pages/User';
+import AddUser from './pages/User/AddUser';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -9,8 +9,8 @@ function App() {
     <BrowserRouter>
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/dashboard" element={<Dashboard1 />} />
-          <Route path="/dashboard" element={<Dashboard2 />} />
+          <Route path="/user" element={<User />} />
+          <Route path="/user/add" element={<AddUser />} />
         </Routes>
       </BrowserRouter>
   );

@@ -25,7 +25,7 @@ function Sidebar() {
                 
                 {/* Brand Logo */}
                 <a href="index3.html" className="brand-link">
-                    <img src="assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{ opacity: '.8' }} />
+                    <img src="../assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{ opacity: '.8' }} />
                     <span className="brand-text font-weight-light">AdminLTE 3</span>
                 </a>
 
@@ -35,7 +35,7 @@ function Sidebar() {
                     {/* Sidebar User Panel */}
                     <div className="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div className="image">
-                            <img src="assets/dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User" />
+                            <img src="../assets/dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User" />
                         </div>
                         <div className="info">
                             <a href="#" className="d-block">Alexander Pierce</a>
@@ -81,16 +81,16 @@ function Sidebar() {
                                 </a>
                                 <ul className="nav nav-treeview">
                                     <li className="nav-item">
-                                        <a href="#" className="nav-link">
+                                        <Link to="/user/add" className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
                                             <p>Add User</p>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="nav-item">
-                                        <a href="#" className="nav-link">
+                                        <Link to="/user" className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
                                             <p>User List</p>
-                                        </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </li>
