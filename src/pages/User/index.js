@@ -37,16 +37,28 @@ function User() {
                             <thead>
                                 <tr>
                                     <th>#SL</th>
-                                    <th>Name</th>
+                                    <th>Frist Name</th>
+                                    <th>Last Name</th>
+                                    <th>User Name</th>
+                                    <th>Photo</th>
+                                    <th>Phone</th>
                                     <th>Email</th>
+                                    <th>Dasignation</th>
+                                    <th>Address</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>01</td>
+                                    <td>Md Kamal</td>
+                                    <td>Uddin</td>
                                     <td>Kamal</td>
-                                    <td>Kamal@yahoo.com</td>
+                                    <td></td>
+                                    <td>+880 1559 075 906</td>
+                                    <td>kamal@gmail.com</td>
+                                    <td>CEO</td>
+                                    <td><span>Pathan Para</span><span>Oxizyn</span><span>4500</span><span>Bayejid</span><span>Chittagong</span><span>+880</span></td>
                                     <td>
                                         <a className='btn btn-info' href='#'>Edit</a>
                                         <a className='btn btn-danger' href='#'>Delete</a>
