@@ -2,6 +2,7 @@ import * as React from 'react';
 import Dashboard from './pages/Dashboard';
 import User from './pages/User';
 import AddUser from './pages/User/AddUser';
+import Customer from './pages/Customer/CustomerList'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -11,6 +12,8 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/user" element={<User />} />
           <Route path="/user/add" element={<AddUser />} />
+          <Route path="/customer/customerList" element={<Customer />} />
+
         </Routes>
       </BrowserRouter>
   );

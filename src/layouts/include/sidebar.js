@@ -94,6 +94,23 @@ function Sidebar() {
                                     </li>
                                 </ul>
                             </li>
+                            <li className={`nav-item ${openMenu === 'customer' ? 'menu-open' : ''}`}>
+                                <a href="#" className="nav-link" onClick={() => handleMenuClick('customer')}>
+                                    <i className="nav-icon fas fa-users"></i>
+                                    <p>
+                                    Customer
+                                        <i className="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul className="nav nav-treeview">
+                                    <li className="nav-item">
+                                        <Link to="/customer/customerList" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Customer List</p>
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </li>
 
                             {/* Mail Section */}
                             <li className={`nav-item ${openMenu === 'mail' ? 'menu-open' : ''}`}>
