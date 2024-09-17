@@ -77,3 +77,29 @@ function User() {
 }
 
 export default User
+
+{/* <li className={`nav-item ${openMenu==='report' ? 'menu-open' : ''}`}>
+<a href="#" className="nav-link" onClick={()=> handleMenuClick('report')}>
+  <i className="nav-icon fas fa-circle"></i>
+  <p>
+    Report
+    <i className="right fas fa-angle-left"></i>
+  </p>
+</a>
+<ul className="nav nav-treeview">
+  <li className="nav-item">
+    <a href="#" className="nav-link">
+      <i className="far fa-circle nav-icon"></i>
+      <p>New</p>
+    </a>
+  </li>
+  <li className="nav-item">
+    <a href="#" className="nav-link">
+      <i className="far fa-circle nav-icon"></i>
+      <p>Old</p>
+    </a>
+  </li>
+</ul>
+</li>
+                    </ul>
+                </li> */}

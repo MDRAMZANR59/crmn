@@ -62,6 +62,7 @@ function Customer() {
                                     <td>
                                         <a className='btn btn-info' href='#'>Edit</a>
                                         <a className='btn btn-danger' href='#'>Delete</a>
+                                        <a className='btn btn-primary' href='#'>Mail</a>
                                     </td>
                                 </tr>
                             </tbody>
