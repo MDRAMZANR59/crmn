@@ -3,6 +3,8 @@ import Dashboard from './pages/Dashboard';
 import User from './pages/User';
 import AddUser from './pages/User/AddUser';
 import Customer from './pages/Customer/CustomerList'
+import MailBox from './pages/Mail/Mailbox'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -12,6 +14,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/user" element={<User />} />
           <Route path="/user/add" element={<AddUser />} />
+          <Route path="/mail/mailbox" element={<MailBox/>} />
           <Route path="/customer/customerList" element={<Customer />} />
 
         </Routes>

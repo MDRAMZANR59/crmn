@@ -123,10 +123,10 @@ function Sidebar() {
                                 </a>
                                 <ul className="nav nav-treeview">
                                     <li className="nav-item">
-                                        <a href="#" className="nav-link">
+                                        <Link to="/mail/mailBox" className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
-                                            <p>Inbox</p>
-                                        </a>
+                                            <p>Mail Box</p>
+                                        </Link>
                                     </li>
                                     <li className="nav-item">
                                         <a href="#" className="nav-link">
