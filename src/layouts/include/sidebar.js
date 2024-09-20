@@ -26,7 +26,7 @@ function Sidebar() {
                 {/* Brand Logo */}
                 <a href="index3.html" className="brand-link">
                     <img src="../assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{ opacity: '.8' }} />
-                    <span className="brand-text font-weight-light">AdminLTE 3</span>
+                    <span className="brand-text font-weight-light"> Code Crafters</span>
                 </a>
 
                 {/* Sidebar */}
@@ -38,7 +38,7 @@ function Sidebar() {
                             <img src="../assets/dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User" />
                         </div>
                         <div className="info">
-                            <a href="#" className="d-block">Alexander Pierce</a>
+                            <a href="#" className="d-block">Micel Wiliems</a>
                         </div>
                     </div>
 
@@ -103,6 +103,12 @@ function Sidebar() {
                                     </p>
                                 </a>
                                 <ul className="nav nav-treeview">
+                                <li className="nav-item">
+                                        <Link to="/customer/customerAdd" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Customer Add</p>
+                                        </Link>
+                                    </li>
                                     <li className="nav-item">
                                         <Link to="/customer/customerList" className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
@@ -111,40 +117,8 @@ function Sidebar() {
                                     </li>
                                 </ul>
                             </li>
-
-                            {/* Mail Section */}
-                            <li className={`nav-item ${openMenu === 'mail' ? 'menu-open' : ''}`}>
-                                <a href="#" className="nav-link" onClick={() => handleMenuClick('mail')}>
-                                    <i className="nav-icon fas fa-envelope"></i>
-                                    <p>
-                                        Mail
-                                        <i className="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul className="nav nav-treeview">
-                                    <li className="nav-item">
-                                        <Link to="/mail/mailBox" className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Mail Box</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a href="#" className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Suggestion</p>
-                                        </a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a href="#" className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Complain</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            {/* Staff Section */}
-                            <li className={`nav-item ${openMenu === 'staff' ? 'menu-open' : ''}`}>
+                             {/* Staff Section */}
+                             <li className={`nav-item ${openMenu === 'staff' ? 'menu-open' : ''}`}>
                                 <a href="#" className="nav-link" onClick={() => handleMenuClick('staff')}>
                                     <i className="nav-icon fas fa-users"></i>
                                     <p>
@@ -173,8 +147,59 @@ function Sidebar() {
                                     </li>
                                 </ul>
                             </li>
-
                             {/* Services Section */}
+                             {/* Project Section */}
+                             <li className={`nav-item ${openMenu === 'project' ? 'menu-open' : ''}`}>
+                                <a href="#" className="nav-link" onClick={() => handleMenuClick('project')}>
+                                    <i className="nav-icon fas fa-users"></i>
+                                    <p>
+                                        Project
+                                        <i className="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul className="nav nav-treeview">
+                                <li className="nav-item">
+                                        <Link to="/project/projectAdd" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Add Project</p>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to='/project/projectList' className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Project Files</p>
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </li>
+                            {/* Project Section */}
+
+                            {/* Mail Section */}
+                            <li className={`nav-item ${openMenu === 'mail' ? 'menu-open' : ''}`}>
+                                <a href="#" className="nav-link" onClick={() => handleMenuClick('mail')}>
+                                    <i className="nav-icon fas fa-envelope"></i>
+                                    <p>
+                                        Mail
+                                        <i className="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul className="nav nav-treeview">
+                                    <li className="nav-item">
+                                        <Link to="/mail/mailBox" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Mail Box</p>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to="/mail/mailbox/ComSug" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Complain/Suggestion</p>
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </li>
+
+                           
                             <li className="nav-header">Service</li>
                             <li className="nav-item">
                                 <a href="#" className="nav-link">

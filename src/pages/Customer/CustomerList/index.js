@@ -1,7 +1,7 @@
 import React from 'react'
 import AdminLayout from '../../../layouts/AdminLayout'
 
-function Customer() {
+function CustomerList() {
     
   return (
     <AdminLayout>
@@ -43,6 +43,7 @@ function Customer() {
                                     <th>Phone</th>
                                     <th>Email</th>
                                     <th>Status</th>
+                                    <th>Project Reg No</th>
                                     <th>Address</th>
                                     <th>Action</th>
                                 </tr>
@@ -58,6 +59,7 @@ function Customer() {
                                     <td>
                                       <div className="container mt-1"><div className="custom-control custom-switch"><input type="checkbox" className="custom-control-input" id="customSwitch1" /><label className="custom-control-label" htmlFor="customSwitch1">Active</label></div></div>
                                     </td>
+                                    <td>04</td>
                                     <td><span>Pathan Para</span><span>Oxizyn</span><span>4500</span><span>Bayejid</span><span>Chittagong</span><span>+880</span></td>
                                     <td>
                                         <a className='btn btn-info' href='#'>Edit</a>
@@ -77,4 +79,4 @@ function Customer() {
   )
 }
 
-export default Customer
+export default CustomerList

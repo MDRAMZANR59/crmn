@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AdminLayout from '../../../layouts/AdminLayout';
 
-function AddUser() {
+function CustomerAdd() {
     const [formData, setFormData] = useState([]);
     const [errors, setErrors] = useState([]);
 
@@ -20,7 +20,7 @@ function AddUser() {
                     <div className="container-fluid">
                         <div className="row mb-2">
                             <div className="col-sm-6">
-                                <h1 className="m-0">Add New User</h1>
+                                <h1 className="m-0">Add New Customer</h1>
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@ function AddUser() {
                     <div className="container-fluid">
                         <div className="card card-default">
                             <div className="card-header">
-                                <h3 className="card-title">User form</h3>
+                                <h3 className="card-title">Customer form</h3>
                                 <div className="card-tools">
                                     <button type="button" className="btn btn-tool" data-card-widget="collapse">
                                         <i className="fas fa-minus"></i>
@@ -75,18 +75,18 @@ function AddUser() {
                                             </div>
 
                                             <div className="mb-6 col-md-6">
-                                                <label htmlFor="userName" className="form-label">User Name<sup className="text-danger">*</sup></label>
+                                                <label htmlFor="CustomerName" className="form-label">Customer Name<sup className="text-danger">*</sup></label>
                                                 <input
                                                     required
-                                                    placeholder="User Name"
+                                                    placeholder="Customer Name"
                                                     type="text"
-                                                    className={`form-control ${errors.userName ? 'is-invalid' : ''}`}
-                                                    id="userName"
-                                                    name="userName"
-                                                    value={formData.userName}
+                                                    className={`form-control ${errors.CustomerName ? 'is-invalid' : ''}`}
+                                                    id="CustomerName"
+                                                    name="CustomerName"
+                                                    value={formData.CustomerName}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.userName && <div className="invalid-feedback">{errors.userName}</div>}
+                                                {errors.CustomerName && <div className="invalid-feedback">{errors.CustomerName}</div>}
                                             </div>
 
                                             <div className="mb-6 col-md-6">
@@ -249,7 +249,7 @@ function AddUser() {
                                                 {errors.countryCode && <div className="invalid-feedback">{errors.countryCode}</div>}
                                             </div>
                                         </div>
-                                        <button type="submit" className="btn btn-primary mt-3">Add User</button>
+                                        <button type="submit" className="btn btn-primary mt-3">Add Customer</button>
                                     </form>
                                 </div>
                             </div>
@@ -261,4 +261,4 @@ function AddUser() {
     );
 }
 
-export default AddUser;
+export default CustomerAdd;

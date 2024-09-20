@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AdminLayout from '../../../layouts/AdminLayout';
 
-function MailBox() {
+function ComSug() {
    
     return (
         <AdminLayout>
@@ -11,7 +11,7 @@ function MailBox() {
                 <div className="container-fluid">
                 <div className="row mb-2">
                     <div className="col-sm-6">
-                    <h1>Inbox</h1>
+                    <h1>Complain/Sggestion</h1>
                     </div>
                     <div className="col-sm-6">
                     <ol className="breadcrumb float-sm-right">
@@ -27,11 +27,9 @@ function MailBox() {
             <section className="content">
                 <div className="row">
                 <div className="col-md-3">
-                    <a href="" className="btn btn-primary btn-block mb-3">Compose</a>
-
                     <div className="card">
                     <div className="card-header">
-                        <h3 className="card-title">Mail Box</h3>
+                        <h3 className="card-title">Complain</h3>
                         <div className="card-tools">
                         <button type="button" className="btn btn-tool" data-card-widget="collapse">
                             <i className="fas fa-minus"></i>
@@ -42,23 +40,44 @@ function MailBox() {
                         <ul className="nav nav-pills flex-column">
                         <li className="nav-item active">
                             <a href="#" className="nav-link">
-                            <i className="fas fa-inbox"></i> Inbox
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="#" className="nav-link">
-                            <i className="fas fa-filter"></i> New Mail
+                            <i className="fas fa-inbox"></i> New
                             <span className="badge bg-warning float-right">65</span>
                             </a>
                         </li>
                         <li className="nav-item">
                             <a href="#" className="nav-link">
-                            <i className="far fa-envelope"></i> Sent
+                            <i className="fas fa-filter"></i> Read
                             </a>
                         </li>
                         <li className="nav-item">
                             <a href="#" className="nav-link">
-                            <i className="far fa-file-alt"></i> Drafts
+                            <i className="far fa-trash-alt"></i> Trash
+                            </a>
+                        </li>
+                        </ul>
+                    </div>
+                    {/* /.card-body */}
+                    </div>
+                    <div className="card">
+                    <div className="card-header">
+                        <h3 className="card-title">Suggestion</h3>
+                        <div className="card-tools">
+                        <button type="button" className="btn btn-tool" data-card-widget="collapse">
+                            <i className="fas fa-minus"></i>
+                        </button>
+                        </div>
+                    </div>
+                    <div className="card-body p-0">
+                        <ul className="nav nav-pills flex-column">
+                        <li className="nav-item active">
+                            <a href="#" className="nav-link">
+                            <i className="fas fa-inbox"></i> New
+                            <span className="badge bg-warning float-right">65</span>
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a href="#" className="nav-link">
+                            <i className="fas fa-filter"></i> Read
                             </a>
                         </li>
                         <li className="nav-item">
@@ -393,4 +412,4 @@ function MailBox() {
     );
 }
 
-export default MailBox;
+export default ComSug;
