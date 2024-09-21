@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AdminLayout from '../../../layouts/AdminLayout';
 
-function StaffAdd() {
+function CustomerAdd() {
     const [formData, setFormData] = useState([]);
     const [errors, setErrors] = useState([]);
 
@@ -12,6 +12,7 @@ function StaffAdd() {
     const handleSubmit = (e) => {
         return true;
     };
+
     return (
         <AdminLayout>
             <div className="content-wrapper">
@@ -260,4 +261,4 @@ function StaffAdd() {
     );
 }
 
-export default StaffAdd;
+export default CustomerAdd;

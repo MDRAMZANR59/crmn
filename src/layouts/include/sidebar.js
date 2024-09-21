@@ -128,22 +128,22 @@ function Sidebar() {
                                 </a>
                                 <ul className="nav nav-treeview">
                                     <li className="nav-item">
-                                        <a href="#" className="nav-link">
+                                        <Link to="/staff/staffAdd" className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
                                             <p>Add Staff</p>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="nav-item">
-                                        <a href="#" className="nav-link">
+                                        <Link to='/staff/staffList' className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
                                             <p>Staff List</p>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="nav-item">
-                                        <a href="#" className="nav-link">
+                                        <Link to='/staff/warningStaffList' className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
                                             <p>Warning Staff</p>
-                                        </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </li>
@@ -204,7 +204,7 @@ function Sidebar() {
                             <li className="nav-item">
                                 <a href="#" className="nav-link">
                                     <i className="fas fa-circle nav-icon"></i>
-                                    <p>Service Add</p>
+                                    <Link to='/service/serviceAdd'>Service Add</Link>
                                 </a>
                             </li>
                             <li className={`nav-item ${openMenu === 'serviceList' ? 'menu-open' : ''}`}>

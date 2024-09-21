@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Compose from './../Compose'
+import { Link, useLocation } from 'react-router-dom';
 import AdminLayout from '../../../layouts/AdminLayout';
 
 function MailBox() {
@@ -27,7 +29,7 @@ function MailBox() {
             <section className="content">
                 <div className="row">
                 <div className="col-md-3">
-                    <a href="" className="btn btn-primary btn-block mb-3">Compose</a>
+                    <Link to='/mail/mailbox/compose' className="btn btn-primary btn-block mb-3">Compose</Link>
 
                     <div className="card">
                     <div className="card-header">

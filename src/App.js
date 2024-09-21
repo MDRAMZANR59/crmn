@@ -8,7 +8,11 @@ import MailBox from './pages/Mail/Mailbox'
 import Compose from './pages/Mail/Compose'
 import ComSug from './pages/Mail/ComplainSggestion'
 import ProjectAdd from './pages/Project/ProjectAdd'
+import StaffAdd from './pages/Staff/AddStaff'
+import StaffList from './pages/Staff/StaffList'
+import WarningStaffList from './pages/Staff/WarningStaff'
 import ProjectList from './pages/Project/ProjectList'
+import ServiceAdd from './pages/Project/ProjectAdd'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -27,6 +31,10 @@ function App() {
           <Route path="/mail/mailbox/ComSug" element={<ComSug/>} />
           <Route path="/customer/customerList" element={<CustomerList />} />
           <Route path="/customer/customerAdd" element={<CustomerAdd />} />
+          <Route path="/staff/staffAdd" element={<StaffAdd/>} />
+          <Route path="/staff/staffList" element={<StaffList/>} />
+          <Route path="/staff/warningStaffList" element={<WarningStaffList/>} />
+          <Route path="/service/serviceAdd" element={<ServiceAdd/>} />
         </Routes>
     </BrowserRouter>
   );

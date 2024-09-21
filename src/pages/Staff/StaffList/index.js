@@ -1,7 +1,7 @@
 import React from 'react'
 import AdminLayout from '../../../layouts/AdminLayout'
 
-function CustomerList() {
+function StaffList() {
     
   return (
     <AdminLayout>
@@ -33,7 +33,7 @@ function CustomerList() {
                 </div>
                 <div class="card-body">
                     <div className="container mt-5">
-                        <table className='table table-responsive'>
+                        <table className='table'>
                             <thead>
                                 <tr>
                                     <th>#SL</th>
@@ -79,4 +79,4 @@ function CustomerList() {
   )
 }
 
-export default CustomerList
+export default StaffList
