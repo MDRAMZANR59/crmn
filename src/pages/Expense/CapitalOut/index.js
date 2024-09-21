@@ -1,7 +1,7 @@
 import React from 'react'
-import AdminLayout from '../../../../layouts/AdminLayout'
+import AdminLayout from '../../../layouts/AdminLayout'
 
-function PcAppDev() {
+function CapitalOut() {
     
   return (
     <AdminLayout>
@@ -79,4 +79,4 @@ function PcAppDev() {
   )
 }
 
-export default PcAppDev
+export default CapitalOut
