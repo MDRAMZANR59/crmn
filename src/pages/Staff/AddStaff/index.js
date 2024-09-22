@@ -19,7 +19,7 @@ function StaffAdd() {
                     <div className="container-fluid">
                         <div className="row mb-2">
                             <div className="col-sm-6">
-                                <h1 className="m-0">Add New Customer</h1>
+                                <h1 className="m-0">Add New Staff</h1>
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@ function StaffAdd() {
                     <div className="container-fluid">
                         <div className="card card-default">
                             <div className="card-header">
-                                <h3 className="card-title">Customer form</h3>
+                                <h3 className="card-title">Staff Add form</h3>
                                 <div className="card-tools">
                                     <button type="button" className="btn btn-tool" data-card-widget="collapse">
                                         <i className="fas fa-minus"></i>
@@ -43,11 +43,11 @@ function StaffAdd() {
                                 <div className="container mt-5">
                                     <form onSubmit={handleSubmit}>
                                         <div className="row md-6">
-                                            <div className="mb-6 col-md-6">
-                                                <label htmlFor="fristName" className="form-label">First Name<sup className=" text-danger">*</sup></label>
+                                        <div className="mb-6 col-md-6">
+                                                <label htmlFor="fristName" className="form-label">Frist Name By NID<sup className=" text-danger">*</sup></label>
                                                 <input
                                                     required
-                                                    placeholder="First Name"
+                                                    placeholder="Frist Name"
                                                     type="text"
                                                     className={`form-control ${errors.fristName ? 'is-invalid' : ''}`}
                                                     id="fristName"
@@ -59,10 +59,10 @@ function StaffAdd() {
                                             </div>
 
                                             <div className="mb-6 col-md-6">
-                                                <label htmlFor="lastName" className="form-label">Last Name<sup className=" text-danger">*</sup></label>
+                                                <label htmlFor="lastName" className="form-label">Last Name By NID<sup className="text-danger">*</sup></label>
                                                 <input
                                                     required
-                                                    placeholder="Last Name"
+                                                    placeholder="lastName"
                                                     type="text"
                                                     className={`form-control ${errors.lastName ? 'is-invalid' : ''}`}
                                                     id="lastName"
@@ -72,22 +72,107 @@ function StaffAdd() {
                                                 />
                                                 {errors.lastName && <div className="invalid-feedback">{errors.lastName}</div>}
                                             </div>
-
                                             <div className="mb-6 col-md-6">
-                                                <label htmlFor="CustomerName" className="form-label">Customer Name<sup className="text-danger">*</sup></label>
+                                                <label htmlFor="fatherName" className="form-label">Father Name<sup className=" text-danger">*</sup></label>
                                                 <input
                                                     required
-                                                    placeholder="Customer Name"
+                                                    placeholder="Father Name"
                                                     type="text"
-                                                    className={`form-control ${errors.CustomerName ? 'is-invalid' : ''}`}
-                                                    id="CustomerName"
-                                                    name="CustomerName"
-                                                    value={formData.CustomerName}
+                                                    className={`form-control ${errors.fatherName ? 'is-invalid' : ''}`}
+                                                    id="fatherName"
+                                                    name="fatherName"
+                                                    value={formData.fatherName}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.CustomerName && <div className="invalid-feedback">{errors.CustomerName}</div>}
+                                                {errors.fatherName && <div className="invalid-feedback">{errors.fatherName}</div>}
                                             </div>
-
+                                            <div className="mb-6 col-md-6">
+                                                <label htmlFor="dOB" className="form-label">Date Of Birth<sup className="text-danger">*</sup></label>
+                                                <input
+                                                    required
+                                                    placeholder="dOB"
+                                                    type="date"
+                                                    className={`form-control ${errors.dOB ? 'is-invalid' : ''}`}
+                                                    id="dOB"
+                                                    name="dOB"
+                                                    value={formData.dOB}
+                                                    onChange={handleChange}
+                                                />
+                                                {errors.dOB && <div className="invalid-feedback">{errors.dOB}</div>}
+                                            </div>
+                                            <div className="mb-6 col-md-6">
+                                                <label htmlFor="nidNo" className="form-label">NID No<sup className="text-danger">*</sup></label>
+                                                <input
+                                                    required
+                                                    placeholder="nidNo"
+                                                    type="number"
+                                                    className={`form-control ${errors.nidNo ? 'is-invalid' : ''}`}
+                                                    id="nidNo"
+                                                    name="nidNo"
+                                                    value={formData.nidNo}
+                                                    onChange={handleChange}
+                                                />
+                                                {errors.nidNo && <div className="invalid-feedback">{errors.nidNo}</div>}
+                                            </div>
+                                            <div className="mb-6 col-md-6">
+                                                <label htmlFor="staffId" className="form-label">Staff Id<sup className="text-danger">*</sup></label>
+                                                <input
+                                                    required
+                                                    placeholder="staffId"
+                                                    type="text"
+                                                    className={`form-control ${errors.staffId ? 'is-invalid' : ''}`}
+                                                    id="staffId"
+                                                    name="staffId"
+                                                    value={formData.staffId}
+                                                    onChange={handleChange}
+                                                />
+                                                {errors.staffId && <div className="invalid-feedback">{errors.staffId}</div>}
+                                            </div>
+                                            <div className="mb-6 col-md-6">
+                                                <label htmlFor="knowLanguages" className="form-label">Know Languages<sup className="text-danger">*</sup></label>
+                                                <textarea
+                                                    required
+                                                    placeholder="Know Languages"
+                                                    className={`form-control ${errors.knowLanguages ? 'is-invalid' : ''}`}
+                                                    id="knowLanguages"
+                                                    cols='20'
+                                                    rows='1'
+                                                    name="knowLanguages"
+                                                    value={formData.knowLanguages}
+                                                    onChange={handleChange}
+                                                ></textarea>
+                                                {errors.knowLanguages && <div className="invalid-feedback">{errors.knowLanguages}</div>}
+                                            </div>
+                                            <div className="mb-6 col-md-6">
+                                                <label htmlFor="expartFor" className="form-label text-black">Expart For <span className=" text-danger">*</span></label>
+                                                <select
+                                                    required
+                                                    id="expartFor"
+                                                    name="country"
+                                                    value={formData.expartFor}
+                                                    onChange={handleChange}
+                                                    className={`form-control ${errors.expartFor ? 'is-invalid' : ''}`}>
+                                                    <option value="0">Select Program</option>
+                                                    <option value="2">Android App Devolopment</option>
+                                                    <option value="3">Pc App Devolopment</option>
+                                                    <option value="4">Web App Devolopment</option>
+                                                </select>
+                                                {errors.expartFor && <div className="invalid-feedback">{errors.expartFor}</div>}
+                                            </div>
+                                            <div className="mb-6 col-md-6">
+                                                <label htmlFor="email" className="form-label">Email<sup className="text-danger">*</sup></label>
+                                                <input
+                                                    required
+                                                    placeholder="Email"
+                                                    type="email"
+                                                    className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                                                    id="email"
+                                                    name="email"
+                                                    value={formData.email}
+                                                    onChange={handleChange}
+                                                />
+                                                {errors.email && <div className="invalid-feedback">{errors.email}</div>}
+                                            </div>
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="password" className="form-label">Password<sup className="text-danger">*</sup></label>
                                                 <input
@@ -103,20 +188,6 @@ function StaffAdd() {
                                                 {errors.password && <div className="invalid-feedback">{errors.password}</div>}
                                             </div>
 
-                                            <div className="mb-6 col-md-6">
-                                                <label htmlFor="email" className="form-label">Email<sup className="text-danger">*</sup></label>
-                                                <input
-                                                    required
-                                                    placeholder="Email"
-                                                    type="email"
-                                                    className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-                                                    id="email"
-                                                    name="email"
-                                                    value={formData.email}
-                                                    onChange={handleChange}
-                                                />
-                                                {errors.email && <div className="invalid-feedback">{errors.email}</div>}
-                                            </div>
 
                                             <div className="mb-3 col-md-6">
                                                 <label htmlFor="phone" className="form-label">Phone<sup className=" text-danger">*</sup></label>

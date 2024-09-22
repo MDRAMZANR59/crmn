@@ -124,7 +124,7 @@ function CustomerAdd() {
                                                 <input
                                                     required
                                                     placeholder="Contact"
-                                                    type="phone"
+                                                    type="number"
                                                     className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
                                                     id="phone"
                                                     name="phone"
@@ -132,6 +132,34 @@ function CustomerAdd() {
                                                     onChange={handleChange}
                                                 />
                                                 {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
+                                            </div>
+                                            <div className="mb-3 col-md-6">
+                                                <label htmlFor="projectName" className="form-label">Project Name<sup className=" text-danger">*</sup></label>
+                                                <input
+                                                    required
+                                                    placeholder="Project Name"
+                                                    type="phone"
+                                                    className={`form-control ${errors.projectName ? 'is-invalid' : ''}`}
+                                                    id="projectName"
+                                                    name="projectName"
+                                                    value={formData.projectName}
+                                                    onChange={handleChange}
+                                                />
+                                                {errors.projectName && <div className="invalid-feedback">{errors.projectName}</div>}
+                                            </div>
+                                            <div className="mb-3 col-md-6">
+                                                <label htmlFor="projectSL" className="form-label">Project SL<sup className=" text-danger">*</sup></label>
+                                                <input
+                                                    required
+                                                    placeholder="Project SL"
+                                                    type="number"
+                                                    className={`form-control ${errors.projectSL ? 'is-invalid' : ''}`}
+                                                    id="projectSL"
+                                                    name="projectSL"
+                                                    value={formData.projectSL}
+                                                    onChange={handleChange}
+                                                />
+                                                {errors.projectSL && <div className="invalid-feedback">{errors.projectSL}</div>}
                                             </div>
 
                                             <div className="col-12">
@@ -147,6 +175,19 @@ function CustomerAdd() {
                                                     onChange={handleChange}
                                                 />
                                                 {errors.photo && <div className="invalid-feedback">{errors.photo}</div>}
+                                            </div>
+                                            <div className="col-12">
+                                                <label htmlFor="companyName" className="form-label">Company Name</label>
+                                                <input
+                                                    placeholder="Company Name"
+                                                    type="text"
+                                                    className={`form-control ${errors.companyName ? 'is-invalid' : ''}`}
+                                                    id="companyName"
+                                                    name="companyName"
+                                                    value={formData.companyName}
+                                                    onChange={handleChange}
+                                                />
+                                                {errors.companyName && <div className="invalid-feedback">{errors.companyName}</div>}
                                             </div>
 
                                             <div className="mb-3 col-12">
