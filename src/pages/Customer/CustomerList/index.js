@@ -39,11 +39,11 @@ function CustomerList() {
                                     <th>#SL</th>
                                     <th>Frist Name</th>
                                     <th>Last Name</th>
-                                    <th>User Name</th>
-                                    <th>Phone</th>
+                                    <th>Customer Id</th>
                                     <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Project List</th>
                                     <th>Status</th>
-                                    <th>Project Reg No</th>
                                     <th>Address</th>
                                     <th>Action</th>
                                 </tr>
@@ -53,9 +53,15 @@ function CustomerList() {
                                     <td>01</td>
                                     <td>Md Kamal</td>
                                     <td>Uddin</td>
-                                    <td>Kamal</td>
-                                    <td>+880 1559 075 906</td>
+                                    <td>1005</td>
                                     <td>kamal@gmail.com</td>
+                                    <td>+880 1559 075 906</td>
+                                    <td>
+                                      <ol>
+                                        <li>Grammary.com</li>
+                                        <li>TolPbcl.com</li>
+                                      </ol>
+                                    </td>
                                     <td>
                                       <div className="container mt-1"><div className="custom-control custom-switch"><input type="checkbox" className="custom-control-input" id="customSwitch1" /><label className="custom-control-label" htmlFor="customSwitch1">Active</label></div></div>
                                     </td>

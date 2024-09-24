@@ -23,7 +23,6 @@ function User() {
           </div>{/* /.container-fluid */}
         </div>
         {/* /.content-header */}
-
         {/* Main content */}
         <section className="content">
           <div className="container-fluid">
@@ -32,18 +31,19 @@ function User() {
                     <h3 class="card-title">User form</h3>
                 </div>
                 <div class="card-body">
-                    <div className="container mt-5">
-                        <table className='table'>
+                    <div className="container mt-1">
+                        <table className='table table-responsive table-sm'>
                             <thead>
                                 <tr>
                                     <th>#SL</th>
-                                    <th>Frist Name</th>
-                                    <th>Last Name</th>
-                                    <th>User Name</th>
-                                    <th>Photo</th>
-                                    <th>Phone</th>
+                                    <th>Name</th>
+                                    <th>NID</th>
+                                    <th>DOB</th>
                                     <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Employe Id</th>
                                     <th>Dasignation</th>
+                                    <th>Photo</th>
                                     <th>Address</th>
                                     <th>Action</th>
                                 </tr>
@@ -51,17 +51,19 @@ function User() {
                             <tbody>
                                 <tr>
                                     <td>01</td>
-                                    <td>Md Kamal</td>
-                                    <td>Uddin</td>
-                                    <td>Kamal</td>
-                                    <td></td>
-                                    <td>+880 1559 075 906</td>
+                                    <td>Md Kamal Uddin</td>
+                                    <td>710 720 5554</td>
+                                    <td>14/04/1997</td>
                                     <td>kamal@gmail.com</td>
+                                    <td>+880 1559 075 906</td>
+                                    <td>103</td>
                                     <td>CEO</td>
+                                    <td><img width="200px" src="../../layouts/assets/dist/img/avatar.png"/></td>
                                     <td><span>Pathan Para</span><span>Oxizyn</span><span>4500</span><span>Bayejid</span><span>Chittagong</span><span>+880</span></td>
                                     <td>
                                         <a className='btn btn-info' href='#'>Edit</a>
                                         <a className='btn btn-danger' href='#'>Delete</a>
+                                        <a className='btn btn-primary' href='#'>Mail</a>
                                     </td>
                                 </tr>
                             </tbody>
