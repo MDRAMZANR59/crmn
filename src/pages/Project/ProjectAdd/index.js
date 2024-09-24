@@ -38,29 +38,70 @@ function ProjectAdd() {
                         </div>
                         <div className="card-body">
                         <div className="form-group">
-                            <label htmlFor="inputName">Project Name</label>
-                            <input type="text" id="inputName" className="form-control"/>
+                            <label htmlFor="projectName">Project Name <sup className=" text-danger">*</sup></label>
+                            <input required type="text" id="projectName" placeholder="Project Name" className="form-control"/>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="inputDescription">Project Description</label>
-                            <textarea id="inputDescription" className="form-control" rows="4"></textarea>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="inputStatus">Status</label>
-                            <select id="inputStatus" className="form-control custom-select">
-                            <option selected disabled>Select one</option>
-                            <option>On Hold</option>
-                            <option>Canceled</option>
-                            <option>Success</option>
+                            <label required htmlFor="projectType">Project Type<sup className=" text-danger">*</sup></label>
+                            <select id="projectType" className="form-control">
+                                <option>Select Type</option>
+                                <option>Web Application Devolopment</option>
+                                <option>Pc App Devolopment</option>
+                                <option>Android App Devolopment</option>
                             </select>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="inputClientCompany">Client Company</label>
-                            <input type="text" id="inputClientCompany" className="form-control"/>
+                            <label required htmlFor="projectType">Domain And Hosting Provider<sup className=" text-danger">*</sup></label><br/>
+                            <input id="codeCrafters" type="radio" name="Do&HoPr" /> <label htmlFor="codeCrafters" className="me-2">Code Crafters</label>
+                            <input id="client" type="radio" name="Do&HoPr" /> <label htmlFor="client">Client</label>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="inputProjectLeader">Project Leader</label>
-                            <input type="text" id="inputProjectLeader" className="form-control"/>
+                            <label htmlFor="expectedLanguage">Require Language/Framework</label><br/>
+                            <label><strong>Front End</strong></label><br/>
+                            <label htmlFor="javascript">JavaScript </label>
+                            <input type="checkbox" id="javascript" placeholder="Project Name" className="me-1"/>
+                            <label htmlFor="php">TypeScript</label>
+                            <input type="checkbox" id="php" placeholder="Project Name" className="me-1"/>
+                            <label htmlFor="vue">Vue.js</label>
+                            <input type="checkbox" id="vue" placeholder="Project Name" className="me-1"/>
+                            <label htmlFor="php">TypeScript</label>
+                            <input type="checkbox" id="php" placeholder="Project Name" className="me-1"/>
+                            <label htmlFor="angular">Angular </label>
+                            <input type="checkbox" id="angular" placeholder="Project Name" className="me-1"/><br/>
+                            <label htmlFor="react">React </label>
+                            <input type="checkbox" id="react" placeholder="Project Name" className="me-1"/>
+                            <label htmlFor="bootstrap">Bootstrap </label>
+                            <input type="checkbox" id="bootstrap" placeholder="Project Name" className="me-1"/>
+                            <label htmlFor="jquery">JQuery </label>
+                            <input type="checkbox" id="jquery" placeholder="Project Name" className="me-1"/><hr/>
+
+                            <label><strong>BackEnd</strong></label><br/>
+                            <label htmlFor="php">PHP </label>
+                            <input type="checkbox" id="javascript" placeholder="Project Name" className="me-1"/>
+                            <label htmlFor="javascript">JavaScript</label>
+                            <input type="checkbox" id="javascript" placeholder="Project Name" className="me-1"/>
+                            <label htmlFor="c++">C++</label>
+                            <input type="checkbox" id="c++" placeholder="Project Name" className="me-1"/>
+                            <label htmlFor="C#">C#</label>
+                            <input type="checkbox" id="php" placeholder="Project Name" className="me-1"/>
+                            <label htmlFor="asp.net">ASP.NET </label>
+                            <input type="checkbox" id="asp.net" placeholder="Project Name" className="me-1"/><br/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="clientName">Client Name<sup className=" text-danger">*</sup></label>
+                            <input placeholder="Client Name" required type="text" id="clientName" className="form-control"/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="customerId">Customer ID<sup className=" text-danger">*</sup></label>
+                            <input placeholder="Customer ID" required type="text" id="customerId" className="form-control"/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="clientCompany">Client Company Name</label>
+                            <input placeholder="Client Company Name" type="text" id="clientCompany" className="form-control"/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="inputDescription">Project Description<sup className=" text-danger">*</sup></label>
+                            <textarea placeholder='Project Description' required id="inputDescription" className="form-control" rows="4"></textarea>
                         </div>
                         </div>
                         {/* /.card-body */}
@@ -80,16 +121,16 @@ function ProjectAdd() {
                         </div>
                         <div className="card-body">
                         <div className="form-group">
-                            <label htmlFor="inputEstimatedBudget">Estimated budget</label>
-                            <input type="number" id="inputEstimatedBudget" className="form-control"/>
+                            <label htmlFor="inputEstimatedBudget">Estimated budget<sup className=" text-danger">*</sup></label>
+                            <input required placeholder="Estimated budget" type="number" id="inputEstimatedBudget" className="form-control"/>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="inputSpentBudget">Total amount spent</label>
-                            <input type="number" id="inputSpentBudget" className="form-control"/>
+                            <label htmlFor="advance">Total Advance <sup className=" text-danger">*</sup></label>
+                            <input required placeholder="Advance" type="number" id="advance" className="form-control"/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="inputEstimatedDuration">Estimated project duration</label>
-                            <input type="number" id="inputEstimatedDuration" className="form-control"/>
+                            <input placeholder="Estimated duration" type="number" id="inputEstimatedDuration" className="form-control"/>
                         </div>
                         </div>
                         {/* /.card-body */}
