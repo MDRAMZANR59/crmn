@@ -32,7 +32,7 @@ function User() {
                 </div>
                 <div class="card-body">
                     <div className="container mt-1">
-                        <table className='table table-responsive table-sm'>
+                        <table className='table table-responsive table-sm text-nowrap text-center'>
                             <thead>
                                 <tr>
                                     <th>#SL</th>
@@ -44,6 +44,7 @@ function User() {
                                     <th>Employe Id</th>
                                     <th>Dasignation</th>
                                     <th>Photo</th>
+                                    <th>Signature</th>
                                     <th>Address</th>
                                     <th>Action</th>
                                 </tr>
@@ -59,6 +60,7 @@ function User() {
                                     <td>103</td>
                                     <td>CEO</td>
                                     <td><img width="200px" src="../../layouts/assets/dist/img/avatar.png"/></td>
+                                    <td><img width="200px" src="../../"/></td>
                                     <td><span>Pathan Para</span><span>Oxizyn</span><span>4500</span><span>Bayejid</span><span>Chittagong</span><span>+880</span></td>
                                     <td>
                                         <a className='btn btn-info' href='#'>Edit</a>

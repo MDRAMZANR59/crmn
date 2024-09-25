@@ -33,7 +33,7 @@ function CustomerList() {
                 </div>
                 <div class="card-body">
                     <div className="container mt-5">
-                        <table className='table table-responsive'>
+                        <table className='table table-responsive text-nowrap text-center'>
                             <thead>
                                 <tr>
                                     <th>#SL</th>
@@ -65,7 +65,6 @@ function CustomerList() {
                                     <td>
                                       <div className="container mt-1"><div className="custom-control custom-switch"><input type="checkbox" className="custom-control-input" id="customSwitch1" /><label className="custom-control-label" htmlFor="customSwitch1">Active</label></div></div>
                                     </td>
-                                    <td>04</td>
                                     <td><span>Pathan Para</span><span>Oxizyn</span><span>4500</span><span>Bayejid</span><span>Chittagong</span><span>+880</span></td>
                                     <td>
                                         <a className='btn btn-info' href='#'>Edit</a>

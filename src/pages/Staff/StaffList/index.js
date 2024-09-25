@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import AdminLayout from '../../../layouts/AdminLayout'
 
 function StaffList() {
@@ -33,16 +34,24 @@ function StaffList() {
                 </div>
                 <div class="card-body">
                     <div className="container mt-5">
-                        <table className='table'>
+                        <table className='table table-responsive text-nowrap text-center '>
                             <thead>
                                 <tr>
                                     <th>#SL</th>
-                                    <th>Frist Name</th>
-                                    <th>Last Name</th>
-                                    <th>User Name</th>
+                                    <th>Name</th>
+                                    <th>DOB</th>
+                                    <th>NID</th>
                                     <th>Phone</th>
+                                    <th>Employe Id</th>
+                                    <th>Joining Date</th>
+                                    <th>Designation</th>
                                     <th>Email</th>
+                                    <th>Photo</th>
+                                    <th>Signature</th>
                                     <th>Status</th>
+                                    <th>New Project/Type</th>
+                                    <th>Running Project</th>
+                                    <th>Action</th>
                                     <th>Project Reg No</th>
                                     <th>Address</th>
                                     <th>Action</th>
@@ -52,19 +61,28 @@ function StaffList() {
                                 <tr>
                                     <td>01</td>
                                     <td>Md Kamal</td>
-                                    <td>Uddin</td>
-                                    <td>Kamal</td>
+                                    <td>15/12/1994</td>
+                                    <td>2257956472</td>
                                     <td>+880 1559 075 906</td>
+                                    <td>203</td>
+                                    <td>16/01/2024</td>
+                                    <td>Senior Software Devoloper</td>
                                     <td>kamal@gmail.com</td>
+                                    <td><img width="200px" src="../../layouts/assets/dist/img/avatar.png"/></td>
+                                    <td><img width="200px" src="../../"/></td>
                                     <td>
                                       <div className="container mt-1"><div className="custom-control custom-switch"><input type="checkbox" className="custom-control-input" id="customSwitch1" /><label className="custom-control-label" htmlFor="customSwitch1">Active</label></div></div>
                                     </td>
+                                    <td><span>BDIX Taster</span><span>Mobile App Development</span></td>
+                                    <td><span>BDIX Taster</span><span>Mobile App Development</span></td>
+                                    <td> <a className='btn btn-success' href='#'>Take</a><br/><a className='btn btn-danger' href='#'>Reject</a></td>
                                     <td>04</td>
                                     <td><span>Pathan Para</span><span>Oxizyn</span><span>4500</span><span>Bayejid</span><span>Chittagong</span><span>+880</span></td>
-                                    <td>
+                                    <td >
                                         <a className='btn btn-info' href='#'>Edit</a>
                                         <a className='btn btn-danger' href='#'>Delete</a>
                                         <a className='btn btn-primary' href='#'>Mail</a>
+                                        <Link to="/staff/warningStaff/WarningNotice" className='btn btn-warning' href='#'>Sent Warning</Link>
                                     </td>
                                 </tr>
                             </tbody>
@@ -80,3 +98,5 @@ function StaffList() {
 }
 
 export default StaffList
+
+

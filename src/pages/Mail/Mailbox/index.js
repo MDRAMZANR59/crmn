@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Compose from './../Compose'
 import { Link, useLocation } from 'react-router-dom';
 import AdminLayout from '../../../layouts/AdminLayout';
 

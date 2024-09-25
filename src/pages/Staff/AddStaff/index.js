@@ -157,6 +157,50 @@ function StaffAdd() {
                                                 />
                                                 {errors.designation && <div className="invalid-feedback">{errors.designation}</div>}
                                             </div>
+                                            <div className="mb-3 col-md-6">
+                                                <label htmlFor="language" className="form-label">Known Language<sup className=" text-danger">*</sup></label>
+                                                <input
+                                                    required
+                                                    placeholder="Do Separat Using Space"
+                                                    type="text"
+                                                    className={`form-control ${errors.designation ? 'is-invalid' : ''}`}
+                                                    id="language"
+                                                    name="language"
+                                                    value={formData.language}
+                                                    onChange={handleChange}
+                                                />
+                                                {errors.language && <div className="invalid-feedback">{errors.language}</div>}
+                                            </div>
+                                            <div className="mb-6 col-md-6">
+                                                <label htmlFor="department" className="form-label text-black">Select Department <span className=" text-danger">*</span></label>
+                                                <select
+                                                    required
+                                                    id="department"
+                                                    name="department"
+                                                    value={formData.department}
+                                                    onChange={handleChange}
+                                                    className={`form-control ${errors.department ? 'is-invalid' : ''}`}>
+                                                    <option value="0">Select department</option>
+                                                    <option value="2">Android App Development</option>
+                                                    <option value="3">PC App Debolopment</option>
+                                                    <option value="4">Web Application Development</option>
+                                                </select>
+                                                {errors.department && <div className="invalid-feedback">{errors.department}</div>}
+                                            </div>
+                                            <div className="col-6">
+                                                <label htmlFor="signature" className="form-label">Signature<sup className=" text-danger">*</sup></label>
+                                                <input
+                                                    required
+                                                    placeholder="signature"
+                                                    type="file"
+                                                    className={`form-control ${errors.signature ? 'is-invalid' : ''}`}
+                                                    id="signature"
+                                                    name="signature"
+                                                    value={formData.signature}
+                                                    onChange={handleChange}
+                                                />
+                                                {errors.signature && <div className="invalid-feedback">{errors.signature}</div>}
+                                            </div>
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="password" className="form-label">Password<sup className="text-danger">*</sup></label>
                                                 <input

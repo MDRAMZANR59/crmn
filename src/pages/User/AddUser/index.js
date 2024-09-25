@@ -144,6 +144,20 @@ function AddUser() {
                                                 />
                                                 {errors.designation && <div className="invalid-feedback">{errors.designation}</div>}
                                             </div>
+                                            <div className="col-6">
+                                                <label htmlFor="signature" className="form-label">Signature<sup className=" text-danger">*</sup></label>
+                                                <input
+                                                    required
+                                                    placeholder="signature"
+                                                    type="file"
+                                                    className={`form-control ${errors.signature ? 'is-invalid' : ''}`}
+                                                    id="signature"
+                                                    name="signature"
+                                                    value={formData.signature}
+                                                    onChange={handleChange}
+                                                />
+                                                {errors.signature && <div className="invalid-feedback">{errors.signature}</div>}
+                                            </div>
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="password" className="form-label">Password<sup className="text-danger">*</sup></label>
                                                 <input

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AdminLayout from '../../../layouts/AdminLayout';
 
-function ProjectList() {
+function TransfaringProject() {
    
     return (
         <AdminLayout>
@@ -12,12 +12,12 @@ function ProjectList() {
                 <div className="container-fluid">
                 <div className="row mb-2">
                     <div className="col-sm-6">
-                    <h1>Projects</h1>
+                    <h1>Transfaring Project</h1>
                     </div>
                     <div className="col-sm-6">
                     <ol className="breadcrumb float-sm-right">
-                        <li className="breadcrumb-item"><a href="#">Home</a></li>
-                        <li className="breadcrumb-item active">Projects List</li>
+                        <li className="breadcrumb-item"><a href="#">Project</a></li>
+                        <li className="breadcrumb-item active">Transfaring Projects</li>
                     </ol>
                     </div>
                 </div>
@@ -30,7 +30,7 @@ function ProjectList() {
                 {/* Default box */}
                 <div className="card">
                 <div className="card-header">
-                    <h3 className="card-title">Project List</h3>
+                    <h3 className="card-title">New Project List</h3>
 
                     <div className="card-tools">
                     <button type="button" className="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -46,88 +46,89 @@ function ProjectList() {
                         <thead className='text-nowrap'>
                             <tr className="text-center">
                                 <th>SL</th>
-                                <th>Project Name</th>
                                 <th>Project Type</th>
+                                <th>Project Name</th>
+                                <th>Project Id</th>
                                 <th>Customer ID</th>
-                                <th>Team Leader & Photo</th>
-                                <th>Team Members & Photos</th>
-                                <th>Project Progress</th>
-                                <th>Start Date</th>
+                                <th>Select Team Leader</th>
+                                <th>Select Team Members</th>
+                                <th>Reciving Date</th>
                                 <th>Estimated End Date</th>
-                                <th>Status</th>
-                                <th>Sort By</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody className="text-center">
                             <tr>
                                 <td>001</td>
-                                <td><a href="#" >Code Cruftere</a></td>
                                 <td><a href="#" >Web Application Debolopment</a></td>
+                                <td><a href="#" >Hospital Managment</a></td>
                                 <td><a href="#" >A5X78P2</a></td>
-                                <td>
-                                    <img src="../" className="Thumbnail w-25% img-fluid mx-auto" /><br/>
-                                    <a href="#" className="d-block text-center" >Jons Endarson</a>
-                                </td>
-                                <td className='d-flex'>
-                                    <span className="me-2">
-                                        <img src="../" className="thumblull w-50% img-fluid mx-auto" />
-                                        <a href="#" className="d-block text-center" >Jons Endarson</a>
-                                    </span>
-                                    <span className="me-2">
-                                        <img src="../" className="Thumbnail w-50% img-fluid mx-auto" />
-                                        <a href="#" className="d-block text-center" >Jons Endarson</a>
-                                    </span>
-                                    <span className="me-2">
-                                        <img src="../" className="Thumbnail w-50% img-fluid mx-auto" />
-                                        <a href="#" className="d-block text-center" >Jons Endarson</a>
-                                    </span>
-                                    <span>
-                                        <img src="../" className="Thumbnail w-50% img-fluid mx-auto" />
-                                        <a href="#" className="d-block text-center" >Jons Endarson</a>
-                                    </span>
-                                </td>
-                                <td className="project_progress stripped">
-                                    <div className="progress progress-sm">
-                                        <div className="progress-bar bg-green" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style={{width: "57%"}}></div>
-                                    </div>
-                                    <small>57% Complete</small>
-                                </td>
-                                <td className="project-state">
-                                    <span className="badge badge text-dark">Start Date Daynamic</span>
-                                </td>
-                                <td className="project-state">
-                                    <span className="badge badge text-dark">Estimated End Date Daynamic</span>
-                                </td>
-                                <td className="project-state">
-                                    <span className="badge badge text-dark">Success</span>
-                                </td>
+                                <td><a href="#" >1003</a></td>
                                 <td className="project-state">
                                     <div className="form-group">
-                                        <select id="sortBy" className="form-control">
-                                            <option className="bg-success">Success</option>
-                                            <option className="bg-secondary">Stock</option>
-                                            <option className="bg-warning">Pending</option>
-                                            <option className="bg-danger">Canceld</option>
-                                            <option className="bg-info">Date</option>
+                                        <select className="form-control">
+                                            <option className="bg-secondary">
+                                                <img src="../../../assets/dist/img/user8-128x128.jpg" className="Thumbnail img-fluid mx-auto" width="50px" /><br/>
+                                                <a href="#" className="d-block text-center" >Jons Endarson</a>
+                                            </option>
+                                            <option className="bg-secondary">
+                                                <img src="../../../assets/dist/img/user8-128x128.jpg" className="Thumbnail img-fluid mx-auto" width="50px" /><br/>
+                                                <a href="#" className="d-block text-center" >Wiliams Keley</a>
+                                            </option>
+                                            <option className="bg-secondary">
+                                                <img src="../../../assets/dist/img/user8-128x128.jpg" className="Thumbnail img-fluid mx-auto" width="50px" /><br/>
+                                                <a href="#" className="d-block text-center" >Micle</a>
+                                            </option>
+                                            <option className="bg-secondary">
+                                                <img src="../../../assets/dist/img/user8-128x128.jpg" className="Thumbnail img-fluid mx-auto" width="50px" /><br/>
+                                                <a href="#" className="d-block text-center" >Elina</a>
+                                            </option>
+                                            <option className="bg-secondary">
+                                                <img src="../../../assets/dist/img/user8-128x128.jpg" className="Thumbnail img-fluid mx-auto" width="50px" /><br/>
+                                                <a href="#" className="d-block text-center" >Jorze</a>
+                                            </option>
+                                            
                                         </select>
                                      </div>
                                 </td>
+                                <td className="project-state">
+                                    <div className="form-group">
+                                        <select className="form-control">
+                                            <option className="bg-secondary">
+                                                <img src="../../../assets/dist/img/user8-128x128.jpg" className="Thumbnail img-fluid mx-auto" width="50px" /><br/>
+                                                <a href="#" className="d-block text-center" >Jons Endarson</a>
+                                            </option>
+                                            <option className="bg-secondary">
+                                                <img src="../../../assets/dist/img/user8-128x128.jpg" className="Thumbnail img-fluid mx-auto" width="50px" /><br/>
+                                                <a href="#" className="d-block text-center" >Wiliams Keley</a>
+                                            </option>
+                                            <option className="bg-secondary">
+                                                <img src="../../../assets/dist/img/user8-128x128.jpg" className="Thumbnail img-fluid mx-auto" width="50px" /><br/>
+                                                <a href="#" className="d-block text-center" >Micle</a>
+                                            </option>
+                                            <option className="bg-secondary">
+                                                <img src="../../../assets/dist/img/user8-128x128.jpg" className="Thumbnail img-fluid mx-auto" width="50px" /><br/>
+                                                <a href="#" className="d-block text-center" >Elina</a>
+                                            </option>
+                                            <option className="bg-secondary">
+                                                <img src="../../../assets/dist/img/user8-128x128.jpg" className="Thumbnail img-fluid mx-auto" width="50px" /><br/>
+                                                <a href="#" className="d-block text-center" >Jorze</a>
+                                            </option>
+                                            
+                                        </select>
+                                     </div>
+                                </td>
+                                <td>
+                                    10/09/2024 Daynamic 
+                                </td>
+                                <td>
+                                    10/10/2024 Daynamic 
+                                </td>
                                 <td className="project-actions text-right">
                                     <a className="btn btn-primary btn-sm" href="#">
-                                        <i className="fas fa-folder">
+                                        <i className="fas fa-share">
                                         </i>
-                                        View
-                                    </a>
-                                    <a className="btn btn-info btn-sm" href="#">
-                                        <i className="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a className="btn btn-danger btn-sm" href="#">
-                                        <i className="fas fa-trash">
-                                        </i>
-                                        Delete
+                                        Share
                                     </a>
                                 </td>
                             </tr>
@@ -146,4 +147,4 @@ function ProjectList() {
     );
 }
 
-export default ProjectList;
+export default TransfaringProject;

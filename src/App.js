@@ -13,6 +13,7 @@ import ProjectAdd from './pages/Project/ProjectAdd'
 import StaffAdd from './pages/Staff/AddStaff'
 import StaffList from './pages/Staff/StaffList'
 import WarningStaffList from './pages/Staff/WarningStaff'
+import WarningNotice from './pages/Staff/WarningStaff/warningNotice'
 import ProjectList from './pages/Project/ProjectList'
 import ServiceAdd from './pages/Project/ProjectAdd'
 import AndroidAppDev from './pages/Service/ServiceList/AndroidAppDevelopment'
@@ -24,6 +25,8 @@ import DailyExpense from './pages/Expense/DailyExpense'
 import CapitalOut from './pages/Expense/CapitalOut'
 import ExpensesReport from './pages/Report/Expenses'
 import IncomeReport from './pages/Report/Income'
+import TransfaringProject from './pages/Project/TransfarinProject'
+import CancalingProject from './pages/Project/CancalingProject'
 
 function App() {
   return (
@@ -42,6 +45,7 @@ function App() {
           <Route path="/staff/staffAdd" element={<StaffAdd/>} />
           <Route path="/staff/staffList" element={<StaffList/>} />
           <Route path="/staff/warningStaffList" element={<WarningStaffList/>} />
+          <Route path="/staff/warningStaff/WarningNotice" element={<WarningNotice/>} />
           <Route path="/service/serviceAdd" element={<ServiceAdd/>} />
           <Route path="/service/serviceList/AndroidAppDevolopment" element={<AndroidAppDev/>}/>
           <Route path="/service/serviceList/WebAppDevolopment" element={<WebAppDev/>} />
@@ -52,6 +56,8 @@ function App() {
           <Route path="/expense/CapitalOut" element={<CapitalOut/>} />
           <Route path="/report/ExpensesReport" element={<ExpensesReport/>} />
           <Route path="/report/IncomeReport" element={<IncomeReport/>} />
+          <Route path="/project/TransfaringProject" element={<TransfaringProject/>} />
+          <Route path="/project/CancalingProject" element={<CancalingProject/>} />
         </Routes>
     </BrowserRouter>
   );
