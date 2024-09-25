@@ -158,7 +158,7 @@ function Sidebar() {
                                     </p>
                                 </a>
                                 <ul className="nav nav-treeview">
-                                <li className="nav-item">
+                                    <li className="nav-item">
                                         <Link to="/project/projectAdd" className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
                                             <p>Add Project</p>
@@ -168,6 +168,24 @@ function Sidebar() {
                                         <Link to='/project/projectList' className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
                                             <p>Project Files</p>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to='/project/projectList' className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Transfaring Project</p>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to='/project/projectList' className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Cancaling Project</p>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to='/project/projectList' className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Stock Project</p>
                                         </Link>
                                     </li>
                                 </ul>
