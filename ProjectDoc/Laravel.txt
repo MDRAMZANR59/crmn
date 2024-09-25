@@ -1,0 +1,13 @@
+composer download
+
+xampp php te coonect korte hobe
+
+ht doc e 
+
+laravel install open cmd/git bash cli in htdocs folder
+
+composer create-project laravel/laravel:^8.0 laravel_class
+
+cd laravel_class
+
+php artisan serve

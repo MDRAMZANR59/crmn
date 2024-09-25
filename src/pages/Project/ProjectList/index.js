@@ -66,24 +66,24 @@ function ProjectList() {
                                 <td><a href="#" >Web Application Debolopment</a></td>
                                 <td><a href="#" >A5X78P2</a></td>
                                 <td>
-                                    <img src="../" className="Thumbnail w-25% img-fluid mx-auto" /><br/>
+                                    <img src="../../../assets/dist/img/avatar.png" className="Thumbnail img-fluid mx-auto" width="50px" /><br/>
                                     <a href="#" className="d-block text-center" >Jons Endarson</a>
                                 </td>
                                 <td className='d-flex'>
                                     <span className="me-2">
-                                        <img src="../" className="thumblull w-50% img-fluid mx-auto" />
+                                        <img src="../../../assets/dist/img/user8-128x128.jpg" className="Thumbnail img-fluid mx-auto" width="50px" />
                                         <a href="#" className="d-block text-center" >Jons Endarson</a>
                                     </span>
                                     <span className="me-2">
-                                        <img src="../" className="Thumbnail w-50% img-fluid mx-auto" />
+                                        <img src="../../../assets/dist/img/avatar.png" className="Thumbnail img-fluid mx-auto" width="50px" />
                                         <a href="#" className="d-block text-center" >Jons Endarson</a>
                                     </span>
                                     <span className="me-2">
-                                        <img src="../" className="Thumbnail w-50% img-fluid mx-auto" />
+                                        <img src="../../../assets/dist/img/avatar.png" className="Thumbnail img-fluid mx-auto" width="50px" />
                                         <a href="#" className="d-block text-center" >Jons Endarson</a>
                                     </span>
                                     <span>
-                                        <img src="../" className="Thumbnail w-50% img-fluid mx-auto" />
+                                        <img src="../../../assets/dist/img/avatar.png" className="Thumbnail img-fluid mx-auto" width="50px" />
                                         <a href="#" className="d-block text-center" >Jons Endarson</a>
                                     </span>
                                 </td>
