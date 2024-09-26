@@ -81,7 +81,7 @@ function StaffList() {
                                     <td >
                                         <a className='btn btn-info' href='#'>Edit</a>
                                         <a className='btn btn-danger' href='#'>Delete</a>
-                                        <a className='btn btn-primary' href='#'>Mail</a>
+                                        <Link to="/staff/staffList/MailStaff" className='btn btn-primary'>Mail</Link>
                                         <Link to="/staff/warningStaff/WarningNotice" className='btn btn-warning' href='#'>Sent Warning</Link>
                                     </td>
                                 </tr>

@@ -12,10 +12,11 @@ import ComSug from './pages/Mail/ComplainSggestion'
 import ProjectAdd from './pages/Project/ProjectAdd'
 import StaffAdd from './pages/Staff/AddStaff'
 import StaffList from './pages/Staff/StaffList'
+import MailStaff from './pages/Staff/StaffList/MailStaff'
 import WarningStaffList from './pages/Staff/WarningStaff'
 import WarningNotice from './pages/Staff/WarningStaff/warningNotice'
 import ProjectList from './pages/Project/ProjectList'
-import ServiceAdd from './pages/Project/ProjectAdd'
+import ServiceAdd from './pages/Service/ServiceAdd'
 import AndroidAppDev from './pages/Service/ServiceList/AndroidAppDevelopment'
 import WebAppDev from './pages/Service/ServiceList/WebApplicationDevolopment'
 import PcAppDev from './pages/Service/ServiceList/PCAppDevolopment'
@@ -44,6 +45,7 @@ function App() {
           <Route path="/customer/customerAdd" element={<CustomerAdd />} />
           <Route path="/staff/staffAdd" element={<StaffAdd/>} />
           <Route path="/staff/staffList" element={<StaffList/>} />
+          <Route path="/staff/staffList/MailStaff" element={<MailStaff/>} />
           <Route path="/staff/warningStaffList" element={<WarningStaffList/>} />
           <Route path="/staff/warningStaff/WarningNotice" element={<WarningNotice/>} />
           <Route path="/service/serviceAdd" element={<ServiceAdd/>} />

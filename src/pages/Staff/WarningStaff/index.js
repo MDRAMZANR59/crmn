@@ -75,14 +75,12 @@ function WarningStaffList() {
                                     </td>
                                     <td>kamal@gmail.com</td>
                                     <td><img width="200px" src="../../layouts/assets/dist/img/avatar.png"/></td>
-                                    <td className='bg-warning'>Warning</td>
+                                    <td className='text-danger'>Warning</td>
                                     <td><span>BDIX Taster</span><span>Mobile App Development</span></td>
                                     <td>04</td>
                                     <td><span>Pathan Para</span><span>Oxizyn</span><span>4500</span><span>Bayejid</span><span>Chittagong</span><span>+880</span></td>
                                     <td >
-                                        <a className='btn btn-info' href='#'>Edit</a>
                                         <a className='btn btn-danger' href='#'>Delete</a>
-                                        <a className='btn btn-primary' href='#'>Mail</a>
                                     </td>
                                 </tr>
                             </tbody>
