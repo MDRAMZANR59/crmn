@@ -29,7 +29,7 @@ function Dashboard() {
       <div className="container-fluid">
         {/* Info boxes */}
         <div className="row">
-          <div className="col-12 col-sm-6 col-md-3" style={{width:"50%"}}>
+          <div className="col-12 col-sm-6 col-md-6">
             <div className="info-box">
               <span className="info-box-icon bg-info elevation-1"><i className="fas fa-cog"></i></span>
 
@@ -45,7 +45,7 @@ function Dashboard() {
             {/* /.info-box */}
           </div>
           {/* /.col */}
-          <div className="col-12 col-sm-6 col-md-3"  style={{width:"50%"}}>
+          <div className="col-12 col-sm-6 col-md-6">
             <div className="info-box mb-3">
               <span className="info-box-icon bg-danger elevation-1"><i className="fas fa-thumbs-up"></i></span>
 
@@ -62,7 +62,7 @@ function Dashboard() {
           {/* fix for small devices only */}
           <div className="clearfix hidden-md-up"></div>
 
-          <div className="col-12 col-sm-6 col-md-3"  style={{width:"50%"}}>
+          <div className="col-12 col-sm-6 col-md-6">
             <div className="info-box mb-3">
               <span className="info-box-icon bg-success elevation-1"><i className="fas fa-shopping-cart"></i></span>
 
@@ -75,7 +75,7 @@ function Dashboard() {
             {/* /.info-box */}
           </div>
           {/* /.col */}
-          <div className="col-12 col-sm-6 col-md-3"  style={{width:"50%"}}>
+          <div className="col-12 col-sm-6 col-md-6">
             <div className="info-box mb-3">
               <span className="info-box-icon bg-warning elevation-1"><i className="fas fa-users"></i></span>
 

@@ -11,7 +11,7 @@ function AndroidAppDev() {
           <div className="container-fluid">
             <div className="row mb-2">
               <div className="col-sm-6">
-                <h1 className="m-0">Web Application Devolopment</h1>
+                <h1 className="m-0">Android App Devolopment</h1>
               </div>{/* /.col */}
               <div className="col-sm-6">
                 <ol className="breadcrumb float-sm-right">
@@ -46,7 +46,7 @@ function AndroidAppDev() {
                             <tbody>
                                 <tr>
                                     <td>01</td>
-                                    <td>Web WebApplicationDevolopment</td>
+                                    <td>Android App Devolopment</td>
                                     <td>Javascript, PHP, React, Laravel, Vue</td>
                                     <td>Mukut, Ramzan, Mamun, Raja</td>
                                     <td>

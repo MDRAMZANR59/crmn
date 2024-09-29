@@ -1,13 +1,49 @@
-composer download
-
-xampp php te coonect korte hobe
-
-ht doc e 
-
 laravel install open cmd/git bash cli in htdocs folder
 
-composer create-project laravel/laravel:^8.0 laravel_class
+	composer create-project laravel/laravel:^8.0 laravel_class
 
-cd laravel_class
+	cd laravel_class
 
-php artisan serve
+	php artisan serve
+
+for api auth 
+	composer require laravel/sanctum
+	php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+
+
+go to htdocs folder
+*git colne https://github.com/ether0606/hospital_react.git
+*cd hospital_react
+*composer update
+*cp .env.example .env
+*php artisan key:generate
+*php artisan migrate
+
+controller> All
+rout>Api File
+Model> model
+Migration>All
+
+--------------------------------------------
+laravel install open cmd/git bash cli in htdocs folder
+
+	composer create-project laravel/laravel:^8.0 laravel_class
+
+	cd laravel_class
+
+	php artisan serve
+
+for api auth 
+	composer require laravel/sanctum
+	php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+
+
+go to htdocs folder
+*git colne https://github.com/ether0606/hospital_react.git
+*cd hospital_react
+*composer update
+*cp .env.example .env
+*php artisan key:generate
+*php artisan migrate
+
+https://red-rocket-652312.postman.co/workspace/New-Team-Workspace~671014a4-d39d-409b-8af9-b9e7b43b4858/collection/12280611-8addf844-aa1e-42f5-a344-6a800af5750c?action=share&creator=12280611
