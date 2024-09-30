@@ -15,8 +15,8 @@ function AndroidAppDev() {
               </div>{/* /.col */}
               <div className="col-sm-6">
                 <ol className="breadcrumb float-sm-right">
-                  <li className="breadcrumb-item"><a href="#">Customer</a></li>
-                  <li className="breadcrumb-item active">List</li>
+                  <li className="breadcrumb-item"><a href="#">Service List</a></li>
+                  <li className="breadcrumb-item active">Android App Devolopment</li>
                 </ol>
               </div>{/* /.col */}
             </div>{/* /.row */}
@@ -50,9 +50,7 @@ function AndroidAppDev() {
                                     <td>Javascript, PHP, React, Laravel, Vue</td>
                                     <td>Mukut, Ramzan, Mamun, Raja</td>
                                     <td>
-                                        <a className='btn btn-info' href='#'>Edit</a>
                                         <a className='btn btn-danger' href='#'>Delete</a>
-                                        <a className='btn btn-primary' href='#'>Mail</a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -62,7 +60,7 @@ function AndroidAppDev() {
             </div>
           </div>
         </section>
-    </div>
+        </div>
     </AdminLayout>       
   )
 }

@@ -310,7 +310,7 @@ function Dashboard() {
                           <span className="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
                         </div>
                         {/* /.direct-chat-infos */}
-                        <img className="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image"/>
+                        <img className="direct-chat-img" src="assets/dist/img/user1-128x128.jpg" alt="message user image"/>
                         {/* /.direct-chat-img */}
                         <div className="direct-chat-text">
                           Is this template really for free? That's unbelievable!
@@ -326,7 +326,7 @@ function Dashboard() {
                           <span className="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
                         </div>
                         {/* /.direct-chat-infos */}
-                        <img className="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image"/>
+                        <img className="direct-chat-img" src="assets/dist/img/user3-128x128.jpg" alt="message user image"/>
                         {/* /.direct-chat-img */}
                         <div className="direct-chat-text">
                           You better believe it!
@@ -342,7 +342,7 @@ function Dashboard() {
                           <span className="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
                         </div>
                         {/* /.direct-chat-infos */}
-                        <img className="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image"/>
+                        <img className="direct-chat-img" src="assets/dist/img/user1-128x128.jpg" alt="message user image"/>
                         {/* /.direct-chat-img */}
                         <div className="direct-chat-text">
                           Working with AdminLTE on a great new app! Wanna join?
@@ -358,7 +358,7 @@ function Dashboard() {
                           <span className="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
                         </div>
                         {/* /.direct-chat-infos */}
-                        <img className="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image"/>
+                        <img className="direct-chat-img" src="assets/dist/img/user3-128x128.jpg" alt="message user image"/>
                         {/* /.direct-chat-img */}
                         <div className="direct-chat-text">
                           I would love to.
@@ -375,7 +375,7 @@ function Dashboard() {
                       <ul className="contacts-list">
                         <li>
                           <a href="#">
-                            <img className="contacts-list-img" src="dist/img/user1-128x128.jpg" alt="User Avatar"/>
+                            <img className="contacts-list-img" src="assets/dist/img/user1-128x128.jpg" alt="User Avatar"/>
 
                             <div className="contacts-list-info">
                               <span className="contacts-list-name">
@@ -390,7 +390,7 @@ function Dashboard() {
                         {/* End Contact Item */}
                         <li>
                           <a href="#">
-                            <img className="contacts-list-img" src="dist/img/user7-128x128.jpg" alt="User Avatar"/>
+                            <img className="contacts-list-img" src="assets/dist/img/user7-128x128.jpg" alt="User Avatar"/>
 
                             <div className="contacts-list-info">
                               <span className="contacts-list-name">
@@ -405,7 +405,7 @@ function Dashboard() {
                         {/* End Contact Item */}
                         <li>
                           <a href="#">
-                            <img className="contacts-list-img" src="dist/img/user3-128x128.jpg" alt="User Avatar"/>
+                            <img className="contacts-list-img" src="assets/dist/img/user3-128x128.jpg" alt="User Avatar"/>
 
                             <div className="contacts-list-info">
                               <span className="contacts-list-name">
@@ -420,7 +420,7 @@ function Dashboard() {
                         {/* End Contact Item */}
                         <li>
                           <a href="#">
-                            <img className="contacts-list-img" src="dist/img/user5-128x128.jpg" alt="User Avatar"/>
+                            <img className="contacts-list-img" src="assets/dist/img/user5-128x128.jpg" alt="User Avatar"/>
 
                             <div className="contacts-list-info">
                               <span className="contacts-list-name">
@@ -435,7 +435,7 @@ function Dashboard() {
                         {/* End Contact Item */}
                         <li>
                           <a href="#">
-                            <img className="contacts-list-img" src="dist/img/user6-128x128.jpg" alt="User Avatar"/>
+                            <img className="contacts-list-img" src="assets/dist/img/user6-128x128.jpg" alt="User Avatar"/>
 
                             <div className="contacts-list-info">
                               <span className="contacts-list-name">
@@ -450,7 +450,7 @@ function Dashboard() {
                         {/* End Contact Item */}
                         <li>
                           <a href="#">
-                            <img className="contacts-list-img" src="dist/img/user8-128x128.jpg" alt="User Avatar"/>
+                            <img className="contacts-list-img" src="assets/dist/img/user8-128x128.jpg" alt="User Avatar"/>
 
                             <div className="contacts-list-info">
                               <span className="contacts-list-name">
@@ -505,42 +505,42 @@ function Dashboard() {
                   <div className="card-body p-0">
                     <ul className="users-list clearfix">
                       <li>
-                        <img src="dist/img/user1-128x128.jpg" alt="User Image"/>
+                        <img src="assets/dist/img/user1-128x128.jpg" alt="User Image"/>
                         <a className="users-list-name" href="#">Alexander Pierce</a>
                         <span className="users-list-date">Today</span>
                       </li>
                       <li>
-                        <img src="dist/img/user8-128x128.jpg" alt="User Image"/>
+                        <img src="assets/dist/img/user8-128x128.jpg" alt="User Image"/>
                         <a className="users-list-name" href="#">Norman</a>
                         <span className="users-list-date">Yesterday</span>
                       </li>
                       <li>
-                        <img src="dist/img/user7-128x128.jpg" alt="User Image"/>
+                        <img src="assets/dist/img/user7-128x128.jpg" alt="User Image"/>
                         <a className="users-list-name" href="#">Jane</a>
                         <span className="users-list-date">12 Jan</span>
                       </li>
                       <li>
-                        <img src="dist/img/user6-128x128.jpg" alt="User Image"/>
+                        <img src="assets/dist/img/user6-128x128.jpg" alt="User Image"/>
                         <a className="users-list-name" href="#">John</a>
                         <span className="users-list-date">12 Jan</span>
                       </li>
                       <li>
-                        <img src="dist/img/user2-160x160.jpg" alt="User Image"/>
+                        <img src="assets/dist/img/user2-160x160.jpg" alt="User Image"/>
                         <a className="users-list-name" href="#">Alexander</a>
                         <span className="users-list-date">13 Jan</span>
                       </li>
                       <li>
-                        <img src="dist/img/user5-128x128.jpg" alt="User Image"/>
+                        <img src="assets/dist/img/user5-128x128.jpg" alt="User Image"/>
                         <a className="users-list-name" href="#">Sarah</a>
                         <span className="users-list-date">14 Jan</span>
                       </li>
                       <li>
-                        <img src="dist/img/user4-128x128.jpg" alt="User Image"/>
+                        <img src="assets/dist/img/user4-128x128.jpg" alt="User Image"/>
                         <a className="users-list-name" href="#">Nora</a>
                         <span className="users-list-date">15 Jan</span>
                       </li>
                       <li>
-                        <img src="dist/img/user3-128x128.jpg" alt="User Image"/>
+                        <img src="assets/dist/img/user3-128x128.jpg" alt="User Image"/>
                         <a className="users-list-name" href="#">Nadia</a>
                         <span className="users-list-date">15 Jan</span>
                       </li>
@@ -790,7 +790,7 @@ function Dashboard() {
                 <ul className="products-list product-list-in-card pl-2 pr-2">
                   <li className="item">
                     <div className="product-img">
-                      <img src="dist/img/default-150x150.png" alt="Product Image" className="img-size-50"/>
+                      <img src="assets/dist/img/default-150x150.png" alt="Product Image" className="img-size-50"/>
                     </div>
                     <div className="product-info">
                       <a href="javascript:void(0)" className="product-title">Samsung TV
@@ -803,7 +803,7 @@ function Dashboard() {
                   {/* /.item */}
                   <li className="item">
                     <div className="product-img">
-                      <img src="dist/img/default-150x150.png" alt="Product Image" className="img-size-50"/>
+                      <img src="assets/dist/img/default-150x150.png" alt="Product Image" className="img-size-50"/>
                     </div>
                     <div className="product-info">
                       <a href="javascript:void(0)" className="product-title">Bicycle
@@ -816,7 +816,7 @@ function Dashboard() {
                   {/* /.item */}
                   <li className="item">
                     <div className="product-img">
-                      <img src="dist/img/default-150x150.png" alt="Product Image" className="img-size-50"/>
+                      <img src="assets/dist/img/default-150x150.png" alt="Product Image" className="img-size-50"/>
                     </div>
                     <div className="product-info">
                       <a href="javascript:void(0)" className="product-title">
@@ -832,7 +832,7 @@ function Dashboard() {
                   {/* /.item */}
                   <li className="item">
                     <div className="product-img">
-                      <img src="dist/img/default-150x150.png" alt="Product Image" className="img-size-50"/>
+                      <img src="assets/dist/img/default-150x150.png" alt="Product Image" className="img-size-50"/>
                     </div>
                     <div className="product-info">
                       <a href="javascript:void(0)" className="product-title">PlayStation 4

@@ -24,6 +24,15 @@ rout>Api File
 Model> model
 Migration>All
 
+for auth practice:
+	controller folder
+		Api folder
+	model folder
+	route folder
+		api.php file
+	database folder
+		migration folder
+
 --------------------------------------------
 laravel install open cmd/git bash cli in htdocs folder
 
