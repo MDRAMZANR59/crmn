@@ -54,6 +54,11 @@ function ProjectList() {
                                 <th>Project Progress</th>
                                 <th>Start Date</th>
                                 <th>Estimated End Date</th>
+                                <th>Estimated budget</th>
+                                <th>Advance</th>
+                                <th>Due</th>
+                                <th>Pay Leater</th>
+                                <th>Total Pay</th>
                                 <th>Status</th>
                                 <th>Sort By</th>
                                 <th>Actions</th>
@@ -99,13 +104,18 @@ function ProjectList() {
                                 <td className="project-state">
                                     <span className="badge badge text-dark">Estimated End Date Daynamic</span>
                                 </td>
+                                <td>$5330</td>
+                                <td>$3920</td>
+                                <td>$410</td>
+                                <td>$1000</td>
+                                <td>70%</td>
                                 <td className="project-state">
                                     <span className="badge badge text-dark">Success</span>
                                 </td>
                                 <td className="project-state">
                                     <div className="form-group">
                                         <select id="sortBy" className="form-control">
-                                            <option className="bg-success">Success</option>
+                                            <option className="bg-success">Dalivary</option>
                                             <option className="bg-secondary">Stock</option>
                                             <option className="bg-warning">Pending</option>
                                             <option className="bg-danger">Canceld</option>

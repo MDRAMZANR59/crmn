@@ -259,15 +259,15 @@ function Sidebar() {
                                 </a>
                                 <ul className="nav nav-treeview">
                                     <li className="nav-item">
-                                        <Link to='/income/dailyIncome' className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Daily Income</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
                                         <Link to='/income/capitalIncome' className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
                                             <p>Capital In</p>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to='/income/dailyIncome' className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Income List</p>
                                         </Link>
                                     </li>
                                 </ul>

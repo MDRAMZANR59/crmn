@@ -92,7 +92,7 @@ function StaffList() {
             </div>
           </div>
         </section>
-    </div>
+        </div>
     </AdminLayout>       
   )
 }
