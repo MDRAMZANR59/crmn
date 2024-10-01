@@ -29,10 +29,17 @@ import IncomeReport from './pages/Report/Income'
 import TransfaringProject from './pages/Project/TransfarinProject'
 import CancalingProject from './pages/Project/CancalingProject'
 
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Protected from './components/protected';
+
 function App() {
+  const isSignedIn = localStorage.getItem("access_token") || false;
   return (
     <BrowserRouter>
         <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
           <Route path="/" element={<Dashboard />} />
           <Route path="/user" element={<User />} />
           <Route path="/user/add" element={<AddUser />} />

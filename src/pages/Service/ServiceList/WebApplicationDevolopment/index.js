@@ -51,6 +51,7 @@ function WebAppDev() {
                                     <td>Mukut, Ramzan, Mamun, Raja</td>
                                     <td>
                                         <a className='btn btn-danger' href='#'>Delete</a>
+                                        <a className='btn btn-primary' href='#'>Edit</a>
                                     </td>
                                 </tr>
                             </tbody>
