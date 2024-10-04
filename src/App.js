@@ -21,7 +21,6 @@ import AndroidAppDev from './pages/Service/ServiceList/AndroidAppDevelopment'
 import WebAppDev from './pages/Service/ServiceList/WebApplicationDevolopment'
 import PcAppDev from './pages/Service/ServiceList/PCAppDevolopment'
 import DailyIncome from './pages/Income/DailyIncome'
-import CapitalIncome from './pages/Income/CapitalIn'
 import DailyExpense from './pages/Expense/DailyExpense'
 import CapitalOut from './pages/Expense/CapitalOut'
 import ExpensesReport from './pages/Report/Expenses'
@@ -59,8 +58,7 @@ function App() {
           <Route path="/service/serviceList/AndroidAppDevolopment" element={<AndroidAppDev/>}/>
           <Route path="/service/serviceList/WebAppDevolopment" element={<WebAppDev/>} />
           <Route path="/service/serviceList/PcAppDevolopment" element={<PcAppDev/>} />
-          <Route path="/income/dailyIncome" element={<DailyIncome/>} />
-          <Route path="/income/capitalIncome" element={<CapitalIncome/>} />
+          <Route path="/income/DailyIncome" element={<DailyIncome/>} />
           <Route path="/expense/DailyExpense" element={<DailyExpense/>} />
           <Route path="/expense/CapitalOut" element={<CapitalOut/>} />
           <Route path="/report/ExpensesReport" element={<ExpensesReport/>} />
