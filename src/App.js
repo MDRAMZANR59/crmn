@@ -2,8 +2,9 @@ import * as React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from './pages/Dashboard';
-import User from './pages/User';
-import AddUser from './pages/User/AddUser';
+import MakeSecondaryUser from './pages/User/MakeSecondaryUser';
+import UserList from './pages/User/UserList';
+import EditSecondaryUser from './pages/User/EditSecondaryUser';
 import CustomerList from './pages/Customer/CustomerList'
 import CustomerAdd from './pages/Customer/CustomerAdd'
 import MailBox from './pages/Mail/Mailbox'
@@ -28,6 +29,8 @@ import IncomeReport from './pages/Report/Income'
 import CashTransfer from './pages/Report/BalanceTransfer'
 import TransfaringProject from './pages/Project/TransfarinProject'
 import CancalingProject from './pages/Project/CancalingProject'
+import Invoice from './pages/Project/Invoice/invoice';
+import Review from './pages/Project/Review';
 
 import Register from './pages/Register';
 import Login from './pages/Login';
@@ -41,8 +44,9 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
           <Route path="/" element={<Dashboard />} />
-          <Route path="/user" element={<User />} />
-          <Route path="/user/add" element={<AddUser />} />
+          <Route path="/makeSecondaryUser" element={<MakeSecondaryUser />} />
+          <Route path="/user/userList" element={<UserList />} />
+          <Route path="/user/editSecondaryUser" element={<EditSecondaryUser/>} />
           <Route path="/mail/mailbox" element={<MailBox/>} />
           <Route path="/mail/mailbox/compose" element={<Compose/>} />
           <Route path="/project/projectAdd" element={<ProjectAdd/>} />
@@ -67,6 +71,8 @@ function App() {
           <Route path="/report/CashTransfer" element={<CashTransfer/>} />
           <Route path="/project/TransfaringProject" element={<TransfaringProject/>} />
           <Route path="/project/CancalingProject" element={<CancalingProject/>} />
+          <Route path="/project/invoice" element={<Invoice/>} />
+          <Route path="/project/review" element={<Review/>} />
         </Routes>
     </BrowserRouter>
   );

@@ -1,7 +1,8 @@
-import React from 'react'
-import AdminLayout from '../../layouts/AdminLayout'
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import AdminLayout from '../../../layouts/AdminLayout'
 
-function User() {
+function UserList() {
     
   return (
     <AdminLayout>
@@ -63,9 +64,9 @@ function User() {
                                     <td><img width="200px" src="../../"/></td>
                                     <td><span>Pathan Para</span><span>Oxizyn</span><span>4500</span><span>Bayejid</span><span>Chittagong</span><span>+880</span></td>
                                     <td>
-                                        <a className='btn btn-info' href='#'>Edit</a>
+                                        <Link to="/user/editSecondaryUser" className='btn btn-info'>Edit</Link>
                                         <a className='btn btn-danger' href='#'>Delete</a>
-                                        <a className='btn btn-primary' href='#'>Mail</a>
+                                        <Link to="/mail/mailbox/compose" className='btn btn-primary'>Mail</Link>
                                     </td>
                                 </tr>
                                 <tr>
@@ -98,30 +99,4 @@ function User() {
   )
 }
 
-export default User
-
-{/* <li className={`nav-item ${openMenu==='report' ? 'menu-open' : ''}`}>
-<a href="#" className="nav-link" onClick={()=> handleMenuClick('report')}>
-  <i className="nav-icon fas fa-circle"></i>
-  <p>
-    Report
-    <i className="right fas fa-angle-left"></i>
-  </p>
-</a>
-<ul className="nav nav-treeview">
-  <li className="nav-item">
-    <a href="#" className="nav-link">
-      <i className="far fa-circle nav-icon"></i>
-      <p>New</p>
-    </a>
-  </li>
-  <li className="nav-item">
-    <a href="#" className="nav-link">
-      <i className="far fa-circle nav-icon"></i>
-      <p>Old</p>
-    </a>
-  </li>
-</ul>
-</li>
-                    </ul>
-                </li> */}
+export default UserList;

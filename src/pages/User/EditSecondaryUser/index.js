@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AdminLayout from '../../../layouts/AdminLayout';
 
-function AddUser() {
+function EditSecondaryUser() {
     const [formData, setFormData] = useState([]);
     const [errors, setErrors] = useState([]);
 
@@ -20,7 +20,7 @@ function AddUser() {
                     <div className="container-fluid">
                         <div className="row mb-2">
                             <div className="col-sm-6">
-                                <h1 className="m-0">Add New User</h1>
+                                <h1 className="m-0">Edit User</h1>
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@ function AddUser() {
                     <div className="container-fluid">
                         <div className="card card-default">
                             <div className="card-header">
-                                <h3 className="card-title">User form</h3>
+                                <h3 className="card-title">User Edit form</h3>
                                 <div className="card-tools">
                                     <button type="button" className="btn btn-tool" data-card-widget="collapse">
                                         <i className="fas fa-minus"></i>
@@ -285,7 +285,7 @@ function AddUser() {
                                                 {errors.state && <div className="invalid-feedback">{errors.state}</div>}
                                             </div>
                                         </div>
-                                        <button type="submit" className="btn btn-primary mt-3">Add User</button>
+                                        <button type="submit" className="btn btn-primary mt-3">Save User</button>
                                     </form>
                                 </div>
                             </div>
@@ -297,4 +297,4 @@ function AddUser() {
     );
 }
 
-export default AddUser;
+export default EditSecondaryUser;

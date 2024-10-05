@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import AdminLayout from '../../../layouts/AdminLayout';
 
 function ProjectList() {
@@ -61,6 +62,7 @@ function ProjectList() {
                                 <th>Total Pay</th>
                                 <th>Status</th>
                                 <th>Sort By</th>
+                                <th>Review</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -123,22 +125,24 @@ function ProjectList() {
                                         </select>
                                      </div>
                                 </td>
+                                <td><i className="fas fa-star"></i>
+                                    <i className="fas fa-star"></i><br/>
+                                    <i className="fas fa-star"></i>
+                                    <i className="fas fa-star"></i>
+                                    <i className="fas fa-star"></i><br/>
+                                    <a href="#">Comment</a></td>
                                 <td className="project-actions text-right">
-                                    <a className="btn btn-primary btn-sm" href="#">
-                                        <i className="fas fa-folder">
-                                        </i>
-                                        View
-                                    </a>
                                     <a className="btn btn-info btn-sm" href="#">
                                         <i className="fas fa-pencil-alt">
                                         </i>
-                                        Edit
+                                        Send Rush
                                     </a>
-                                    <a className="btn btn-danger btn-sm" href="#">
-                                        <i className="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
+                                    <Link to="/project/invoice" className="btn btn-info btn-sm">
+                                        <i className="fas fa-receipt"></i>Invoice
+                                    </Link>
+                                    <Link to="/project/review" className="btn btn-info btn-sm">
+                                        <i className="fas fa-comment-dots"></i>Review
+                                    </Link>
                                 </td>
                             </tr>
                         </tbody>

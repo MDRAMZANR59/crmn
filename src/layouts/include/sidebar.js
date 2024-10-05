@@ -81,13 +81,13 @@ function Sidebar() {
                                 </a>
                                 <ul className="nav nav-treeview">
                                     <li className="nav-item">
-                                        <Link to="/user/add" className="nav-link">
+                                        <Link to="/makeSecondaryUser" className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
                                             <p>Make Secondary User</p>
                                         </Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link to="/user" className="nav-link">
+                                        <Link to="/user/userList" className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
                                             <p>User List</p>
                                         </Link>

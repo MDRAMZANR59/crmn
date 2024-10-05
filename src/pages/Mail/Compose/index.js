@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import AdminLayout from '../../../layouts/AdminLayout';
 
 function Compose() {
@@ -42,7 +43,7 @@ blinded by desire, that they cannot foresee`
               <div className="container-fluid">
                 <div className="row">
                   <div className="col-md-3">
-                    <a href="mailbox.html" className="btn btn-primary btn-block mb-3">Back to Inbox</a>
+                    <Link to="/mail/mailBox" className="btn btn-primary btn-block mb-3">Back to Inbox</Link>
 
                     <div className="card">
                       <div className="card-header">
@@ -148,7 +149,7 @@ blinded by desire, that they cannot foresee`
                           <button type="button" className="btn btn-default"><i className="fas fa-pencil-alt"></i> Draft</button>
                           <button type="submit" className="btn btn-primary"><i className="far fa-envelope"></i> Send</button>
                         </div>
-                        <button type="reset" className="btn btn-default"><i className="fas fa-times"></i> Discard</button>
+                        <Link to="/mail/mailBox"><button type="reset" className="btn btn-default"><i className="fas fa-times"></i> Discard</button></Link>
                       </div>
                     {/* /.card-footer */}
                     </div>
