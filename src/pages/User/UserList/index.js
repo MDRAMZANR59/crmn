@@ -64,9 +64,9 @@ function UserList() {
                                     <td><img width="200px" src="../../"/></td>
                                     <td><span>Pathan Para</span><span>Oxizyn</span><span>4500</span><span>Bayejid</span><span>Chittagong</span><span>+880</span></td>
                                     <td>
-                                        <Link to="/user/editSecondaryUser" className='btn btn-info'>Edit</Link>
+                                        <a className='btn btn-info' href='#'>Edit</a>
                                         <a className='btn btn-danger' href='#'>Delete</a>
-                                        <Link to="/mail/mailbox/compose" className='btn btn-primary'>Mail</Link>
+                                        <a className='btn btn-primary' href='#'>Mail</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -82,9 +82,9 @@ function UserList() {
                                     <td><img width="200px" src="../../"/></td>
                                     <td><span>Pathan Para</span><span>Oxizyn</span><span>4500</span><span>Bayejid</span><span>Chittagong</span><span>+880</span></td>
                                     <td>
-                                        <a className='btn btn-info' href='#'>Edit</a>
+                                        <Link to="/user/editSecondaryUser" className='btn btn-info'>Edit</Link>
                                         <a className='btn btn-danger' href='#'>Delete</a>
-                                        <a className='btn btn-primary' href='#'>Mail</a>
+                                        <Link to="/mail/mailbox/compose" className='btn btn-primary'>Mail</Link>
                                     </td>
                                 </tr>
                             </tbody>

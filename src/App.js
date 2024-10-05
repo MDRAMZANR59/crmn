@@ -17,6 +17,7 @@ import MailStaff from './pages/Staff/StaffList/MailStaff'
 import WarningStaffList from './pages/Staff/WarningStaff'
 import WarningNotice from './pages/Staff/WarningStaff/warningNotice'
 import ProjectList from './pages/Project/ProjectList'
+import RushMail from './pages/Project/RushMail';
 import ServiceAdd from './pages/Service/ServiceAdd'
 import AndroidAppDev from './pages/Service/ServiceList/AndroidAppDevelopment'
 import WebAppDev from './pages/Service/ServiceList/WebApplicationDevolopment'
@@ -51,6 +52,7 @@ function App() {
           <Route path="/mail/mailbox/compose" element={<Compose/>} />
           <Route path="/project/projectAdd" element={<ProjectAdd/>} />
           <Route path="/project/projectList" element={<ProjectList/>} />
+          <Route path="/project/rushMail" element={<RushMail/>} />
           <Route path="/mail/mailbox/ComSug" element={<ComSug/>} />
           <Route path="/customer/customerList" element={<CustomerList />} />
           <Route path="/customer/customerAdd" element={<CustomerAdd />} />

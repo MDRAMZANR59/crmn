@@ -132,11 +132,9 @@ function ProjectList() {
                                     <i className="fas fa-star"></i><br/>
                                     <a href="#">Comment</a></td>
                                 <td className="project-actions text-right">
-                                    <a className="btn btn-info btn-sm" href="#">
-                                        <i className="fas fa-pencil-alt">
-                                        </i>
-                                        Send Rush
-                                    </a>
+                                    <Link className="btn btn-info btn-sm" to="/project/rushMail">
+                                        <i className="fas fa-pencil-alt"></i>Send Rush
+                                    </Link>
                                     <Link to="/project/invoice" className="btn btn-info btn-sm">
                                         <i className="fas fa-receipt"></i>Invoice
                                     </Link>
