@@ -176,6 +176,34 @@ function DailyIncome() {
                                                 />
                                                 {errors.payment && <div className="invalid-feedback">{errors.payment}</div>}
                                             </div>
+                                            <div className="mb-6 col-md-6">
+                                                <label htmlFor="payMethod" className="form-label text-black">Payment Method <span className=" text-danger">*</span></label>
+                                                <select
+                                                    required
+                                                    id="payMethod"
+                                                    name="payMethod"
+                                                    value={formData.payMethod}
+                                                    onChange={handleChange}
+                                                    className={`form-control ${errors.payMethod ? 'is-invalid' : ''}`}>
+                                                    <option value="0">Select Method</option>
+                                                    <option value="2">Cash</option>
+                                                    <option value="4">Bank</option>
+                                                </select>
+                                                {errors.payMethod && <div className="invalid-feedback">{errors.payMethod}</div>}
+                                            </div>
+                                            <div className="mb-6 col-md-6">
+                                                <label htmlFor="transtionId" className="form-label">Transtion Id<sup className="text-danger">*</sup></label>
+                                                <input
+                                                    required
+                                                    placeholder="Transtion Id"
+                                                    className={`form-control ${errors.transtionId ? 'is-invalid' : ''}`}
+                                                    id="transtionId"
+                                                    name="transtionId"
+                                                    value={formData.transtionId}
+                                                    onChange={handleChange}
+                                                />
+                                                {errors.transtionId && <div className="invalid-feedback">{errors.transtionId}</div>}
+                                            </div>
 
                                         </div>
                                         <button type="submit" className="btn btn-primary mt-3">Save Payment</button>

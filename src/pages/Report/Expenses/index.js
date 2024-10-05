@@ -41,6 +41,17 @@ function ExpensesReport() {
                   <div class="card-header">
                       <h3 class="card-title">Expense Report</h3>
                       <div className="float-right">
+                        <label className="me-2" htmlFor="sortBy" >Sort By</label>
+                          <select style={{outline:"none",border:"none"}}>
+                              required
+                              id="incomeRout"
+                              name="incomeRout"
+                              value={formData.incomeRout}
+                              onChange={handleChange}
+                              className={`form-control ${errors.incomeRout ? 'is-invalid' : ''}`}>
+                              <option value="4">Approved</option>
+                              <option value="5">Pending</option>
+                          </select>
                         <label className="me-2" htmlFor="startDate" >From</label>
                         <input id="startDate" className="me-2" type="date" />
                         <label className="me-2" htmlFor="endDate" >To</label>

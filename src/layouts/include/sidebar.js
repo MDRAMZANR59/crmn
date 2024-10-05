@@ -83,7 +83,7 @@ function Sidebar() {
                                     <li className="nav-item">
                                         <Link to="/user/add" className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
-                                            <p>Add User</p>
+                                            <p>Make Secondary User</p>
                                         </Link>
                                     </li>
                                     <li className="nav-item">

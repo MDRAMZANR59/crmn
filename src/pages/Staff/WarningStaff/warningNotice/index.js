@@ -60,7 +60,7 @@ function WarningNotice() {
                           <div className="card-footer">
                             <div className="float-right">
                               <button type="button" className="btn btn-default"><i className="fas fa-pencil-alt"></i> Draft</button>
-                              <button type="submit" className="btn btn-primary"><i className="far fa-envelope"></i> Send</button>
+                              <button type="submit" className="btn btn-primary"><i className="far fa-envelope"></i> Send & Make Warning</button>
                             </div>
                             <button type="reset" className="btn btn-default"><i className="fas fa-times"></i> Discard</button>
                           </div>

@@ -68,6 +68,24 @@ function User() {
                                         <a className='btn btn-primary' href='#'>Mail</a>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>02</td>
+                                    <td>Md Jamal</td>
+                                    <td>542 359 24553</td>
+                                    <td>02/09/1995</td>
+                                    <td>jamal@gmail.com</td>
+                                    <td>+880 1559 075 555</td>
+                                    <td>589</td>
+                                    <td>Customer Exicutive</td>
+                                    <td><img width="200px" src="../../layouts/assets/dist/img/avatar.png"/></td>
+                                    <td><img width="200px" src="../../"/></td>
+                                    <td><span>Pathan Para</span><span>Oxizyn</span><span>4500</span><span>Bayejid</span><span>Chittagong</span><span>+880</span></td>
+                                    <td>
+                                        <a className='btn btn-info' href='#'>Edit</a>
+                                        <a className='btn btn-danger' href='#'>Delete</a>
+                                        <a className='btn btn-primary' href='#'>Mail</a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

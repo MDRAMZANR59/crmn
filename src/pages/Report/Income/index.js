@@ -81,8 +81,8 @@ function IncomeReport() {
                                       <td>16/01/2024</td>
                                       <td>16/01/2025</td>
                                       <td>Running</td>
-                                      <td>Null</td>
-                                      <td>$2000</td>
+                                      <td>Null <strong>Id: 15FXZP</strong></td>
+                                      <td>$2000 <strong>Id: 15FXZP</strong></td>
                                       <td>100%</td>
                                       <td>01/10/2024 <strong>11:35:50 AM</strong></td>
                                       <td>$30000</td>

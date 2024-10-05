@@ -136,7 +136,7 @@ function DailyExpense() {
                                             </div>
                                             
                                         </div>
-                                        <button type="submit" className="btn btn-primary mt-3">Save Expense</button>
+                                        <button type="submit" className="btn btn-primary mt-3">Sent To Admin</button>
                                     </form>
                                 </div>
                             </div>
