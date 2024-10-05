@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AdminLayout from '../../../layouts/AdminLayout';
 
-function IncomeReport() {
+function CashTransfer() {
     const [formData, setFormData] = useState([]);
     const [errors, setErrors] = useState([]);
 
@@ -53,39 +53,27 @@ function IncomeReport() {
                               <thead>
                                   <tr>
                                       <th>#SL</th>
-                                      <th>Routs Of Income</th>
-                                      <th>Customer Id</th>
-                                      <th>Project Id</th>
-                                      <th>Project Name</th>
-                                      <th>Customer Name</th>
-                                      <th>Phone</th>
-                                      <th>Start Date</th>
-                                      <th>Estimated End Date</th>
-                                      <th>Status</th>
-                                      <th>First Pay</th>
-                                      <th>Last Pay</th>
-                                      <th>Pay Status</th>
-                                      <th>Pay Date And Time</th>
-                                      <th>Total Income</th>
+                                      <th>Transfer From</th>
+                                      <th> </th>
+                                      <th>Reciver</th>
+                                      <th>Transtion Id</th>
+                                      <th>Office Order</th>
+                                      <th>Time And Date</th>
+                                      <th>Ammount</th>
+                                      <th>Total Transfared</th>
                                   </tr>
                               </thead>
                               <tbody>
                                   <tr>
                                       <td>01</td>
-                                      <td>Pc App Devolopment</td>
-                                      <td>AX58DC1</td>
-                                      <td>DFF589D</td>
-                                      <td>Code Crufter</td>
-                                      <td>Md Mukut</td>
-                                      <td>+880 1559-075906</td>
-                                      <td>16/01/2024</td>
-                                      <td>16/01/2025</td>
-                                      <td>Running</td>
-                                      <td>Null</td>
-                                      <td>$2000</td>
-                                      <td>100%</td>
-                                      <td>01/10/2024 <strong>11:35:50 AM</strong></td>
-                                      <td>$30000</td>
+                                      <td>Bank</td>
+                                      <td>To</td>
+                                      <td>Bank</td>
+                                      <td>A5DF94X</td>
+                                      <td><img className="w-25" src="../../../assets/dist/img/avatar.png"/></td>
+                                      <td><strong>7:53:20 AM</strong>05/10/2024</td>
+                                      <td>$10000</td>
+                                      <td>$20000000</td>
                                   </tr>
                               </tbody>
                           </table>
@@ -99,4 +87,4 @@ function IncomeReport() {
     );
 }
 
-export default IncomeReport;
+export default CashTransfer;

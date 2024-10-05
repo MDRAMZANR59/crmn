@@ -15,18 +15,18 @@ function ExpensesReport() {
     
   return (
     <AdminLayout>
-        <div className="content-wrapper">
+           <div className="content-wrapper">
           {/* Content Header (Page header) */}
           <div className="content-header">
             <div className="container-fluid">
               <div className="row mb-2">
                 <div className="col-sm-6">
-                  <h1 className="m-0">Income List</h1>
+                  <h1 className="m-0">Expense Report</h1>
                 </div>{/* /.col */}
                 <div className="col-sm-6">
                   <ol className="breadcrumb float-sm-right">
-                    <li className="breadcrumb-item"><a href="#">Income</a></li>
-                    <li className="breadcrumb-item active">List</li>
+                    <li className="breadcrumb-item"><a href="#">Expense</a></li>
+                    <li className="breadcrumb-item active">Report</li>
                   </ol>
                 </div>{/* /.col */}
               </div>{/* /.row */}
@@ -39,7 +39,7 @@ function ExpensesReport() {
             <div className="container-fluid">
               <div class="card card-default">
                   <div class="card-header">
-                      <h3 class="card-title">Income List</h3>
+                      <h3 class="card-title">Expense Report</h3>
                       <div className="float-right">
                         <label className="me-2" htmlFor="startDate" >From</label>
                         <input id="startDate" className="me-2" type="date" />
@@ -53,38 +53,25 @@ function ExpensesReport() {
                               <thead>
                                   <tr>
                                       <th>#SL</th>
-                                      <th>Routs Of Income</th>
-                                      <th>Customer Id</th>
-                                      <th>Project Id</th>
-                                      <th>Project Name</th>
-                                      <th>Customer Name</th>
-                                      <th>Phone</th>
-                                      <th>Start Date</th>
-                                      <th>Estimated End Date</th>
+                                      <th>Routs Of Expense</th>
+                                      <th>Discription</th>
+                                      <th>Prove</th>
                                       <th>Status</th>
-                                      <th>First Pay</th>
-                                      <th>Last Pay</th>
-                                      <th>Pay Status</th>
-                                      <th>Pay Date And Time</th>
-                                      <th>Total Income</th>
+                                      <th>Total Expense</th>
                                   </tr>
                               </thead>
                               <tbody>
                                   <tr>
                                       <td>01</td>
-                                      <td>Pc App Devolopment</td>
-                                      <td>AX58DC1</td>
-                                      <td>DFF589D</td>
-                                      <td>Code Crufter</td>
-                                      <td>Md Mukut</td>
-                                      <td>+880 1559-075906</td>
-                                      <td>16/01/2024</td>
-                                      <td>16/01/2025</td>
-                                      <td>Running</td>
-                                      <td>Null</td>
-                                      <td>$2000</td>
-                                      <td>100%</td>
-                                      <td>01/10/2024 <strong>11:35:50 AM</strong></td>
+                                      <td>Entertainment</td>
+                                      <td>Tea Cost From Mama Store</td>
+                                      <td>
+                                        <ul className="list-unstyled">
+                                          <li><img className="w-25" src="../../../assets/dist/img/avatar.png"/><br/><em>Cash Memo</em></li>
+                                          <li><img className="w-25" src="../../../assets/dist/img/avatar.png"/><br/><em>Photo With Customer</em></li>
+                                        </ul>
+                                      </td>
+                                      <td>Approved</td>
                                       <td>$30000</td>
                                   </tr>
                               </tbody>

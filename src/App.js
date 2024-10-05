@@ -25,6 +25,7 @@ import DailyExpense from './pages/Expense/DailyExpense'
 import CapitalOut from './pages/Expense/CapitalOut'
 import ExpensesReport from './pages/Report/Expenses'
 import IncomeReport from './pages/Report/Income'
+import CashTransfer from './pages/Report/BalanceTransfer'
 import TransfaringProject from './pages/Project/TransfarinProject'
 import CancalingProject from './pages/Project/CancalingProject'
 
@@ -63,6 +64,7 @@ function App() {
           <Route path="/expense/CapitalOut" element={<CapitalOut/>} />
           <Route path="/report/ExpensesReport" element={<ExpensesReport/>} />
           <Route path="/report/IncomeReport" element={<IncomeReport/>} />
+          <Route path="/report/CashTransfer" element={<CashTransfer/>} />
           <Route path="/project/TransfaringProject" element={<TransfaringProject/>} />
           <Route path="/project/CancalingProject" element={<CancalingProject/>} />
         </Routes>

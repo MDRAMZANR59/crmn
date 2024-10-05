@@ -312,6 +312,12 @@ function Sidebar() {
                                             <p>Expenses Report</p>
                                         </Link>
                                     </li>
+                                    <li className="nav-item">
+                                        <Link to='/report/CashTransfer' className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Blance Transfer Report</p>
+                                        </Link>
+                                    </li>
                                 </ul>
                             </li>
 
