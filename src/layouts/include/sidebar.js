@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
+
 function Sidebar() {
     // State to track open menus
     const [openMenu, setOpenMenu] = useState(null);
@@ -17,31 +18,43 @@ function Sidebar() {
     const isLinkActive = (path) => {
         return location.pathname === path ? 'active' : '';
     };
+   
+        const [isOpen, setIsOpen] = useState(false);
+      
+        const toggleDropdown = () => {
+          setIsOpen(!isOpen);
+        };
 
     return (
         <>
             {/* Main Sidebar Container */}
             <aside className="main-sidebar sidebar-dark-primary elevation-4">
-                
                 {/* Brand Logo */}
                 <a href="javascript:void(0)" className="brand-link">
                     <img src="../assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{ opacity: '.8' }} />
                     <span className="brand-text font-weight-light"> Code Crafters</span>
                 </a>
-
                 {/* Sidebar */}
                 <div className="sidebar">
-                    
                     {/* Sidebar User Panel */}
-                    <div className="user-panel mt-3 pb-3 mb-3 d-flex">
-                        <div className="image">
-                            <img src="../assets/dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User" />
+                    <div className="dropdown">
+                        <div className="user-panel mt-3 pb-3">
+                            <div id="dropdownMenuButton" onClick={toggleDropdown} aria-haspopup="true" aria-expanded={isOpen}>
+                                <div className="user-panel d-flex">
+                                    <div className="image">
+                                        <img src="../../assets/dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image"/>
+                                    </div>
+                                    <div className="info">
+                                        <a href="#" className="d-block">Alexander Pierce</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="info">
-                            <a href="javascript:void(0)" className="d-block">Micel Wiliems</a>
+                        <div className={`dropdown-menu ms-3 me-2 top-2 w-50 text-center bg-primary bg-gradient ${isOpen ? 'show' : ''}`} aria-labelledby="dropdownMenuButton">
+                            <Link to="/user/userProfile" className="dropdown-item text-dark">Profile</Link>
+                            <a className="dropdown-item text-dark" href="#action2">Log Out</a>
                         </div>
                     </div>
-
                     {/* Sidebar Search Form */}
                     <div className="form-inline">
                         <div className="input-group" data-widget="sidebar-search">
@@ -53,29 +66,25 @@ function Sidebar() {
                             </div>
                         </div>
                     </div>
-
                     {/* Sidebar Menu */}
                     <nav className="mt-2">
                         <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                            
                             {/* Dashboard Section */}
                             <li className={`nav-item ${openMenu === 'dashboard' ? 'menu-open' : ''}`}>
                                 <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('dashboard')}>
                                 <li className={`nav-item ${isLinkActive('/')}`}>
                                         <Link to="/" className="nav-link active">
-                                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                                            <i className="nav-icon fas fa-tachometer-alt"></i>
                                             <p>Dashboard</p>
                                         </Link>
                                     </li>
                                 </a>
                             </li>
-
                             {/* User Section */}
                             <li className={`nav-item ${openMenu === 'user' ? 'menu-open' : ''}`}>
                                 <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('user')}>
                                     <i className="nav-icon fas fa-user"></i>
-                                    <p>
-                                        User
+                                    <p>User
                                         <i className="fas fa-angle-left right"></i>
                                     </p>
                                 </a>
@@ -96,7 +105,7 @@ function Sidebar() {
                             </li>
                             <li className={`nav-item ${openMenu === 'customer' ? 'menu-open' : ''}`}>
                                 <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('customer')}>
-                                    <i className="nav-icon fas fa-users"></i>
+                                    <i className="nav-icon fas fa-restroom"></i>
                                     <p>
                                     Customer's
                                         <i className="fas fa-angle-left right"></i>
@@ -151,7 +160,7 @@ function Sidebar() {
                              {/* Project Section */}
                              <li className={`nav-item ${openMenu === 'project' ? 'menu-open' : ''}`}>
                                 <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('project')}>
-                                    <i className="nav-icon fas fa-users"></i>
+                                    <i className="nav-icon fas fa-folder"></i>
                                     <p>
                                         Project
                                         <i className="fas fa-angle-left right"></i>
@@ -185,7 +194,6 @@ function Sidebar() {
                                 </ul>
                             </li>
                             {/* Project Section */}
-
                             {/* Mail Section */}
                             <li className={`nav-item ${openMenu === 'mail' ? 'menu-open' : ''}`}>
                                 <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('mail')}>
@@ -210,8 +218,6 @@ function Sidebar() {
                                     </li>
                                 </ul>
                             </li>
-
-                           
                             <li className="nav-header">Service</li>
                             <li className="nav-item">
                                 <a href="javascript:void(0)" className="nav-link">

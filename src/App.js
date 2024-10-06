@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from './pages/Dashboard';
 import MakeSecondaryUser from './pages/User/MakeSecondaryUser';
 import UserList from './pages/User/UserList';
+import UserProfile from './pages/User/Profile';
 import EditSecondaryUser from './pages/User/EditSecondaryUser';
 import CustomerList from './pages/Customer/CustomerList'
 import CustomerAdd from './pages/Customer/CustomerAdd'
@@ -47,6 +48,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/makeSecondaryUser" element={<MakeSecondaryUser />} />
           <Route path="/user/userList" element={<UserList />} />
+          <Route path="/user/userProfile" element={<UserProfile />} />
           <Route path="/user/editSecondaryUser" element={<EditSecondaryUser/>} />
           <Route path="/mail/mailbox" element={<MailBox/>} />
           <Route path="/mail/mailbox/compose" element={<Compose/>} />
