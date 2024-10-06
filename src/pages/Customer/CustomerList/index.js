@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, useLocation } from 'react-router-dom';
 import AdminLayout from '../../../layouts/AdminLayout'
 
 function CustomerList() {
@@ -69,7 +70,7 @@ function CustomerList() {
                                     <td>
                                         <a className='btn btn-info' href='#'>Edit</a>
                                         <a className='btn btn-danger' href='#'>Delete</a>
-                                        <a className='btn btn-primary' href='#'>Mail</a>
+                                        <Link to='/mail/mailbox/compose' className="btn btn-primary btn-block mb-3">Mail</Link>
                                     </td>
                                 </tr>
                             </tbody>

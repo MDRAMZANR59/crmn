@@ -98,7 +98,7 @@ function Sidebar() {
                                 <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('customer')}>
                                     <i className="nav-icon fas fa-users"></i>
                                     <p>
-                                    Customer
+                                    Customer's
                                         <i className="fas fa-angle-left right"></i>
                                     </p>
                                 </a>
@@ -122,7 +122,7 @@ function Sidebar() {
                                 <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('staff')}>
                                     <i className="nav-icon fas fa-users"></i>
                                     <p>
-                                        Staff
+                                        Team Member's
                                         <i className="fas fa-angle-left right"></i>
                                     </p>
                                 </a>
@@ -130,19 +130,19 @@ function Sidebar() {
                                     <li className="nav-item">
                                         <Link to="/staff/staffAdd" className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
-                                            <p>Add Staff</p>
+                                            <p>Add Team Member's</p>
                                         </Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link to='/staff/staffList' className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
-                                            <p>Staff List</p>
+                                            <p>Team Member's</p>
                                         </Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link to='/staff/warningStaffList' className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
-                                            <p>Warning Staff</p>
+                                            <p>Warning Member's</p>
                                         </Link>
                                     </li>
                                 </ul>
@@ -320,9 +320,6 @@ function Sidebar() {
                                     </li>
                                 </ul>
                             </li>
-
-                            {/* Support Section */}
-                            <li className="nav-header">Support</li>
                         </ul>
                     </nav>
                 </div>

@@ -76,23 +76,21 @@ function ProjectList() {
                                     <img src="../../../assets/dist/img/avatar.png" className="Thumbnail img-fluid mx-auto" width="50px" /><br/>
                                     <a href="#" className="d-block text-center" >Jons Endarson</a>
                                 </td>
-                                <td className='d-flex'>
-                                    <span className="me-2">
-                                        <img src="../../../assets/dist/img/user8-128x128.jpg" className="Thumbnail img-fluid mx-auto" width="50px" />
-                                        <a href="#" className="d-block text-center" >Jons Endarson</a>
-                                    </span>
-                                    <span className="me-2">
-                                        <img src="../../../assets/dist/img/avatar.png" className="Thumbnail img-fluid mx-auto" width="50px" />
-                                        <a href="#" className="d-block text-center" >Jons Endarson</a>
-                                    </span>
-                                    <span className="me-2">
-                                        <img src="../../../assets/dist/img/avatar.png" className="Thumbnail img-fluid mx-auto" width="50px" />
-                                        <a href="#" className="d-block text-center" >Jons Endarson</a>
-                                    </span>
-                                    <span>
-                                        <img src="../../../assets/dist/img/avatar.png" className="Thumbnail img-fluid mx-auto" width="50px" />
-                                        <a href="#" className="d-block text-center" >Jons Endarson</a>
-                                    </span>
+                                <td >
+                                    <ul className="list-unstyled d-flex">
+                                        <li className="me-2">
+                                            <img src="../../../assets/dist/img/user8-128x128.jpg" className="Thumbnail img-fluid mx-auto" width="50px" />
+                                            <a href="#" className="d-block text-center" >Jons Endarson</a>
+                                        </li>
+                                        <li className="me-2">
+                                            <img src="../../../assets/dist/img/user8-128x128.jpg" className="Thumbnail img-fluid mx-auto" width="50px" />
+                                            <a href="#" className="d-block text-center" >Jons Endarson</a>
+                                        </li>
+                                        <li>
+                                            <img src="../../../assets/dist/img/user8-128x128.jpg" className="Thumbnail img-fluid mx-auto" width="50px" />
+                                            <a href="#" className="d-block text-center" >Jons Endarson</a>
+                                        </li>
+                                    </ul>
                                 </td>
                                 <td className="project_progress stripped">
                                     <div className="progress progress-sm">
