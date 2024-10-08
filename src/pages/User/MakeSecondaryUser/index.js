@@ -25,7 +25,6 @@ function MakeSecondaryUser() {
                         </div>
                     </div>
                 </div>
-
                 <section className="content">
                     <div className="container-fluid">
                         <div className="card card-default">
