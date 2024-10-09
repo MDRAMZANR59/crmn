@@ -1,17 +1,58 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import AdminLayout from '../../../layouts/AdminLayout';
+import { useNavigate } from 'react-router-dom';
+import {useParams} from "react-router-dom";
 
 function CustomerAdd() {
-    const [formData, setFormData] = useState([]);
     const [errors, setErrors] = useState([]);
 
-    const handleChange = (e) => {
-        return true;
-    };
-
-    const handleSubmit = (e) => {
-        return true;
-    };
+    const [inputs, setInputs] = useState({id:'', fristName:'', lastName:'', email:'', phone:'', projectName:'', projectType:'', companyName:'', employeId:'', photo:'', country:'', districts:'', upozila:'', post:'', zipCode:'', state:'', houseNumber:'' });
+        const navigate=useNavigate();
+        const {id} = useParams();
+        
+        function getDatas(){
+            axios.get(`${process.env.REACT_APP_API_URL}/customer/${id}`).then(function(response) {
+                setInputs(response.data.data);
+            });
+        }
+    
+        useEffect(() => {
+            if(id){
+                getDatas();
+            }
+        }, []);
+    
+        const handleChange = (event) => {
+            const name = event.target.name;
+            const value = event.target.value;
+            setInputs(values => ({...values, [name]: value}));
+        }
+    
+        const handleSubmit = async(e) => {
+            e.preventDefault();
+            console.log(inputs)
+            
+            try{
+                let apiurl='';
+                if(inputs.id!=''){
+                    apiurl=`/customer/edit/${inputs.id}`;
+                }else{
+                    apiurl=`/customer/create`;
+                }
+                
+                let response= await axios({
+                    method: 'post',
+                    responsiveTYpe: 'json',
+                    url: `${process.env.REACT_APP_API_URL}${apiurl}`,
+                    data: inputs
+                });
+                navigate('/customer/customerList')
+            } 
+            catch(e){
+                console.log(e);
+            }
+        }
 
     return (
         <AdminLayout>
@@ -53,7 +94,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.fristName ? 'is-invalid' : ''}`}
                                                     id="fristName"
                                                     name="fristName"
-                                                    value={formData.fristName}
+                                                    value={inputs.fristName}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.fristName && <div className="invalid-feedback">{errors.fristName}</div>}
@@ -68,7 +109,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.lastName ? 'is-invalid' : ''}`}
                                                     id="lastName"
                                                     name="lastName"
-                                                    value={formData.lastName}
+                                                    value={inputs.lastName}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.lastName && <div className="invalid-feedback">{errors.lastName}</div>}
@@ -83,7 +124,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                                                     id="email"
                                                     name="email"
-                                                    value={formData.email}
+                                                    value={inputs.email}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.email && <div className="invalid-feedback">{errors.email}</div>}
@@ -98,7 +139,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
                                                     id="phone"
                                                     name="phone"
-                                                    value={formData.phone}
+                                                    value={inputs.phone}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
@@ -112,7 +153,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.projectName ? 'is-invalid' : ''}`}
                                                     id="projectName"
                                                     name="projectName"
-                                                    value={formData.projectName}
+                                                    value={inputs.projectName}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.projectName && <div className="invalid-feedback">{errors.projectName}</div>}
@@ -123,13 +164,13 @@ function CustomerAdd() {
                                                     required
                                                     id="projectType"
                                                     name="projectType"
-                                                    value={formData.projectType}
+                                                    value={inputs.projectType}
                                                     onChange={handleChange}
                                                     className={`form-control ${errors.projectType ? 'is-invalid' : ''}`}>
-                                                    <option value="0">Select projectType</option>
-                                                    <option value="2">Web Application Devolopment</option>
-                                                    <option value="3">Android App Devolopment</option>
-                                                    <option value="4">PC App Devolopment</option>
+                                                    <option value="Select projectType">Select projectType</option>
+                                                    <option value="Web Application Devolopment">Web Application Devolopment</option>
+                                                    <option value="Android App Devolopment">Android App Devolopment</option>
+                                                    <option value="PC App Devolopmen">PC App Devolopment</option>
                                                 </select>
                                                 {errors.projectType && <div className="invalid-feedback">{errors.projectType}</div>}
                                             </div>
@@ -141,23 +182,23 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.projectSL ? 'is-invalid' : ''}`}
                                                     id="companyName"
                                                     name="companyName"
-                                                    value={formData.companyName}
+                                                    value={inputs.companyName}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.companyName && <div className="invalid-feedback">{errors.companyName}</div>}
                                             </div>
                                             <div className="mb-3 col-md-6">
-                                                <label htmlFor="employeId" className="form-label">Employe ID</label>
+                                                <label htmlFor="customerId" className="form-label">Customer ID</label>
                                                 <input
-                                                    placeholder="Employe Id"
+                                                    placeholder="Customer Id"
                                                     type="number"
-                                                    className={`form-control ${errors.employeId ? 'is-invalid' : ''}`}
-                                                    id="employeId"
-                                                    name="employeId"
-                                                    value={formData.employeId}
+                                                    className={`form-control ${errors.customerId ? 'is-invalid' : ''}`}
+                                                    id="customerId"
+                                                    name="customerId"
+                                                    value={inputs.customerId}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.employeId && <div className="invalid-feedback">{errors.employeId}</div>}
+                                                {errors.customerId && <div className="invalid-feedback">{errors.customerId}</div>}
                                             </div>
 
                                             <div className="col-12">
@@ -168,7 +209,6 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.photo ? 'is-invalid' : ''}`}
                                                     id="photo"
                                                     name="photo"
-                                                    value={formData.photo}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.photo && <div className="invalid-feedback">{errors.photo}</div>}
@@ -183,7 +223,7 @@ function CustomerAdd() {
                                                     required
                                                     id="country"
                                                     name="country"
-                                                    value={formData.country}
+                                                    value={inputs.country}
                                                     onChange={handleChange}
                                                     className={`form-control ${errors.country ? 'is-invalid' : ''}`}>
                                                     <option value="0">Select a country</option>
@@ -207,7 +247,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.districts ? 'is-invalid' : ''}`}
                                                     id="districts"
                                                     name="districts"
-                                                    value={formData.districts}
+                                                    value={inputs.districts}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.districts && <div className="invalid-feedback">{errors.districts}</div>}
@@ -221,7 +261,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.upozila ? 'is-invalid' : ''}`}
                                                     id="upozila"
                                                     name="upozila"
-                                                    value={formData.upozila}
+                                                    value={inputs.upozila}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.upozila && <div className="invalid-feedback">{errors.upozila}</div>}
@@ -236,7 +276,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.post ? 'is-invalid' : ''}`}
                                                     id="post"
                                                     name="post"
-                                                    value={formData.post}
+                                                    value={inputs.post}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.post && <div className="invalid-feedback">{errors.post}</div>}
@@ -251,7 +291,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.zipCode ? 'is-invalid' : ''}`}
                                                     id="zipCode"
                                                     name="zipCode"
-                                                    value={formData.zipCode}
+                                                    value={inputs.zipCode}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.zipCode && <div className="invalid-feedback">{errors.zipCode}</div>}
@@ -265,7 +305,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.state ? 'is-invalid' : ''}`}
                                                     id="state"
                                                     name="state"
-                                                    value={formData.state}
+                                                    value={inputs.state}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.state && <div className="invalid-feedback">{errors.state}</div>}
@@ -279,7 +319,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.houseNumber ? 'is-invalid' : ''}`}
                                                     id="houseNumber"
                                                     name="houseNumber"
-                                                    value={formData.houseNumber}
+                                                    value={inputs.houseNumber}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.houseNumber && <div className="invalid-feedback">{errors.houseNumber}</div>}
@@ -298,3 +338,57 @@ function CustomerAdd() {
 }
 
 export default CustomerAdd;
+
+// import React, { useEffect, useState } from 'react';
+// import axios from 'axios';
+// import AdminLayout from '../../../layouts/AdminLayout';
+// import { useNavigate } from 'react-router-dom';
+// import {useParams} from "react-router-dom";
+
+// function CustomerAdd() {
+//     const [inputs, setInputs] = useState({id:'', fristName:'', lastName:'', email:'', phone:'', projectName:'', projectType:'', companyName:'', employeId:'', photo:'', country:'', districts:'', upozila:'', post:'', zipCode:'', state:'', houseNumber:'', });
+//     const navigate=useNavigate();
+//     const {id} = useParams();
+    
+//     function getDatas(){
+//         axios.get(`${process.env.REACT_APP_API_URL}/customer/${id}`).then(function(response) {
+//             setInputs(response.data.data);
+//         });
+//     }
+
+//     useEffect(() => {
+//         if(id){
+//             getDatas();
+//         }
+//     }, []);
+
+//     const handleChange = (event) => {
+//         const name = event.target.name;
+//         const value = event.target.value;
+//         setInputs(values => ({...values, [name]: value}));
+//     }
+
+//     const handleSubmit = async(e) => {
+//         e.preventDefault();
+//         console.log(inputs)
+        
+//         try{
+//             let apiurl='';
+//             if(inputs.id!=''){
+//                 apiurl=`/customer/${inputs.id}`;
+//             }else{
+//                 apiurl=`/customer/create`;
+//             }
+            
+//             let response= await axios({
+//                 method: 'post',
+//                 responsiveTYpe: 'json',
+//                 url: `${process.env.REACT_APP_API_URL}${apiurl}`,
+//                 data: inputs
+//             });
+//             navigate('/customer')
+//         } 
+//         catch(e){
+//             console.log(e);
+//         }
+//     }

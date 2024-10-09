@@ -58,6 +58,7 @@ function App() {
           <Route path="/mail/mailbox/ComSug" element={<ComSug/>} />
           <Route path="/customer/customerList" element={<CustomerList />} />
           <Route path="/customer/customerAdd" element={<CustomerAdd />} />
+          <Route path="/customer/edit/:id" element={<CustomerAdd />} />
           <Route path="/staff/staffAdd" element={<StaffAdd/>} />
           <Route path="/staff/staffList" element={<StaffList/>} />
           <Route path="/staff/staffList/MailStaff" element={<MailStaff/>} />

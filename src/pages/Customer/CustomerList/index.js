@@ -1,9 +1,25 @@
-import React from 'react'
-import { Link, useLocation } from 'react-router-dom';
+
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import AdminLayout from '../../../layouts/AdminLayout'
+import { Link } from 'react-router-dom';
 
 function CustomerList() {
-    
+  const[data, setData]=useState([]);
+    useEffect(() => {
+        getDatas();
+    }, []);
+  
+    function getDatas() {
+        axios.get(`${process.env.REACT_APP_API_URL}/customer/index`).then(function(response) {
+            setData(response.data.data);
+        });
+    }
+    const deleteData = (id) => {
+        axios.delete(`${process.env.REACT_APP_API_URL}/customer/${id}`).then(function(response){
+            getDatas();
+        });
+    }
   return (
     <AdminLayout>
         <div className="content-wrapper">
@@ -40,39 +56,48 @@ function CustomerList() {
                                     <th>#SL</th>
                                     <th>Frist Name</th>
                                     <th>Last Name</th>
+                                    <th>Photo</th>
                                     <th>Customer Id</th>
-                                    <th>Email</th>
+                                    <th>email</th>
                                     <th>Phone</th>
-                                    <th>Project List</th>
+                                    <th>Project Name</th>
+                                    <th>Project Type</th>
+                                    <th>Company Name</th>
                                     <th>Status</th>
                                     <th>Address</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>01</td>
-                                    <td>Md Kamal</td>
-                                    <td>Uddin</td>
-                                    <td>1005</td>
-                                    <td>kamal@gmail.com</td>
-                                    <td>+880 1559 075 906</td>
+                            {data && data.map((d, key) =>
+                                <tr key={d.id} >
+                                    <td>{key+1}</td>
+                                    {/* <td>00{d.id}</td> */}
+                                    <td>{d.fristName}</td>
+                                    <td>{d.lastName}</td>
+                                    <td>{d.photo}</td>
+                                    <td>{d.customerId}</td>
+                                    <td>{d.email}</td>
+                                    <td>{d.phone}</td>
                                     <td>
                                       <ol>
-                                        <li>Grammary.com</li>
-                                        <li>TolPbcl.com</li>
+                                        <li>{d.projectName}</li>
+                                        <li>{d.projectName}</li>
                                       </ol>
                                     </td>
+                                    <td>{d.projectType}</td>
+                                    <td>{d.companyName}</td>
                                     <td>
-                                      <div className="container mt-1"><div className="custom-control custom-switch"><input type="checkbox" className="custom-control-input" id="customSwitch1" /><label className="custom-control-label" htmlFor="customSwitch1">Active</label></div></div>
+                                      <div className="container mt-1"><div className="custom-control custom-switch"><input type="checkbox" className="custom-control-input" id="customSwitch1" checked={d.status? `checked`:``} /><label className="custom-control-label" htmlFor="customSwitch1"></label></div></div>
                                     </td>
-                                    <td><span>Pathan Para</span><span>Oxizyn</span><span>4500</span><span>Bayejid</span><span>Chittagong</span><span>+880</span></td>
+                                    <td><span>House: {d.houseNumber} </span><span>State: {d.state} </span><span>Zip Code: {d.zipCode} </span><span>Post: {d.post} </span><br/><span>Upozila: {d.upozila} </span><span>Districts: {d.districts} </span><span>Country: {d.country} </span></td>
                                     <td>
-                                        <a className='btn btn-info' href='#'>Edit</a>
-                                        <a className='btn btn-danger' href='#'>Delete</a>
+                                        <Link to={`/customer/edit/${d.id}`} className='btn btn-info'>Edit</Link>
+                                        <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger' >Delete</button>
                                         <Link to='/mail/mailbox/compose' className="btn btn-primary btn-block mb-3">Mail</Link>
                                     </td>
                                 </tr>
+                            )}
                             </tbody>
                         </table>
                     </div>
@@ -86,3 +111,27 @@ function CustomerList() {
 }
 
 export default CustomerList
+
+
+// import React, { useEffect, useState } from 'react';
+// import axios from 'axios';
+// import AdminLayout from '../../../layouts/AdminLayout'
+// import { Link } from 'react-router-dom';
+
+// function CustomerList() {
+//   const[data, setData]=useState([]);
+//   useEffect(() => {
+//       getDatas();
+//   }, []);
+
+//   function getDatas() {
+//       axios.get(`${process.env.REACT_APP_API_URL}/customer/index`).then(function(response) {
+//           setData(response.data.data);
+//       });
+//   }
+//   const deleteData = (id) => {
+//       axios.delete(`${process.env.REACT_APP_API_URL}/customer/${id}`).then(function(response){
+//           getDatas();
+//       });
+//   }
+    

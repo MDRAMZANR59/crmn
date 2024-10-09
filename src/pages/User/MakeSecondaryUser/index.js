@@ -44,18 +44,18 @@ function MakeSecondaryUser() {
                                     <form onSubmit={handleSubmit}>
                                         <div className="row md-6">
                                             <div className="mb-6 col-md-6">
-                                                <label htmlFor="Name" className="form-label">Name By NID<sup className=" text-danger">*</sup></label>
+                                                <label htmlFor="name" className="form-label">Name By NID<sup className=" text-danger">*</sup></label>
                                                 <input
                                                     required
                                                     placeholder="Name"
                                                     type="text"
-                                                    className={`form-control ${errors.Name ? 'is-invalid' : ''}`}
-                                                    id="Name"
-                                                    name="Name"
-                                                    value={formData.Name}
+                                                    className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                                                    id="name"
+                                                    name="name"
+                                                    value={formData.name}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.Name && <div className="invalid-feedback">{errors.Name}</div>}
+                                                {errors.name && <div className="invalid-feedback">{errors.name}</div>}
                                             </div>
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="nid" className="form-label">NID Number<sup className="text-danger">*</sup></label>
@@ -76,7 +76,7 @@ function MakeSecondaryUser() {
                                                 <input
                                                     required
                                                     placeholder="Date Of Birth"
-                                                    type="number"
+                                                    type="date"
                                                     className={`form-control ${errors.dob ? 'is-invalid' : ''}`}
                                                     id="dob"
                                                     name="dob"
@@ -106,7 +106,7 @@ function MakeSecondaryUser() {
                                                 <input
                                                     required
                                                     placeholder="Contact"
-                                                    type="phone"
+                                                    type="number"
                                                     className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
                                                     id="phone"
                                                     name="phone"
@@ -199,15 +199,15 @@ function MakeSecondaryUser() {
                                                     value={formData.country}
                                                     onChange={handleChange}
                                                     className={`form-control ${errors.country ? 'is-invalid' : ''}`}>
-                                                    <option value="0">Select a country</option>
-                                                    <option value="2">Bangladesh</option>
-                                                    <option value="3">Algeria</option>
-                                                    <option value="4">Afghanistan</option>
-                                                    <option value="5">Ghana</option>
-                                                    <option value="6">Albania</option>
-                                                    <option value="7">Bahrain</option>
-                                                    <option value="8">Colombia</option>
-                                                    <option value="9">Dominican Republic</option>
+                                                    <option value="Select a country">Select a country</option>
+                                                    <option value="Bangladesh">Bangladesh</option>
+                                                    <option value="Algeria">Algeria</option>
+                                                    <option value="Afghanistan">Afghanistan</option>
+                                                    <option value="Ghana<">Ghana</option>
+                                                    <option value="Albania">Albania</option>
+                                                    <option value="Bahrain">Bahrain</option>
+                                                    <option value="Colombia">Colombia</option>
+                                                    <option value="Dominican Republic">Dominican Republic</option>
                                                 </select>
                                                 {errors.country && <div className="invalid-feedback">{errors.country}</div>}
                                             </div>
