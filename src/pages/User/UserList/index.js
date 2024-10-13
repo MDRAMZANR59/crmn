@@ -1,9 +1,28 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect,useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import AdminLayout from '../../../layouts/AdminLayout'
 
+
 function UserList() {
-    
+  const[data, setData]=useState([]);
+  const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("access_token")}` }
+  };
+  useEffect(() => {
+      getDatas();
+  }, []);
+
+  function getDatas() {
+      axios.get(`${process.env.REACT_APP_API_URL}/user/index`,config).then(function(response) {
+          setData(response.data.data);
+      });
+  }
+  const deleteData = (id) => {
+      axios.delete(`${process.env.REACT_APP_API_URL}/user/${id}`,config).then(function(response){
+          getDatas();
+      });
+  }
   return (
     <AdminLayout>
         <div className="content-wrapper">
@@ -51,6 +70,25 @@ function UserList() {
                                 </tr>
                             </thead>
                             <tbody>
+                              {data && data.map((d, key) =>
+                                <tr key={d.id}>
+                                  <td className="text-bold-500">{key+1}</td>
+                                  <td>{d.name}</td>
+                                  <td>{d.usermeta.nid}</td>
+                                  <td>{d.usermeta.dob}</td>
+                                  <td>{d.usermeta.email}</td>
+                                  <td>{d.usermeta.phone}</td>
+                                  <td>{d.usermeta.employeId}</td>
+                                  <td>{d.usermeta.employeId}</td>
+                                  <td>{d.usermeta.photo}</td>
+                                  <td>{d.usermeta.signature}</td>
+                                  <td><span>{d.usermeta.state}</span><span>{d.usermeta.post}</span><span>{d.usermeta.zipCode}</span><span>{d.usermeta.upozila}</span><span>{d.usermeta.districts}</span><span>{d.usermeta.country}</span></td>
+                                  <td>
+                                      <Link to={`/user/edit/${d.id}`} className='btn btn-info' >Edit</Link>
+                                      <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
+                                  </td>
+                                </tr>
+                              )}
                                 <tr>
                                     <td>01</td>
                                     <td>Md Kamal Uddin</td>

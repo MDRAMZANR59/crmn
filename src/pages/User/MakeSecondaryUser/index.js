@@ -1,17 +1,59 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import AdminLayout from '../../../layouts/AdminLayout';
+import { useNavigate } from 'react-router-dom';
+import {useParams} from "react-router-dom";
+
 
 function MakeSecondaryUser() {
-    const [formData, setFormData] = useState([]);
     const [errors, setErrors] = useState([]);
 
-    const handleChange = (e) => {
-        return true;
-    };
-
-    const handleSubmit = (e) => {
-        return true;
-    };
+    const [inputs, setInputs] = useState({id:'', name:'',nid:'',dob:'',email:'',phone:'',employeId:'',designation:'',signature:'', password:'', photo:'', country:'',districts:'',upozila:'', post:'', zipCode:'', state:''});
+        const navigate=useNavigate();
+        const {id} = useParams();
+        
+        function getDatas(){
+            axios.get(`${process.env.REACT_APP_API_URL}/user/${id}`).then(function(response) {
+                setInputs(response.data.data);
+            });
+        }
+    
+        useEffect(() => {
+            if(id){
+                getDatas();
+            }
+        }, []);
+    
+        const handleChange = (event) => {
+            const name = event.target.name;
+            const value = event.target.value;
+            setInputs(values => ({...values, [name]: value}));
+        }
+    
+        const handleSubmit = async(e) => {
+            e.preventDefault();
+            console.log(inputs)
+            
+            try{
+                let apiurl='';
+                if(inputs.id!=''){
+                    apiurl=`/user/edit/${inputs.id}`;
+                }else{
+                    apiurl=`/user/create`;
+                }
+                
+                let response= await axios({
+                    method: 'post',
+                    responsiveTYpe: 'json',
+                    url: `${process.env.REACT_APP_API_URL}${apiurl}`,
+                    data: inputs
+                });
+                navigate('/UserList')
+            } 
+            catch(e){
+                console.log(e);
+            }
+        }
 
     return (
         <AdminLayout>
@@ -44,6 +86,25 @@ function MakeSecondaryUser() {
                                     <form onSubmit={handleSubmit}>
                                         <div className="row md-6">
                                             <div className="mb-6 col-md-6">
+                                                <label htmlFor="role" className="form-label">Role<sup className=" text-danger">*</sup></label>
+                                                <select
+                                                    required
+                                                    type="text"
+                                                    className={`form-control ${errors.role_id ? 'is-invalid' : ''}`}
+                                                    id="role_id"
+                                                    name="role_id"
+                                                    value={inputs.role_id}
+                                                    onChange={handleChange}>
+                                                        <option value="">Select role</option>
+                                                        <option value="1">Super Admin</option>
+                                                        <option value="2">Customer Exicutive</option>
+                                                        <option value="3">Staff</option>
+                                                        <option value="4">Customer</option>
+                                                </select>
+                                                
+                                                {errors.name && <div className="invalid-feedback">{errors.name}</div>}
+                                            </div>
+                                            <div className="mb-6 col-md-6">
                                                 <label htmlFor="name" className="form-label">Name By NID<sup className=" text-danger">*</sup></label>
                                                 <input
                                                     required
@@ -52,7 +113,7 @@ function MakeSecondaryUser() {
                                                     className={`form-control ${errors.name ? 'is-invalid' : ''}`}
                                                     id="name"
                                                     name="name"
-                                                    value={formData.name}
+                                                    value={inputs.name}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.name && <div className="invalid-feedback">{errors.name}</div>}
@@ -66,7 +127,7 @@ function MakeSecondaryUser() {
                                                     className={`form-control ${errors.nid ? 'is-invalid' : ''}`}
                                                     id="nid"
                                                     name="nid"
-                                                    value={formData.nid}
+                                                    value={inputs.nid}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.nid && <div className="invalid-feedback">{errors.nid}</div>}
@@ -80,7 +141,7 @@ function MakeSecondaryUser() {
                                                     className={`form-control ${errors.dob ? 'is-invalid' : ''}`}
                                                     id="dob"
                                                     name="dob"
-                                                    value={formData.dob}
+                                                    value={inputs.dob}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.dob && <div className="invalid-feedback">{errors.dob}</div>}
@@ -95,7 +156,7 @@ function MakeSecondaryUser() {
                                                     className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                                                     id="email"
                                                     name="email"
-                                                    value={formData.email}
+                                                    value={inputs.email}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.email && <div className="invalid-feedback">{errors.email}</div>}
@@ -110,7 +171,7 @@ function MakeSecondaryUser() {
                                                     className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
                                                     id="phone"
                                                     name="phone"
-                                                    value={formData.phone}
+                                                    value={inputs.phone}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
@@ -124,7 +185,7 @@ function MakeSecondaryUser() {
                                                     className={`form-control ${errors.employeId ? 'is-invalid' : ''}`}
                                                     id="employeId"
                                                     name="employeId"
-                                                    value={formData.employeId}
+                                                    value={inputs.employeId}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.employeId && <div className="invalid-feedback">{errors.employeId}</div>}
@@ -138,7 +199,7 @@ function MakeSecondaryUser() {
                                                     className={`form-control ${errors.designation ? 'is-invalid' : ''}`}
                                                     id="designation"
                                                     name="designation"
-                                                    value={formData.designation}
+                                                    value={inputs.designation}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.designation && <div className="invalid-feedback">{errors.designation}</div>}
@@ -152,7 +213,7 @@ function MakeSecondaryUser() {
                                                     className={`form-control ${errors.signature ? 'is-invalid' : ''}`}
                                                     id="signature"
                                                     name="signature"
-                                                    value={formData.signature}
+                                                    value={inputs.signature}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.signature && <div className="invalid-feedback">{errors.signature}</div>}
@@ -166,7 +227,7 @@ function MakeSecondaryUser() {
                                                     className={`form-control ${errors.password ? 'is-invalid' : ''}`}
                                                     id="password"
                                                     name="password"
-                                                    value={formData.password}
+                                                    value={inputs.password}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.password && <div className="invalid-feedback">{errors.password}</div>}
@@ -181,7 +242,7 @@ function MakeSecondaryUser() {
                                                     className={`form-control ${errors.photo ? 'is-invalid' : ''}`}
                                                     id="photo"
                                                     name="photo"
-                                                    value={formData.photo}
+                                                    value={inputs.photo}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.photo && <div className="invalid-feedback">{errors.photo}</div>}
@@ -196,7 +257,7 @@ function MakeSecondaryUser() {
                                                     required
                                                     id="country"
                                                     name="country"
-                                                    value={formData.country}
+                                                    value={inputs.country}
                                                     onChange={handleChange}
                                                     className={`form-control ${errors.country ? 'is-invalid' : ''}`}>
                                                     <option value="Select a country">Select a country</option>
@@ -220,7 +281,7 @@ function MakeSecondaryUser() {
                                                     className={`form-control ${errors.districts ? 'is-invalid' : ''}`}
                                                     id="districts"
                                                     name="districts"
-                                                    value={formData.districts}
+                                                    value={inputs.districts}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.districts && <div className="invalid-feedback">{errors.districts}</div>}
@@ -234,7 +295,7 @@ function MakeSecondaryUser() {
                                                     className={`form-control ${errors.upozila ? 'is-invalid' : ''}`}
                                                     id="upozila"
                                                     name="upozila"
-                                                    value={formData.upozila}
+                                                    value={inputs.upozila}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.upozila && <div className="invalid-feedback">{errors.upozila}</div>}
@@ -249,7 +310,7 @@ function MakeSecondaryUser() {
                                                     className={`form-control ${errors.post ? 'is-invalid' : ''}`}
                                                     id="post"
                                                     name="post"
-                                                    value={formData.post}
+                                                    value={inputs.post}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.post && <div className="invalid-feedback">{errors.post}</div>}
@@ -264,7 +325,7 @@ function MakeSecondaryUser() {
                                                     className={`form-control ${errors.zipCode ? 'is-invalid' : ''}`}
                                                     id="zipCode"
                                                     name="zipCode"
-                                                    value={formData.zipCode}
+                                                    value={inputs.zipCode}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.zipCode && <div className="invalid-feedback">{errors.zipCode}</div>}
@@ -278,7 +339,7 @@ function MakeSecondaryUser() {
                                                     className={`form-control ${errors.state ? 'is-invalid' : ''}`}
                                                     id="state"
                                                     name="state"
-                                                    value={formData.state}
+                                                    value={inputs.state}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.state && <div className="invalid-feedback">{errors.state}</div>}
