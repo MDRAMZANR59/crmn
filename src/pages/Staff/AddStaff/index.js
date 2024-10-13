@@ -1,17 +1,59 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import AdminLayout from '../../../layouts/AdminLayout';
+import { useNavigate } from 'react-router-dom';
+import {useParams} from "react-router-dom";
 
 function StaffAdd() {
-    const [formData, setFormData] = useState([]);
     const [errors, setErrors] = useState([]);
 
-    const handleChange = (e) => {
-        return true;
-    };
+    const [inputs, setInputs] = useState({id:'',name:'', nid:'', dob:'',email:'',phone:'', joiningDate:'', employeId:'', designation:'', language:'', department:'', signature:'', password:'', photo:'',country:'', districts:'',upozila:'',post:'',zipCode:'', state:'' });
+        const navigate=useNavigate();
+        const {id} = useParams();
+        
+        function getDatas(){
+            axios.get(`${process.env.REACT_APP_API_URL}/staff/${id}`).then(function(response) {
+                setInputs(response.data.data);
+            });
+        }
+    
+        useEffect(() => {
+            if(id){
+                getDatas();
+            }
+        }, []);
+    
+        const handleChange = (event) => {
+            const name = event.target.name;
+            const value = event.target.value;
+            setInputs(values => ({...values, [name]: value}));
+        }
+    
+        const handleSubmit = async(e) => {
+            e.preventDefault();
+            console.log(inputs)
+            
+            try{
+                let apiurl='';
+                if(inputs.id!=''){
+                    apiurl=`/staff/edit/${inputs.id}`;
+                }else{
+                    apiurl=`/staff/staffAdd`;
+                }
+                
+                let response= await axios({
+                    method: 'post',
+                    responsiveTYpe: 'json',
+                    url: `${process.env.REACT_APP_API_URL}${apiurl}`,
+                    data: inputs
+                });
+                navigate('/staff/staffList')
+            } 
+            catch(e){
+                console.log(e);
+            }
+        }
 
-    const handleSubmit = (e) => {
-        return true;
-    };
     return (
         <AdminLayout>
             <div className="content-wrapper">
@@ -43,19 +85,19 @@ function StaffAdd() {
                                 <div className="container mt-5">
                                     <form onSubmit={handleSubmit}>
                                         <div className="row md-6">
-                                        <div className="mb-6 col-md-6">
-                                                <label htmlFor="Name" className="form-label">Name By NID<sup className=" text-danger">*</sup></label>
+                                            <div className="mb-6 col-md-6">
+                                                <label htmlFor="name" className="form-label">Name By NID<sup className=" text-danger">*</sup></label>
                                                 <input
                                                     required
                                                     placeholder="Name"
                                                     type="text"
-                                                    className={`form-control ${errors.Name ? 'is-invalid' : ''}`}
-                                                    id="Name"
-                                                    name="Name"
-                                                    value={formData.Name}
+                                                    className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                                                    id="name"
+                                                    name="name"
+                                                    value={inputs.name}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.Name && <div className="invalid-feedback">{errors.Name}</div>}
+                                                {errors.name && <div className="invalid-feedback">{errors.name}</div>}
                                             </div>
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="nid" className="form-label">NID Number<sup className="text-danger">*</sup></label>
@@ -66,7 +108,7 @@ function StaffAdd() {
                                                     className={`form-control ${errors.nid ? 'is-invalid' : ''}`}
                                                     id="nid"
                                                     name="nid"
-                                                    value={formData.nid}
+                                                    value={inputs.nid}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.nid && <div className="invalid-feedback">{errors.nid}</div>}
@@ -76,11 +118,11 @@ function StaffAdd() {
                                                 <input
                                                     required
                                                     placeholder="Date Of Birth"
-                                                    type="number"
+                                                    type="date"
                                                     className={`form-control ${errors.dob ? 'is-invalid' : ''}`}
                                                     id="dob"
                                                     name="dob"
-                                                    value={formData.dob}
+                                                    value={inputs.dob}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.dob && <div className="invalid-feedback">{errors.dob}</div>}
@@ -95,7 +137,7 @@ function StaffAdd() {
                                                     className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                                                     id="email"
                                                     name="email"
-                                                    value={formData.email}
+                                                    value={inputs.email}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.email && <div className="invalid-feedback">{errors.email}</div>}
@@ -110,7 +152,7 @@ function StaffAdd() {
                                                     className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
                                                     id="phone"
                                                     name="phone"
-                                                    value={formData.phone}
+                                                    value={inputs.phone}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
@@ -124,7 +166,7 @@ function StaffAdd() {
                                                     className={`form-control ${errors.joiningDate ? 'is-invalid' : ''}`}
                                                     id="joiningDate"
                                                     name="joiningDate"
-                                                    value={formData.joiningDate}
+                                                    value={inputs.joiningDate}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.joiningDate && <div className="invalid-feedback">{errors.joiningDate}</div>}
@@ -138,7 +180,7 @@ function StaffAdd() {
                                                     className={`form-control ${errors.employeId ? 'is-invalid' : ''}`}
                                                     id="employeId"
                                                     name="employeId"
-                                                    value={formData.employeId}
+                                                    value={inputs.employeId}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.employeId && <div className="invalid-feedback">{errors.employeId}</div>}
@@ -152,7 +194,7 @@ function StaffAdd() {
                                                     className={`form-control ${errors.designation ? 'is-invalid' : ''}`}
                                                     id="designation"
                                                     name="designation"
-                                                    value={formData.designation}
+                                                    value={inputs.designation}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.designation && <div className="invalid-feedback">{errors.designation}</div>}
@@ -166,7 +208,7 @@ function StaffAdd() {
                                                     className={`form-control ${errors.designation ? 'is-invalid' : ''}`}
                                                     id="language"
                                                     name="language"
-                                                    value={formData.language}
+                                                    value={inputs.language}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.language && <div className="invalid-feedback">{errors.language}</div>}
@@ -177,7 +219,7 @@ function StaffAdd() {
                                                     required
                                                     id="department"
                                                     name="department"
-                                                    value={formData.department}
+                                                    value={inputs.department}
                                                     onChange={handleChange}
                                                     className={`form-control ${errors.department ? 'is-invalid' : ''}`}>
                                                     <option value="0">Select department</option>
@@ -196,7 +238,7 @@ function StaffAdd() {
                                                     className={`form-control ${errors.signature ? 'is-invalid' : ''}`}
                                                     id="signature"
                                                     name="signature"
-                                                    value={formData.signature}
+                                                    value={inputs.signature}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.signature && <div className="invalid-feedback">{errors.signature}</div>}
@@ -210,7 +252,7 @@ function StaffAdd() {
                                                     className={`form-control ${errors.password ? 'is-invalid' : ''}`}
                                                     id="password"
                                                     name="password"
-                                                    value={formData.password}
+                                                    value={inputs.password}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.password && <div className="invalid-feedback">{errors.password}</div>}
@@ -225,14 +267,14 @@ function StaffAdd() {
                                                     className={`form-control ${errors.photo ? 'is-invalid' : ''}`}
                                                     id="photo"
                                                     name="photo"
-                                                    value={formData.photo}
+                                                    value={inputs.photo}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.photo && <div className="invalid-feedback">{errors.photo}</div>}
                                             </div>
 
                                             <div className="mb-3 col-12">
-                                                <label htmlFor="name" className="form-label display-6">Address</label>
+                                                <label htmlFor="country" className="form-label display-6">Address</label>
                                             </div>
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="country" className="form-label text-black">Country <span className=" text-danger">*</span></label>
@@ -240,7 +282,7 @@ function StaffAdd() {
                                                     required
                                                     id="country"
                                                     name="country"
-                                                    value={formData.country}
+                                                    value={inputs.country}
                                                     onChange={handleChange}
                                                     className={`form-control ${errors.country ? 'is-invalid' : ''}`}>
                                                     <option value="0">Select a country</option>
@@ -264,7 +306,7 @@ function StaffAdd() {
                                                     className={`form-control ${errors.districts ? 'is-invalid' : ''}`}
                                                     id="districts"
                                                     name="districts"
-                                                    value={formData.districts}
+                                                    value={inputs.districts}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.districts && <div className="invalid-feedback">{errors.districts}</div>}
@@ -278,7 +320,7 @@ function StaffAdd() {
                                                     className={`form-control ${errors.upozila ? 'is-invalid' : ''}`}
                                                     id="upozila"
                                                     name="upozila"
-                                                    value={formData.upozila}
+                                                    value={inputs.upozila}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.upozila && <div className="invalid-feedback">{errors.upozila}</div>}
@@ -293,7 +335,7 @@ function StaffAdd() {
                                                     className={`form-control ${errors.post ? 'is-invalid' : ''}`}
                                                     id="post"
                                                     name="post"
-                                                    value={formData.post}
+                                                    value={inputs.post}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.post && <div className="invalid-feedback">{errors.post}</div>}
@@ -308,7 +350,7 @@ function StaffAdd() {
                                                     className={`form-control ${errors.zipCode ? 'is-invalid' : ''}`}
                                                     id="zipCode"
                                                     name="zipCode"
-                                                    value={formData.zipCode}
+                                                    value={inputs.zipCode}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.zipCode && <div className="invalid-feedback">{errors.zipCode}</div>}
@@ -318,17 +360,16 @@ function StaffAdd() {
                                                 <input
                                                     required
                                                     placeholder="state"
-                                                    type="number"
-                                                    className={`form-control ${errors.zipCode ? 'is-invalid' : ''}`}
-                                                    id="zipCode"
-                                                    name="zipCode"
-                                                    value={formData.zipCode}
+                                                    type="text"
+                                                    className={`form-control ${errors.state ? 'is-invalid' : ''}`}
+                                                    id="state"
+                                                    name="state"
+                                                    value={inputs.state}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.zipCode && <div className="invalid-feedback">{errors.zipCode}</div>}
+                                                {errors.state && <div className="invalid-feedback">{errors.state}</div>}
                                             </div>
                                         </div>
-                                        
                                         <button type="submit" className="btn btn-primary mt-3">Add Customer</button>
                                     </form>
                                 </div>

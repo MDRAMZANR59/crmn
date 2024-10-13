@@ -131,7 +131,7 @@ function Sidebar() {
                                 <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('staff')}>
                                     <i className="nav-icon fas fa-users"></i>
                                     <p>
-                                        Team Member's
+                                        Staff
                                         <i className="fas fa-angle-left right"></i>
                                     </p>
                                 </a>
@@ -139,19 +139,19 @@ function Sidebar() {
                                     <li className="nav-item">
                                         <Link to="/staff/staffAdd" className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
-                                            <p>Add Team Member's</p>
+                                            <p>Add Staff</p>
                                         </Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link to='/staff/staffList' className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
-                                            <p>Team Member's</p>
+                                            <p>Staff List</p>
                                         </Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link to='/staff/warningStaffList' className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
-                                            <p>Warning Member's</p>
+                                            <p>Warning Staff</p>
                                         </Link>
                                     </li>
                                 </ul>

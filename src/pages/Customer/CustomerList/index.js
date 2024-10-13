@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import AdminLayout from '../../../layouts/AdminLayout'
@@ -71,8 +70,8 @@ function CustomerList() {
                             <tbody>
                             {data && data.map((d, key) =>
                                 <tr key={d.id} >
-                                    <td>{key+1}</td>
-                                    {/* <td>00{d.id}</td> */}
+                                    {/* <td>{key+1}</td> */}
+                                    <td>00{d.id}</td>
                                     <td>{d.fristName}</td>
                                     <td>{d.lastName}</td>
                                     <td>{d.photo}</td>

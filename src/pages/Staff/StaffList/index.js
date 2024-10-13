@@ -1,9 +1,24 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import AdminLayout from '../../../layouts/AdminLayout'
+import { Link } from 'react-router-dom';
 
 function StaffList() {
-    
+  const[data, setData]=useState([]);
+  useEffect(() => {
+      getDatas();
+  }, []);
+
+  function getDatas() {
+      axios.get(`${process.env.REACT_APP_API_URL}/staff/index`).then(function(response) {
+          setData(response.data.data);
+      });
+  }
+  const deleteData = (id) => {
+      axios.delete(`${process.env.REACT_APP_API_URL}/staff/${id}`).then(function(response){
+          getDatas();
+      });
+  }
   return (
     <AdminLayout>
         <div className="content-wrapper">
@@ -58,34 +73,34 @@ function StaffList() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>01</td>
-                                    <td>Md Kamal</td>
-                                    <td>15/12/1994</td>
-                                    <td>2257956472</td>
-                                    <td>+880 1559 075 906</td>
-                                    <td>203</td>
-                                    <td>16/01/2024</td>
-                                    <td>Senior Software Devoloper</td>
-                                    <td>kamal@gmail.com</td>
-                                    <td><img width="200px" src="../../layouts/assets/dist/img/avatar.png"/></td>
-                                    <td><img width="200px" src="../../"/></td>
-                                    <td>
-                                      <div className="container mt-1"><div className="custom-control custom-switch"><input type="checkbox" className="custom-control-input" id="customSwitch1" /><label className="custom-control-label" htmlFor="customSwitch1">Active</label></div></div>
-                                    </td>
-                                    <td><span>BDIX Taster</span><span>Mobile App Development</span></td>
-                                    <td><span>BDIX Taster</span><span>Mobile App Development</span></td>
-                                    <td> <a className='btn btn-success' href='#'>Take</a><br/><a className='btn btn-danger' href='#'>Reject</a></td>
-                                    <td>04</td>
-                                    <td><span>Pathan Para</span><span>Oxizyn</span><span>4500</span><span>Bayejid</span><span>Chittagong</span><span>+880</span></td>
+                              {data && data.map((d, key) =>
+                                <tr key={d.id}>
+                                    <td>00{key+1}</td>
+                                    <td>{d.name}</td>
+                                    <td>{d.dob}</td>
+                                    <td>{d.nid}</td>
+                                    <td>{d.phone}</td>
+                                    <td>{d.employeId}</td>
+                                    <td>{d.joiningDate}</td>
+                                    <td>{d.designation}</td>
+                                    <td>{d.email}</td>
+                                    <td>{d.photo}</td>
+                                    <td>{d.signature}</td>
+                                    <td>Status</td>
+                                    <td>Next</td>
+                                    <td>Next</td>
+                                    <td>Next</td>
+                                    <td>Next</td>
+                                    <td><span>{d.zipCode}</span><span>{d.state}</span><span>{d.upozila}</span><span>{d.districts}</span><span>{d.country}</span></td>
                                     <td >
-                                        <a className='btn btn-info' href='#'>Edit</a>
-                                        <a className='btn btn-danger' href='#'>Delete</a>
+                                        <Link to={`/staff/edit/${d.id}`} className='btn btn-info'>Edit</Link>
+                                        <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger' >Delete</button>
                                         <Link to="/staff/staffList/MailStaff" className='btn btn-primary'>Mail</Link>
                                         <Link to="/staff/warningStaff/WarningNotice" className='btn btn-warning' href='#'>Sent Warning</Link>
                                     </td>
                                 </tr>
-                            </tbody>
+                                 )}
+                           </tbody>
                         </table>
                     </div>
                 </div>
@@ -98,5 +113,3 @@ function StaffList() {
 }
 
 export default StaffList
-
-

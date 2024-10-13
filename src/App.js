@@ -60,6 +60,7 @@ function App() {
           <Route path="/customer/customerAdd" element={<CustomerAdd />} />
           <Route path="/customer/edit/:id" element={<CustomerAdd />} />
           <Route path="/staff/staffAdd" element={<StaffAdd/>} />
+          <Route path="/staff/edit/:id" element={<StaffAdd/>} />
           <Route path="/staff/staffList" element={<StaffList/>} />
           <Route path="/staff/staffList/MailStaff" element={<MailStaff/>} />
           <Route path="/staff/warningStaffList" element={<WarningStaffList/>} />
