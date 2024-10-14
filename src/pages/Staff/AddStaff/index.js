@@ -38,7 +38,7 @@ function StaffAdd() {
                 if(inputs.id!=''){
                     apiurl=`/staff/edit/${inputs.id}`;
                 }else{
-                    apiurl=`/staff/staffAdd`;
+                    apiurl=`/staff/create`;
                 }
                 
                 let response= await axios({
@@ -285,15 +285,15 @@ function StaffAdd() {
                                                     value={inputs.country}
                                                     onChange={handleChange}
                                                     className={`form-control ${errors.country ? 'is-invalid' : ''}`}>
-                                                    <option value="0">Select a country</option>
-                                                    <option value="2">Bangladesh</option>
-                                                    <option value="3">Algeria</option>
-                                                    <option value="4">Afghanistan</option>
-                                                    <option value="5">Ghana</option>
-                                                    <option value="6">Albania</option>
-                                                    <option value="7">Bahrain</option>
-                                                    <option value="8">Colombia</option>
-                                                    <option value="9">Dominican Republic</option>
+                                                    <option value="Select a country">Select a country</option>
+                                                    <option value="Bangladesh">Bangladesh</option>
+                                                    <option value="Algeria">Algeria</option>
+                                                    <option value="Afghanistan">Afghanistan</option>
+                                                    <option value="Ghana">Ghana</option>
+                                                    <option value="Albania">Albania</option>
+                                                    <option value="Bahrain">Bahrain</option>
+                                                    <option value="Colombia">Colombia</option>
+                                                    <option value="Dominican Republic">Dominican Republic</option>
                                                 </select>
                                                 {errors.country && <div className="invalid-feedback">{errors.country}</div>}
                                             </div>
