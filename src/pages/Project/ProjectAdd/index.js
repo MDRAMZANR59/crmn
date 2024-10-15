@@ -38,30 +38,30 @@ function ProjectAdd() {
                         </div>
                         <div className="card-body">
                         <div className="form-group">
-                            <label htmlFor="projectName">Project Name <sup className=" text-danger">*</sup></label>
-                            <input required type="text" id="projectName" placeholder="Project Name" className="form-control"/>
+                            <label htmlFor="projectName">Project Name<sup className=" text-danger">*</sup></label>
+                            <input required name="projectName" type="text" id="projectName" placeholder="Project Name" className="form-control"/>
                         </div>
                         <div className="form-group">
                             <label required htmlFor="projectType">Project Type<sup className=" text-danger">*</sup></label>
-                            <select id="projectType" className="form-control">
-                                <option>Select Type</option>
-                                <option>Web Application Devolopment</option>
-                                <option>Pc App Devolopment</option>
-                                <option>Android App Devolopment</option>
+                            <select id="projectType" name="projectType" className="form-control">
+                                <option value="Select Type">Select Type</option>
+                                <option value="Web Application Devolopment">Web Application Devolopment</option>
+                                <option value="Pc App Devolopment">Pc App Devolopment</option>
+                                <option value="Android App Devolopment">Android App Devolopment</option>
                             </select>
                         </div>
                         <div className="form-group">
                             <label required htmlFor="projectType">Domain And Hosting Provider<sup className=" text-danger">*</sup></label><br/>
-                            <input id="codeCrafters" type="radio" name="Do&HoPr" /> <label htmlFor="codeCrafters" className="me-2">Code Crafters</label>
-                            <input id="client" type="radio" name="Do&HoPr" /> <label htmlFor="client">Client</label>
+                            <input id="codeCrafters" type="radio" name="doHoPr" /> <label htmlFor="codeCrafters" value="Code Crafters" className="me-2">Code Crafters</label>
+                            <input id="client" type="radio" name="do&HoPr" /> <label htmlFor="client" value="Client">Client</label>
                         </div>
                         <div className="form-group">
                             <label htmlFor="expectedLanguage">Require Language/Framework</label><br/>
                             <label><strong>Front End</strong></label><br/>
                             <label htmlFor="javascript">JavaScript </label>
-                            <input type="checkbox" id="javascript" placeholder="Project Name" className="me-1"/>
+                            <input value="javascript" type="checkbox" id="javascript" className="me-1"/>
                             <label htmlFor="php">TypeScript</label>
-                            <input type="checkbox" id="php" placeholder="Project Name" className="me-1"/>
+                            <input value="php" type="checkbox" id="php" placeholder="Project Name" className="me-1"/>
                             <label htmlFor="vue">Vue.js</label>
                             <input type="checkbox" id="vue" placeholder="Project Name" className="me-1"/>
                             <label htmlFor="php">TypeScript</label>
@@ -88,8 +88,12 @@ function ProjectAdd() {
                             <input type="checkbox" id="asp.net" placeholder="Project Name" className="me-1"/><br/>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="clientName">Client Name<sup className=" text-danger">*</sup></label>
-                            <input placeholder="Client Name" required type="text" id="clientName" className="form-control"/>
+                            <label htmlFor="firstName">Client First Name<sup className=" text-danger">*</sup></label>
+                            <input placeholder="Client Frist Name" required type="text" id="firstName" className="form-control"/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="lastName">Client Last Name<sup className=" text-danger">*</sup></label>
+                            <input placeholder="Client Last Name" required type="text" id="lastName" className="form-control"/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="customerId">Customer ID<sup className=" text-danger">*</sup></label>
