@@ -79,7 +79,7 @@ function TransfaringProject() {
                                 <td>00{d.id}</td>
                                 <td>{d.projectType}</td>
                                 <td>{d.projectName}</td>
-                                {/* <td>{d.}</td> */}
+                                <td>{d.id}</td>
                                 <td><a href="#" >1003</a></td>
                                 <td className="project-state">
                                     <div className="form-group">
@@ -135,12 +135,8 @@ function TransfaringProject() {
                                         </select>
                                      </div>
                                 </td>
-                                <td>
-                                    10/09/2024 Daynamic 
-                                </td>
-                                <td>
-                                    10/10/2024 Daynamic 
-                                </td>
+                                <td>{d.created_at}</td>
+                                <td>{d.endDate}</td>
                                 <td className="project-actions text-right">
                                     <a className="btn btn-primary btn-sm" href="#">
                                         <i className="fas fa-share">
