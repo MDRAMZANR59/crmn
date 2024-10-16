@@ -1,8 +1,24 @@
-import React, { useState } from 'react';
-import AdminLayout from '../../../layouts/AdminLayout';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import AdminLayout from '../../../layouts/AdminLayout'
+import { Link } from 'react-router-dom';
 
 function TransfaringProject() {
-   
+        const[data, setData]=useState([]);
+        useEffect(() => {
+            getDatas();
+        }, []);
+    
+        function getDatas() {
+            axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/index`).then(function(response) {
+                setData(response.data.data);
+            });
+        }
+        const deleteData = (id) => {
+            axios.delete(`${process.env.REACT_APP_API_URL}/projectfiles/${id}`).then(function(response){
+                getDatas();
+            });
+        }
     return (
         <AdminLayout>
             {/* Content Wrapper. Contains page content */}
@@ -58,11 +74,12 @@ function TransfaringProject() {
                             </tr>
                         </thead>
                         <tbody className="text-center">
-                            <tr>
-                                <td>001</td>
-                                <td><a href="#" >Web Application Debolopment</a></td>
-                                <td><a href="#" >Hospital Managment</a></td>
-                                <td><a href="#" >A5X78P2</a></td>
+                        {data && data.map((d, key) =>
+                            <tr key={d.id} >
+                                <td>00{d.id}</td>
+                                <td>{d.projectType}</td>
+                                <td>{d.projectName}</td>
+                                {/* <td>{d.}</td> */}
                                 <td><a href="#" >1003</a></td>
                                 <td className="project-state">
                                     <div className="form-group">
@@ -132,6 +149,7 @@ function TransfaringProject() {
                                     </a>
                                 </td>
                             </tr>
+                         )}
                         </tbody>
                     </table>
                 </div>

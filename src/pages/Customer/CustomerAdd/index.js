@@ -215,7 +215,7 @@ function CustomerAdd() {
                                             </div>
 
                                             <div className="mb-3 col-12">
-                                            <label htmlFor="name" className="form-label display-6">Leving Address</label>
+                                            <label htmlFor="name" className="form-label display-6">Leaving Address</label>
                                             </div>
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="country" className="form-label text-black">Country <span className=" text-danger">*</span></label>
