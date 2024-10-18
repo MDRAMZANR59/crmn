@@ -38,7 +38,6 @@ function WebAppDev() {
                                 <tr>
                                     <th>#SL</th>
                                     <th>Service Name</th>
-                                    <th>Language</th>
                                     <th>Exparts</th>
                                     <th>Action</th>
                                 </tr>
@@ -47,7 +46,6 @@ function WebAppDev() {
                                 <tr>
                                     <td>01</td>
                                     <td>Web Application Devolopment</td>
-                                    <td>Javascript, PHP, React, Laravel, Vue</td>
                                     <td>Mukut, Ramzan, Mamun, Raja</td>
                                     <td>
                                         <a className='btn btn-danger' href='#'>Delete</a>

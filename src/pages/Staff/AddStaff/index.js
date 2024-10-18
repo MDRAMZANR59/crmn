@@ -200,18 +200,18 @@ function StaffAdd() {
                                                 {errors.designation && <div className="invalid-feedback">{errors.designation}</div>}
                                             </div>
                                             <div className="mb-3 col-md-6">
-                                                <label htmlFor="language" className="form-label">Known Language<sup className=" text-danger">*</sup></label>
+                                                <label htmlFor="expart" className="form-label">Expart For<sup className=" text-danger">*</sup></label>
                                                 <input
                                                     required
-                                                    placeholder="Do Separat Using Space"
+                                                    placeholder="Do Separat Using Comma"
                                                     type="text"
-                                                    className={`form-control ${errors.designation ? 'is-invalid' : ''}`}
+                                                    className={`form-control ${errors.expart ? 'is-invalid' : ''}`}
                                                     id="language"
-                                                    name="language"
-                                                    value={inputs.language}
+                                                    name="expart"
+                                                    value={inputs.expart}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.language && <div className="invalid-feedback">{errors.language}</div>}
+                                                {errors.expart && <div className="invalid-feedback">{errors.expart}</div>}
                                             </div>
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="department" className="form-label text-black">Select Department <span className=" text-danger">*</span></label>
