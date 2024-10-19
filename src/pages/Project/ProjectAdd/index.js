@@ -262,6 +262,14 @@ function ProjectAdd() {
                                             {errors.lastName && <div className="invalid-feedback">{errors.lastName}</div>}
                                         </div>
                                         <div className="form-group">
+                                            <label htmlFor="phone">Phone<sup className=" text-danger">*</sup></label>
+                                            <input
+                                             value={inputs.phone}
+                                             onChange={handleChange}
+                                             className={`form-control ${errors.phone ? 'is-invalid' : ''}`} name="phone" placeholder="Phone" required type="number" id="phone" />
+                                            {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
+                                        </div>
+                                        <div className="form-group">
                                             <label htmlFor="customerId">Customer ID<sup className=" text-danger">*</sup></label>
                                             <input
                                              value={inputs.customerId}

@@ -112,12 +112,12 @@ function Sidebar() {
                                     </p>
                                 </a>
                                 <ul className="nav nav-treeview">
-                                <li className="nav-item">
+                                    {/* <li className="nav-item">
                                         <Link to="/customer/customerAdd" className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
                                             <p>Customer Add</p>
                                         </Link>
-                                    </li>
+                                    </li> */}
                                     <li className="nav-item">
                                         <Link to="/customer/customerList" className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
