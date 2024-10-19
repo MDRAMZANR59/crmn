@@ -137,8 +137,8 @@ function ProjectAdd() {
                                                 name="doHoPr" />
                                                 {errors.doHoPr && <div className="invalid-feedback">{errors.doHoPr}</div>}
                                        
-                                        <label htmlFor="client" value="Client">Client</label>
-                                        <input 
+                                            <label htmlFor="client" value="Client">Client</label>
+                                            <input 
                                                 value={inputs.doHoPr}
                                                 onChange={handleChange}
                                                 className={`${errors.doHoPr ? 'is-invalid' : ''}`} 
@@ -146,105 +146,533 @@ function ProjectAdd() {
                                                 type="radio" 
                                                 name="doHoPr" /> 
                                                  {errors.doHoPr && <div className="invalid-feedback">{errors.doHoPr}</div>}
-                                           
                                         </div>
-                                        <label htmlFor="expectedLanguage">Require Language/Framework</label><br/>
-                                        <label><strong>Front End</strong></label><br/>
+                                        <h4 htmlFor="expectedLanguage">Require Language/Framework</h4>
+                                        <label><strong>Select Frameworks and Libraries</strong></label><hr/>
                                         <div className="form-group">
-                                            <label htmlFor="javascript">JavaScript </label>
-                                            <input
-                                                value={inputs.frontLang}
-                                                onChange={handleChange}
-                                                className={` me-1 ${errors.frontLang ? 'is-invalid' : ''}`}
-                                                name="frontLang" type="checkbox" id="javascript"/>
-                                                {errors.frontLang && <div className="invalid-feedback">{errors.frontLang}</div>}
-                                       
-                                            <label htmlFor="php">TypeScript</label>
-                                            <input
-                                             value={inputs.frontLang}
-                                             onChange={handleChange}
-                                             className={` me-1 ${errors.frontLang ? 'is-invalid' : ''}`} name="frontLang" type="checkbox" id="php" placeholder="Project Name"/>
-                                            {errors.frontLang && <div className="invalid-feedback">{errors.frontLang}</div>}
-                                        
-                                            <label htmlFor="vue">Vue.js</label>
-                                            <input
-                                             value={inputs.frontLang}
-                                             onChange={handleChange}
-                                             className={` me-1 ${errors.frontLang ? 'is-invalid' : ''}`} name="frontLang" type="checkbox" id="vue" placeholder="Project Name"/>
-                                            {errors.frontLang && <div className="invalid-feedback">{errors.frontLang}</div>}
-                                       
-                                            <label htmlFor="php">TypeScript</label>
-                                            <input
-                                             value={inputs.frontLang}
-                                             onChange={handleChange}
-                                             className={` me-1 ${errors.frontLang ? 'is-invalid' : ''}`} name="frontLang" type="checkbox" id="php" placeholder="Project Name"/>
-                                            {errors.frontLang && <div className="invalid-feedback">{errors.frontLang}</div>}
-                                       
-                                            <label htmlFor="angular">Angular </label>
-                                            <input
-                                             value={inputs.frontLang}
-                                             onChange={handleChange}
-                                             className={` me-1 ${errors.frontLang ? 'is-invalid' : ''}`} name="frontLang" type="checkbox" id="angular" placeholder="Project Name" /><br/>
-                                            {errors.frontLang && <div className="invalid-feedback">{errors.frontLang}</div>}
-                                       
-                                            <label htmlFor="react">React </label>
-                                            <input
-                                             value={inputs.frontLang}
-                                             onChange={handleChange}
-                                             className={` me-1 ${errors.frontLang ? 'is-invalid' : ''}`} name="frontLang" type="checkbox" id="react" placeholder="Project Name" />
-                                            {errors.frontLang && <div className="invalid-feedback">{errors.frontLang}</div>}
-                                        
-                                            <label htmlFor="bootstrap">Bootstrap </label>
-                                            <input
-                                             value={inputs.frontLang}
-                                             onChange={handleChange}
-                                             className={` me-1 ${errors.frontLang ? 'is-invalid' : ''}`} name="frontLang" type="checkbox" id="bootstrap" placeholder="Project Name"/>
-                                        {errors.frontLang && <div className="invalid-feedback">{errors.frontLang}</div>}
-                                       
-                                            <label htmlFor="jquery">JQuery </label>
-                                            <input
-                                             value={inputs.frontLang}
-                                             onChange={handleChange}
-                                             className={` me-1 ${errors.frontLang ? 'is-invalid' : ''}`} name="frontLang" type="checkbox" id="jquery" placeholder="Project Name" /><hr/>
-                                            {errors.frontLang && <div className="invalid-feedback">{errors.frontLang}</div>}
-                                        </div>
-                                        <label><strong>BackEnd</strong></label><br/>
-                                        <div className="form-group">
-                                            <label htmlFor="php">PHP </label>
-                                            <input
-                                             value={inputs.backLang}
-                                             onChange={handleChange}
-                                             className={` me-1 ${errors.backLang ? 'is-invalid' : ''}`} name="backLang" type="checkbox" id="javascript" placeholder="Project Name" />
-                                            {errors.backLang && <div className="invalid-feedback">{errors.backLang}</div>}
-                                       
+                                            {/* JavaScript */}
                                             <label htmlFor="javascript">JavaScript</label>
                                             <input
-                                             value={inputs.backLang}
-                                             onChange={handleChange}
-                                             className={` me-1 ${errors.backLang ? 'is-invalid' : ''}`} name="backLang" type="checkbox" id="javascript" placeholder="Project Name" />
-                                            {errors.backLang && <div className="invalid-feedback">{errors.backLang}</div>}
-                                       
-                                            <label htmlFor="c++">C++</label>
+                                                value={inputs.frameAndLibr}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frameAndLibr ? 'is-invalid' : ''}`}
+                                                name="javascript" type="checkbox" id="javascript"/>
+                                            {errors.frameAndLibr && <div className="invalid-feedback">{errors.frameAndLibr}</div>}
+
+                                            {/* React */}
+                                            <label htmlFor="react">React</label>
                                             <input
-                                             value={inputs.backLang}
-                                             onChange={handleChange}
-                                             className={` me-1 ${errors.backLang ? 'is-invalid' : ''}`} name="backLang" type="checkbox" id="c++" placeholder="Project Name" />
-                                            {errors.backLang && <div className="invalid-feedback">{errors.backLang}</div>}
-                                       
-                                            <label htmlFor="C#">C#</label>
+                                                value={inputs.frameAndLibr}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frameAndLibr ? 'is-invalid' : ''}`}
+                                                name="react" type="checkbox" id="react"/>
+                                            {errors.frameAndLibr && <div className="invalid-feedback">{errors.frameAndLibr}</div>}
+
+                                            {/* Vue */}
+                                            <label htmlFor="vue">Vue</label>
                                             <input
-                                             value={inputs.backLang}
-                                             onChange={handleChange}
-                                             className={` me-1 ${errors.backLang ? 'is-invalid' : ''}`} name="backLang" type="checkbox" id="php" placeholder="Project Name" />
-                                            {errors.backLang && <div className="invalid-feedback">{errors.backLang}</div>}
-                                       
-                                            <label htmlFor="asp.net">ASP.NET </label>
+                                                value={inputs.frameAndLibr}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frameAndLibr ? 'is-invalid' : ''}`}
+                                                name="vue" type="checkbox" id="vue"/>
+                                            {errors.frameAndLibr && <div className="invalid-feedback">{errors.frameAndLibr}</div>}
+
+                                            {/* Angular */}
+                                            <label htmlFor="angular">Angular</label>
                                             <input
-                                             value={inputs.backLang}
-                                             onChange={handleChange}
-                                             className={` me-1 ${errors.backLang ? 'is-invalid' : ''}`} name="backLang" type="checkbox" id="asp.net" placeholder="Project Name" /><br/>
+                                                value={inputs.frameAndLibr}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frameAndLibr ? 'is-invalid' : ''}`}
+                                                name="angular" type="checkbox" id="angular"/>
+                                            {errors.frameAndLibr && <div className="invalid-feedback">{errors.frameAndLibr}</div>}
+
+                                            {/* Svelte */}
+                                            <label htmlFor="svelte">Svelte</label>
+                                            <input
+                                                value={inputs.frameAndLibr}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frameAndLibr ? 'is-invalid' : ''}`}
+                                                name="svelte" type="checkbox" id="svelte"/>
+                                            {errors.frameAndLibr && <div className="invalid-feedback">{errors.frameAndLibr}</div>}
+
+                                            {/* SolidJS */}
+                                            <label htmlFor="solid">SolidJS</label>
+                                            <input
+                                                value={inputs.frameAndLibr}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frameAndLibr ? 'is-invalid' : ''}`}
+                                                name="solid" type="checkbox" id="solid"/>
+                                            {errors.frameAndLibr && <div className="invalid-feedback">{errors.frameAndLibr}</div>}
+
+                                            {/* Ember */}
+                                            <label htmlFor="ember">Ember</label>
+                                            <input
+                                                value={inputs.frameAndLibr}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frameAndLibr ? 'is-invalid' : ''}`}
+                                                name="ember" type="checkbox" id="ember"/>
+                                            {errors.frameAndLibr && <div className="invalid-feedback">{errors.frameAndLibr}</div>}
+
+                                            {/* Express (Node.js) */}
+                                            <label htmlFor="express">Express</label>
+                                            <input
+                                                value={inputs.frameAndLibr}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frameAndLibr ? 'is-invalid' : ''}`}
+                                                name="express" type="checkbox" id="express"/>
+                                            {errors.frameAndLibr && <div className="invalid-feedback">{errors.frameAndLibr}</div>}
+
+                                            {/* Django */}
+                                            <label htmlFor="django">Django</label>
+                                            <input
+                                                value={inputs.frameAndLibr}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frameAndLibr ? 'is-invalid' : ''}`}
+                                                name="django" type="checkbox" id="django"/>
+                                            {errors.frameAndLibr && <div className="invalid-feedback">{errors.frameAndLibr}</div>}
+
+                                            {/* Flask */}
+                                            <label htmlFor="flask">Flask</label>
+                                            <input
+                                                value={inputs.frameAndLibr}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frameAndLibr ? 'is-invalid' : ''}`}
+                                                name="flask" type="checkbox" id="flask"/>
+                                            {errors.frameAndLibr && <div className="invalid-feedback">{errors.frameAndLibr}</div>}
+
+                                            {/* Ruby on Rails */}
+                                            <label htmlFor="rails">Ruby on Rails</label>
+                                            <input
+                                                value={inputs.frameAndLibr}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frameAndLibr ? 'is-invalid' : ''}`}
+                                                name="rails" type="checkbox" id="rails"/>
+                                            {errors.frameAndLibr && <div className="invalid-feedback">{errors.frameAndLibr}</div>}
+
+                                            {/* Spring Boot */}
+                                            <label htmlFor="spring">Spring Boot</label>
+                                            <input
+                                                value={inputs.frameAndLibr}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frameAndLibr ? 'is-invalid' : ''}`}
+                                                name="spring" type="checkbox" id="spring"/>
+                                            {errors.frameAndLibr && <div className="invalid-feedback">{errors.frameAndLibr}</div>}
+
+                                            {/* React Native */}
+                                            <label htmlFor="reactNative">React Native</label>
+                                            <input
+                                                value={inputs.frameAndLibr}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frameAndLibr ? 'is-invalid' : ''}`}
+                                                name="reactNative" type="checkbox" id="reactNative"/>
+                                            {errors.frameAndLibr && <div className="invalid-feedback">{errors.frameAndLibr}</div>}
+
+                                            {/* Flutter */}
+                                            <label htmlFor="flutter">Flutter</label>
+                                            <input
+                                                value={inputs.frameAndLibr}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frameAndLibr ? 'is-invalid' : ''}`}
+                                                name="flutter" type="checkbox" id="flutter"/>
+                                            {errors.frameAndLibr && <div className="invalid-feedback">{errors.frameAndLibr}</div>}
+
+                                            {/* Ionic */}
+                                            <label htmlFor="ionic">Ionic</label>
+                                            <input
+                                                value={inputs.frameAndLibr}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frameAndLibr ? 'is-invalid' : ''}`}
+                                                name="ionic" type="checkbox" id="ionic"/>
+                                            {errors.frameAndLibr && <div className="invalid-feedback">{errors.frameAndLibr}</div>}
+                                        </div>
+                                        <br/><label><strong>Select Front-End language</strong></label><hr/>
+                                        <div className="form-group">
+                                            <label htmlFor="html">HTML</label>
+                                            <input
+                                                value={inputs.frontEndLan}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frontEndLan ? 'is-invalid' : ''}`} 
+                                                name="html" 
+                                                type="checkbox" 
+                                                id="html" 
+                                                placeholder="Project Name" />
+                                            {errors.frontEndLan && <div className="invalid-feedback">{errors.frontEndLan}</div>}
+
+                                            {/* CSS */}
+                                            <label htmlFor="css">CSS</label>
+                                            <input
+                                                value={inputs.frontEndLan}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frontEndLan ? 'is-invalid' : ''}`} 
+                                                name="css" 
+                                                type="checkbox" 
+                                                id="css" 
+                                                placeholder="Project Name" />
+                                            {errors.css && <div frontEndLan="invalid-feedback">{errors.frontEndLan}</div>}
+
+                                            {/* JavaScript */}
+                                            <label htmlFor="javascript">JavaScript</label>
+                                            <input
+                                                value={inputs.frontEndLan}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frontEndLan ? 'is-invalid' : ''}`} 
+                                                name="javascript" 
+                                                type="checkbox" 
+                                                id="javascript" 
+                                                placeholder="Project Name" />
+                                            {errors.frontEndLan && <div className="invalid-feedback">{errors.frontEndLan}</div>}
+
+                                            {/* TypeScript */}
+                                            <label htmlFor="typescript">TypeScript</label>
+                                            <input
+                                                value={inputs.frontEndLan}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frontEndLan ? 'is-invalid' : ''}`} 
+                                                name="typescript" 
+                                                type="checkbox" 
+                                                id="typescript" 
+                                                placeholder="Project Name" />
+                                            {errors.frontEndLan && <div className="invalid-feedback">{errors.frontEndLan}</div>}
+
+                                            {/* React */}
+                                            <label htmlFor="react">React</label>
+                                            <input
+                                                value={inputs.frontEndLan}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frontEndLan ? 'is-invalid' : ''}`} 
+                                                name="react" 
+                                                type="checkbox" 
+                                                id="react" 
+                                                placeholder="Project Name" />
+                                            {errors.frontEndLan && <div className="invalid-feedback">{errors.frontEndLan}</div>}
+
+                                            {/* Vue */}
+                                            <label htmlFor="vue">Vue</label>
+                                            <input
+                                                value={inputs.frontEndLan}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frontEndLan ? 'is-invalid' : ''}`} 
+                                                name="vue" 
+                                                type="checkbox" 
+                                                id="vue" 
+                                                placeholder="Project Name" />
+                                            {errors.frontEndLan && <div className="invalid-feedback">{errors.frontEndLan}</div>}
+
+                                            {/* Angular */}
+                                            <label htmlFor="angular">Angular</label>
+                                            <input
+                                                value={inputs.frontEndLan}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frontEndLan ? 'is-invalid' : ''}`} 
+                                                name="angular" 
+                                                type="checkbox" 
+                                                id="angular" 
+                                                placeholder="Project Name" />
+                                            {errors.frontEndLan && <div className="invalid-feedback">{errors.frontEndLan}</div>}
+
+                                            {/* Svelte */}
+                                            <label htmlFor="svelte">Svelte</label>
+                                            <input
+                                                value={inputs.frontEndLan}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frontEndLan ? 'is-invalid' : ''}`} 
+                                                name="svelte" 
+                                                type="checkbox" 
+                                                id="svelte" 
+                                                placeholder="Project Name" />
+                                            {errors.frontEndLan && <div className="invalid-feedback">{errors.frontEndLan}</div>}
+
+                                            {/* Ember */}
+                                            <label htmlFor="ember">Ember</label>
+                                            <input
+                                                value={inputs.frontEndLan}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frontEndLan ? 'is-invalid' : ''}`} 
+                                                name="ember" 
+                                                type="checkbox" 
+                                                id="ember" 
+                                                placeholder="Project Name" />
+                                            {errors.frontEndLan && <div className="invalid-feedback">{errors.frontEndLan}</div>}
+
+                                            {/* jQuery */}
+                                            <label htmlFor="jquery">jQuery</label>
+                                            <input
+                                                value={inputs.frontEndLan}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frontEndLan ? 'is-invalid' : ''}`} 
+                                                name="jquery" 
+                                                type="checkbox" 
+                                                id="jquery" 
+                                                placeholder="Project Name" />
+                                            {errors.frontEndLan && <div className="invalid-feedback">{errors.frontEndLan}</div>}
+
+                                            {/* Bootstrap */}
+                                            <label htmlFor="bootstrap">Bootstrap</label>
+                                            <input
+                                                value={inputs.frontEndLan}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frontEndLan ? 'is-invalid' : ''}`} 
+                                                name="bootstrap" 
+                                                type="checkbox" 
+                                                id="bootstrap" 
+                                                placeholder="Project Name" />
+                                            {errors.frontEndLan && <div className="invalid-feedback">{errors.frontEndLan}</div>}
+
+                                            {/* Foundation */}
+                                            <label htmlFor="foundation">Foundation</label>
+                                            <input
+                                                value={inputs.frontEndLan}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.frontEndLan ? 'is-invalid' : ''}`} 
+                                                name="frontEnd" 
+                                                type="checkbox" 
+                                                id="foundation" 
+                                                placeholder="Project Name" />
+                                            {errors.frontEndLan && <div className="invalid-feedback">{errors.frontEndLan}</div>}
+                                        </div>
+                                        <label><strong>Select Back-End Language</strong></label><hr/>
+                                        <div className="form-group" >
+                                            {/* Node.js */}
+                                            <label htmlFor="php">PHP</label>
+                                            <input
+                                                value={inputs.backLang}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.backLang ? 'is-invalid' : ''}`} 
+                                                name="php" 
+                                                type="checkbox" 
+                                                id="php" 
+                                                placeholder="Project Name" />
+                                            {errors.backLang && <div className="invalid-feedback">{errors.backLang}</div>}
+
+                                            {/* Python */}
+                                            <label htmlFor="python">Python</label>
+                                            <input
+                                                value={inputs.backLang}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.backLang ? 'is-invalid' : ''}`} 
+                                                name="python" 
+                                                type="checkbox" 
+                                                id="python" 
+                                                placeholder="Project Name" />
+                                            {errors.backLang && <div className="invalid-feedback">{errors.backLang}</div>}
+
+                                            {/* Ruby */}
+                                            <label htmlFor="ruby">Ruby</label>
+                                            <input
+                                                value={inputs.backLang}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.backLang ? 'is-invalid' : ''}`} 
+                                                name="ruby" 
+                                                type="checkbox" 
+                                                id="ruby" 
+                                                placeholder="Project Name" />
+                                            {errors.backLang && <div className="invalid-feedback">{errors.backLang}</div>}
+
+                                            {/* Java */}
+                                            <label htmlFor="java">Java</label>
+                                            <input
+                                                value={inputs.backLang}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.backLang ? 'is-invalid' : ''}`} 
+                                                name="java" 
+                                                type="checkbox" 
+                                                id="java" 
+                                                placeholder="Project Name" />
+                                            {errors.backLang && <div className="invalid-feedback">{errors.backLang}</div>}
+
+                                            {/* C# */}
+                                            <label htmlFor="csharp">C#</label>
+                                            <input
+                                                value={inputs.backLang}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.backLang ? 'is-invalid' : ''}`} 
+                                                name="csharp" 
+                                                type="checkbox" 
+                                                id="csharp" 
+                                                placeholder="Project Name" />
+                                            {errors.backLang && <div className="invalid-feedback">{errors.backLang}</div>}
+
+                                            {/* Go */}
+                                            <label htmlFor="go">Go</label>
+                                            <input
+                                                value={inputs.backLang}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.backLang ? 'is-invalid' : ''}`} 
+                                                name="go" 
+                                                type="checkbox" 
+                                                id="go" 
+                                                placeholder="Project Name" />
+                                            {errors.backLang && <div className="invalid-feedback">{errors.backLang}</div>}
+
+                                            {/* Node.js */}
+                                            <label htmlFor="nodejs">Node.js</label>
+                                            <input
+                                                value={inputs.backLang}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.backLang ? 'is-invalid' : ''}`} 
+                                                name="nodejs" 
+                                                type="checkbox" 
+                                                id="nodejs" 
+                                                placeholder="Project Name" />
+                                            {errors.backLang && <div className="invalid-feedback">{errors.backLang}</div>}
+
+                                            {/* Scala */}
+                                            <label htmlFor="scala">Scala</label>
+                                            <input
+                                                value={inputs.backLang}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.backLang ? 'is-invalid' : ''}`} 
+                                                name="scala" 
+                                                type="checkbox" 
+                                                id="scala" 
+                                                placeholder="Project Name" />
+                                            {errors.backLang && <div className="invalid-feedback">{errors.backLang}</div>}
+
+                                            {/* Elixir */}
+                                            <label htmlFor="elixir">Elixir</label>
+                                            <input
+                                                value={inputs.backLang}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.backLang ? 'is-invalid' : ''}`} 
+                                                name="elixir" 
+                                                type="checkbox" 
+                                                id="elixir" 
+                                                placeholder="Project Name" />
+                                            {errors.backLang && <div className="invalid-feedback">{errors.backLang}</div>}
+
+                                            {/* Kotlin */}
+                                            <label htmlFor="kotlin">Kotlin</label>
+                                            <input
+                                                value={inputs.backLang}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.backLang ? 'is-invalid' : ''}`} 
+                                                name="kotlin" 
+                                                type="checkbox" 
+                                                id="kotlin" 
+                                                placeholder="Project Name" />
                                             {errors.backLang && <div className="invalid-feedback">{errors.backLang}</div>}
                                         </div>
+                                        <label><strong>Database</strong></label><hr/>
+                                        <div className="form-group" >
+                                            <label htmlFor="mysql">MySQL</label>
+                                            <input
+                                                value={inputs.database}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.database ? 'is-invalid' : ''}`} 
+                                                name="mysql" 
+                                                type="checkbox" 
+                                                id="mysql" 
+                                                placeholder="Project Name" />
+                                            {errors.database && <div className="invalid-feedback">{errors.database}</div>}
+
+                                            {/* PostgreSQL */}
+                                            <label htmlFor="postgresql">PostgreSQL</label>
+                                            <input
+                                                value={inputs.database}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.database ? 'is-invalid' : ''}`} 
+                                                name="postgresql" 
+                                                type="checkbox" 
+                                                id="postgresql" 
+                                                placeholder="Project Name" />
+                                            {errors.database && <div className="invalid-feedback">{errors.database}</div>}
+
+                                            {/* MongoDB */}
+                                            <label htmlFor="mongodb">MongoDB</label>
+                                            <input
+                                                value={inputs.database}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.database ? 'is-invalid' : ''}`} 
+                                                name="mongodb" 
+                                                type="checkbox" 
+                                                id="mongodb" 
+                                                placeholder="Project Name" />
+                                            {errors.database && <div className="invalid-feedback">{errors.database}</div>}
+
+                                            {/* SQLite */}
+                                            <label htmlFor="sqlite">SQLite</label>
+                                            <input
+                                                value={inputs.database}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.database ? 'is-invalid' : ''}`} 
+                                                name="sqlite" 
+                                                type="checkbox" 
+                                                id="sqlite" 
+                                                placeholder="Project Name" />
+                                            {errors.database && <div className="invalid-feedback">{errors.database}</div>}
+
+                                            {/* Oracle */}
+                                            <label htmlFor="oracle">Oracle</label>
+                                            <input
+                                                value={inputs.database}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.database ? 'is-invalid' : ''}`} 
+                                                name="oracle" 
+                                                type="checkbox" 
+                                                id="oracle" 
+                                                placeholder="Project Name" />
+                                            {errors.database && <div className="invalid-feedback">{errors.database}</div>}
+
+                                            {/* MariaDB */}
+                                            <label htmlFor="mariadb">MariaDB</label>
+                                            <input
+                                                value={inputs.database}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.database ? 'is-invalid' : ''}`} 
+                                                name="mariadb" 
+                                                type="checkbox" 
+                                                id="mariadb" 
+                                                placeholder="Project Name" />
+                                            {errors.database && <div className="invalid-feedback">{errors.database}</div>}
+
+                                            {/* Couchbase */}
+                                            <label htmlFor="couchbase">Couchbase</label>
+                                            <input
+                                                value={inputs.database}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.database ? 'is-invalid' : ''}`} 
+                                                name="couchbase" 
+                                                type="checkbox" 
+                                                id="couchbase" 
+                                                placeholder="Project Name" />
+                                            {errors.database && <div className="invalid-feedback">{errors.database}</div>}
+
+                                            {/* Firebase */}
+                                            <label htmlFor="firebase">Firebase</label>
+                                            <input
+                                                value={inputs.database}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.database ? 'is-invalid' : ''}`} 
+                                                name="firebase" 
+                                                type="checkbox" 
+                                                id="firebase" 
+                                                placeholder="Project Name" />
+                                            {errors.database && <div className="invalid-feedback">{errors.database}</div>}
+
+                                            {/* Redis */}
+                                            <label htmlFor="redis">Redis</label>
+                                            <input
+                                                value={inputs.database}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.database ? 'is-invalid' : ''}`} 
+                                                name="redis" 
+                                                type="checkbox" 
+                                                id="redis" 
+                                                placeholder="Project Name" />
+                                            {errors.database && <div className="invalid-feedback">{errors.database}</div>}
+
+                                            {/* Cassandra */}
+                                            <label htmlFor="cassandra">Cassandra</label>
+                                            <input
+                                                value={inputs.database}
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.database ? 'is-invalid' : ''}`} 
+                                                name="cassandra" 
+                                                type="checkbox" 
+                                                id="cassandra" 
+                                                placeholder="Project Name" />
+                                            {errors.database && <div className="invalid-feedback">{errors.database}</div>}
+                                        </div><br/>
                                         <div className="form-group">
                                             <label htmlFor="firstName">Client First Name<sup className=" text-danger">*</sup></label>
                                             <input
