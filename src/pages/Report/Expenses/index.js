@@ -48,7 +48,7 @@ function ExpensesReport() {
                               name="incomeRout"
                               value={formData.incomeRout}
                               onChange={handleChange}
-                              className={`form-control ${errors.incomeRout ? 'is-invalid' : ''}`}>
+                              className={`form-control ${errors.incomeRout ? 'is-invalid' : ''}`}
                               <option value="4">Approved</option>
                               <option value="5">Pending</option>
                           </select>

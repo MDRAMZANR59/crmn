@@ -39,14 +39,14 @@ function RushMail() {
                         {/* /.card-header */}
                           <div className="card-body">
                             <div className="form-group">
-                              <input className="form-control" value="Team Leader, Team Member,Team Member,Team Member,Team Member,Team Member"/>
+                              <input className="form-control" name="reciver" value="Team Leader, Team Member,Team Member,Team Member,Team Member,Team Member"/>
                             </div>
                             <div className="form-group">
-                              <input className="form-control" placeholder="Subject:"/>
+                              <input className="form-control" name="subject" placeholder="Subject:"/>
                             </div>
                             <div className="form-group">
                               
-                                <textarea id="compose-textarea" className="form-control " style={{height: "300px"}} placeholder="Write Warning Notice"></textarea>
+                                <textarea id="compose-textarea" className="form-control " name="notice" style={{height: "300px"}} placeholder="Write Warning Notice"></textarea>
                             </div>
                             <div className="form-group">
                               <div className="btn btn-default btn-file">
