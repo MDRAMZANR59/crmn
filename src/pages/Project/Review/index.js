@@ -33,17 +33,17 @@ function Review() {
           <div className="col-5 text-center d-flex align-items-center justify-content-center">
             <div>
               <h2><strong>Overall Rating</strong></h2>
-                <a href="#"><i className="fas fa-star"></i></a>
-                <a href="#"><i className="fas fa-star"></i></a>
-                <a href="#"><i className="fas fa-star"></i></a>
-                <a href="#"><i className="fas fa-star"></i></a>
-                <a href="#"><i className="fas fa-star"></i></a>
+                <a name="s1" href="#"><i className="fas fa-star"></i></a>
+                <a name="s2" href="#"><i className="fas fa-star"></i></a>
+                <a name="s3" href="#"><i className="fas fa-star"></i></a>
+                <a name="s4" href="#"><i className="fas fa-star"></i></a>
+                <a name="s5" href="#"><i className="fas fa-star"></i></a>
             </div>
           </div>
           <div className="col-7">
             <div className="form-group">
               <label htmlFor="inputMessage">Message</label>
-              <textarea id="inputMessage" className="form-control" rows="4" placeholder="What Do You Think About Our Service?"  ></textarea>
+              <textarea id="inputMessage" name="massage" className="form-control" rows="4" placeholder="What Do You Think About Our Service?"  ></textarea>
             </div>
             <div className="form-group">
               <input type="submit" className="btn btn-primary" value="Send Feedback"/>

@@ -144,6 +144,20 @@ function EditSecondaryUser() {
                                                 />
                                                 {errors.designation && <div className="invalid-feedback">{errors.designation}</div>}
                                             </div>
+                                            <div className="mb-3 col-md-6">
+                                                <label htmlFor="joiningDate" className="form-label">Joining Date<sup className=" text-danger">*</sup></label>
+                                                <input
+                                                    required
+                                                    placeholder="Joining Date"
+                                                    type="date"
+                                                    className={`form-control ${errors.joiningDate ? 'is-invalid' : ''}`}
+                                                    id="joiningDate"
+                                                    name="joiningDate"
+                                                    value={formData.joiningDate}
+                                                    onChange={handleChange}
+                                                />
+                                                {errors.joiningDate && <div className="invalid-feedback">{errors.joiningDate}</div>}
+                                            </div>
                                             <div className="col-6">
                                                 <label htmlFor="signature" className="form-label">Signature<sup className=" text-danger">*</sup></label>
                                                 <input

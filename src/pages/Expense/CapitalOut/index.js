@@ -45,34 +45,34 @@ function CapitalOut() {
                                     <form onSubmit={handleSubmit}>
                                         <div className="row md-6">
                                             <div className="mb-6 col-md-6">
-                                                <label htmlFor="fieldOfExpense" className="form-label text-black">Transfer From <span className=" text-danger">*</span></label>
+                                                <label htmlFor="sender" className="form-label text-black">Transfer From <span className=" text-danger">*</span></label>
                                                 <select
                                                     required
-                                                    id="fieldOfExpense"
-                                                    name="fieldOfExpense"
-                                                    value={formData.fieldOfExpense}
+                                                    id="sender"
+                                                    name="sender"
+                                                    value={formData.sender}
                                                     onChange={handleChange}
-                                                    className={`form-control ${errors.fieldOfExpense ? 'is-invalid' : ''}`}>
+                                                    className={`form-control ${errors.sender ? 'is-invalid' : ''}`}>
                                                     <option value="0">Select Method</option>
                                                     <option value="2">Online Banking</option>
                                                     <option value="5">Cash</option>
                                                 </select>
-                                                {errors.fieldOfExpense && <div className="invalid-feedback">{errors.fieldOfExpense}</div>}
+                                                {errors.sender && <div className="invalid-feedback">{errors.sender}</div>}
                                             </div>
                                             <div className="mb-6 col-md-6">
-                                                <label htmlFor="fieldOfExpense" className="form-label text-black">Reciver<span className=" text-danger">*</span></label>
+                                                <label htmlFor="reciver" className="form-label text-black">Reciver<span className=" text-danger">*</span></label>
                                                 <select
                                                     required
-                                                    id="fieldOfExpense"
-                                                    name="fieldOfExpense"
-                                                    value={formData.fieldOfExpense}
+                                                    id="reciver"
+                                                    name="reciver"
+                                                    value={formData.reciver}
                                                     onChange={handleChange}
-                                                    className={`form-control ${errors.fieldOfExpense ? 'is-invalid' : ''}`}>
+                                                    className={`form-control ${errors.reciver ? 'is-invalid' : ''}`}>
                                                     <option value="0">Select Method</option>
                                                     <option value="2">Online Banking</option>
                                                     <option value="5">Cash</option>
                                                 </select>
-                                                {errors.fieldOfExpense && <div className="invalid-feedback">{errors.fieldOfExpense}</div>}
+                                                {errors.reciver && <div className="invalid-feedback">{errors.reciver}</div>}
                                             </div>
 
                                             <div className="mb-6 col-md-6">

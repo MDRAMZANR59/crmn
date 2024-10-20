@@ -126,14 +126,14 @@ blinded by desire, that they cannot foresee`
                     {/* /.card-header */}
                       <div className="card-body">
                         <div className="form-group">
-                          <input className="form-control" placeholder="To:"/>
+                          <input className="form-control" type="email" name="reciver" placeholder="To:"/>
                         </div>
                         <div className="form-group">
-                          <input className="form-control" placeholder="Subject:"/>
+                          <input className="form-control" type="text" name="subject" placeholder="Subject:"/>
                         </div>
                         <div className="form-group">
                           
-                            <textarea id="compose-textarea" className="form-control" style={{height: "300px"}} defaultValue={textval}></textarea>
+                            <textarea id="compose-textarea" name="bodyMassage" className="form-control" style={{height: "300px"}} defaultValue={textval}></textarea>
                         </div>
                         <div className="form-group">
                           <div className="btn btn-default btn-file">

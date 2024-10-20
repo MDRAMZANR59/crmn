@@ -96,12 +96,12 @@ function DailyIncome() {
                                                     readOnly
                                                     placeholder="Project Name"
                                                     className={`form-control ${errors.projectId ? 'is-invalid' : ''}`}
-                                                    id="customerName"
-                                                    name="customerName"
-                                                    value={formData.customerName}
+                                                    id="projectName"
+                                                    name="projectName"
+                                                    value={formData.projectName}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.customerName && <div className="invalid-feedback">{errors.customerName}</div>}
+                                                {errors.projectName && <div className="invalid-feedback">{errors.projectName}</div>}
                                             </div>
                                             
                                             <div className="mb-6 col-md-6">
@@ -163,18 +163,18 @@ function DailyIncome() {
                                                 {errors.payRout && <div className="invalid-feedback">{errors.payRout}</div>}
                                             </div>
                                             <div className="mb-6 col-md-6">
-                                                <label htmlFor="payment" className="form-label">Payment<sup className="text-danger">*</sup></label>
+                                                <label htmlFor="amount" className="form-label">Payment Ammount<sup className="text-danger">*</sup></label>
                                                 <input
                                                     required
-                                                    placeholder="Payment"
+                                                    placeholder="Amount"
                                                     type="number"
-                                                    className={`form-control ${errors.payment ? 'is-invalid' : ''}`}
-                                                    id="payment"
-                                                    name="payment"
-                                                    value={formData.payment}
+                                                    className={`form-control ${errors.amount ? 'is-invalid' : ''}`}
+                                                    id="amount"
+                                                    name="amount"
+                                                    value={formData.amount}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.payment && <div className="invalid-feedback">{errors.payment}</div>}
+                                                {errors.amount && <div className="invalid-feedback">{errors.amount}</div>}
                                             </div>
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="payMethod" className="form-label text-black">Payment Method <span className=" text-danger">*</span></label>
