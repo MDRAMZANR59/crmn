@@ -26,8 +26,7 @@ function Register() {
         </div>
         <form onSubmit={handleSubmit}>
             <div className="row">
-
-                <div className="col-md-12 col-12">
+                <div className="col-md-6 col-6">
                     <label htmlFor="name" className="form-label">Name By NID<sup className=" text-danger">*</sup></label>
                     <input
                         required
@@ -39,7 +38,7 @@ function Register() {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="col-md-12 col-12">
+                <div className="col-md-6 col-6">
                     <label htmlFor="nid" className="form-label">NID Number<sup className="text-danger">*</sup></label>
                     <input
                         required
@@ -51,7 +50,7 @@ function Register() {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="col-md-12 col-12">
+                <div className="col-md-6 col-6">
                     <label htmlFor="dob" className="form-label">Date Of Birth<sup className="text-danger">*</sup></label>
                     <input
                         required
@@ -64,7 +63,7 @@ function Register() {
                     />
                 </div>
 
-                <div className="col-md-12 col-12">
+                <div className="col-md-6 col-6">
                     <label htmlFor="email" className="form-label">Email<sup className="text-danger">*</sup></label>
                     <input
                         required
@@ -77,7 +76,7 @@ function Register() {
                     />
                 </div>
 
-                <div className="col-md-12 col-12">
+                <div className="col-md-6 col-6">
                     <label htmlFor="phone" className="form-label">Phone<sup className=" text-danger">*</sup></label>
                     <input
                         required
@@ -89,7 +88,7 @@ function Register() {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="col-md-12 col-12">
+                <div className="col-md-6 col-6">
                     <label htmlFor="employeId" className="form-label">Employe Id<sup className=" text-danger">*</sup></label>
                     <input
                         required
@@ -101,7 +100,7 @@ function Register() {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="col-md-12 col-12">
+                <div className="col-md-6 col-6">
                     <label htmlFor="designation" className="form-label">Designation<sup className=" text-danger">*</sup></label>
                     <input
                         required
@@ -113,7 +112,7 @@ function Register() {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="col-md-12 col-12">
+                <div className="col-md-6 col-6">
                     <label htmlFor="signature" className="form-label">Signature<sup className=" text-danger">*</sup></label>
                     <input
                         required
@@ -125,7 +124,7 @@ function Register() {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="col-md-12 col-12">
+                <div className="col-md-6 col-6">
                     <label htmlFor="photo" className="form-label">Photo<sup className=" text-danger">*</sup></label>
                     <input
                         required
@@ -137,7 +136,7 @@ function Register() {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="col-md-12 col-12">
+                <div className="col-md-6 col-6">
                     <label htmlFor="password" className="form-label">Password<sup className="text-danger">*</sup></label>
                     <input
                         required
@@ -149,7 +148,7 @@ function Register() {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="col-md-12 col-12">
+                <div className="col-md-6 col-6">
                     <label htmlFor="cPassword" className="form-label">Confirm Password<sup className="text-danger">*</sup></label>
                     <input
                         required
@@ -161,7 +160,7 @@ function Register() {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="col-md-12 col-12">
+                <div className="col-md-12 col-12 text-center">
                     <label htmlFor="name" className="form-label display-6">Address</label>
                 </div>
                 <div className="mb-6 col-md-6">
@@ -183,7 +182,7 @@ function Register() {
                         <option value="Dominican Republic">Dominican Republic</option>
                     </select>
                 </div>
-                <div className="col-md-12 col-12">
+                <div className="col-md-6 col-6">
                     <label htmlFor="districts" className="form-label">Districts<sup className="text-danger">*</sup></label>
                     <input
                         required
@@ -195,7 +194,7 @@ function Register() {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="col-md-12 col-12">
+                <div className="col-md-6 col-6">
                     <label htmlFor="upozila" className="form-label">Upozila<sup className="text-danger">*</sup></label>
                     <input
                         required
@@ -208,7 +207,7 @@ function Register() {
                     />
                 </div>
 
-                <div className="col-md-12 col-12">
+                <div className="col-md-6 col-6">
                     <label htmlFor="post" className="form-label">Post<sup className="text-danger">*</sup></label>
                     <input
                         required
@@ -221,7 +220,7 @@ function Register() {
                     />
                 </div>
 
-                <div className="col-md-12 col-12">
+                <div className="col-md-6 col-6">
                     <label htmlFor="zipCode" className="form-label">Zip Code<sup className=" text-danger">*</sup></label>
                     <input
                         required
