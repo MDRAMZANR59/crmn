@@ -177,18 +177,18 @@ function MakeSecondaryUser() {
                                                 {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
                                             </div>
                                             <div className="mb-3 col-md-6">
-                                                <label htmlFor="employeId" className="form-label">Employe Id<sup className=" text-danger">*</sup></label>
+                                                <label htmlFor="joiningDate" className="form-label">Joining Date<sup className=" text-danger">*</sup></label>
                                                 <input
                                                     required
-                                                    placeholder="Employe Id"
-                                                    type="number"
-                                                    className={`form-control ${errors.employeId ? 'is-invalid' : ''}`}
-                                                    id="employeId"
-                                                    name="employeId"
-                                                    value={inputs.employeId}
+                                                    placeholder="Joining Date"
+                                                    type="date"
+                                                    className={`form-control ${errors.joiningDate ? 'is-invalid' : ''}`}
+                                                    id="joiningDate"
+                                                    name="joiningDate"
+                                                    value={inputs.joiningDate}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.employeId && <div className="invalid-feedback">{errors.employeId}</div>}
+                                                {errors.joiningDate && <div className="invalid-feedback">{errors.joiningDate}</div>}
                                             </div>
                                             <div className="mb-3 col-md-6">
                                                 <label htmlFor="designation" className="form-label">Designation<sup className=" text-danger">*</sup></label>
@@ -204,6 +204,36 @@ function MakeSecondaryUser() {
                                                 />
                                                 {errors.designation && <div className="invalid-feedback">{errors.designation}</div>}
                                             </div>
+                                            <div className="mb-3 col-md-6">
+                                                <label htmlFor="expart" className="form-label">Expart For<sup className=" text-danger">*</sup></label>
+                                                <input
+                                                    required
+                                                    placeholder="Do Separat Using Comma"
+                                                    type="text"
+                                                    className={`form-control ${errors.expart ? 'is-invalid' : ''}`}
+                                                    id="language"
+                                                    name="expart"
+                                                    value={inputs.expart}
+                                                    onChange={handleChange}
+                                                />
+                                                {errors.expart && <div className="invalid-feedback">{errors.expart}</div>}
+                                            </div>
+                                            <div className="mb-6 col-md-6">
+                                                <label htmlFor="department" className="form-label text-black">Select Department <span className=" text-danger">*</span></label>
+                                                <select
+                                                    required
+                                                    id="department"
+                                                    name="department"
+                                                    value={inputs.department}
+                                                    onChange={handleChange}
+                                                    className={`form-control ${errors.department ? 'is-invalid' : ''}`}>
+                                                    <option value="0">Select department</option>
+                                                    <option value="2">Android App Development</option>
+                                                    <option value="3">PC App Debolopment</option>
+                                                    <option value="4">Web Application Development</option>
+                                                </select>
+                                                {errors.department && <div className="invalid-feedback">{errors.department}</div>}
+                                            </div>
                                             <div className="col-6">
                                                 <label htmlFor="signature" className="form-label">Signature<sup className=" text-danger">*</sup></label>
                                                 <input
@@ -217,20 +247,6 @@ function MakeSecondaryUser() {
                                                     onChange={handleChange}
                                                 />
                                                 {errors.signature && <div className="invalid-feedback">{errors.signature}</div>}
-                                            </div>
-                                            <div className="mb-6 col-md-6">
-                                                <label htmlFor="password" className="form-label">Password<sup className="text-danger">*</sup></label>
-                                                <input
-                                                    required
-                                                    type="password"
-                                                    placeholder="Password"
-                                                    className={`form-control ${errors.password ? 'is-invalid' : ''}`}
-                                                    id="password"
-                                                    name="password"
-                                                    value={inputs.password}
-                                                    onChange={handleChange}
-                                                />
-                                                {errors.password && <div className="invalid-feedback">{errors.password}</div>}
                                             </div>
 
                                             <div className="col-12">
@@ -249,7 +265,7 @@ function MakeSecondaryUser() {
                                             </div>
 
                                             <div className="mb-3 col-12">
-                                                <label htmlFor="name" className="form-label display-6">Address</label>
+                                                <label htmlFor="country" className="form-label display-6">Address</label>
                                             </div>
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="country" className="form-label text-black">Country <span className=" text-danger">*</span></label>
@@ -264,7 +280,7 @@ function MakeSecondaryUser() {
                                                     <option value="Bangladesh">Bangladesh</option>
                                                     <option value="Algeria">Algeria</option>
                                                     <option value="Afghanistan">Afghanistan</option>
-                                                    <option value="Ghana<">Ghana</option>
+                                                    <option value="Ghana">Ghana</option>
                                                     <option value="Albania">Albania</option>
                                                     <option value="Bahrain">Bahrain</option>
                                                     <option value="Colombia">Colombia</option>
