@@ -243,20 +243,6 @@ function StaffAdd() {
                                                 />
                                                 {errors.signature && <div className="invalid-feedback">{errors.signature}</div>}
                                             </div>
-                                            <div className="mb-6 col-md-6">
-                                                <label htmlFor="password" className="form-label">Password<sup className="text-danger">*</sup></label>
-                                                <input
-                                                    required
-                                                    type="password"
-                                                    placeholder="Password"
-                                                    className={`form-control ${errors.password ? 'is-invalid' : ''}`}
-                                                    id="password"
-                                                    name="password"
-                                                    value={inputs.password}
-                                                    onChange={handleChange}
-                                                />
-                                                {errors.password && <div className="invalid-feedback">{errors.password}</div>}
-                                            </div>
 
                                             <div className="col-12">
                                                 <label htmlFor="photo" className="form-label">Photo<sup className=" text-danger">*</sup></label>
