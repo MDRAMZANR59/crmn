@@ -32,7 +32,7 @@ function ProjectList() {
                 <div className="card">
                 <div className="card-header">
                     <h3 className="card-title">Project List</h3>
-
+                    
                     <div className="card-tools">
                     <button type="button" className="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i className="fas fa-minus"></i>
@@ -130,6 +130,9 @@ function ProjectList() {
                                     <i className="fas fa-star"></i><br/>
                                     <a href="#">Comment</a></td>
                                 <td className="project-actions text-right">
+                                    <Link className="btn btn-success btn-sm" to="/project/projectTaskList">
+                                        <i className="fas fa-pencil-alt"></i>Task
+                                    </Link>
                                     <Link className="btn btn-info btn-sm" to="/project/rushMail">
                                         <i className="fas fa-pencil-alt"></i>Send Rush
                                     </Link>

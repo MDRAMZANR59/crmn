@@ -1,21 +1,59 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
 import AdminLayout from '../../../layouts/AdminLayout';
-
+import { useNavigate } from 'react-router-dom';
+import {useParams} from "react-router-dom";
 function Compose() {
-   const textval=`But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
-was born and I will give you a complete account of the system, and expound the actual teachings
-of the great explorer of the truth, the master-builder of human happiness. No one rejects,
-dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know
-how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again
-is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain,
-but because occasionally circumstances occur in which toil and pain can procure him some great
-pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise,
-except to obtain some advantage from it? But who has any right to find fault with a man who
-chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that
-produces no resultant pleasure? On the other hand, we denounce with righteous indignation and
-dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so
-blinded by desire, that they cannot foresee`
+  const [errors, setErrors] = useState([]);
+
+  const [inputs, setInputs] = useState({id:'', projectName:'', projectType:'', doHoPr:'', frontLiAndFrame:'', backLib:'', frontEndLan:'', backLang:'', database:'', firstName:'', lastName:'', phone:'', companyName:'', projectDes:'', badget:'', advance:'', duration:'', endDate:''});
+      const navigate=useNavigate();
+      const {id} = useParams();
+      
+      function getDatas(){
+          axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/${id}`).then(function(response) {
+              setInputs(response.data.data);
+          });
+      }
+  
+      useEffect(() => {
+          if(id){
+              getDatas();
+          }
+      }, []);
+  
+      const handleChange = (event) => {
+          const name = event.target.name;
+          const value = event.target.value;
+          setInputs(values => ({...values, [name]: value}));
+      }
+  
+      const handleSubmit = async(e) => {
+          e.preventDefault();
+          console.log(inputs)
+          
+          try{
+              let apiurl='';
+              if(inputs.id!=''){
+                  apiurl=`/projectfiles/edit/${inputs.id}`;
+              }else{
+                  apiurl=`/projectfiles/create`;
+              }
+              
+              let response= await axios({
+                  method: 'post',
+                  responsiveTYpe: 'json',
+                  url: `${process.env.REACT_APP_API_URL}${apiurl}`,
+                  data: inputs
+              });
+              navigate('/project/TransfaringProject')
+          } 
+          catch(e){
+              console.log(e);
+          }
+      }
+
 
     return (
         <AdminLayout>
@@ -121,7 +159,29 @@ blinded by desire, that they cannot foresee`
                   <div className="col-md-9">
                     <div className="card card-primary card-outline">
                       <div className="card-header">
-                        <h3 className="card-title">Compose New Message</h3>
+                        <h3 className=" d-inline card-title me-5">Compose New Message</h3>
+                        <label required className="me-2">Mail Type</label>
+                        <div className="form-group d-inline">
+                            <label htmlFor="rushMail" value="Rush Mail" className="d-inline">Rush Mail</label>
+                            <input
+                                value={inputs.rushMail}
+                                onChange={handleChange}
+                                className={`me-3${errors.rushMail ? 'is-invalid' : ''}`}
+                                id="rushMail" 
+                                type="radio" 
+                                name="mail" />
+                                {errors.rushMail && <div className="invalid-feedback">{errors.rushMail}</div>}
+                        
+                            <label htmlFor="notice" value="Client">Notice</label>
+                            <input 
+                                value={inputs.rushMail}
+                                onChange={handleChange}
+                                className={`${errors.rushMail ? 'is-invalid' : ''}`} 
+                                id="notice" 
+                                type="radio" 
+                                name="mail" /> 
+                                {errors.rushMail && <div className="invalid-feedback">{errors.rushMail}</div>}
+                        </div>
                       </div>
                     {/* /.card-header */}
                       <div className="card-body">
@@ -133,7 +193,7 @@ blinded by desire, that they cannot foresee`
                         </div>
                         <div className="form-group">
                           
-                            <textarea id="compose-textarea" name="bodyMassage" className="form-control" style={{height: "300px"}} defaultValue={textval}></textarea>
+                            <textarea id="compose-textarea" name="bodyMassage" className="form-control" style={{height: "300px"}} ></textarea>
                         </div>
                         <div className="form-group">
                           <div className="btn btn-default btn-file">

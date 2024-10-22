@@ -5,15 +5,15 @@ import AdminLayout from '../../../layouts/AdminLayout';
 import { useNavigate } from 'react-router-dom';
 import {useParams} from "react-router-dom";
 
-function CuatomerNote() {
+function ProjectTask() {
     const [errors, setErrors] = useState([]);
 
-    const [inputs, setInputs] = useState({id:'', customerId:'', employeeId:'', note:'', noteDate:'', nextDay:'', attachment:'', state:'',});
+    const [inputs, setInputs] = useState({id:'', projectId:'', employeeId:'', note:'', progress:'', task:'', assignDate:'', finishDate:'', actualDate:''});
         const navigate=useNavigate();
         const {id} = useParams();
         
         function getDatas(){
-            axios.get(`${process.env.REACT_APP_API_URL}/customerNote/${id}`).then(function(response) {
+            axios.get(`${process.env.REACT_APP_API_URL}/projectTask/${id}`).then(function(response) {
                 setInputs(response.data.data);
             });
         }
@@ -37,9 +37,9 @@ function CuatomerNote() {
             try{
                 let apiurl='';
                 if(inputs.id!=''){
-                    apiurl=`/customerNote/edit/${inputs.id}`;
+                    apiurl=`/projectTask/edit/${inputs.id}`;
                 }else{
-                    apiurl=`/customerNote/create`;
+                    apiurl=`/projectTask/create`;
                 }
                 
                 let response= await axios({
@@ -48,7 +48,7 @@ function CuatomerNote() {
                     url: `${process.env.REACT_APP_API_URL}${apiurl}`,
                     data: inputs
                 });
-                navigate('/customerNote/customerNoteList')
+                navigate('/projectTask/projectTaskList')
             } 
             catch(e){
                 console.log(e);
@@ -62,7 +62,7 @@ function CuatomerNote() {
                     <div className="container-fluid">
                         <div className="row mb-2">
                             <div className="col-sm-6">
-                                <h1 className="m-0">Add Customer Note</h1>
+                                <h1 className="m-0"> Add Project Task</h1>
                             </div>
                         </div>
                     </div>
@@ -72,7 +72,7 @@ function CuatomerNote() {
                     <div className="container-fluid">
                         <div className="card card-default">
                             <div className="card-header">
-                                <h3 className="card-title">Customer Note</h3>
+                                <h3 className="card-title">Project Task</h3>
                                 <div className="card-tools">
                                     <button type="button" className="btn btn-tool" data-card-widget="collapse">
                                         <i className="fas fa-minus"></i>
@@ -87,18 +87,18 @@ function CuatomerNote() {
                                     <form onSubmit={handleSubmit}>
                                         <div className="row md-6">
                                             <div className="mb-6 col-md-6">
-                                                <label htmlFor="customerId" className="form-label">Customer Id<sup className=" text-danger">*</sup></label>
+                                                <label htmlFor="projectId" className="form-label">Project Id<sup className=" text-danger">*</sup></label>
                                                 <input
-                                                    required
-                                                    placeholder="Customer Id"
+                                                    readOnly
+                                                    placeholder="Project Id"
                                                     type="number"
-                                                    className={`form-control ${errors.customerId ? 'is-invalid' : ''}`}
-                                                    id="customerId"
-                                                    name="customerId"
-                                                    value={inputs.customerId}
+                                                    className={`form-control ${errors.projectId ? 'is-invalid' : ''}`}
+                                                    id="projectId"
+                                                    name="projectId"
+                                                    value={inputs.projectId}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.customerId && <div className="invalid-feedback">{errors.customerId}</div>}
+                                                {errors.projectId && <div className="invalid-feedback">{errors.projectId}</div>}
                                             </div>
 
                                             <div className="mb-6 col-md-6">
@@ -107,13 +107,13 @@ function CuatomerNote() {
                                                     required
                                                     placeholder="Employe Id"
                                                     type="number"
-                                                    className={`form-control ${errors.lastName ? 'is-invalid' : ''}`}
-                                                    id="customerId"
-                                                    name="customerId"
-                                                    value={inputs.customerId}
+                                                    className={`form-control ${errors.employeeId ? 'is-invalid' : ''}`}
+                                                    id="employeeId"
+                                                    name="employeeId"
+                                                    value={inputs.employeeId}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.customerId && <div className="invalid-feedback">{errors.customerId}</div>}
+                                                {errors.employeeId && <div className="invalid-feedback">{errors.employeeId}</div>}
                                             </div>
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="note">Note<sup className=" text-danger">*</sup></label>
@@ -126,65 +126,72 @@ function CuatomerNote() {
                                             </div>
                                            
                                             <div className="mb-6 col-md-6">
-                                                <label htmlFor="noteDate" className="form-label">Note Date<sup className="text-danger">*</sup></label>
+                                                <label htmlFor="progress" className="form-label">Progress<sup className="text-danger">*</sup></label>
                                                 <input
                                                     required
                                                     placeholder="noteDate"
-                                                    type="date"
-                                                    className={`form-control ${errors.noteDate ? 'is-invalid' : ''}`}
-                                                    id="noteDate"
-                                                    name="noteDate"
-                                                    value={inputs.noteDate}
+                                                    type="number"
+                                                    className={`form-control ${errors.progress ? 'is-invalid' : ''}`}
+                                                    id="progress"
+                                                    name="progress"
+                                                    value={inputs.progress}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.noteDate && <div className="invalid-feedback">{errors.noteDate}</div>}
+                                                {errors.progress && <div className="invalid-feedback">{errors.progress}</div>}
                                             </div>
                                             <div className="mb-6 col-md-6">
-                                                <label htmlFor="nextDate" className="form-label">Next Date<sup className="text-danger">*</sup></label>
+                                                <label htmlFor="task">Task<sup className=" text-danger">*</sup></label>
+                                                <textarea
+                                                name="task"
+                                                value={inputs.task}
+                                                onChange={handleChange}
+                                                className={`form-control ${errors.task ? 'is-invalid' : ''}`} placeholder='Write Note' required id="task" rows="1"></textarea>
+                                                {errors.task && <div className="invalid-feedback">{errors.task}</div>}
+                                            </div>
+
+                                            <div className="mb-3 col-md-6">
+                                                <label htmlFor="attachment" className="form-label">Assign Date<sup className=" text-danger">*</sup></label>
                                                 <input
                                                     required
-                                                    placeholder="nextDate"
+                                                    placeholder="Assign Date"
                                                     type="date"
-                                                    className={`form-control ${errors.nextDate ? 'is-invalid' : ''}`}
-                                                    id="nextDate"
-                                                    name="nextDate"
-                                                    value={inputs.nextDate}
+                                                    className={`form-control ${errors.assignDate ? 'is-invalid' : ''}`}
+                                                    id="assignDate"
+                                                    name="assignDate"
+                                                    value={inputs.assignDate}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.nextDate && <div className="invalid-feedback">{errors.nextDate}</div>}
+                                                {errors.assignDate && <div className="invalid-feedback">{errors.assignDate}</div>}
                                             </div>
-
                                             <div className="mb-3 col-md-6">
-                                                <label htmlFor="attachment" className="form-label">Attachment<sup className=" text-danger">*</sup></label>
+                                                <label htmlFor="attachment" className="form-label">Finish Date<sup className=" text-danger">*</sup></label>
                                                 <input
                                                     required
-                                                    placeholder="Attachment"
-                                                    type="file"
-                                                    className={`form-control ${errors.attachment ? 'is-invalid' : ''}`}
-                                                    id="attachment"
-                                                    name="attachment"
-                                                    value={inputs.attachment}
+                                                    placeholder="Finish Date"
+                                                    type="date"
+                                                    className={`form-control ${errors.finishDate ? 'is-invalid' : ''}`}
+                                                    id="finishDate"
+                                                    name="finishDate"
+                                                    value={inputs.finishDate}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.attachment && <div className="invalid-feedback">{errors.attachment}</div>}
+                                                {errors.finishDate && <div className="invalid-feedback">{errors.finishDate}</div>}
                                             </div>
-                                            
                                             <div className="mb-3 col-md-6">
-                                                <label htmlFor="state" className="form-label">State</label>
+                                                <label htmlFor="attachment" className="form-label">Actual Date<sup className=" text-danger">*</sup></label>
                                                 <input
-                                                    placeholder="State"
-                                                    type="text"
-                                                    className={`form-control ${errors.state ? 'is-invalid' : ''}`}
-                                                    id="state"
-                                                    name="state"
-                                                    value={inputs.state}
+                                                    placeholder="Actual Date"
+                                                    type="date"
+                                                    className={`form-control ${errors.actualDate ? 'is-invalid' : ''}`}
+                                                    id="actualDate"
+                                                    name="actualDate"
+                                                    value={inputs.actualDate}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.state && <div className="invalid-feedback">{errors.state}</div>}
+                                                {errors.actualDate && <div className="invalid-feedback">{errors.actualDate}</div>}
                                             </div>
-
                                         </div>
-                                        <button type="submit" className="btn btn-primary mt-3">Add Note</button>
+                                        <button type="submit" className="btn btn-primary mt-3">Save Task</button>
                                     </form>
                                 </div>
                             </div>
@@ -196,4 +203,4 @@ function CuatomerNote() {
     );
 }
 
-export default CuatomerNote;
+export default ProjectTask;

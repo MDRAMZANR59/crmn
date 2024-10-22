@@ -13,12 +13,14 @@ import MailBox from './pages/Mail/Mailbox'
 import Compose from './pages/Mail/Compose'
 import ComSug from './pages/Mail/ComplainSggestion'
 import ProjectAdd from './pages/Project/ProjectAdd'
+import ProjectList from './pages/Project/ProjectList'
+import ProjectTask from './pages/Project/ProjectTask';
+import ProjectTaskList from './pages/Project/ProjectTaskList';
 import StaffAdd from './pages/Staff/AddStaff'
 import StaffList from './pages/Staff/StaffList'
 import MailStaff from './pages/Staff/StaffList/MailStaff'
 import WarningStaffList from './pages/Staff/WarningStaff'
 import WarningNotice from './pages/Staff/WarningStaff/warningNotice'
-import ProjectList from './pages/Project/ProjectList'
 import RushMail from './pages/Project/RushMail';
 import ServiceAdd from './pages/Service/ServiceAdd'
 import AndroidAppDev from './pages/Service/ServiceList/AndroidAppDevelopment'
@@ -35,7 +37,7 @@ import CancalingProject from './pages/Project/CancalingProject'
 import Invoice from './pages/Project/Invoice/invoice';
 import Review from './pages/Project/Review';
 
-import Register from './pages/Register';
+// import Register from './pages/Register';
 import Login from './pages/Login';
 import Protected from './components/protected';
 
@@ -44,7 +46,7 @@ function App() {
   return (
     <BrowserRouter>
         <Routes>
-        <Route path="/register" element={<Register />} />
+        {/* <Route path="/register" element={<Register />} /> */}
         <Route path="/login" element={<Login />} />
           <Route path="/" element={<Dashboard />} />
           <Route path="/makeSecondaryUser" element={<MakeSecondaryUser />} />
@@ -55,6 +57,8 @@ function App() {
           <Route path="/mail/mailbox/compose" element={<Compose/>} />
           <Route path="/project/projectAdd" element={<ProjectAdd/>} />
           <Route path="/project/projectList" element={<ProjectList/>} />
+          <Route path="/project/projectTask" element={<ProjectTask/>} />
+          <Route path="/project/projectTaskList" element={<ProjectTaskList/>} />
           <Route path="/project/rushMail" element={<RushMail/>} />
           <Route path="/mail/mailbox/ComSug" element={<ComSug/>} />
           <Route path="/customer/customerAdd" element={<CustomerAdd />} />

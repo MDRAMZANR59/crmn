@@ -105,7 +105,7 @@ function Sidebar() {
                             </li>
                             <li className={`nav-item ${openMenu === 'customerNote' ? 'menu-open' : ''}`}>
                                 <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('customerNote')}>
-                                    <i className="nav-icon fas fa-restroom"></i>
+                                    <i className="nav-icon fas fa-sticky-note"></i>
                                     <p>
                                     Customer Note
                                         <i className="fas fa-angle-left right"></i>
