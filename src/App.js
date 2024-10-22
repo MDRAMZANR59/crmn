@@ -8,7 +8,7 @@ import UserProfile from './pages/User/Profile';
 import EditSecondaryUser from './pages/User/EditSecondaryUser';
 import CustomerList from './pages/Customer/CustomerList'
 import CustomerAdd from './pages/Customer/CustomerAdd'
-import CustomerNote from './pages/Customer/CustomerNote';
+import CuatomerNote from './pages/CustomerNote/AddNote/Index';
 import MailBox from './pages/Mail/Mailbox'
 import Compose from './pages/Mail/Compose'
 import ComSug from './pages/Mail/ComplainSggestion'
@@ -60,6 +60,7 @@ function App() {
           <Route path="/customer/customerAdd" element={<CustomerAdd />} />
           <Route path="/customer/customerList" element={<CustomerList />} />
           <Route path="/customer/edit/:id" element={<CustomerAdd />} />
+          <Route path="/customerNote/addNote" element={<CuatomerNote />} />
           <Route path="/staff/staffAdd" element={<StaffAdd/>} />
           <Route path="/staff/edit/:id" element={<StaffAdd/>} />
           <Route path="/staff/staffList" element={<StaffList/>} />

@@ -103,6 +103,29 @@ function Sidebar() {
                                     </li>
                                 </ul>
                             </li>
+                            <li className={`nav-item ${openMenu === 'customerNote' ? 'menu-open' : ''}`}>
+                                <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('customerNote')}>
+                                    <i className="nav-icon fas fa-restroom"></i>
+                                    <p>
+                                    Customer Note
+                                        <i className="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul className="nav nav-treeview">
+                                    <li className="nav-item">
+                                        <Link to="/customerNote/addNote" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Customer Note Add</p>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to="/customer/customerList" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Note List</p>
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </li>
                             <li className={`nav-item ${openMenu === 'customer' ? 'menu-open' : ''}`}>
                                 <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('customer')}>
                                     <i className="nav-icon fas fa-restroom"></i>
@@ -126,38 +149,7 @@ function Sidebar() {
                                     </li>
                                 </ul>
                             </li>
-                             {/* Staff Section */}
-                             {/* <li className={`nav-item ${openMenu === 'staff' ? 'menu-open' : ''}`}>
-                                <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('staff')}>
-                                    <i className="nav-icon fas fa-users"></i>
-                                    <p>
-                                        Staff
-                                        <i className="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul className="nav nav-treeview">
-                                    <li className="nav-item">
-                                        <Link to="/staff/staffAdd" className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Add Staff</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link to='/staff/staffList' className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Staff List</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link to='/staff/warningStaffList' className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Warning Staff</p>
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </li> */}
-                            {/* Services Section */}
-                             {/* Project Section */}
+                            
                              <li className={`nav-item ${openMenu === 'project' ? 'menu-open' : ''}`}>
                                 <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('project')}>
                                     <i className="nav-icon fas fa-folder"></i>
@@ -182,13 +174,13 @@ function Sidebar() {
                                     <li className="nav-item">
                                         <Link to='/project/TransfaringProject' className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
-                                            <p>Transfaring Project</p>
+                                            <p>Transfaring Project no </p>
                                         </Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link to='/project/CancalingProject' className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
-                                            <p>Cancaling Project</p>
+                                            <p>Cancaling Project no </p>
                                         </Link>
                                     </li>
                                 </ul>

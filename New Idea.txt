@@ -1,0 +1,17 @@
+Project
+1 Project Add
+2 Project List> পাশে Button হবে এবং Add Task ক্লিক করলে দুটি অপশন হবে 1। Add Tase, List Task হুবহু প্রজেক্ট টাস্ক ডায়াগ্রামের লিষ্ট হবে 14.01 মিনিট Stuch একটি সিলেক্ট অপশন হবে এবং 1=একটিভ, 2=ফিনিশ, 3= কেনসেল
+3 Finish Project
+4 Cancel Project
+5
+
+table একটি, স্টাটাস কলামের উপর ভিত্তি করে প্রজেক্ট দেখবো 21.00
+
+
+User বাদ হবে And Staff থাকবে
+
+1. Project Add
+2. All Project
+3. Active Project
+4. Finish Project
+5. Cancel Project
