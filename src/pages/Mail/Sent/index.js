@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AdminLayout from '../../../layouts/AdminLayout';
 
-function MailBox() {
+function SentMail() {
     return (
         <AdminLayout>
             <div className="content-wrapper">
@@ -11,59 +11,25 @@ function MailBox() {
                     <div className="container-fluid">
                         <div className="row mb-2">
                             <div className="col-sm-6">
-                                <h1>Inbox</h1>
+                                <h1>Sent Mail</h1>
                             </div>
                             <div className="col-sm-6">
                                 <ol className="breadcrumb float-sm-right">
                                     <li className="breadcrumb-item"><Link to="/">Mail</Link></li>
-                                    <li className="breadcrumb-item active">Inbox</li>
+                                    <li className="breadcrumb-item active">Sent Mail</li>
                                 </ol>
                             </div>
                         </div>
                     </div>
                 </section>
-
                 {/* Main content */}
                 <section className="content">
                     <div className="row">
-                        <div className="col-md-3">
-                            <Link to='/mail/mailbox/compose' className="btn btn-primary btn-block mb-3">Compose</Link>
-                            <div className="card">
-                                <div className="card-header">
-                                    <h3 className="card-title">Mail Box</h3>
-                                </div>
-                                <div className="card-body p-0">
-                                    <ul className="nav nav-pills flex-column">
-                                        <li className="nav-item active">
-                                            <Link to="#" className="nav-link">
-                                                <i className="fas fa-inbox"></i> Inbox
-                                            </Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link to="#" className="nav-link">
-                                                <i className="fas fa-filter"></i> New Mail
-                                                <span className="badge bg-warning float-right">65</span>
-                                            </Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link to="#" className="nav-link">
-                                                <i className="far fa-envelope"></i> Sent
-                                            </Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link to="#" className="nav-link">
-                                                <i className="far fa-envelope"></i> Trash
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
                         {/* /.col */}
                         <div className="col-md-9">
                             <div className="card card-primary card-outline">
                                 <div className="card-header">
-                                    <h3 className="card-title">Inbox</h3>
+                                    <h3 className="card-title">Sent Mail</h3>
                                     <div className="card-tools">
                                         <div className="input-group input-group-sm">
                                             <input type="text" className="form-control" placeholder="Search Mail" />
@@ -120,7 +86,7 @@ function MailBox() {
                                                             <label htmlFor="check1"></label>
                                                         </div>
                                                     </td>
-                                                    <td className="mailbox-name"><Link to="#">Sender</Link></td>
+                                                    <td className="mailbox-name"><Link to="#">Reciver</Link></td>
                                                     <td className="mailbox-subject"><b>Subject</b></td>
                                                     <td className="mailbox-message"><Link to="#">Message</Link></td>
                                                     <td className="mailbox-attachment">File</td>
@@ -139,4 +105,4 @@ function MailBox() {
     );
 }
 
-export default MailBox;
+export default SentMail;

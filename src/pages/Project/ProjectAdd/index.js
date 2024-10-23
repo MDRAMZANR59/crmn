@@ -78,7 +78,7 @@ function ProjectAdd() {
                             </div>
                             <div className="col-sm-6">
                                 <ol className="breadcrumb float-sm-right">
-                                    <li className="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li className="breadcrumb-item"><a href="#">Project</a></li>
                                     <li className="breadcrumb-item active">Project Add</li>
                                 </ol>
                             </div>
@@ -618,7 +618,7 @@ function ProjectAdd() {
                                              name="email"
                                              value={inputs.email}
                                              onChange={handleChange}
-                                             className={`form-control ${errors.email ? 'is-invalid' : ''}`} placeholder="Email" required type="number" id="email" />
+                                             className={`form-control ${errors.email ? 'is-invalid' : ''}`} placeholder="Email" required type="text" id="email" />
                                             {errors.email && <div className="invalid-feedback">{errors.email}</div>}
                                         </div>
                                         
