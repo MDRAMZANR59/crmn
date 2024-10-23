@@ -92,32 +92,8 @@ function CustomerList() {
           </div>
         </section>
     </div>
-    </AdminLayout>       
+  </AdminLayout>       
   )
 }
 
 export default CustomerList
-
-
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-// import AdminLayout from '../../../layouts/AdminLayout'
-// import { Link } from 'react-router-dom';
-
-// function CustomerList() {
-//   const[data, setData]=useState([]);
-//   useEffect(() => {
-//       getDatas();
-//   }, []);
-
-//   function getDatas() {
-//       axios.get(`${process.env.REACT_APP_API_URL}/customer/index`).then(function(response) {
-//           setData(response.data.data);
-//       });
-//   }
-//   const deleteData = (id) => {
-//       axios.delete(`${process.env.REACT_APP_API_URL}/customer/${id}`).then(function(response){
-//           getDatas();
-//       });
-//   }
-    

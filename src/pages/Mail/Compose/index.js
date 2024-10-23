@@ -80,83 +80,7 @@ function Compose() {
             <section className="content">
               <div className="container-fluid">
                 <div className="row">
-                  <div className="col-md-3">
-                    <Link to="/mail/mailBox" className="btn btn-primary btn-block mb-3">Back to Inbox</Link>
-
-                    <div className="card">
-                      <div className="card-header">
-                        <h3 className="card-title">Folders</h3>
-
-                        <div className="card-tools">
-                          <button type="button" className="btn btn-tool" data-card-widget="collapse">
-                            <i className="fas fa-minus"></i>
-                          </button>
-                        </div>
-                      </div>
-                      <div className="card-body p-0">
-                        <ul className="nav nav-pills flex-column">
-                          <li className="nav-item active">
-                            <a href="#" className="nav-link">
-                              <i className="fas fa-inbox"></i> Inbox
-                              <span className="badge bg-primary float-right">12</span>
-                            </a>
-                          </li>
-                          <li className="nav-item">
-                            <a href="#" className="nav-link">
-                              <i className="far fa-envelope"></i> Sent
-                            </a>
-                          </li>
-                          <li className="nav-item">
-                            <a href="#" className="nav-link">
-                              <i className="far fa-file-alt"></i> Drafts
-                            </a>
-                          </li>
-                          <li className="nav-item">
-                            <a href="#" className="nav-link">
-                              <i className="fas fa-filter"></i> Junk
-                              <span className="badge bg-warning float-right">65</span>
-                            </a>
-                          </li>
-                          <li className="nav-item">
-                            <a href="#" className="nav-link">
-                              <i className="far fa-trash-alt"></i> Trash
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    {/* /.card-body */}
-                    </div>
-                  {/* /.card */}
-                    <div className="card">
-                      <div className="card-header">
-                        <h3 className="card-title">Labels</h3>
-
-                        <div className="card-tools">
-                          <button type="button" className="btn btn-tool" data-card-widget="collapse">
-                            <i className="fas fa-minus"></i>
-                          </button>
-                        </div>
-                      </div>
-                    {/* /.card-header */}
-                      <div className="card-body p-0">
-                        <ul className="nav nav-pills flex-column">
-                          <li className="nav-item">
-                            <a className="nav-link" href="#"><i className="far fa-circle text-danger"></i> Important</a>
-                          </li>
-                          <li className="nav-item">
-                            <a className="nav-link" href="#"><i className="far fa-circle text-warning"></i> Promotions</a>
-                          </li>
-                          <li className="nav-item">
-                            <a className="nav-link" href="#"><i className="far fa-circle text-primary"></i> Social</a>
-                          </li>
-                        </ul>
-                      </div>
-                    {/* /.card-body */}
-                    </div>
-                  {/* /.card */}
-                  </div>
-                {/* /.col */}
-                  <div className="col-md-9">
+                  <div className="col-md-12">
                     <div className="card card-primary card-outline">
                       <div className="card-header">
                         <h3 className=" d-inline card-title me-5">Compose New Message</h3>
@@ -206,7 +130,6 @@ function Compose() {
                     {/* /.card-body */}
                       <div className="card-footer">
                         <div className="float-right">
-                          <button type="button" className="btn btn-default"><i className="fas fa-pencil-alt"></i> Draft</button>
                           <button type="submit" className="btn btn-primary"><i className="far fa-envelope"></i> Send</button>
                         </div>
                         <Link to="/mail/mailBox"><button type="reset" className="btn btn-default"><i className="fas fa-times"></i> Discard</button></Link>

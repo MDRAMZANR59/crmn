@@ -190,6 +190,19 @@ function ProjectTask() {
                                                 />
                                                 {errors.actualDate && <div className="invalid-feedback">{errors.actualDate}</div>}
                                             </div>
+                                            <div className="mb-3 col-md-6">
+                                                <label htmlFor="progress" className="form-label">Progress</label>
+                                                <input
+                                                    placeholder="Progress %"
+                                                    type="number"
+                                                    className={`form-control ${errors.progress ? 'is-invalid' : ''}`}
+                                                    id="progress"
+                                                    name="progress"
+                                                    value={inputs.progress}
+                                                    onChange={handleChange}
+                                                />
+                                                {errors.progress && <div className="invalid-feedback">{errors.progress}</div>}
+                                            </div>
                                         </div>
                                         <button type="submit" className="btn btn-primary mt-3">Save Task</button>
                                     </form>

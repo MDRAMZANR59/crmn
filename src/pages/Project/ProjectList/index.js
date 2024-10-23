@@ -31,7 +31,21 @@ function ProjectList() {
                 {/* Default box */}
                 <div className="card">
                 <div className="card-header">
-                    <h3 className="card-title">Project List</h3>
+                    <strong className="card-title">Project List</strong>
+                    <div className="col-md-2 float-end">
+                        <select
+                            className="border-0"
+                            id="sortBy"
+                            name="sortBy">
+                            <option value="Sort By">Sort By</option>
+                            <option value="Sort By">All</option>
+                            <option value="New">New</option>
+                            <option value="Running">Running</option>
+                            <option value="Stock">Stock</option>
+                            <option value="Delivary">Delivary</option>
+                            <option value="Canceled">Canceled</option>
+                        </select>
+                    </div>
                 </div>
                 <div className="card-body p-0">
                     <table className="table table-striped projects table-responsive">
@@ -81,7 +95,7 @@ function ProjectList() {
                                     <a href="#">Comment</a></td>
                                 <td className="project-actions text-right">
                                     <Link className="btn btn-success btn-sm" to="/project/projectTaskList">
-                                        <i className="fas fa-pencil-alt"></i>Task
+                                        <i class="fas fa-tasks"></i>Task
                                     </Link>
                                     <Link className="btn btn-info btn-sm" to="/project/rushMail">
                                         <i className="fas fa-pencil-alt"></i>Send Rush
@@ -91,6 +105,9 @@ function ProjectList() {
                                     </Link>
                                     <Link to="/project/review" className="btn btn-info btn-sm">
                                         <i className="fas fa-comment-dots"></i>Review
+                                    </Link>
+                                    <Link to="/project/review" className="btn btn-danger btn-sm">
+                                        <i class="fas fa-window-close"></i>Cancel
                                     </Link>
                                 </td>
                             </tr>
