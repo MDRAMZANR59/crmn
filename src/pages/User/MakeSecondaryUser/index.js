@@ -86,7 +86,7 @@ function MakeSecondaryUser() {
                                     <form onSubmit={handleSubmit}>
                                         <div className="row md-6">
                                             <div className="mb-6 col-md-6">
-                                                <label htmlFor="role" className="form-label">Role<sup className=" text-danger">*</sup></label>
+                                                <label htmlFor="role" className="form-label">User Role<sup className=" text-danger">*</sup></label>
                                                 <select
                                                     required
                                                     type="text"
@@ -95,14 +95,13 @@ function MakeSecondaryUser() {
                                                     name="role_id"
                                                     value={inputs.role_id}
                                                     onChange={handleChange}>
-                                                        <option value="">Select role</option>
+                                                        <option value="">Select Type</option>
                                                         <option value="1">Super Admin</option>
                                                         <option value="2">Customer Exicutive</option>
                                                         <option value="3">Staff</option>
                                                         <option value="4">Customer</option>
                                                 </select>
-                                                
-                                                {errors.name && <div className="invalid-feedback">{errors.name}</div>}
+                                                {errors.role_id && <div classrole_id="invalid-feedback">{errors.role_id}</div>}
                                             </div>
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="name" className="form-label">Name By NID<sup className=" text-danger">*</sup></label>
@@ -211,7 +210,7 @@ function MakeSecondaryUser() {
                                                     placeholder="Do Separat Using Comma"
                                                     type="text"
                                                     className={`form-control ${errors.expart ? 'is-invalid' : ''}`}
-                                                    id="language"
+                                                    id="expart"
                                                     name="expart"
                                                     value={inputs.expart}
                                                     onChange={handleChange}
@@ -249,7 +248,7 @@ function MakeSecondaryUser() {
                                                 {errors.signature && <div className="invalid-feedback">{errors.signature}</div>}
                                             </div>
 
-                                            <div className="col-12">
+                                            <div className="col-6">
                                                 <label htmlFor="photo" className="form-label">Photo<sup className=" text-danger">*</sup></label>
                                                 <input
                                                     required
@@ -264,7 +263,7 @@ function MakeSecondaryUser() {
                                                 {errors.photo && <div className="invalid-feedback">{errors.photo}</div>}
                                             </div>
 
-                                            <div className="mb-3 col-12">
+                                            <div className="col-">
                                                 <label htmlFor="country" className="form-label display-6">Address</label>
                                             </div>
                                             <div className="mb-6 col-md-6">
@@ -317,7 +316,7 @@ function MakeSecondaryUser() {
                                                 {errors.upozila && <div className="invalid-feedback">{errors.upozila}</div>}
                                             </div>
 
-                                            <div className="mb-6 col-md-6">
+                                            <div className="col-md-6">
                                                 <label htmlFor="post" className="form-label">Post<sup className="text-danger">*</sup></label>
                                                 <input
                                                     required
@@ -346,7 +345,7 @@ function MakeSecondaryUser() {
                                                 />
                                                 {errors.zipCode && <div className="invalid-feedback">{errors.zipCode}</div>}
                                             </div>
-                                            <div className="mb-6 col-md-6">
+                                            <div className="col-md-6">
                                                 <label htmlFor="state" className="form-label">State<sup className=" text-danger">*</sup></label>
                                                 <input
                                                     required

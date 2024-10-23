@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import AdminLayout from '../../../layouts/AdminLayout';
@@ -62,7 +61,7 @@ function CuatomerNote() {
                     <div className="container-fluid">
                         <div className="row mb-2">
                             <div className="col-sm-6">
-                                <h1 className="m-0">Add Customer Note</h1>
+                                <h1 className="m-0">Customer Note Pad</h1>
                             </div>
                         </div>
                     </div>
@@ -100,21 +99,22 @@ function CuatomerNote() {
                                                 />
                                                 {errors.customerId && <div className="invalid-feedback">{errors.customerId}</div>}
                                             </div>
-
                                             <div className="mb-6 col-md-6">
-                                                <label htmlFor="customerId" className="form-label">Employe Id<sup className=" text-danger">*</sup></label>
+                                                <label htmlFor="employeeId" className="form-label">Employee Id<sup className=" text-danger">*</sup></label>
                                                 <input
                                                     required
-                                                    placeholder="Employe Id"
+                                                    placeholder="Employee Id"
                                                     type="number"
-                                                    className={`form-control ${errors.lastName ? 'is-invalid' : ''}`}
-                                                    id="customerId"
-                                                    name="customerId"
-                                                    value={inputs.customerId}
+                                                    className={`form-control ${errors.employeeId ? 'is-invalid' : ''}`}
+                                                    id="employeeId"
+                                                    name="employeeId"
+                                                    value={inputs.employeeId}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.customerId && <div className="invalid-feedback">{errors.customerId}</div>}
+                                                {errors.employeeId && <div className="invalid-feedback">{errors.employeeId}</div>}
                                             </div>
+
+                                            
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="note">Note<sup className=" text-danger">*</sup></label>
                                                 <textarea
@@ -126,38 +126,36 @@ function CuatomerNote() {
                                             </div>
                                            
                                             <div className="mb-6 col-md-6">
-                                                <label htmlFor="noteDate" className="form-label">Note Date<sup className="text-danger">*</sup></label>
+                                                <label htmlFor="firstMeet" className="form-label">First Meet<sup className="text-danger">*</sup></label>
                                                 <input
                                                     required
-                                                    placeholder="noteDate"
                                                     type="date"
-                                                    className={`form-control ${errors.noteDate ? 'is-invalid' : ''}`}
-                                                    id="noteDate"
-                                                    name="noteDate"
-                                                    value={inputs.noteDate}
+                                                    className={`form-control ${errors.firstMeet ? 'is-invalid' : ''}`}
+                                                    id="firstMeet"
+                                                    name="firstMeet"
+                                                    value={inputs.firstMeet}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.noteDate && <div className="invalid-feedback">{errors.noteDate}</div>}
+                                                {errors.firstMeet && <div className="invalid-feedback">{errors.firstMeet}</div>}
                                             </div>
                                             <div className="mb-6 col-md-6">
-                                                <label htmlFor="nextDate" className="form-label">Next Date<sup className="text-danger">*</sup></label>
+                                                <label htmlFor="nextMeet" className="form-label">Next Meet<sup className="text-danger">*</sup></label>
                                                 <input
                                                     required
-                                                    placeholder="nextDate"
+                                                    placeholder="nextMeet"
                                                     type="date"
-                                                    className={`form-control ${errors.nextDate ? 'is-invalid' : ''}`}
-                                                    id="nextDate"
-                                                    name="nextDate"
-                                                    value={inputs.nextDate}
+                                                    className={`form-control ${errors.nextMeet ? 'is-invalid' : ''}`}
+                                                    id="nextMeet"
+                                                    name="nextMeet"
+                                                    value={inputs.nextMeet}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.nextDate && <div className="invalid-feedback">{errors.nextDate}</div>}
+                                                {errors.nextMeet && <div className="invalid-feedback">{errors.nextMeet}</div>}
                                             </div>
 
                                             <div className="mb-3 col-md-6">
-                                                <label htmlFor="attachment" className="form-label">Attachment<sup className=" text-danger">*</sup></label>
+                                                <label htmlFor="attachment" className="form-label">Attachment</label>
                                                 <input
-                                                    required
                                                     placeholder="Attachment"
                                                     type="file"
                                                     className={`form-control ${errors.attachment ? 'is-invalid' : ''}`}
@@ -170,17 +168,17 @@ function CuatomerNote() {
                                             </div>
                                             
                                             <div className="mb-3 col-md-6">
-                                                <label htmlFor="state" className="form-label">State</label>
+                                                <label htmlFor="meetLocation" className="form-label">Meetup Location</label>
                                                 <input
-                                                    placeholder="State"
+                                                    placeholder="Meet Location"
                                                     type="text"
-                                                    className={`form-control ${errors.state ? 'is-invalid' : ''}`}
-                                                    id="state"
-                                                    name="state"
-                                                    value={inputs.state}
+                                                    className={`form-control ${errors.meetLocation ? 'is-invalid' : ''}`}
+                                                    id="meetLocation"
+                                                    name="meetLocation"
+                                                    value={inputs.meetLocation}
                                                     onChange={handleChange}
                                                 />
-                                                {errors.state && <div className="invalid-feedback">{errors.state}</div>}
+                                                {errors.meetLocation && <div className="invalid-feedback">{errors.meetLocation}</div>}
                                             </div>
 
                                         </div>

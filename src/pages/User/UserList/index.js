@@ -56,15 +56,19 @@ function UserList() {
                             <thead>
                                 <tr>
                                     <th>#SL</th>
+                                    <th>User Type</th>
                                     <th>Name</th>
+                                    <th>Employe Id</th>
                                     <th>NID</th>
                                     <th>DOB</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Employe Id</th>
+                                    <th>Joining Date</th>
                                     <th>Dasignation</th>
-                                    <th>Photo</th>
+                                    <th>Expart</th>
+                                    <th>Department</th>
                                     <th>Signature</th>
+                                    <th>Photo</th>
                                     <th>Address</th>
                                     <th>Action</th>
                                 </tr>
@@ -73,15 +77,19 @@ function UserList() {
                               {data && data.map((d, key) =>
                                 <tr key={d.id}>
                                   <td className="text-bold-500">{key+1}</td>
+                                  <td>{d.role_id}</td>
                                   <td>{d.name}</td>
+                                  <td>{d.usermeta.employeId}</td>
                                   <td>{d.usermeta.nid}</td>
                                   <td>{d.usermeta.dob}</td>
                                   <td>{d.usermeta.email}</td>
                                   <td>{d.usermeta.phone}</td>
-                                  <td>{d.usermeta.employeId}</td>
-                                  <td>{d.usermeta.employeId}</td>
-                                  <td>{d.usermeta.photo}</td>
+                                  <td>{d.usermeta.joiningDate}</td>
+                                  <td>{d.usermeta.designation}</td>
+                                  <td>{d.usermeta.expart}</td>
+                                  <td>{d.usermeta.department}</td>
                                   <td>{d.usermeta.signature}</td>
+                                  <td>{d.usermeta.photo}</td>
                                   <td><span>{d.usermeta.state}</span><span>{d.usermeta.post}</span><span>{d.usermeta.zipCode}</span><span>{d.usermeta.upozila}</span><span>{d.usermeta.districts}</span><span>{d.usermeta.country}</span></td>
                                   <td>
                                       <Link to={`/user/edit/${d.id}`} className='btn btn-info' >Edit</Link>
@@ -89,42 +97,6 @@ function UserList() {
                                   </td>
                                 </tr>
                               )}
-                                <tr>
-                                    <td>01</td>
-                                    <td>Md Kamal Uddin</td>
-                                    <td>710 720 5554</td>
-                                    <td>14/04/1997</td>
-                                    <td>kamal@gmail.com</td>
-                                    <td>+880 1559 075 906</td>
-                                    <td>103</td>
-                                    <td>CEO</td>
-                                    <td><img width="200px" src="../../layouts/assets/dist/img/avatar.png"/></td>
-                                    <td><img width="200px" src="../../"/></td>
-                                    <td><span>Pathan Para</span><span>Oxizyn</span><span>4500</span><span>Bayejid</span><span>Chittagong</span><span>+880</span></td>
-                                    <td>
-                                        <a className='btn btn-info' href='#'>Edit</a>
-                                        <a className='btn btn-danger' href='#'>Delete</a>
-                                        <a className='btn btn-primary' href='#'>Mail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>02</td>
-                                    <td>Md Jamal</td>
-                                    <td>542 359 24553</td>
-                                    <td>02/09/1995</td>
-                                    <td>jamal@gmail.com</td>
-                                    <td>+880 1559 075 555</td>
-                                    <td>589</td>
-                                    <td>Customer Exicutive</td>
-                                    <td><img width="200px" src="../../layouts/assets/dist/img/avatar.png"/></td>
-                                    <td><img width="200px" src="../../"/></td>
-                                    <td><span>Pathan Para</span><span>Oxizyn</span><span>4500</span><span>Bayejid</span><span>Chittagong</span><span>+880</span></td>
-                                    <td>
-                                        <Link to="/user/editSecondaryUser" className='btn btn-info'>Edit</Link>
-                                        <a className='btn btn-danger' href='#'>Delete</a>
-                                        <Link to="/mail/mailbox/compose" className='btn btn-primary'>Mail</Link>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
