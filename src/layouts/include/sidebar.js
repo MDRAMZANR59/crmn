@@ -90,7 +90,7 @@ function Sidebar() {
                                 </a>
                                 <ul className="nav nav-treeview">
                                     <li className="nav-item">
-                                        <Link to="/makeSecondaryUser" className="nav-link">
+                                        <Link to="/user/addUser" className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
                                             <p>Add User</p>
                                         </Link>

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import {useParams} from "react-router-dom";
 
 
-function MakeSecondaryUser() {
+function AddUser() {
     const [errors, setErrors] = useState([]);
 
     const [inputs, setInputs] = useState({id:'', name:'',nid:'',dob:'',email:'',phone:'',employeId:'',designation:'',signature:'', password:'', photo:'', country:'',districts:'',upozila:'', post:'', zipCode:'', state:''});
@@ -372,4 +372,4 @@ function MakeSecondaryUser() {
     );
 }
 
-export default MakeSecondaryUser;
+export default AddUser;
