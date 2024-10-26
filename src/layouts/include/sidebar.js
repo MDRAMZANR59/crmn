@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 
 function Sidebar() {
+    const user_role=localStorage.getItem("user_role");
     // State to track open menus
     const [openMenu, setOpenMenu] = useState(null);
 
@@ -81,51 +82,56 @@ function Sidebar() {
                                 </a>
                             </li>
                             {/* User Section */}
-                            <li className={`nav-item ${openMenu === 'user' ? 'menu-open' : ''}`}>
-                                <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('user')}>
-                                    <i className="nav-icon fas fa-user"></i>
-                                    <p>User
-                                        <i className="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul className="nav nav-treeview">
-                                    <li className="nav-item">
-                                        <Link to="/user/addUser" className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Add User</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link to="/user/userList" className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>User List</p>
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li className={`nav-item ${openMenu === 'customerNote' ? 'menu-open' : ''}`}>
-                                <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('customerNote')}>
-                                    <i className="nav-icon fas fa-sticky-note"></i>
-                                    <p>
-                                    Customer Note
-                                        <i className="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul className="nav nav-treeview">
-                                    <li className="nav-item">
-                                        <Link to="/customerNote/addNote" className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Customer Note Add</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link to="/customerNote/noteList" className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Note List</p>
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </li>
+                            {user_role==1 && 
+                                <li className={`nav-item ${openMenu === 'user' ? 'menu-open' : ''}`}>
+                                    <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('user')}>
+                                        <i className="nav-icon fas fa-user"></i>
+                                        <p>User
+                                            <i className="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    <ul className="nav nav-treeview">
+                                        <li className="nav-item">
+                                            <Link to="/user/addUser" className="nav-link">
+                                                <i className="far fa-circle nav-icon"></i>
+                                                <p>Add User</p>
+                                            </Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link to="/user/userList" className="nav-link">
+                                                <i className="far fa-circle nav-icon"></i>
+                                                <p>User List</p>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            {user_role==1 || user_role==2 || user_role==3 && 
+                                <li className={`nav-item ${openMenu === 'customerNote' ? 'menu-open' : ''}`}>
+                                    <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('customerNote')}>
+                                        <i className="nav-icon fas fa-sticky-note"></i>
+                                        <p>
+                                        Customer Note
+                                            <i className="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    <ul className="nav nav-treeview">
+                                        <li className="nav-item">
+                                            <Link to="/customerNote/addNote" className="nav-link">
+                                                <i className="far fa-circle nav-icon"></i>
+                                                <p>Customer Note Add</p>
+                                            </Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link to="/customerNote/noteList" className="nav-link">
+                                                <i className="far fa-circle nav-icon"></i>
+                                                <p>Note List</p>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            
                             <li className={`nav-item ${openMenu === 'customer' ? 'menu-open' : ''}`}>
                                 <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('customer')}>
                                     <i className="nav-icon fas fa-restroom"></i>

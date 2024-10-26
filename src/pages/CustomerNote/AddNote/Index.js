@@ -7,7 +7,7 @@ import {useParams} from "react-router-dom";
 function CuatomerNote() {
     const [errors, setErrors] = useState([]);
 
-    const [inputs, setInputs] = useState({id:'', customerId:'', employeeId:'', note:'', noteDate:'', nextDay:'', attachment:'', state:'',});
+    const [inputs, setInputs] = useState({id:'', customerId:'', employeeId:'', note:'', noteDate:'', nextDay:'', attachment:'', meetLocation:'',});
         const navigate=useNavigate();
         const {id} = useParams();
         
@@ -47,7 +47,7 @@ function CuatomerNote() {
                     url: `${process.env.REACT_APP_API_URL}${apiurl}`,
                     data: inputs
                 });
-                navigate('/customerNote/customerNoteList')
+                navigate('/customerNote/noteList')
             } 
             catch(e){
                 console.log(e);
@@ -94,7 +94,7 @@ function CuatomerNote() {
                                                     className={`form-control ${errors.customerId ? 'is-invalid' : ''}`}
                                                     id="customerId"
                                                     name="customerId"
-                                                    value={inputs.customerId}
+                                                    defaultValue={inputs.customerId}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.customerId && <div className="invalid-feedback">{errors.customerId}</div>}
@@ -108,7 +108,7 @@ function CuatomerNote() {
                                                     className={`form-control ${errors.employeeId ? 'is-invalid' : ''}`}
                                                     id="employeeId"
                                                     name="employeeId"
-                                                    value={inputs.employeeId}
+                                                    defaultValue={inputs.employeeId}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.employeeId && <div className="invalid-feedback">{errors.employeeId}</div>}
@@ -119,7 +119,7 @@ function CuatomerNote() {
                                                 <label htmlFor="note">Note<sup className=" text-danger">*</sup></label>
                                                 <textarea
                                                 name="note"
-                                                value={inputs.note}
+                                                defaultValue={inputs.note}
                                                 onChange={handleChange}
                                                 className={`form-control ${errors.note ? 'is-invalid' : ''}`} placeholder='Write Note' required id="note" rows="1"></textarea>
                                                 {errors.note && <div className="invalid-feedback">{errors.note}</div>}
@@ -133,7 +133,7 @@ function CuatomerNote() {
                                                     className={`form-control ${errors.firstMeet ? 'is-invalid' : ''}`}
                                                     id="firstMeet"
                                                     name="firstMeet"
-                                                    value={inputs.firstMeet}
+                                                    defaultValue={inputs.firstMeet}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.firstMeet && <div className="invalid-feedback">{errors.firstMeet}</div>}
@@ -147,7 +147,7 @@ function CuatomerNote() {
                                                     className={`form-control ${errors.nextMeet ? 'is-invalid' : ''}`}
                                                     id="nextMeet"
                                                     name="nextMeet"
-                                                    value={inputs.nextMeet}
+                                                    defaultValue={inputs.nextMeet}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.nextMeet && <div className="invalid-feedback">{errors.nextMeet}</div>}
@@ -161,7 +161,7 @@ function CuatomerNote() {
                                                     className={`form-control ${errors.attachment ? 'is-invalid' : ''}`}
                                                     id="attachment"
                                                     name="attachment"
-                                                    value={inputs.attachment}
+                                                    defaultValue={inputs.attachment}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.attachment && <div className="invalid-feedback">{errors.attachment}</div>}
@@ -175,7 +175,7 @@ function CuatomerNote() {
                                                     className={`form-control ${errors.meetLocation ? 'is-invalid' : ''}`}
                                                     id="meetLocation"
                                                     name="meetLocation"
-                                                    value={inputs.meetLocation}
+                                                    defaultValue={inputs.meetLocation}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.meetLocation && <div className="invalid-feedback">{errors.meetLocation}</div>}

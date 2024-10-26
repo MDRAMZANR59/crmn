@@ -10,7 +10,7 @@ function NoteList() {
     }, []);
   
     function getDatas() {
-        axios.get(`${process.env.REACT_APP_API_URL}/noteList/index`).then(function(response) {
+        axios.get(`${process.env.REACT_APP_API_URL}/customerNote/index`).then(function(response) {
             setData(response.data.data);
         });
     }
@@ -32,7 +32,7 @@ function NoteList() {
               <div className="col-sm-6">
                 <ol className="breadcrumb float-sm-right">
                   <li className="breadcrumb-item"><a href="#">Customer</a></li>
-                  <li className="breadcrumb-item active">List</li>
+                  <li className="breadcrumb-item active">Note List</li>
                 </ol>
               </div>{/* /.col */}
             </div>{/* /.row */}
@@ -75,9 +75,9 @@ function NoteList() {
                                     <td>{d.firstMeet}</td>
                                     <td>{d.nextMeet}</td>
                                     <td>{d.attachment}</td>
-                                    <td>{d.meetupLocation}</td>
+                                    <td>{d.meetLocation}</td>
                                     <td>
-                                        <Link to={`/customer/edit/${d.id}`} className='btn btn-info'>Edit</Link>
+                                        <Link to={`/customerNote/edit/${d.id}`} className='btn btn-info'>Edit</Link>
                                         <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger' >Delete</button>
                                         <Link to='/mail/mailbox/compose' className="btn btn-primary btn-block mb-3">Mail</Link>
                                     </td>

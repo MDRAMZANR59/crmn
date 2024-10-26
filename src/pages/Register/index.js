@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { register } from '../../Api/AllApi';
 
 function Register() {
+    const [errors, setErrors] = useState([]);
     const [inputs, setInputs] = useState([]);
     const navigate = useNavigate();
     const handleChange = (event) => {
@@ -11,157 +12,114 @@ function Register() {
         const value = event.target.value;
         setInputs(values => ({ ...values, [name]: value }));
     }
-
-    const handleSubmit = async (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        await register(inputs);
-        //navigate('/login')
+        try{
+            await register(inputs);
+            //navigate('/login')
+        } 
+        catch(e){
+            console.log(e);
+        }
     }
+    
   return (
     <AuthLayout>
-        <div className="text-center mb-5">
+        <div className="text-center mb-1">
             <img src="assets_admin/images/hospital-logo.png" height="48" className='mb-4'/>
             <h3>Sign Up</h3>
             <p>Please fill the form to register.</p>
         </div>
         <form onSubmit={handleSubmit}>
-            <div className="row">
-                <div className="col-md-6 col-6">
-                    <label htmlFor="name" className="form-label">Name By NID<sup className=" text-danger">*</sup></label>
+            <div className="row md-6">
+                <div className="mb-6 col-md-6">
+                    <label htmlFor="name" className="form-label">Name<sup className=" text-danger">*</sup></label>
                     <input
                         required
                         placeholder="Name"
                         type="text"
-                        className="form-control"
+                        className={`form-control ${errors.name ? 'is-invalid' : ''}`}
                         id="name"
                         name="name"
+                        defaultValue={inputs.name}
                         onChange={handleChange}
                     />
+                    {errors.name && <div className="invalid-feedback">{errors.name}</div>}
                 </div>
-                <div className="col-md-6 col-6">
-                    <label htmlFor="nid" className="form-label">NID Number<sup className="text-danger">*</sup></label>
+                <div className="mb-6 col-md-6">
+                    <label htmlFor="nid" className="form-label">Nid</label>
                     <input
-                        required
-                        placeholder="Nid Number"
+                        placeholder="Nid"
                         type="number"
-                        className="form-control"
+                        className={`form-control ${errors.nid ? 'is-invalid' : ''}`}
                         id="nid"
                         name="nid"
+                        defaultValue={inputs.nid}
                         onChange={handleChange}
                     />
+                    {errors.nid && <div className="invalid-feedback">{errors.nid}</div>}
                 </div>
-                <div className="col-md-6 col-6">
-                    <label htmlFor="dob" className="form-label">Date Of Birth<sup className="text-danger">*</sup></label>
-                    <input
-                        required
-                        placeholder="Date Of Birth"
-                        type="date"
-                        className="form-control"
-                        id="dob"
-                        name="dob"
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <div className="col-md-6 col-6">
+                
+                <div className="mb-6 col-md-6">
                     <label htmlFor="email" className="form-label">Email<sup className="text-danger">*</sup></label>
                     <input
                         required
                         placeholder="Email"
                         type="email"
-                        className="form-control"
+                        className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                         id="email"
                         name="email"
+                        defaultValue={inputs.email}
                         onChange={handleChange}
                     />
+                    {errors.email && <div className="invalid-feedback">{errors.email}</div>}
                 </div>
 
-                <div className="col-md-6 col-6">
+                <div className="mb-3 col-md-6">
                     <label htmlFor="phone" className="form-label">Phone<sup className=" text-danger">*</sup></label>
                     <input
                         required
                         placeholder="Contact"
                         type="number"
-                        className="form-control"
+                        className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
                         id="phone"
                         name="phone"
+                        defaultValue={inputs.phone}
                         onChange={handleChange}
                     />
+                    {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
                 </div>
-                <div className="col-md-6 col-6">
-                    <label htmlFor="employeId" className="form-label">Employe Id<sup className=" text-danger">*</sup></label>
+                <div className="mb-3 col-md-6">
+                    <label htmlFor="password" className="form-label">Password<sup className=" text-danger">*</sup></label>
                     <input
                         required
-                        placeholder="Employe Id"
-                        type="number"
-                        className="form-control"
-                        id="employeId"
-                        name="employeId"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="col-md-6 col-6">
-                    <label htmlFor="designation" className="form-label">Designation<sup className=" text-danger">*</sup></label>
-                    <input
-                        required
-                        placeholder="designation"
-                        type="text"
-                        className="form-control"
-                        id="designation"
-                        name="designation"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="col-md-6 col-6">
-                    <label htmlFor="signature" className="form-label">Signature<sup className=" text-danger">*</sup></label>
-                    <input
-                        required
-                        placeholder="signature"
-                        type="file"
-                        className="form-control"
-                        id="signature"
-                        name="signature"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="col-md-6 col-6">
-                    <label htmlFor="photo" className="form-label">Photo<sup className=" text-danger">*</sup></label>
-                    <input
-                        required
-                        placeholder="Photo"
-                        type="file"
-                        className="form-control"
-                        id="photo"
-                        name="photo"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="col-md-6 col-6">
-                    <label htmlFor="password" className="form-label">Password<sup className="text-danger">*</sup></label>
-                    <input
-                        required
-                        type="password"
                         placeholder="Password"
-                        className="form-control"
+                        type="text"
+                        className={`form-control ${errors.password ? 'is-invalid' : ''}`}
                         id="password"
                         name="password"
+                        defaultValue={inputs.password}
                         onChange={handleChange}
                     />
+                    {errors.password && <div className="invalid-feedback">{errors.password}</div>}
                 </div>
-                <div className="col-md-6 col-6">
-                    <label htmlFor="cPassword" className="form-label">Confirm Password<sup className="text-danger">*</sup></label>
+                
+                <div className="mb-3 col-md-6">
+                    <label htmlFor="companyName" className="form-label">Company Name</label>
                     <input
-                        required
-                        type="password"
-                        placeholder="cPassword"
-                        className="form-control"
-                        id="cPassword"
-                        name="cPassword"
+                        placeholder="Company Name"
+                        type="text"
+                        className={`form-control ${errors.companyName ? 'is-invalid' : ''}`}
+                        id="companyName"
+                        name="companyName"
+                        defaultValue={inputs.companyName}
                         onChange={handleChange}
                     />
+                    {errors.companyName && <div className="invalid-feedback">{errors.companyName}</div>}
                 </div>
-                <div className="col-md-12 col-12 text-center">
-                    <label htmlFor="name" className="form-label display-6">Address</label>
+
+                <div className="mb-3 col-12">
+                    <label htmlFor="currentAddress" className="form-label display-6">Current Address</label>
                 </div>
                 <div className="mb-6 col-md-6">
                     <label htmlFor="country" className="form-label text-black">Country <span className=" text-danger">*</span></label>
@@ -169,80 +127,92 @@ function Register() {
                         required
                         id="country"
                         name="country"
+                        defaultValue={inputs.country}
                         onChange={handleChange}
-                        className="form-control">
-                        <option value="Select a country">Select a country</option>
-                        <option value="Bangladesh">Bangladesh</option>
-                        <option value="Algeria">Algeria</option>
-                        <option value="Afghanistan">Afghanistan</option>
-                        <option value="Ghana<">Ghana</option>
-                        <option value="Albania">Albania</option>
-                        <option value="Bahrain">Bahrain</option>
-                        <option value="Colombia">Colombia</option>
-                        <option value="Dominican Republic">Dominican Republic</option>
+                        className={`form-control ${errors.country ? 'is-invalid' : ''}`}>
+                        <option defaultValue="0">Select a country</option>
+                        <option defaultValue="2">Bangladesh</option>
+                        <option defaultValue="3">Algeria</option>
+                        <option defaultValue="4">Afghanistan</option>
+                        <option defaultValue="5">Ghana</option>
+                        <option defaultValue="6">Albania</option>
+                        <option defaultValue="7">Bahrain</option>
+                        <option defaultValue="8">Colombia</option>
+                        <option defaultValue="9">Dominican Republic</option>
                     </select>
+                    {errors.country && <div className="invalid-feedback">{errors.country}</div>}
                 </div>
-                <div className="col-md-6 col-6">
+                <div className="mb-6 col-md-6">
                     <label htmlFor="districts" className="form-label">Districts<sup className="text-danger">*</sup></label>
                     <input
                         required
                         placeholder="Districts"
                         type="text"
-                        className="form-control"
+                        className={`form-control ${errors.districts ? 'is-invalid' : ''}`}
                         id="districts"
                         name="districts"
+                        defaultValue={inputs.districts}
                         onChange={handleChange}
                     />
+                    {errors.districts && <div className="invalid-feedback">{errors.districts}</div>}
                 </div>
-                <div className="col-md-6 col-6">
+                <div className="mb-6 col-md-6">
                     <label htmlFor="upozila" className="form-label">Upozila<sup className="text-danger">*</sup></label>
                     <input
                         required
                         placeholder="Upozila"
                         type="text"
-                        className="form-control"
+                        className={`form-control ${errors.upozila ? 'is-invalid' : ''}`}
                         id="upozila"
                         name="upozila"
+                        defaultValue={inputs.upozila}
                         onChange={handleChange}
                     />
+                    {errors.upozila && <div className="invalid-feedback">{errors.upozila}</div>}
                 </div>
 
-                <div className="col-md-6 col-6">
+                <div className="mb-6 col-md-6">
                     <label htmlFor="post" className="form-label">Post<sup className="text-danger">*</sup></label>
                     <input
                         required
                         placeholder="Post"
                         type="text"
-                        className="form-control"
+                        className={`form-control ${errors.post ? 'is-invalid' : ''}`}
                         id="post"
                         name="post"
+                        defaultValue={inputs.post}
                         onChange={handleChange}
                     />
+                    {errors.post && <div className="invalid-feedback">{errors.post}</div>}
                 </div>
 
-                <div className="col-md-6 col-6">
+                <div className="mb-6 col-md-6">
                     <label htmlFor="zipCode" className="form-label">Zip Code<sup className=" text-danger">*</sup></label>
                     <input
                         required
                         placeholder="Zip Code"
                         type="number"
-                        className="form-control"
+                        className={`form-control ${errors.zipCode ? 'is-invalid' : ''}`}
                         id="zipCode"
                         name="zipCode"
+                        defaultValue={inputs.zipCode}
                         onChange={handleChange}
                     />
+                    {errors.zipCode && <div className="invalid-feedback">{errors.zipCode}</div>}
                 </div>
                 <div className="mb-6 col-md-6">
                     <label htmlFor="state" className="form-label">State<sup className=" text-danger">*</sup></label>
                     <input
                         required
-                        placeholder="state"
+                        placeholder="State"
                         type="text"
-                        className="form-control"
+                        className={`form-control ${errors.state ? 'is-invalid' : ''}`}
                         id="state"
                         name="state"
+                        defaultValue={inputs.state}
                         onChange={handleChange}
                     />
+                    {errors.state && <div className="invalid-feedback">{errors.state}</div>}
                 </div>
             </div>
                 <Link to="/login">Have an account? Login</Link>      

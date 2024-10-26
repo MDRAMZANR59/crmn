@@ -16,7 +16,7 @@ function Login(){
     const handleSubmit = async (event) => {
         event.preventDefault();
         let check = await login(inputs);
-        console.log(check)
+       
         if(check){
             window.location=process.env.REACT_APP_BASE_URL
         }else{
@@ -31,27 +31,8 @@ function Login(){
             </div>
             <p className="login-box-msg">Sign in to start your session</p>
             <form onSubmit={handleSubmit}>
-            <div className="mb-12 col-md-12">
-                <select
-                    className="form-control"
-                    required
-                    type="text"
-                    // className={`form-control ${errors.role_id ? 'is-invalid' : ''}`}
-                    id="role_id"
-                    name="role_id"
-                    // value={inputs.role_id}
-                    onChange={handleChange}>
-                        <option value="">Select role</option>
-                        <option value="1">Super Admin</option>
-                        <option value="2">Customer Exicutive</option>
-                        <option value="3">Staff</option>
-                        <option value="4">Customer</option>
-                </select>
-                
-                {/* {errors.name && <div className="invalid-feedback">{errors.name}</div>} */}
-            </div>
                 <div className="input-group mb-3">
-                    <input type="email" className="form-control" placeholder="Email" onChange={handleChange}/>
+                    <input type="email" className="form-control" placeholder="Email" name="email" onChange={handleChange}/>
                     <div className="input-group-append">
                         <div className="input-group-text">
                             <span className="fas fa-envelope"></span>
@@ -59,7 +40,7 @@ function Login(){
                     </div>
                 </div>
                 <div className="input-group mb-3">
-                    <input type="password" className="form-control" placeholder="Password" onChange={handleChange}/>
+                    <input type="password" className="form-control" placeholder="Password" name="password" onChange={handleChange}/>
                     <div className="input-group-append">
                         <div className="input-group-text">
                             <span className="fas fa-lock"></span>

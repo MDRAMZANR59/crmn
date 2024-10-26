@@ -44,7 +44,7 @@ import IncomeReport from './pages/Report/Income'
 import CancalingProject from './pages/Project/CancalingProject'
 
 
-// import Register from './pages/Register';
+import Register from './pages/Register';
 import Login from './pages/Login';
 import Protected from './components/protected';
 
@@ -53,8 +53,8 @@ function App() {
   return (
     <BrowserRouter>
         <Routes>
-        {/* <Route path="/register" element={<Register />} /> */}
-        <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
 
           <Route path="/" element={<Dashboard />} />
 
@@ -82,7 +82,8 @@ function App() {
 
           <Route path="/customerNote/addNote" element={<CuatomerNote />} />
           <Route path="/customerNote/noteList" element={<NoteList />} />
-         
+          <Route path="/customerNote/edit/:id" element={<CuatomerNote />} />
+          
           <Route path="/staff/warningStaffList" element={<WarningStaffList/>} />
           <Route path="/staff/warningStaff/WarningNotice" element={<WarningNotice/>} />
 

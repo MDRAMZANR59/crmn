@@ -9,7 +9,7 @@ function AuthLayout({ children}) {
 
             <div className="container">
                 <div className="row">
-                    <div className="col-md-5 col-sm-12 mx-auto">
+                    <div className="col-md-8 col-sm-12 mx-auto">
                         <div className="card pt-4">
                             <div className="card-body">
                                {children}
