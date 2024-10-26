@@ -7,7 +7,7 @@ import {useParams} from "react-router-dom";
 function CustomerAdd() {
     const [errors, setErrors] = useState([]);
 
-    const [inputs, setInputs] = useState({id:'', fristName:'', lastName:'', email:'', phone:'', projectName:'', projectType:'', companyName:'', employeId:'', photo:'', country:'', districts:'', upozila:'', post:'', zipCode:'', state:'', houseNumber:'' });
+    const [inputs, setInputs] = useState({id:'', name:'', nid:'', email:'', phone:'', password:'', photo:'', companyName:'',country:'', districts:'', upozila:'', post:'', zipCode:'', state:'' });
         const navigate=useNavigate();
         const {id} = useParams();
         
@@ -94,7 +94,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.name ? 'is-invalid' : ''}`}
                                                     id="name"
                                                     name="name"
-                                                    value={inputs.name}
+                                                    defaultValue={inputs.name}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.name && <div className="invalid-feedback">{errors.name}</div>}
@@ -107,7 +107,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.nid ? 'is-invalid' : ''}`}
                                                     id="nid"
                                                     name="nid"
-                                                    value={inputs.nid}
+                                                    defaultValue={inputs.nid}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.nid && <div className="invalid-feedback">{errors.nid}</div>}
@@ -122,7 +122,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                                                     id="email"
                                                     name="email"
-                                                    value={inputs.email}
+                                                    defaultValue={inputs.email}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.email && <div className="invalid-feedback">{errors.email}</div>}
@@ -137,7 +137,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
                                                     id="phone"
                                                     name="phone"
-                                                    value={inputs.phone}
+                                                    defaultValue={inputs.phone}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
@@ -151,7 +151,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.password ? 'is-invalid' : ''}`}
                                                     id="password"
                                                     name="password"
-                                                    value={inputs.password}
+                                                    defaultValue={inputs.password}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.password && <div className="invalid-feedback">{errors.password}</div>}
@@ -163,7 +163,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.photo ? 'is-invalid' : ''}`}
                                                     id="photo"
                                                     name="photo"
-                                                    value={inputs.photo}
+                                                    defaultValue={inputs.photo}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.photo && <div className="invalid-feedback">{errors.photo}</div>}
@@ -177,7 +177,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.companyName ? 'is-invalid' : ''}`}
                                                     id="companyName"
                                                     name="companyName"
-                                                    value={inputs.companyName}
+                                                    defaultValue={inputs.companyName}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.companyName && <div className="invalid-feedback">{errors.companyName}</div>}
@@ -192,18 +192,18 @@ function CustomerAdd() {
                                                     required
                                                     id="country"
                                                     name="country"
-                                                    value={inputs.country}
+                                                    defaultValue={inputs.country}
                                                     onChange={handleChange}
                                                     className={`form-control ${errors.country ? 'is-invalid' : ''}`}>
-                                                    <option value="0">Select a country</option>
-                                                    <option value="2">Bangladesh</option>
-                                                    <option value="3">Algeria</option>
-                                                    <option value="4">Afghanistan</option>
-                                                    <option value="5">Ghana</option>
-                                                    <option value="6">Albania</option>
-                                                    <option value="7">Bahrain</option>
-                                                    <option value="8">Colombia</option>
-                                                    <option value="9">Dominican Republic</option>
+                                                    <option defaultValue="0">Select a country</option>
+                                                    <option defaultValue="2">Bangladesh</option>
+                                                    <option defaultValue="3">Algeria</option>
+                                                    <option defaultValue="4">Afghanistan</option>
+                                                    <option defaultValue="5">Ghana</option>
+                                                    <option defaultValue="6">Albania</option>
+                                                    <option defaultValue="7">Bahrain</option>
+                                                    <option defaultValue="8">Colombia</option>
+                                                    <option defaultValue="9">Dominican Republic</option>
                                                 </select>
                                                 {errors.country && <div className="invalid-feedback">{errors.country}</div>}
                                             </div>
@@ -216,7 +216,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.districts ? 'is-invalid' : ''}`}
                                                     id="districts"
                                                     name="districts"
-                                                    value={inputs.districts}
+                                                    defaultValue={inputs.districts}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.districts && <div className="invalid-feedback">{errors.districts}</div>}
@@ -230,7 +230,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.upozila ? 'is-invalid' : ''}`}
                                                     id="upozila"
                                                     name="upozila"
-                                                    value={inputs.upozila}
+                                                    defaultValue={inputs.upozila}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.upozila && <div className="invalid-feedback">{errors.upozila}</div>}
@@ -245,7 +245,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.post ? 'is-invalid' : ''}`}
                                                     id="post"
                                                     name="post"
-                                                    value={inputs.post}
+                                                    defaultValue={inputs.post}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.post && <div className="invalid-feedback">{errors.post}</div>}
@@ -260,7 +260,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.zipCode ? 'is-invalid' : ''}`}
                                                     id="zipCode"
                                                     name="zipCode"
-                                                    value={inputs.zipCode}
+                                                    defaultValue={inputs.zipCode}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.zipCode && <div className="invalid-feedback">{errors.zipCode}</div>}
@@ -274,7 +274,7 @@ function CustomerAdd() {
                                                     className={`form-control ${errors.state ? 'is-invalid' : ''}`}
                                                     id="state"
                                                     name="state"
-                                                    value={inputs.state}
+                                                    defaultValue={inputs.state}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.state && <div className="invalid-feedback">{errors.state}</div>}

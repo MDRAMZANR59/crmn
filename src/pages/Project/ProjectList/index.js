@@ -1,9 +1,24 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import AdminLayout from '../../../layouts/AdminLayout';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import AdminLayout from '../../../layouts/AdminLayout'
+import { Link } from 'react-router-dom';
 
 function ProjectList() {
-   
+    const[data, setData]=useState([]);
+    useEffect(() => {
+        getDatas();
+    }, []);
+  
+    function getDatas() {
+        axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/index`).then(function(response) {
+            setData(response.data.data);
+        });
+    }
+    const deleteData = (id) => {
+        axios.delete(`${process.env.REACT_APP_API_URL}/projectfiles/${id}`).then(function(response){
+            getDatas();
+        });
+    }
     return (
         <AdminLayout>
             {/* Content Wrapper. Contains page content */}
@@ -54,45 +69,59 @@ function ProjectList() {
                                 <th>SL</th>
                                 <th>Project Name</th>
                                 <th>Project Type</th>
-                                <th>Project Id</th>
-                                <th>Project Note</th>
-                                <th>Team Leader</th>
-                                <th>Project Progress</th>
+                                <th>Domain & Hosting Pro</th>
+                                <th>Front End Laibrary</th>
+                                <th>Back End Laibrary</th>
+                                <th>Front End Language</th>
+                                <th>Back End End Language</th>
+                                <th>Database</th>
+                                <th>Customer Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Company Name</th>
+                                <th>Discription</th>
+                                <th>Budget</th>
                                 <th>Recive Date</th>
+                                <th>Project Duration</th>
                                 <th>Estimated End Date</th>
-                                <th>Estimated budget</th>
+                                <th>Project Progress</th>
+                                <th>Project Leader</th>
                                 <th>Status</th>
                                 <th>Review</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody className="text-center">
-                            <tr>
-                                <td>001</td>
-                                <td>Code Cruftere</td>
-                                <td>Web Application Debolopment</td>
-                                <td>A5X78P</td>
-                                <td><a href="#">iushdsjikfsifs</a></td>
-                                <td>
-                                    <img src="../../../assets/dist/img/avatar.png" className="Thumbnail img-fluid mx-auto" width="50px" /><br/>
-                                    <a href="#" className="d-block text-center" >Jons Endarson</a>
-                                </td>
-                                <td className="project_progress stripped">
-                                    <div className="progress progress-sm">
-                                        <div className="progress-bar bg-green" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style={{width: "57%"}}></div>
-                                    </div>
-                                    <small>57% Complete</small>
-                                </td>
-                                <td>12/12/2024</td>
-                                <td>12/12/2024</td>
-                                <td>$500000</td>
+                        {data && data.map((d, key) =>
+                            <tr key={d.id}>
+                                <td>00{d.id}</td>
+                                <td>{d.projectName}</td>
+                                <td>{d.projectType}</td>
+                                <td>{d.doHoPr}</td>
+                                <td>{d.frontLiAndFrame}</td>
+                                <td>{d.backLib}</td>
+                                <td>{d.frontEndLan}</td>
+                                <td>{d.backLang}</td>
+                                <td>{d.database}</td>
+                                <td>{d.name}</td>
+                                <td>{d.phone}</td>
+                                <td>{d.email}</td>
+                                <td>{d.companyName}</td>
+                                <td>{d.description}</td>
+                                <td>{d.estimatedBudget}</td>
+                                <td>{d.reciveDate}</td>
+                                <td>{d.eDuration}</td>
+                                <td>{d.eEndDate}</td>
+                                <td>57%</td>
+                                <td>{d.projectLeader}</td>
                                 <td>Running</td>
                                 <td><i className="fas fa-star"></i>
                                     <i className="fas fa-star"></i><br/>
                                     <i className="fas fa-star"></i>
                                     <i className="fas fa-star"></i>
                                     <i className="fas fa-star"></i><br/>
-                                    <a href="#">Comment</a></td>
+                                    <a href="#">Comment</a>
+                                </td>
                                 <td className="project-actions text-right">
                                     <Link className="btn btn-success btn-sm" to="/project/projectTaskList">
                                         <i class="fas fa-tasks"></i>Task
@@ -111,6 +140,7 @@ function ProjectList() {
                                     </Link>
                                 </td>
                             </tr>
+                        )}
                         </tbody>
                     </table>
                 </div>

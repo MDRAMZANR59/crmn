@@ -82,7 +82,7 @@ function Sidebar() {
                                 </a>
                             </li>
                             {/* User Section */}
-                            {user_role==1 && 
+                            {/* {user_role==1 &&  */}
                                 <li className={`nav-item ${openMenu === 'user' ? 'menu-open' : ''}`}>
                                     <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('user')}>
                                         <i className="nav-icon fas fa-user"></i>
@@ -105,8 +105,8 @@ function Sidebar() {
                                         </li>
                                     </ul>
                                 </li>
-                            }
-                            {user_role==1 || user_role==2 || user_role==3 && 
+                            {/* } */}
+                            {/* {user_role==1 || user_role==2 || user_role==3 &&  */}
                                 <li className={`nav-item ${openMenu === 'customerNote' ? 'menu-open' : ''}`}>
                                     <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('customerNote')}>
                                         <i className="nav-icon fas fa-sticky-note"></i>
@@ -130,7 +130,7 @@ function Sidebar() {
                                         </li>
                                     </ul>
                                 </li>
-                            }
+                            {/* } */}
                             
                             <li className={`nav-item ${openMenu === 'customer' ? 'menu-open' : ''}`}>
                                 <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('customer')}>
