@@ -61,6 +61,7 @@ function App() {
           <Route path="/user/addUser" element={<AddUser />} />
           <Route path="/user/userList" element={<UserList />} />
           <Route path="/user/userProfile" element={<UserProfile />} />
+          <Route path="/user/edit/:id" element={<AddUser />} />
 
           <Route path="/mail/mailbox" element={<MailBox/>} />
           <Route path="/mail/mailbox/compose" element={<Compose/>} />

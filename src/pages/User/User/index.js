@@ -8,7 +8,8 @@ import {useParams} from "react-router-dom";
 function AddUser() {
     const [errors, setErrors] = useState([]);
 
-    const [inputs, setInputs] = useState({id:'', name:'',nid:'',dob:'',email:'',phone:'',employeId:'',designation:'',signature:'', password:'', photo:'', country:'',districts:'',upozila:'', post:'', zipCode:'', state:''});
+    const [inputs, setInputs] = useState({id:'',name:'',nid:'',dob:'',email:'',phone:'',password:'',joiningDate:'',designation:'',expart:'',department:'',signature:'',photo:'',country:'',districts:'',upozila:'',post:'',zipCode:'',state:''});
+    // const [inputs, setInputs] = useState({id:'',role_id:'',name:'',nid:'',dob:'',email:'',phone:'',password:'',joiningDate:'',designation:'',expart:'',department:'',signature:'',photo:'',country:'',districts:'',upozila:'',post:'',zipCode:'',state:''});
         const navigate=useNavigate();
         const {id} = useParams();
         
@@ -48,7 +49,7 @@ function AddUser() {
                     url: `${process.env.REACT_APP_API_URL}${apiurl}`,
                     data: inputs
                 });
-                navigate('/UserList')
+                navigate('/user/userList')
             } 
             catch(e){
                 console.log(e);
@@ -85,7 +86,7 @@ function AddUser() {
                                 <div className="container mt-5">
                                     <form onSubmit={handleSubmit}>
                                         <div className="row md-6">
-                                            <div className="mb-6 col-md-6">
+                                            {/* <div className="mb-6 col-md-6">
                                                 <label htmlFor="role" className="form-label">User Role<sup className=" text-danger">*</sup></label>
                                                 <select
                                                     required
@@ -102,7 +103,7 @@ function AddUser() {
                                                         <option defaultValue="4">Customer</option>
                                                 </select>
                                                 {errors.role_id && <div classrole_id="invalid-feedback">{errors.role_id}</div>}
-                                            </div>
+                                            </div> */}
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="name" className="form-label">Name By NID<sup className=" text-danger">*</sup></label>
                                                 <input

@@ -1,25 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect,useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import AdminLayout from '../../../layouts/AdminLayout'
-import { Link } from 'react-router-dom';
 
 
 function UserList() {
   const[data, setData]=useState([]);
-    useEffect(() => {
-        getDatas();
-    }, []);
-  
-    function getDatas() {
-        axios.get(`${process.env.REACT_APP_API_URL}/user/index`).then(function(response) {
-            setData(response.data.data);
-        });
-    }
-    const deleteData = (id) => {
-        axios.delete(`${process.env.REACT_APP_API_URL}/user/${id}`).then(function(response){
-            getDatas();
-        });
-    }
+  const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("access_token")}` }
+  };
+  useEffect(() => {
+      getDatas();
+  }, []);
+
+  function getDatas() {
+      axios.get(`${process.env.REACT_APP_API_URL}/user/index`,config).then(function(response) {
+          setData(response.data.data);
+      });
+  }
+  const deleteData = (id) => {
+      axios.delete(`${process.env.REACT_APP_API_URL}/user/${id}`,config).then(function(response){
+          getDatas();
+      });
+  }
   return (
     <AdminLayout>
         <div className="content-wrapper">
@@ -53,7 +56,7 @@ function UserList() {
                             <thead>
                                 <tr>
                                     <th>#SL</th>
-                                    {/* <th>User Type</th> */}
+                                    <th>User Type</th>
                                     <th>Name</th>
                                     <th>Employe Id</th>
                                     <th>Customer Id</th>
@@ -75,21 +78,20 @@ function UserList() {
                               {data && data.map((d, key) =>
                                 <tr key={d.id}>
                                   <td className="text-bold-500">{key+1}</td>
+                                  <td>{d.role_id}</td>
                                   <td>{d.name}</td>
-                                  <td>02</td>
-                                  <td>02</td>
-                                  <td>{d.nid}</td>
-                                  <td>{d.dob}</td>
-                                  <td>{d.email}</td>
-                                  <td>{d.phone}</td>
-                                  <td>{d.password}</td>
-                                  <td>{d.joiningDate}</td>
-                                  <td>{d.designation}</td>
-                                  <td>{d.expart}</td>
-                                  <td>{d.department}</td>
-                                  <td>{d.signature}</td>
-                                  <td>{d.photo}</td>
-                                  <td><span>{d.state}</span><span>{d.post}</span><span>{d.zipCode}</span><span>{d.upozila}</span><span>{d.districts}</span><span>{d.country}</span></td>
+                                  <td>{d.usermeta.employeId}</td>
+                                  <td>{d.usermeta.nid}</td>
+                                  <td>{d.usermeta.dob}</td>
+                                  <td>{d.usermeta.email}</td>
+                                  <td>{d.usermeta.phone}</td>
+                                  <td>{d.usermeta.joiningDate}</td>
+                                  <td>{d.usermeta.designation}</td>
+                                  <td>{d.usermeta.expart}</td>
+                                  <td>{d.usermeta.department}</td>
+                                  <td>{d.usermeta.signature}</td>
+                                  <td>{d.usermeta.photo}</td>
+                                  <td><span>{d.usermeta.state}</span><span>{d.usermeta.post}</span><span>{d.usermeta.zipCode}</span><span>{d.usermeta.upozila}</span><span>{d.usermeta.districts}</span><span>{d.usermeta.country}</span></td>
                                   <td>
                                       <Link to={`/user/edit/${d.id}`} className='btn btn-info' >Edit</Link>
                                       <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
