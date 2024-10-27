@@ -123,536 +123,621 @@ function ProjectAdd() {
                                         </div>
                                         <label htmlFor="doHoProvider">Domain And Hosting Provider<sup className=" text-danger">*</sup></label><br/>
                                         <div className="form-group">
-                                            <label htmlFor="codeCrafters" value="Code Crafters" className="d-inline">Code Crafters</label>
+                                            <label htmlFor="codeCrafters" className="d-inline">Code Crafters</label>
                                             <input
-                                                defaultValue={inputs.CodeCrafters}
+                                                value="Code Crafters"
                                                 onChange={handleChange}
                                                 className={`${errors.CodeCrafters ? 'is-invalid' : ''}`}
                                                 id="codeCrafters" 
                                                 type="radio" 
-                                                name="doHoPr" />
+                                                name="doHoPr"
+                                                checked={inputs.doHoPr === "Code Crafters"}
+                                                />
                                                 {errors.CodeCrafters && <div className="invalid-feedback">{errors.CodeCrafters}</div>}
                                        
-                                            <label htmlFor="client" value="Client">Client</label>
+                                            <label htmlFor="client" >Client</label>
                                             <input 
-                                                defaultValue={inputs.Client}
+                                                value="Client"
                                                 onChange={handleChange}
-                                                className={`${errors.client ? 'is-invalid' : ''}`} 
+                                                className={`${errors.client ? 'is-invalid' : ''}`}
                                                 id="client" 
                                                 type="radio" 
-                                                name="doHoPr" /> 
+                                                name="doHoPr"
+                                                checked={inputs.doHoPr === "Client"} /> 
                                                 {errors.client && <div className="invalid-feedback">{errors.client}</div>}
                                         </div>
-                                        
+
                                         <h4 htmlFor="">Require Language/Framework</h4>
                                         <label><strong>Select Front-End Libraries & Framework</strong></label><hr/>
                                         <div className="form-group">
                                             {/* React */}
                                             <label htmlFor="react">React</label>
                                             <input
-                                                   defaultValue={inputs.react}
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.react ? 'is-invalid' : ''}`}
-                                                   name="frontLiAndFrame"
-                                                   type="radio"
-                                                   id="react"
-                                               />
-                                               {errors.react && <div className="invalid-feedback">{errors.react}</div>}
-                                               
-                                               <label htmlFor="vue">Vue</label>
-                                               <input
-                                                   defaultValue={inputs.vue}
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.vue ? 'is-invalid' : ''}`}
-                                                   name="frontLiAndFrame"
-                                                   type="radio"
-                                                   id="vue"
-                                               />
-                                               {errors.vue && <div className="invalid-feedback">{errors.vue}</div>}
-                                               
-                                               <label htmlFor="angular">Angular</label>
-                                               <input
-                                                   defaultValue={inputs.angular}
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.angular ? 'is-invalid' : ''}`}
-                                                   name="frontLiAndFrame"
-                                                   type="radio"
-                                                   id="angular"
-                                               />
-                                               {errors.angular && <div className="invalid-feedback">{errors.angular}</div>}
-                                               
-                                               <label htmlFor="svelte">Svelte</label>
-                                               <input
-                                                   defaultValue={inputs.svelte}
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.svelte ? 'is-invalid' : ''}`}
-                                                   name="frontLiAndFrame"
-                                                   type="radio"
-                                                   id="svelte"
-                                               />
-                                               {errors.svelte && <div className="invalid-feedback">{errors.svelte}</div>}
-                                               
-                                               <label htmlFor="solid">SolidJS</label>
-                                               <input
-                                                   defaultValue={inputs.solid}
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.solid ? 'is-invalid' : ''}`}
-                                                   name="frontLiAndFrame"
-                                                   type="radio"
-                                                   id="solid"
-                                               />
-                                               {errors.solid && <div className="invalid-feedback">{errors.solid}</div>}
-                                               
-                                               <label htmlFor="ember">Ember</label>
-                                               <input
-                                                   defaultValue={inputs.ember}
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.ember ? 'is-invalid' : ''}`}
-                                                   name="frontLiAndFrame"
-                                                   type="radio"
-                                                   id="ember"
-                                               />
-                                               {errors.ember && <div className="invalid-feedback">{errors.ember}</div>}
-                                               
-                                               <label htmlFor="nuxt">Nuxt.js</label>
-                                               <input
-                                                   defaultValue={inputs.nuxt}
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.nuxt ? 'is-invalid' : ''}`}
-                                                   name="frontLiAndFrame"
-                                                   type="radio"
-                                                   id="nuxt"
-                                               />
-                                               {errors.nuxt && <div className="invalid-feedback">{errors.nuxt}</div>}
-                                               
-                                               <label htmlFor="jquery">jQuery</label>
-                                               <input
-                                                   defaultValue={inputs.jquery}
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.jquery ? 'is-invalid' : ''}`}
-                                                   name="frontLiAndFrame"
-                                                   type="radio"
-                                                   id="jquery"
-                                               />
-                                               {errors.jquery && <div className="invalid-feedback">{errors.jquery}</div>}
-                                               
-                                               <label htmlFor="bootstrap">Bootstrap</label>
-                                               <input
-                                                   defaultValue={inputs.bootstrap}
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.bootstrap ? 'is-invalid' : ''}`}
-                                                   name="frontLiAndFrame"
-                                                   type="radio"
-                                                   id="bootstrap"
-                                               />
-                                               {errors.bootstrap && <div className="invalid-feedback">{errors.bootstrap}</div>}
-                                               
-                                               <label htmlFor="tailwind">Tailwind CSS</label>
-                                               <input
-                                                   defaultValue={inputs.tailwind}
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.tailwind ? 'is-invalid' : ''}`}
-                                                   name="frontLiAndFrame"
-                                                   type="radio"
-                                                   id="tailwind"
-                                               />
-                                               {errors.tailwind && <div className="invalid-feedback">{errors.tailwind}</div>}
-                                               
-                                               <label htmlFor="foundation">Foundation</label>
-                                               <input
-                                                   defaultValue={inputs.foundation}
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.foundation ? 'is-invalid' : ''}`}
-                                                   name="frontLiAndFrame"
-                                                   type="radio"
-                                                   id="foundation"
-                                               />
-                                               {errors.foundation && <div className="invalid-feedback">{errors.foundation}</div>}
-                                               
-                                               <label htmlFor="alpine">Alpine.js</label>
-                                               <input
-                                                   defaultValue={inputs.alpine}
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.alpine ? 'is-invalid' : ''}`}
-                                                   name="frontLiAndFrame"
-                                                   type="radio"
-                                                   id="alpine"
-                                               />
-                                               {errors.alpine && <div className="invalid-feedback">{errors.alpine}</div>}
-                                               
-                                               <label htmlFor="riot">Riot.js</label>
-                                               <input
-                                                   defaultValue={inputs.riot}
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.riot ? 'is-invalid' : ''}`}
-                                                   name="frontLiAndFrame"
-                                                   type="radio"
-                                                   id="riot"
-                                               />
-                                               {errors.riot && <div className="invalid-feedback">{errors.riot}</div>}
-                                               
+                                                value="React"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.react ? 'is-invalid' : ''}`}
+                                                name="frontLiAndFrame"
+                                                type="radio"
+                                                id="react"
+                                                checked={inputs.frontLiAndFrame === "React"}
+                                            />
+                                            {errors.react && <div className="invalid-feedback">{errors.react}</div>}
+
+                                            <label htmlFor="vue">Vue</label>
+                                            <input
+                                                value="Vue"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.vue ? 'is-invalid' : ''}`}
+                                                name="frontLiAndFrame"
+                                                type="radio"
+                                                id="vue"
+                                                checked={inputs.frontLiAndFrame === "Vue"}
+                                            />
+                                            {errors.vue && <div className="invalid-feedback">{errors.vue}</div>}
+
+                                            <label htmlFor="angular">Angular</label>
+                                            <input
+                                                value="Angular"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.angular ? 'is-invalid' : ''}`}
+                                                name="frontLiAndFrame"
+                                                type="radio"
+                                                id="angular"
+                                                checked={inputs.frontLiAndFrame === "Angular"}
+                                            />
+                                            {errors.angular && <div className="invalid-feedback">{errors.angular}</div>}
+
+                                            <label htmlFor="svelte">Svelte</label>
+                                            <input
+                                                value="Svelte"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.svelte ? 'is-invalid' : ''}`}
+                                                name="frontLiAndFrame"
+                                                type="radio"
+                                                id="svelte"
+                                                checked={inputs.frontLiAndFrame === "Svelte"}
+                                            />
+                                            {errors.svelte && <div className="invalid-feedback">{errors.svelte}</div>}
+
+                                            <label htmlFor="solid">SolidJS</label>
+                                            <input
+                                                value="SolidJS"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.solid ? 'is-invalid' : ''}`}
+                                                name="frontLiAndFrame"
+                                                type="radio"
+                                                id="solid"
+                                                checked={inputs.frontLiAndFrame === "SolidJS"}
+                                            />
+                                            {errors.solid && <div className="invalid-feedback">{errors.solid}</div>}
+
+                                            <label htmlFor="ember">Ember</label>
+                                            <input
+                                                value="Ember"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.ember ? 'is-invalid' : ''}`}
+                                                name="frontLiAndFrame"
+                                                type="radio"
+                                                id="ember"
+                                                checked={inputs.frontLiAndFrame === "Ember"}
+                                            />
+                                            {errors.ember && <div className="invalid-feedback">{errors.ember}</div>}
+
+                                            <label htmlFor="nuxt">Nuxt.js</label>
+                                            <input
+                                                value="Nuxt.js"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.nuxt ? 'is-invalid' : ''}`}
+                                                name="frontLiAndFrame"
+                                                type="radio"
+                                                id="nuxt"
+                                                checked={inputs.frontLiAndFrame === "Nuxt.js"}
+                                            />
+                                            {errors.nuxt && <div className="invalid-feedback">{errors.nuxt}</div>}
+
+                                            <label htmlFor="jquery">jQuery</label>
+                                            <input
+                                                value="jQuery"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.jquery ? 'is-invalid' : ''}`}
+                                                name="frontLiAndFrame"
+                                                type="radio"
+                                                id="jquery"
+                                                checked={inputs.frontLiAndFrame === "jQuery"}
+                                            />
+                                            {errors.jquery && <div className="invalid-feedback">{errors.jquery}</div>}
+
+                                            <label htmlFor="bootstrap">Bootstrap</label>
+                                            <input
+                                                value="Bootstrap"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.bootstrap ? 'is-invalid' : ''}`}
+                                                name="frontLiAndFrame"
+                                                type="radio"
+                                                id="bootstrap"
+                                                checked={inputs.frontLiAndFrame === "Bootstrap"}
+                                            />
+                                            {errors.bootstrap && <div className="invalid-feedback">{errors.bootstrap}</div>}
+
+                                            <label htmlFor="tailwind">Tailwind CSS</label>
+                                            <input
+                                                value="Tailwind CSS"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.tailwind ? 'is-invalid' : ''}`}
+                                                name="frontLiAndFrame"
+                                                type="radio"
+                                                id="tailwind"
+                                                checked={inputs.frontLiAndFrame === "Tailwind CSS"}
+                                            />
+                                            {errors.tailwind && <div className="invalid-feedback">{errors.tailwind}</div>}
+
+                                            <label htmlFor="foundation">Foundation</label>
+                                            <input
+                                                value="Foundation"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.foundation ? 'is-invalid' : ''}`}
+                                                name="frontLiAndFrame"
+                                                type="radio"
+                                                id="foundation"
+                                                checked={inputs.frontLiAndFrame === "Foundation"}
+                                            />
+                                            {errors.foundation && <div className="invalid-feedback">{errors.foundation}</div>}
+
+                                            <label htmlFor="alpine">Alpine.js</label>
+                                            <input
+                                                value="Alpine.js"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.alpine ? 'is-invalid' : ''}`}
+                                                name="frontLiAndFrame"
+                                                type="radio"
+                                                id="alpine"
+                                                checked={inputs.frontLiAndFrame === "Alpine.js"}
+                                            />
+                                            {errors.alpine && <div className="invalid-feedback">{errors.alpine}</div>}
+
+                                            <label htmlFor="riot">Riot.js</label>
+                                            <input
+                                                value="Riot.js"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.riot ? 'is-invalid' : ''}`}
+                                                name="frontLiAndFrame"
+                                                type="radio"
+                                                id="riot"
+                                                checked={inputs.frontLiAndFrame === "Riot.js"}
+                                            />
+                                            {errors.riot && <div className="invalid-feedback">{errors.riot}</div>}
                                         </div>
                                         <label><strong>Select Back-End Libraries</strong></label><hr/>
                                         <div className="form-group">
-                                            <label htmlFor="express">Express</label>
+                                        <label htmlFor="express">Express</label>
                                             <input
-                                                   defaultValue={inputs.express} // Update to dynamic value
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.express ? 'is-invalid' : ''}`}
-                                                   name="backLib"
-                                                   type="radio"
-                                                   id="express"
-                                               />
-                                               {errors.express && <div className="invalid-feedback">{errors.express}</div>}
-                                               
-                                               <label htmlFor="django">Django</label>
-                                               <input
-                                                   defaultValue={inputs.django} // Update to dynamic value
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.django ? 'is-invalid' : ''}`}
-                                                   name="backLib"
-                                                   type="radio"
-                                                   id="django"
-                                               />
-                                               {errors.django && <div className="invalid-feedback">{errors.django}</div>}
-                                               
-                                               <label htmlFor="flask">Flask</label>
-                                               <input
-                                                   defaultValue={inputs.flask} // Update to dynamic value
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.flask ? 'is-invalid' : ''}`}
-                                                   name="backLib"
-                                                   type="radio"
-                                                   id="flask"
-                                               />
-                                               {errors.flask && <div className="invalid-feedback">{errors.flask}</div>}
-                                               
-                                               <label htmlFor="spring">Spring</label>
-                                               <input
-                                                   defaultValue={inputs.spring} // Update to dynamic value
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.spring ? 'is-invalid' : ''}`}
-                                                   name="backLib"
-                                                   type="radio"
-                                                   id="spring"
-                                               />
-                                               {errors.spring && <div className="invalid-feedback">{errors.spring}</div>}
-                                               
-                                               <label htmlFor="rubyOnRails">Ruby on Rails</label>
-                                               <input
-                                                   defaultValue={inputs.rubyOnRails} // Update to dynamic value
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.rubyOnRails ? 'is-invalid' : ''}`}
-                                                   name="backLib"
-                                                   type="radio"
-                                                   id="rubyOnRails"
-                                               />
-                                               {errors.rubyOnRails && <div className="invalid-feedback">{errors.rubyOnRails}</div>}
-                                               
-                                               <label htmlFor="laravel">Laravel</label>
-                                               <input
-                                                   defaultValue={inputs.laravel} // Update to dynamic value
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.laravel ? 'is-invalid' : ''}`}
-                                                   name="backLib"
-                                                   type="radio"
-                                                   id="laravel"
-                                               />
-                                               {errors.laravel && <div className="invalid-feedback">{errors.laravel}</div>}
-                                               
-                                               <label htmlFor="aspnet">ASP.NET</label>
-                                               <input
-                                                   defaultValue={inputs.aspnet} // Update to dynamic value
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.aspnet ? 'is-invalid' : ''}`}
-                                                   name="backLib"
-                                                   type="radio"
-                                                   id="aspnet"
-                                               />
-                                               {errors.aspnet && <div className="invalid-feedback">{errors.aspnet}</div>}
-                                               
-                                               <label htmlFor="node">Node.js</label>
-                                               <input
-                                                   defaultValue={inputs.node} // Update to dynamic value
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.node ? 'is-invalid' : ''}`}
-                                                   name="backLib"
-                                                   type="radio"
-                                                   id="node"
-                                               />
-                                               {errors.node && <div className="invalid-feedback">{errors.node}</div>}
-                                               
-                                               <label htmlFor="phoenix">Phoenix</label>
-                                               <input
-                                                   defaultValue={inputs.phoenix} // Update to dynamic value
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.phoenix ? 'is-invalid' : ''}`}
-                                                   name="backLib"
-                                                   type="radio"
-                                                   id="phoenix"
-                                               />
-                                               {errors.phoenix && <div className="invalid-feedback">{errors.phoenix}</div>}
-                                               
-                                               <label htmlFor="gin">Gin</label>
-                                               <input
-                                                   defaultValue={inputs.gin} // Update to dynamic value
-                                                   onChange={handleChange}
-                                                   className={`me-1 ${errors.gin ? 'is-invalid' : ''}`}
-                                                   name="backLib"
-                                                   type="radio"
-                                                   id="gin"
-                                               />
-                                               {errors.gin && <div className="invalid-feedback">{errors.gin}</div>}
-                                               
+                                                value="Express"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.express ? 'is-invalid' : ''}`}
+                                                name="backLib"
+                                                type="radio"
+                                                id="express"
+                                                checked={inputs.backLib === "Express"}
+                                            />
+                                            {errors.express && <div className="invalid-feedback">{errors.express}</div>}
+
+                                            <label htmlFor="django">Django</label>
+                                            <input
+                                                value="Django"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.django ? 'is-invalid' : ''}`}
+                                                name="backLib"
+                                                type="radio"
+                                                id="django"
+                                                checked={inputs.backLib === "Django"}
+                                            />
+                                            {errors.django && <div className="invalid-feedback">{errors.django}</div>}
+
+                                            <label htmlFor="flask">Flask</label>
+                                            <input
+                                                value="Flask"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.flask ? 'is-invalid' : ''}`}
+                                                name="backLib"
+                                                type="radio"
+                                                id="flask"
+                                                checked={inputs.backLib === "Flask"}
+                                            />
+                                            {errors.flask && <div className="invalid-feedback">{errors.flask}</div>}
+
+                                            <label htmlFor="spring">Spring</label>
+                                            <input
+                                                value="Spring"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.spring ? 'is-invalid' : ''}`}
+                                                name="backLib"
+                                                type="radio"
+                                                id="spring"
+                                                checked={inputs.backLib === "Spring"}
+                                            />
+                                            {errors.spring && <div className="invalid-feedback">{errors.spring}</div>}
+
+                                            <label htmlFor="rubyOnRails">Ruby on Rails</label>
+                                            <input
+                                                value="Ruby on Rails"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.rubyOnRails ? 'is-invalid' : ''}`}
+                                                name="backLib"
+                                                type="radio"
+                                                id="rubyOnRails"
+                                                checked={inputs.backLib === "Ruby on Rails"}
+                                            />
+                                            {errors.rubyOnRails && <div className="invalid-feedback">{errors.rubyOnRails}</div>}
+
+                                            <label htmlFor="laravel">Laravel</label>
+                                            <input
+                                                value="Laravel"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.laravel ? 'is-invalid' : ''}`}
+                                                name="backLib"
+                                                type="radio"
+                                                id="laravel"
+                                                checked={inputs.backLib === "Laravel"}
+                                            />
+                                            {errors.laravel && <div className="invalid-feedback">{errors.laravel}</div>}
+
+                                            <label htmlFor="aspnet">ASP.NET</label>
+                                            <input
+                                                value="ASP.NET"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.aspnet ? 'is-invalid' : ''}`}
+                                                name="backLib"
+                                                type="radio"
+                                                id="aspnet"
+                                                checked={inputs.backLib === "ASP.NET"}
+                                            />
+                                            {errors.aspnet && <div className="invalid-feedback">{errors.aspnet}</div>}
+
+                                            <label htmlFor="node">Node.js</label>
+                                            <input
+                                                value="Node.js"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.node ? 'is-invalid' : ''}`}
+                                                name="backLib"
+                                                type="radio"
+                                                id="node"
+                                                checked={inputs.backLib === "Node.js"}
+                                            />
+                                            {errors.node && <div className="invalid-feedback">{errors.node}</div>}
+
+                                            <label htmlFor="phoenix">Phoenix</label>
+                                            <input
+                                                value="Phoenix"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.phoenix ? 'is-invalid' : ''}`}
+                                                name="backLib"
+                                                type="radio"
+                                                id="phoenix"
+                                                checked={inputs.backLib === "Phoenix"}
+                                            />
+                                            {errors.phoenix && <div className="invalid-feedback">{errors.phoenix}</div>}
+
+                                            <label htmlFor="gin">Gin</label>
+                                            <input
+                                                value="Gin"
+                                                onChange={handleChange}
+                                                className={`me-1 ${errors.gin ? 'is-invalid' : ''}`}
+                                                name="backLib"
+                                                type="radio"
+                                                id="gin"
+                                                checked={inputs.backLib === "Gin"}
+                                            />
+                                            {errors.gin && <div className="invalid-feedback">{errors.gin}</div>}
                                         </div>
 
                                         <br/><label><strong>Select Front-End language</strong></label><hr/>
                                         <div className="form-group">
                                             {/* JavaScript */}
                                             <label htmlFor="javascript">JavaScript</label>
-                                                <label htmlFor="javascript">JavaScript</label>
                                                 <input
-                                                    defaultValue={inputs.javascript} // Use dynamic value
+                                                    value="JavaScript"
                                                     onChange={handleChange}
                                                     className={`me-1 ${errors.javascript ? 'is-invalid' : ''}`} 
                                                     name="frontEndLan" 
                                                     type="radio" 
-                                                    id="javascript" />
+                                                    id="javascript" 
+                                                    checked={inputs.frontEndLan === "JavaScript"} // Check if this is the selected value
+                                                />
                                                 {errors.javascript && <div className="invalid-feedback">{errors.javascript}</div>}
-                                                
-                                                {/* TypeScript */}
+
                                                 <label htmlFor="typescript">TypeScript</label>
                                                 <input
-                                                    defaultValue={inputs.typescript} // Use dynamic value
+                                                    value="TypeScript"
                                                     onChange={handleChange}
                                                     className={`me-1 ${errors.typescript ? 'is-invalid' : ''}`} 
                                                     name="frontEndLan" 
                                                     type="radio" 
-                                                    id="typescript" />
+                                                    id="typescript" 
+                                                    checked={inputs.frontEndLan === "TypeScript"} // Check if this is the selected value
+                                                />
                                                 {errors.typescript && <div className="invalid-feedback">{errors.typescript}</div>}
-                                                
+
                                                 <label><strong>Select Back-End Language</strong></label><hr/>
-                                                <div className="form-group" >
-                                                    {/* PHP */}
+                                                <div className="form-group">
                                                     <label htmlFor="php">PHP</label>
                                                     <input
-                                                        defaultValue={inputs.php} // Use dynamic value
+                                                        value="PHP"
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.php ? 'is-invalid' : ''}`}
-                                                        name="backLang" type="radio" id="php"/>
+                                                        name="backLang" 
+                                                        type="radio" 
+                                                        id="php"
+                                                        checked={inputs.backLang === "PHP"} // Check if this is the selected value
+                                                    />
                                                     {errors.php && <div className="invalid-feedback">{errors.php}</div>}
-                                                
-                                                    {/* Python */}
+
                                                     <label htmlFor="python">Python</label>
                                                     <input
-                                                        defaultValue={inputs.python} // Use dynamic value
+                                                        value="Python"
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.python ? 'is-invalid' : ''}`}
-                                                        name="backLang" type="radio" id="python"/>
+                                                        name="backLang" 
+                                                        type="radio" 
+                                                        id="python"
+                                                        checked={inputs.backLang === "Python"} // Check if this is the selected value
+                                                    />
                                                     {errors.python && <div className="invalid-feedback">{errors.python}</div>}
-                                                
-                                                    {/* Ruby */}
+
                                                     <label htmlFor="ruby">Ruby</label>
                                                     <input
-                                                        defaultValue={inputs.ruby} // Use dynamic value
+                                                        value="Ruby"
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.ruby ? 'is-invalid' : ''}`}
-                                                        name="backLang" type="radio" id="ruby"/>
+                                                        name="backLang" 
+                                                        type="radio" 
+                                                        id="ruby"
+                                                        checked={inputs.backLang === "Ruby"} // Check if this is the selected value
+                                                    />
                                                     {errors.ruby && <div className="invalid-feedback">{errors.ruby}</div>}
-                                                
-                                                    {/* Java */}
+
                                                     <label htmlFor="java">Java</label>
                                                     <input
-                                                        defaultValue={inputs.java} // Use dynamic value
+                                                        value="Java"
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.java ? 'is-invalid' : ''}`}
-                                                        name="backLang" type="radio" id="java"/>
+                                                        name="backLang" 
+                                                        type="radio" 
+                                                        id="java"
+                                                        checked={inputs.backLang === "Java"} // Check if this is the selected value
+                                                    />
                                                     {errors.java && <div className="invalid-feedback">{errors.java}</div>}
-                                                
-                                                    {/* C# */}
+
                                                     <label htmlFor="csharp">C#</label>
                                                     <input
-                                                        defaultValue={inputs.csharp} // Use dynamic value
+                                                        value="C#"
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.csharp ? 'is-invalid' : ''}`}
-                                                        name="backLang" type="radio" id="csharp"/>
+                                                        name="backLang" 
+                                                        type="radio" 
+                                                        id="csharp"
+                                                        checked={inputs.backLang === "C#"} // Check if this is the selected value
+                                                    />
                                                     {errors.csharp && <div className="invalid-feedback">{errors.csharp}</div>}
-                                                
-                                                    {/* Go */}
+
                                                     <label htmlFor="go">Go</label>
                                                     <input
-                                                        defaultValue={inputs.go} // Use dynamic value
+                                                        value="Go"
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.go ? 'is-invalid' : ''}`}
-                                                        name="backLang" type="radio" id="go"/>
+                                                        name="backLang" 
+                                                        type="radio" 
+                                                        id="go"
+                                                        checked={inputs.backLang === "Go"} // Check if this is the selected value
+                                                    />
                                                     {errors.go && <div className="invalid-feedback">{errors.go}</div>}
-                                                
-                                                    {/* Node.js */}
+
                                                     <label htmlFor="nodejs">Node.js</label>
                                                     <input
-                                                        defaultValue={inputs.nodejs} // Use dynamic value
+                                                        value="Node.js"
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.nodejs ? 'is-invalid' : ''}`}
-                                                        name="backLang" type="radio" id="nodejs"/>
+                                                        name="backLang" 
+                                                        type="radio" 
+                                                        id="nodejs"
+                                                        checked={inputs.backLang === "Node.js"} // Check if this is the selected value
+                                                    />
                                                     {errors.nodejs && <div className="invalid-feedback">{errors.nodejs}</div>}
-                                                
-                                                    {/* Scala */}
+
                                                     <label htmlFor="scala">Scala</label>
                                                     <input
-                                                        defaultValue={inputs.scala} // Use dynamic value
+                                                        value="Scala"
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.scala ? 'is-invalid' : ''}`}
-                                                        name="backLang" type="radio" id="scala"/>
+                                                        name="backLang" 
+                                                        type="radio" 
+                                                        id="scala"
+                                                        checked={inputs.backLang === "Scala"} // Check if this is the selected value
+                                                    />
                                                     {errors.scala && <div className="invalid-feedback">{errors.scala}</div>}
-                                                
-                                                    {/* Elixir */}
+
                                                     <label htmlFor="elixir">Elixir</label>
                                                     <input
-                                                        defaultValue={inputs.elixir} // Use dynamic value
+                                                        value="Elixir"
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.elixir ? 'is-invalid' : ''}`}
-                                                        name="backLang" type="radio" id="elixir"/>
+                                                        name="backLang" 
+                                                        type="radio" 
+                                                        id="elixir"
+                                                        checked={inputs.backLang === "Elixir"} // Check if this is the selected value
+                                                    />
                                                     {errors.elixir && <div className="invalid-feedback">{errors.elixir}</div>}
-                                                
-                                                    {/* Kotlin */}
+
                                                     <label htmlFor="kotlin">Kotlin</label>
                                                     <input
-                                                        defaultValue={inputs.kotlin} // Use dynamic value
+                                                        value="Kotlin"
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.kotlin ? 'is-invalid' : ''}`}
-                                                        name="backLang" type="radio" id="kotlin"/>
+                                                        name="backLang" 
+                                                        type="radio" 
+                                                        id="kotlin"
+                                                        checked={inputs.backLang === "Kotlin"} // Check if this is the selected value
+                                                    />
                                                     {errors.kotlin && <div className="invalid-feedback">{errors.kotlin}</div>}
-                                                
-                                                    {/* .NET */}
+
                                                     <label htmlFor="dotnet">.NET</label>
                                                     <input
-                                                        defaultValue={inputs.dotnet} // Use dynamic value
+                                                        value=".NET"
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.dotnet ? 'is-invalid' : ''}`}
-                                                        name="backLang" type="radio" id="dotnet"/>
+                                                        name="backLang" 
+                                                        type="radio" 
+                                                        id="dotnet"
+                                                        checked={inputs.backLang === ".NET"} // Check if this is the selected value
+                                                    />
                                                     {errors.dotnet && <div className="invalid-feedback">{errors.dotnet}</div>}
-                                                
-                                                    {/* Spring */}
+
                                                     <label htmlFor="spring">Spring</label>
                                                     <input
-                                                        defaultValue={inputs.spring} // Use dynamic value
+                                                        value="Spring"
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.spring ? 'is-invalid' : ''}`}
-                                                        name="backLang" type="radio" id="spring"/>
+                                                        name="backLang" 
+                                                        type="radio" 
+                                                        id="spring"
+                                                        checked={inputs.backLang === "Spring"} // Check if this is the selected value
+                                                    />
                                                     {errors.spring && <div className="invalid-feedback">{errors.spring}</div>}
                                                 </div>
-                                                
+                                         
                                                 <label><strong>Database</strong></label><hr/>
                                                 <div className="form-group" >
                                                     {/* MySQL */}
                                                     <label htmlFor="mysql">MySQL</label>
+                                                   {/* MySQL */}
+                                                    <label htmlFor="mysql">MySQL</label>
                                                     <input
-                                                        defaultValue={inputs.mysql} // Use dynamic value
+                                                        value="mysql" // Set the value for MySQL
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.mysql ? 'is-invalid' : ''}`} 
                                                         name="database" 
                                                         type="radio" 
-                                                        id="mysql" />
+                                                        id="mysql" 
+                                                        checked={inputs.database === "mysql"} // Check if this is the selected value
+                                                    />
                                                     {errors.mysql && <div className="invalid-feedback">{errors.mysql}</div>}
-                                                
+
                                                     {/* PostgreSQL */}
                                                     <label htmlFor="postgresql">PostgreSQL</label>
                                                     <input
-                                                        defaultValue={inputs.postgresql} // Use dynamic value
+                                                        value="postgresql" // Set the value for PostgreSQL
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.postgresql ? 'is-invalid' : ''}`} 
                                                         name="database" 
                                                         type="radio" 
-                                                        id="postgresql" />
+                                                        id="postgresql" 
+                                                        checked={inputs.database === "postgresql"} // Check if this is the selected value
+                                                    />
                                                     {errors.postgresql && <div className="invalid-feedback">{errors.postgresql}</div>}
-                                                
+
                                                     {/* MongoDB */}
                                                     <label htmlFor="mongodb">MongoDB</label>
                                                     <input
-                                                        defaultValue={inputs.mongodb} // Use dynamic value
+                                                        value="mongodb" // Set the value for MongoDB
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.mongodb ? 'is-invalid' : ''}`} 
                                                         name="database" 
                                                         type="radio" 
-                                                        id="mongodb" />
+                                                        id="mongodb" 
+                                                        checked={inputs.database === "mongodb"} // Check if this is the selected value
+                                                    />
                                                     {errors.mongodb && <div className="invalid-feedback">{errors.mongodb}</div>}
-                                                
+
                                                     {/* SQLite */}
                                                     <label htmlFor="sqlite">SQLite</label>
                                                     <input
-                                                        defaultValue={inputs.sqlite} // Use dynamic value
+                                                        value="sqlite" // Set the value for SQLite
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.sqlite ? 'is-invalid' : ''}`} 
                                                         name="database" 
                                                         type="radio" 
-                                                        id="sqlite" />
+                                                        id="sqlite" 
+                                                        checked={inputs.database === "sqlite"} // Check if this is the selected value
+                                                    />
                                                     {errors.sqlite && <div className="invalid-feedback">{errors.sqlite}</div>}
-                                                
+
                                                     {/* Oracle */}
                                                     <label htmlFor="oracle">Oracle</label>
                                                     <input
-                                                        defaultValue={inputs.oracle} // Use dynamic value
+                                                        value="oracle" // Set the value for Oracle
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.oracle ? 'is-invalid' : ''}`} 
                                                         name="database" 
                                                         type="radio" 
-                                                        id="oracle" />
+                                                        id="oracle" 
+                                                        checked={inputs.database === "oracle"} // Check if this is the selected value
+                                                    />
                                                     {errors.oracle && <div className="invalid-feedback">{errors.oracle}</div>}
-                                                
+
                                                     {/* MariaDB */}
                                                     <label htmlFor="mariadb">MariaDB</label>
                                                     <input
-                                                        defaultValue={inputs.mariadb} // Use dynamic value
+                                                        value="mariadb" // Set the value for MariaDB
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.mariadb ? 'is-invalid' : ''}`} 
                                                         name="database" 
                                                         type="radio" 
-                                                        id="mariadb" />
+                                                        id="mariadb" 
+                                                        checked={inputs.database === "mariadb"} // Check if this is the selected value
+                                                    />
                                                     {errors.mariadb && <div className="invalid-feedback">{errors.mariadb}</div>}
-                                                
+
                                                     {/* Couchbase */}
                                                     <label htmlFor="couchbase">Couchbase</label>
                                                     <input
-                                                        defaultValue={inputs.couchbase} // Use dynamic value
+                                                        value="couchbase" // Set the value for Couchbase
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.couchbase ? 'is-invalid' : ''}`} 
                                                         name="database" 
                                                         type="radio" 
-                                                        id="couchbase" />
+                                                        id="couchbase" 
+                                                        checked={inputs.database === "couchbase"} // Check if this is the selected value
+                                                    />
                                                     {errors.couchbase && <div className="invalid-feedback">{errors.couchbase}</div>}
-                                                
+
                                                     {/* Firebase */}
                                                     <label htmlFor="firebase">Firebase</label>
                                                     <input
-                                                        defaultValue={inputs.firebase} // Use dynamic value
+                                                        value="firebase" // Set the value for Firebase
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.firebase ? 'is-invalid' : ''}`} 
                                                         name="database" 
                                                         type="radio" 
-                                                        id="firebase" />
+                                                        id="firebase" 
+                                                        checked={inputs.database === "firebase"} // Check if this is the selected value
+                                                    />
                                                     {errors.firebase && <div className="invalid-feedback">{errors.firebase}</div>}
-                                                
+
                                                     {/* Redis */}
                                                     <label htmlFor="redis">Redis</label>
                                                     <input
-                                                        defaultValue={inputs.redis} // Use dynamic value
+                                                        value="redis" // Set the value for Redis
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.redis ? 'is-invalid' : ''}`} 
                                                         name="database" 
                                                         type="radio" 
-                                                        id="redis" />
+                                                        id="redis" 
+                                                        checked={inputs.database === "redis"} // Check if this is the selected value
+                                                    />
                                                     {errors.redis && <div className="invalid-feedback">{errors.redis}</div>}
-                                                
+
                                                     {/* Cassandra */}
                                                     <label htmlFor="cassandra">Cassandra</label>
                                                     <input
-                                                        defaultValue={inputs.cassandra} // Use dynamic value
+                                                        value="cassandra" // Set the value for Cassandra
                                                         onChange={handleChange}
                                                         className={`me-1 ${errors.cassandra ? 'is-invalid' : ''}`} 
                                                         name="database" 
                                                         type="radio" 
-                                                        id="cassandra" />
+                                                        id="cassandra" 
+                                                        checked={inputs.database === "cassandra"} // Check if this is the selected value
+                                                    />
                                                     {errors.cassandra && <div className="invalid-feedback">{errors.cassandra}</div>}
+
                                                 </div><br/>
                                                 
                                                 <div className="form-group">

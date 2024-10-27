@@ -1,9 +1,24 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import AdminLayout from '../../../layouts/AdminLayout';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import AdminLayout from '../../../layouts/AdminLayout'
+import { Link } from 'react-router-dom';
 
 function ProjectTaskList() {
-   
+    const[data, setData]=useState([]);
+    useEffect(() => {
+        getDatas();
+    }, []);
+  
+    function getDatas() {
+        axios.get(`${process.env.REACT_APP_API_URL}/task/index`).then(function(response) {
+            setData(response.data.data);
+        });
+    }
+    const deleteData = (id) => {
+        axios.delete(`${process.env.REACT_APP_API_URL}/task/${id}`).then(function(response){
+            getDatas();
+        });
+    }
     return (
         <AdminLayout>
             {/* Content Wrapper. Contains page content */}
@@ -60,26 +75,23 @@ function ProjectTaskList() {
                             </tr>
                         </thead>
                         <tbody className="text-center">
-                            <tr>
-                                <td>001</td>
-                                <td><a href="#" >01</a></td>
-                                <td><a href="#" >01 </a></td>
-                                <td><a href="#" >jsdkldsjkfsd</a></td>
-                                <td className="project_progress stripped">
-                                    <div className="progress progress-sm">
-                                        <div className="progress-bar bg-green" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style={{width: "57%"}}></div>
-                                    </div>
-                                    <small>57% Complete</small>
-                                </td>
-                                <td ><a href="#" >Task</a></td>
-                                <td>10/10/1010</td>
-                                <td>10/10/1010</td>
-                                <td>10/10/1010</td>
+                        {data && data.map((d, key) =>
+                            <tr key={d.id} >
+                                <td>{d.id}</td>
+                                <td>{d.projectId}</td>
+                                <td>{d.employeeId}</td>
+                                <td>{d.note}</td>
+                                <td>00%</td>
+                                <td>{d.task}</td>
+                                <td>{d.assignDate}</td>
+                                <td>{d.finishDate}</td>
+                                <td>{d.actualDate}</td>
                                 <td>
-                                <Link to="" className='btn btn-info'>Edit</Link>
-                                <button type='button' className='btn btn-danger' >Delete</button>
+                                    <Link to={`/project/edit/${d.id}`} className='btn btn-info'>Edit</Link>
+                                    <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
                                 </td>
                             </tr>
+                             )}
                         </tbody>
                     </table>
                 </div>

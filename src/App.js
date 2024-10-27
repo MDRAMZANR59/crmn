@@ -71,6 +71,7 @@ function App() {
 
           <Route path="/project/projectTask" element={<ProjectTask/>} />
           <Route path="/project/projectTaskList" element={<ProjectTaskList/>} />
+          <Route path="/project/edit/:id" element={<ProjectTask/>} />
 
           <Route path="/project/rushMail" element={<RushMail/>} />
 

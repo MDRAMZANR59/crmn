@@ -93,13 +93,13 @@ function AddUser() {
                                                     className={`form-control ${errors.role_id ? 'is-invalid' : ''}`}
                                                     id="role_id"
                                                     name="role_id"
-                                                    value={inputs.role_id}
+                                                    defaultValue={inputs.role_id}
                                                     onChange={handleChange}>
-                                                        <option value="">Select Type</option>
-                                                        <option value="1">Super Admin</option>
-                                                        <option value="2">Customer Exicutive</option>
-                                                        <option value="3">Staff</option>
-                                                        <option value="4">Customer</option>
+                                                        <option defaultValue="">Select Type</option>
+                                                        <option defaultValue="1">Super Admin</option>
+                                                        <option defaultValue="2">Customer Exicutive</option>
+                                                        <option defaultValue="3">Staff</option>
+                                                        <option defaultValue="4">Customer</option>
                                                 </select>
                                                 {errors.role_id && <div classrole_id="invalid-feedback">{errors.role_id}</div>}
                                             </div>
@@ -112,7 +112,7 @@ function AddUser() {
                                                     className={`form-control ${errors.name ? 'is-invalid' : ''}`}
                                                     id="name"
                                                     name="name"
-                                                    value={inputs.name}
+                                                    defaultValue={inputs.name}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.name && <div className="invalid-feedback">{errors.name}</div>}
@@ -126,7 +126,7 @@ function AddUser() {
                                                     className={`form-control ${errors.nid ? 'is-invalid' : ''}`}
                                                     id="nid"
                                                     name="nid"
-                                                    value={inputs.nid}
+                                                    defaultValue={inputs.nid}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.nid && <div className="invalid-feedback">{errors.nid}</div>}
@@ -140,7 +140,7 @@ function AddUser() {
                                                     className={`form-control ${errors.dob ? 'is-invalid' : ''}`}
                                                     id="dob"
                                                     name="dob"
-                                                    value={inputs.dob}
+                                                    defaultValue={inputs.dob}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.dob && <div className="invalid-feedback">{errors.dob}</div>}
@@ -155,7 +155,7 @@ function AddUser() {
                                                     className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                                                     id="email"
                                                     name="email"
-                                                    value={inputs.email}
+                                                    defaultValue={inputs.email}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.email && <div className="invalid-feedback">{errors.email}</div>}
@@ -170,10 +170,24 @@ function AddUser() {
                                                     className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
                                                     id="phone"
                                                     name="phone"
-                                                    value={inputs.phone}
+                                                    defaultValue={inputs.phone}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
+                                            </div>
+                                            <div className="mb-3 col-md-6">
+                                                <label htmlFor="password" className="form-label">Password<sup className=" text-danger">*</sup></label>
+                                                <input
+                                                    required
+                                                    placeholder="Password"
+                                                    type="text"
+                                                    className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                                                    id="password"
+                                                    name="password"
+                                                    defaultValue={inputs.password}
+                                                    onChange={handleChange}
+                                                />
+                                                {errors.password && <div className="invalid-feedback">{errors.password}</div>}
                                             </div>
                                             <div className="mb-3 col-md-6">
                                                 <label htmlFor="joiningDate" className="form-label">Joining Date<sup className=" text-danger">*</sup></label>
@@ -184,7 +198,7 @@ function AddUser() {
                                                     className={`form-control ${errors.joiningDate ? 'is-invalid' : ''}`}
                                                     id="joiningDate"
                                                     name="joiningDate"
-                                                    value={inputs.joiningDate}
+                                                    defaultValue={inputs.joiningDate}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.joiningDate && <div className="invalid-feedback">{errors.joiningDate}</div>}
@@ -198,7 +212,7 @@ function AddUser() {
                                                     className={`form-control ${errors.designation ? 'is-invalid' : ''}`}
                                                     id="designation"
                                                     name="designation"
-                                                    value={inputs.designation}
+                                                    defaultValue={inputs.designation}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.designation && <div className="invalid-feedback">{errors.designation}</div>}
@@ -212,7 +226,7 @@ function AddUser() {
                                                     className={`form-control ${errors.expart ? 'is-invalid' : ''}`}
                                                     id="expart"
                                                     name="expart"
-                                                    value={inputs.expart}
+                                                    defaultValue={inputs.expart}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.expart && <div className="invalid-feedback">{errors.expart}</div>}
@@ -223,13 +237,13 @@ function AddUser() {
                                                     required
                                                     id="department"
                                                     name="department"
-                                                    value={inputs.department}
+                                                    defaultValue={inputs.department}
                                                     onChange={handleChange}
                                                     className={`form-control ${errors.department ? 'is-invalid' : ''}`}>
-                                                    <option value="0">Select department</option>
-                                                    <option value="2">Android App Development</option>
-                                                    <option value="3">PC App Debolopment</option>
-                                                    <option value="4">Web Application Development</option>
+                                                    <option defaultValue="0">Select department</option>
+                                                    <option defaultValue="2">Android App Development</option>
+                                                    <option defaultValue="3">PC App Debolopment</option>
+                                                    <option defaultValue="4">Web Application Development</option>
                                                 </select>
                                                 {errors.department && <div className="invalid-feedback">{errors.department}</div>}
                                             </div>
@@ -242,7 +256,7 @@ function AddUser() {
                                                     className={`form-control ${errors.signature ? 'is-invalid' : ''}`}
                                                     id="signature"
                                                     name="signature"
-                                                    value={inputs.signature}
+                                                    defaultValue={inputs.signature}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.signature && <div className="invalid-feedback">{errors.signature}</div>}
@@ -257,7 +271,7 @@ function AddUser() {
                                                     className={`form-control ${errors.photo ? 'is-invalid' : ''}`}
                                                     id="photo"
                                                     name="photo"
-                                                    value={inputs.photo}
+                                                    defaultValue={inputs.photo}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.photo && <div className="invalid-feedback">{errors.photo}</div>}
@@ -272,18 +286,18 @@ function AddUser() {
                                                     required
                                                     id="country"
                                                     name="country"
-                                                    value={inputs.country}
+                                                    defaultValue={inputs.country}
                                                     onChange={handleChange}
                                                     className={`form-control ${errors.country ? 'is-invalid' : ''}`}>
-                                                    <option value="Select a country">Select a country</option>
-                                                    <option value="Bangladesh">Bangladesh</option>
-                                                    <option value="Algeria">Algeria</option>
-                                                    <option value="Afghanistan">Afghanistan</option>
-                                                    <option value="Ghana">Ghana</option>
-                                                    <option value="Albania">Albania</option>
-                                                    <option value="Bahrain">Bahrain</option>
-                                                    <option value="Colombia">Colombia</option>
-                                                    <option value="Dominican Republic">Dominican Republic</option>
+                                                    <option defaultValue="Select a country">Select a country</option>
+                                                    <option defaultValue="Bangladesh">Bangladesh</option>
+                                                    <option defaultValue="Algeria">Algeria</option>
+                                                    <option defaultValue="Afghanistan">Afghanistan</option>
+                                                    <option defaultValue="Ghana">Ghana</option>
+                                                    <option defaultValue="Albania">Albania</option>
+                                                    <option defaultValue="Bahrain">Bahrain</option>
+                                                    <option defaultValue="Colombia">Colombia</option>
+                                                    <option defaultValue="Dominican Republic">Dominican Republic</option>
                                                 </select>
                                                 {errors.country && <div className="invalid-feedback">{errors.country}</div>}
                                             </div>
@@ -296,7 +310,7 @@ function AddUser() {
                                                     className={`form-control ${errors.districts ? 'is-invalid' : ''}`}
                                                     id="districts"
                                                     name="districts"
-                                                    value={inputs.districts}
+                                                    defaultValue={inputs.districts}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.districts && <div className="invalid-feedback">{errors.districts}</div>}
@@ -310,7 +324,7 @@ function AddUser() {
                                                     className={`form-control ${errors.upozila ? 'is-invalid' : ''}`}
                                                     id="upozila"
                                                     name="upozila"
-                                                    value={inputs.upozila}
+                                                    defaultValue={inputs.upozila}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.upozila && <div className="invalid-feedback">{errors.upozila}</div>}
@@ -325,7 +339,7 @@ function AddUser() {
                                                     className={`form-control ${errors.post ? 'is-invalid' : ''}`}
                                                     id="post"
                                                     name="post"
-                                                    value={inputs.post}
+                                                    defaultValue={inputs.post}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.post && <div className="invalid-feedback">{errors.post}</div>}
@@ -340,7 +354,7 @@ function AddUser() {
                                                     className={`form-control ${errors.zipCode ? 'is-invalid' : ''}`}
                                                     id="zipCode"
                                                     name="zipCode"
-                                                    value={inputs.zipCode}
+                                                    defaultValue={inputs.zipCode}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.zipCode && <div className="invalid-feedback">{errors.zipCode}</div>}
@@ -354,7 +368,7 @@ function AddUser() {
                                                     className={`form-control ${errors.state ? 'is-invalid' : ''}`}
                                                     id="state"
                                                     name="state"
-                                                    value={inputs.state}
+                                                    defaultValue={inputs.state}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.state && <div className="invalid-feedback">{errors.state}</div>}

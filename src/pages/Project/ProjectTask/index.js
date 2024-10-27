@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import AdminLayout from '../../../layouts/AdminLayout';
@@ -8,12 +7,12 @@ import {useParams} from "react-router-dom";
 function ProjectTask() {
     const [errors, setErrors] = useState([]);
 
-    const [inputs, setInputs] = useState({id:'', projectId:'', employeeId:'', note:'', progress:'', task:'', assignDate:'', finishDate:'', actualDate:''});
+    const [inputs, setInputs] = useState({id:'', projectId:'', employeeId:'', note:'', task:'', assignDate:'', finishDate:'', actualDate:'',});
         const navigate=useNavigate();
         const {id} = useParams();
         
         function getDatas(){
-            axios.get(`${process.env.REACT_APP_API_URL}/projectTask/${id}`).then(function(response) {
+            axios.get(`${process.env.REACT_APP_API_URL}/task/${id}`).then(function(response) {
                 setInputs(response.data.data);
             });
         }
@@ -37,9 +36,9 @@ function ProjectTask() {
             try{
                 let apiurl='';
                 if(inputs.id!=''){
-                    apiurl=`/projectTask/edit/${inputs.id}`;
+                    apiurl=`/task/edit/${inputs.id}`;
                 }else{
-                    apiurl=`/projectTask/create`;
+                    apiurl=`/task/create`;
                 }
                 
                 let response= await axios({
@@ -48,7 +47,7 @@ function ProjectTask() {
                     url: `${process.env.REACT_APP_API_URL}${apiurl}`,
                     data: inputs
                 });
-                navigate('/projectTask/projectTaskList')
+                navigate('/project/projectTaskList')
             } 
             catch(e){
                 console.log(e);
@@ -95,7 +94,7 @@ function ProjectTask() {
                                                     className={`form-control ${errors.projectId ? 'is-invalid' : ''}`}
                                                     id="projectId"
                                                     name="projectId"
-                                                    value={inputs.projectId}
+                                                    defaultValue={inputs.projectId}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.projectId && <div className="invalid-feedback">{errors.projectId}</div>}
@@ -110,7 +109,7 @@ function ProjectTask() {
                                                     className={`form-control ${errors.employeeId ? 'is-invalid' : ''}`}
                                                     id="employeeId"
                                                     name="employeeId"
-                                                    value={inputs.employeeId}
+                                                    defaultValue={inputs.employeeId}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.employeeId && <div className="invalid-feedback">{errors.employeeId}</div>}
@@ -119,31 +118,17 @@ function ProjectTask() {
                                                 <label htmlFor="note">Note<sup className=" text-danger">*</sup></label>
                                                 <textarea
                                                 name="note"
-                                                value={inputs.note}
+                                                defaultValue={inputs.note}
                                                 onChange={handleChange}
                                                 className={`form-control ${errors.note ? 'is-invalid' : ''}`} placeholder='Write Note' required id="note" rows="1"></textarea>
                                                 {errors.note && <div className="invalid-feedback">{errors.note}</div>}
                                             </div>
                                            
                                             <div className="mb-6 col-md-6">
-                                                <label htmlFor="progress" className="form-label">Progress<sup className="text-danger">*</sup></label>
-                                                <input
-                                                    required
-                                                    placeholder="noteDate"
-                                                    type="number"
-                                                    className={`form-control ${errors.progress ? 'is-invalid' : ''}`}
-                                                    id="progress"
-                                                    name="progress"
-                                                    value={inputs.progress}
-                                                    onChange={handleChange}
-                                                />
-                                                {errors.progress && <div className="invalid-feedback">{errors.progress}</div>}
-                                            </div>
-                                            <div className="mb-6 col-md-6">
                                                 <label htmlFor="task">Task<sup className=" text-danger">*</sup></label>
                                                 <textarea
                                                 name="task"
-                                                value={inputs.task}
+                                                defaultValue={inputs.task}
                                                 onChange={handleChange}
                                                 className={`form-control ${errors.task ? 'is-invalid' : ''}`} placeholder='Write Note' required id="task" rows="1"></textarea>
                                                 {errors.task && <div className="invalid-feedback">{errors.task}</div>}
@@ -158,7 +143,7 @@ function ProjectTask() {
                                                     className={`form-control ${errors.assignDate ? 'is-invalid' : ''}`}
                                                     id="assignDate"
                                                     name="assignDate"
-                                                    value={inputs.assignDate}
+                                                    defaultValue={inputs.assignDate}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.assignDate && <div className="invalid-feedback">{errors.assignDate}</div>}
@@ -166,13 +151,12 @@ function ProjectTask() {
                                             <div className="mb-3 col-md-6">
                                                 <label htmlFor="attachment" className="form-label">Finish Date<sup className=" text-danger">*</sup></label>
                                                 <input
-                                                    required
                                                     placeholder="Finish Date"
                                                     type="date"
                                                     className={`form-control ${errors.finishDate ? 'is-invalid' : ''}`}
                                                     id="finishDate"
                                                     name="finishDate"
-                                                    value={inputs.finishDate}
+                                                    defaultValue={inputs.finishDate}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.finishDate && <div className="invalid-feedback">{errors.finishDate}</div>}
@@ -185,23 +169,10 @@ function ProjectTask() {
                                                     className={`form-control ${errors.actualDate ? 'is-invalid' : ''}`}
                                                     id="actualDate"
                                                     name="actualDate"
-                                                    value={inputs.actualDate}
+                                                    defaultValue={inputs.actualDate}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.actualDate && <div className="invalid-feedback">{errors.actualDate}</div>}
-                                            </div>
-                                            <div className="mb-3 col-md-6">
-                                                <label htmlFor="progress" className="form-label">Progress</label>
-                                                <input
-                                                    placeholder="Progress %"
-                                                    type="number"
-                                                    className={`form-control ${errors.progress ? 'is-invalid' : ''}`}
-                                                    id="progress"
-                                                    name="progress"
-                                                    value={inputs.progress}
-                                                    onChange={handleChange}
-                                                />
-                                                {errors.progress && <div className="invalid-feedback">{errors.progress}</div>}
                                             </div>
                                         </div>
                                         <button type="submit" className="btn btn-primary mt-3">Save Task</button>

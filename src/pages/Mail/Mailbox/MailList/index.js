@@ -73,7 +73,7 @@ function MailList() {
                                     <th className="mailbox-subject"><b>Subject</b></th>
                                     <th className="mailbox-message">Message</th>
                                     <th className="mailbox-attachment">Attachment</th>
-                                    <th className="mailbox-date">5 mins ago</th>
+                                    <th className="mailbox-date">Time</th>
                                     <th className="mailbox-date">Action</th>
                                 </tr>
                             </thead>
@@ -90,6 +90,7 @@ function MailList() {
                                         <td className="mailbox-subject"><b>{d.subject}</b></td>
                                         <td className="mailbox-message"><Link to="#">{d.bodyMassage}</Link></td>
                                         <td className="mailbox-attachment">attachment</td>
+                                        <td className="mailbox-attachment">10 Minit Ago</td>
                                         <td className="mailbox-date">
                                             <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
                                         </td>
