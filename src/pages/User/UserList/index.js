@@ -86,8 +86,20 @@ function UserList() {
                                   <td>{d.designation}</td>
                                   <td>{d.expart}</td>
                                   <td>{d.department}</td>
-                                  <td>{d.signature}</td>
-                                  <td>{d.photo}</td>
+                                  <td>
+                                      {
+                                          d.signature?.split(',').map((src, i) => (
+                                              <img src={`${process.env.REACT_APP_BACKEND_URL}/userSignature/${src}`} alt="userSignature" style={{ width:"50px", height:'50px', padding:'0px' }}/>
+                                          ))
+                                      }
+                                  </td>
+                                  <td>
+                                      {
+                                          d.photo?.split(',').map((src, i) => (
+                                              <img src={`${process.env.REACT_APP_BACKEND_URL}/user/${src}`} alt="user" style={{ width:"50px", height:'50px', padding:'0px' }}/>
+                                          ))
+                                      }
+                                  </td>
                                   <td><span>{d.state}</span><span>{d.post}</span><span>{d.zipCode}</span><span>{d.upozila}</span><span>{d.districts}</span><span>{d.country}</span></td>
                                   <td>
                                       <Link to={`/user/edit/${d.id}`} className='btn btn-info' >Edit</Link>

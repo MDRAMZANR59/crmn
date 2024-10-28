@@ -78,7 +78,7 @@ function ProjectTaskList() {
                         {data && data.map((d, key) =>
                             <tr key={d.id} >
                                 <td>{d.id}</td>
-                                <td>{d.projectId}</td>
+                                <td>{d.projectfile?.id}</td>
                                 <td>{d.employeeId}</td>
                                 <td>{d.note}</td>
                                 <td>00%</td>

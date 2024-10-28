@@ -8,7 +8,10 @@ function ProjectTask() {
     const [errors, setErrors] = useState([]);
 
     const [inputs, setInputs] = useState({id:'', projectId:'', employeeId:'', note:'', task:'', assignDate:'', finishDate:'', actualDate:'',});
-        const navigate=useNavigate();
+    //relation
+    const [projectfile,setProjectfile]= useState([]);
+    //
+    const navigate=useNavigate();
         const {id} = useParams();
         
         function getDatas(){
@@ -16,11 +19,25 @@ function ProjectTask() {
                 setInputs(response.data.data);
             });
         }
+        //relation
+        const getRelational= async() => {
+            try{
+                const projectfileRespons= await axios.get(`${process.env.REACT_APP_API_URL}/Projectfile`);
+                
+                setProjectfile(projectfileRespons.data.data);
+            } catch (error){
+                console.error('Error fatching Relational data',error);
+            }
+        };
+        //
     
         useEffect(() => {
             if(id){
                 getDatas();
             }
+            //relation
+            getRelational();
+            //
         }, []);
     
         const handleChange = (event) => {
@@ -85,20 +102,41 @@ function ProjectTask() {
                                 <div className="container mt-1">
                                     <form onSubmit={handleSubmit}>
                                         <div className="row md-6">
-                                            <div className="mb-6 col-md-6">
+                                            {/* <div className="mb-6 col-md-6">
                                                 <label htmlFor="projectId" className="form-label">Project Id<sup className=" text-danger">*</sup></label>
-                                                <input
+                                                {projectfile.length> 0 && 
+                                                    <input
                                                     readOnly
                                                     placeholder="Project Id"
                                                     type="number"
                                                     className={`form-control ${errors.projectId ? 'is-invalid' : ''}`}
                                                     id="projectId"
                                                     name="projectId"
-                                                    defaultValue={inputs.projectId}
+                                                    // defaultValue={inputs.projectId}
                                                     onChange={handleChange}
-                                                />
+                                                    {projectfile.map((d, key)=>
+
+                                                    defaultValue={d.id}>{d.id}
+                                                    
+                                                    )}
+                                                    />
+                                                }
+                                                
+                                                
                                                 {errors.projectId && <div className="invalid-feedback">{errors.projectId}</div>}
-                                            </div>
+                                            </div> */}
+                                            <div className="form-group row">
+<label htmlFor="fname" className=" ">Country</label>
+    
+{projectfile.length > 0 && 
+        <select className="form-control" id="projectId" name='projectId' defaultValue={inputs.projectId} onChange={handleChange}>
+            <option value="">Select Country</option>
+            {projectfile.map((d, key) =>
+                <option value={d.id}>{d.id}</option>
+            )}
+        </select>
+        }
+    </div>
 
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="customerId" className="form-label">Employe Id<sup className=" text-danger">*</sup></label>

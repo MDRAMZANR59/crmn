@@ -7,11 +7,12 @@ import {useParams} from "react-router-dom";
 
 function AddUser() {
     const [errors, setErrors] = useState([]);
-
     const [inputs, setInputs] = useState({id:'',name:'',nid:'',dob:'',email:'',phone:'',password:'',joiningDate:'',designation:'',expart:'',department:'',signature:'',photo:'',country:'',districts:'',upozila:'',post:'',zipCode:'',state:''});
     // const [inputs, setInputs] = useState({id:'',role_id:'',name:'',nid:'',dob:'',email:'',phone:'',password:'',joiningDate:'',designation:'',expart:'',department:'',signature:'',photo:'',country:'',districts:'',upozila:'',post:'',zipCode:'',state:''});
         const navigate=useNavigate();
         const {id} = useParams();
+        const [selectedfile, setSelectedFile] = useState([]);//for image 
+
         
         function getDatas(){
             axios.get(`${process.env.REACT_APP_API_URL}/user/${id}`).then(function(response) {
@@ -29,12 +30,23 @@ function AddUser() {
             const name = event.target.name;
             const value = event.target.value;
             setInputs(values => ({...values, [name]: value}));
+        } //for image 
+        const handelFile = (e) => {
+            setSelectedFile(e.target.files)
         }
-    
-        const handleSubmit = async(e) => {
+        const handleSubmit = async (e) => {
             e.preventDefault();
-            console.log(inputs)
-            
+    
+            const formData = new FormData();
+    
+            for (let i = 0; i < selectedfile.length; i++) {
+                formData.append('files[]', selectedfile[i])
+            }
+    
+            for (const property in inputs) {
+                formData.append(property, inputs[property])
+            }
+         //
             try{
                 let apiurl='';
                 if(inputs.id!=''){
@@ -251,14 +263,14 @@ function AddUser() {
                                             <div className="col-6">
                                                 <label htmlFor="signature" className="form-label">Signature<sup className=" text-danger">*</sup></label>
                                                 <input
-                                                    required
+                                                  
                                                     placeholder="signature"
                                                     type="file"
                                                     className={`form-control ${errors.signature ? 'is-invalid' : ''}`}
                                                     id="signature"
                                                     name="signature"
                                                     defaultValue={inputs.signature}
-                                                    onChange={handleChange}
+                                                    onChange={handelFile}
                                                 />
                                                 {errors.signature && <div className="invalid-feedback">{errors.signature}</div>}
                                             </div>
@@ -266,14 +278,14 @@ function AddUser() {
                                             <div className="col-6">
                                                 <label htmlFor="photo" className="form-label">Photo<sup className=" text-danger">*</sup></label>
                                                 <input
-                                                    required
+                                                  
                                                     placeholder="Photo"
                                                     type="file"
                                                     className={`form-control ${errors.photo ? 'is-invalid' : ''}`}
                                                     id="photo"
                                                     name="photo"
                                                     defaultValue={inputs.photo}
-                                                    onChange={handleChange}
+                                                    onChange={handelFile}
                                                 />
                                                 {errors.photo && <div className="invalid-feedback">{errors.photo}</div>}
                                             </div>
