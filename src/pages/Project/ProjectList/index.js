@@ -76,9 +76,9 @@ function ProjectList() {
                                 <th>Back End End Language</th>
                                 <th>Database</th>
                                 <th>Customer Name</th>
+                                <th>Customer Id</th>
                                 <th>Phone</th>
                                 <th>Email</th>
-                                <th>Company Name</th>
                                 <th>Discription</th>
                                 <th>Budget</th>
                                 <th>Recive Date</th>
@@ -104,9 +104,9 @@ function ProjectList() {
                                 <td>{d.backLang}</td>
                                 <td>{d.database}</td>
                                 <td>{d.name}</td>
+                                <td>{d.customerId}</td>
                                 <td>{d.phone}</td>
                                 <td>{d.email}</td>
-                                <td>{d.companyName}</td>
                                 <td>{d.description}</td>
                                 <td>{d.estimatedBudget}</td>
                                 <td>{d.reciveDate}</td>
@@ -126,7 +126,7 @@ function ProjectList() {
                                     <Link className="btn btn-success btn-sm" to="/project/projectTaskList">
                                         <i class="fas fa-tasks"></i>Task
                                     </Link>
-                                    <Link className="btn btn-info btn-sm" to="/project/rushMail">
+                                    <Link className="btn btn-info btn-sm" to="/mail/mailbox/compose">
                                         <i className="fas fa-pencil-alt"></i>Send Rush
                                     </Link>
                                     <Link to="/project/invoice" className="btn btn-info btn-sm">

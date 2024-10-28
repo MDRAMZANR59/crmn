@@ -54,6 +54,7 @@ function CustomerList() {
                                 <tr>
                                     <th>#SL</th>
                                     <th>Name</th>
+                                    <th>Note Id</th>
                                     <th>Nid</th>
                                     <th>Email</th>
                                     <th>Phone</th>
@@ -70,6 +71,7 @@ function CustomerList() {
                                     {/* <td>{key+1}</td> */}
                                     <td>00{d.id}</td>
                                     <td>{d.name}</td>
+                                    <td>{d.noteId}</td>
                                     <td>{d.nid}</td>
                                     <td>{d.email}</td>
                                     <td>{d.phone}</td>

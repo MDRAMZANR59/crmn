@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 function ProjectAdd() {
     const [errors, setErrors] = useState([]);
 
-    const [inputs, setInputs] = useState({id:'', projectName:'', projectType:'', doHoPr:'', frontLiAndFrame:'', backLib:'', frontEndLan:'', backLang:'',database:'', name:'', phone:'',email:'', companyName:'', description:'', estimatedBudget:'', reciveDate:'', eDuration:'', eEndDate:'',projectLeader:''});
+    const [inputs, setInputs] = useState({id:'', projectName:'', projectType:'', doHoPr:'', frontLiAndFrame:'', backLib:'', frontEndLan:'', backLang:'',database:'', name:'',customerId:'', phone:'',email:'', description:'', estimatedBudget:'', reciveDate:'', eDuration:'', eEndDate:'',projectLeader:''});
         const navigate=useNavigate();
         const {id} = useParams();
         
@@ -455,8 +455,8 @@ function ProjectAdd() {
                                                     id="typescript" 
                                                     checked={inputs.frontEndLan === "TypeScript"} // Check if this is the selected value
                                                 />
-                                                {errors.typescript && <div className="invalid-feedback">{errors.typescript}</div>}
-
+                                                    {errors.typescript && <div className="invalid-feedback">{errors.typescript}</div>}
+                                                </div>
                                                 <label><strong>Select Back-End Language</strong></label><hr/>
                                                 <div className="form-group">
                                                     <label htmlFor="php">PHP</label>
@@ -753,6 +753,19 @@ function ProjectAdd() {
                                                         id="name" />
                                                     {errors.name && <div className="invalid-feedback">{errors.name}</div>}
                                                 </div>
+                                                <div className="form-group">
+                                                    <label htmlFor="customerId">Customer Id<sup className=" text-danger">*</sup></label>
+                                                    <input
+                                                        name="customerId"
+                                                        defaultValue={inputs.customerId}
+                                                        onChange={handleChange}
+                                                        className={`form-control ${errors.customerId ? 'is-invalid' : ''}`} 
+                                                        placeholder="Client Name" 
+                                                        required 
+                                                        type="number" 
+                                                        id="customerId" />
+                                                    {errors.customerId && <div className="invalid-feedback">{errors.customerId}</div>}
+                                                </div>
                                                 
                                                 <div className="form-group">
                                                     <label htmlFor="phone">Phone<sup className=" text-danger">*</sup></label>
@@ -781,29 +794,15 @@ function ProjectAdd() {
                                                         id="email" />
                                                     {errors.email && <div className="invalid-feedback">{errors.email}</div>}
                                                 </div>
-                                                
+                                               
                                                 <div className="form-group">
-                                                    <label htmlFor="companyName">Client Company Name</label>
-                                                    <input
-                                                        name="companyName"
-                                                        defaultValue={inputs.companyName}
-                                                        onChange={handleChange}
-                                                        className={`form-control ${errors.companyName ? 'is-invalid' : ''}`} 
-                                                        placeholder="Client Company Name" 
-                                                        type="text" 
-                                                        id="companyName" />
-                                                    {errors.companyName && <div className="invalid-feedback">{errors.companyName}</div>}
-                                                </div>
-                                                
-                                                <div className="form-group">
-                                                    <label htmlFor="description">Project Description<sup className=" text-danger">*</sup></label>
+                                                    <label htmlFor="description">Project Description</label>
                                                     <textarea
                                                         name="description"
                                                         defaultValue={inputs.description}
                                                         onChange={handleChange}
                                                         className={`form-control ${errors.description ? 'is-invalid' : ''}`} 
                                                         placeholder='Project Description' 
-                                                        required 
                                                         id="description" 
                                                         rows="4"></textarea>
                                                     {errors.description && <div className="invalid-feedback">{errors.description}</div>}
@@ -811,7 +810,6 @@ function ProjectAdd() {
                                                  {errors.description && <div className="invalid-feedback">{errors.description}</div>}
                                         </div>
                                     </div>
-                                </div>
                             </div>
                             <div className="col-md-6">
                                 <div className="card card-secondary">
@@ -873,6 +871,7 @@ function ProjectAdd() {
                                 </div>
                             </div>
                         </div>
+                            
                         <div className="row">
                             <div className="col-12">
                                 <Link to="/" className="btn btn-secondary">Cancel</Link>

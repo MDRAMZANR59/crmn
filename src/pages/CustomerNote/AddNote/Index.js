@@ -7,7 +7,7 @@ import {useParams} from "react-router-dom";
 function CuatomerNote() {
     const [errors, setErrors] = useState([]);
 
-    const [inputs, setInputs] = useState({id:'', customerId:'', employeeId:'', note:'', noteDate:'', nextDay:'', attachment:'', meetLocation:'',});
+    const [inputs, setInputs] = useState({id:'', customerName:'',customerId:'', phone:'', employeeId:'', note:'', noteDate:'', nextDay:'', attachment:'', meetLocation:'',});
         const navigate=useNavigate();
         const {id} = useParams();
         
@@ -86,9 +86,23 @@ function CuatomerNote() {
                                     <form onSubmit={handleSubmit}>
                                         <div className="row md-6">
                                             <div className="mb-6 col-md-6">
-                                                <label htmlFor="customerId" className="form-label">Customer Id<sup className=" text-danger">*</sup></label>
+                                                <label htmlFor="customerName" className="form-label">Customer Name<sup className=" text-danger">*</sup></label>
                                                 <input
                                                     required
+                                                    placeholder="Customer Name"
+                                                    type="text"
+                                                    className={`form-control ${errors.customerName ? 'is-invalid' : ''}`}
+                                                    id="customerName"
+                                                    name="customerName"
+                                                    defaultValue={inputs.customerName}
+                                                    onChange={handleChange}
+                                                />
+                                                {errors.customerName && <div className="invalid-feedback">{errors.customerName}</div>}
+                                            </div>
+                                            <div className="mb-6 col-md-6">
+                                                <label htmlFor="customerId" className="form-label">Customer Id</label>
+                                                <input
+                                                   
                                                     placeholder="Customer Id"
                                                     type="number"
                                                     className={`form-control ${errors.customerId ? 'is-invalid' : ''}`}
@@ -98,6 +112,20 @@ function CuatomerNote() {
                                                     onChange={handleChange}
                                                 />
                                                 {errors.customerId && <div className="invalid-feedback">{errors.customerId}</div>}
+                                            </div>
+                                            <div className="mb-6 col-md-6">
+                                                <label htmlFor="phone" className="form-label">Phone<sup className=" text-danger">*</sup></label>
+                                                <input
+                                                    required
+                                                    placeholder="Phone"
+                                                    type="number"
+                                                    className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
+                                                    id="phone"
+                                                    name="phone"
+                                                    defaultValue={inputs.phone}
+                                                    onChange={handleChange}
+                                                />
+                                                {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
                                             </div>
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="employeeId" className="form-label">Employee Id<sup className=" text-danger">*</sup></label>

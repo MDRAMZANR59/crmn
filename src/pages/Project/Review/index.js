@@ -1,7 +1,59 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import AdminLayout from '../../../layouts/AdminLayout';
+import { useNavigate } from 'react-router-dom';
+import {useParams} from "react-router-dom";
 
 function Review() {
+  const [errors, setErrors] = useState([]);
+
+  const [inputs, setInputs] = useState({id:'', massage:'',});
+      const navigate=useNavigate();
+      const {id} = useParams();
+      
+      function getDatas(){
+          axios.get(`${process.env.REACT_APP_API_URL}/review/${id}`).then(function(response) {
+              setInputs(response.data.data);
+          });
+      }
+  
+      useEffect(() => {
+          if(id){
+              getDatas();
+          }
+      }, []);
+  
+      const handleChange = (event) => {
+          const name = event.target.name;
+          const value = event.target.value;
+          setInputs(values => ({...values, [name]: value}));
+      }
+  
+      const handleSubmit = async(e) => {
+          e.preventDefault();
+          console.log(inputs)
+          
+          try{
+              let apiurl='';
+              if(inputs.id!=''){
+                  apiurl=`/review/edit/${inputs.id}`;
+              }else{
+                  apiurl=`/review/create`;
+              }
+              
+              let response= await axios({
+                  method: 'post',
+                  responsiveTYpe: 'json',
+                  url: `${process.env.REACT_APP_API_URL}${apiurl}`,
+                  data: inputs
+              });
+              navigate('/project/projectList')
+          } 
+          catch(e){
+              console.log(e);
+          }
+      }
+
     return (
       <AdminLayout>
         <>
@@ -42,8 +94,13 @@ function Review() {
           </div>
           <div className="col-7">
             <div className="form-group">
-              <label htmlFor="inputMessage">Message</label>
-              <textarea id="inputMessage" name="massage" className="form-control" rows="4" placeholder="What Do You Think About Our Service?"  ></textarea>
+               <label htmlFor="massage">Massage<sup className=" text-danger">*</sup></label>
+                  <textarea
+                  name="massage"
+                  defaultValue={inputs.massage}
+                  onChange={handleChange}
+                  className={`form-control ${errors.massage ? 'is-invalid' : ''}`} placeholder='What Do You Think About Our Service?' required id="massage" rows="1"></textarea>
+                  {errors.massage && <div className="invalid-feedback">{errors.massage}</div>}
             </div>
             <div className="form-group">
               <input type="submit" className="btn btn-primary" value="Send Feedback"/>

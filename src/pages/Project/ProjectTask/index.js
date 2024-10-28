@@ -20,15 +20,15 @@ function ProjectTask() {
             });
         }
         //relation
-        const getRelational= async() => {
-            try{
-                const projectfileRespons= await axios.get(`${process.env.REACT_APP_API_URL}/Projectfile`);
+        // const getRelational= async() => {
+        //     try{
+        //         const projectfileRespons= await axios.get(`${process.env.REACT_APP_API_URL}/Projectfile`);
                 
-                setProjectfile(projectfileRespons.data.data);
-            } catch (error){
-                console.error('Error fatching Relational data',error);
-            }
-        };
+        //         setProjectfile(projectfileRespons.data.data);
+        //     } catch (error){
+        //         console.error('Error fatching Relational data',error);
+        //     }
+        // };
         //
     
         useEffect(() => {
@@ -36,7 +36,7 @@ function ProjectTask() {
                 getDatas();
             }
             //relation
-            getRelational();
+           // getRelational();
             //
         }, []);
     
@@ -102,7 +102,7 @@ function ProjectTask() {
                                 <div className="container mt-1">
                                     <form onSubmit={handleSubmit}>
                                         <div className="row md-6">
-                                            {/* <div className="mb-6 col-md-6">
+                                            <div className="mb-6 col-md-6">
                                                 <label htmlFor="projectId" className="form-label">Project Id<sup className=" text-danger">*</sup></label>
                                                 {projectfile.length> 0 && 
                                                     <input
@@ -112,20 +112,18 @@ function ProjectTask() {
                                                     className={`form-control ${errors.projectId ? 'is-invalid' : ''}`}
                                                     id="projectId"
                                                     name="projectId"
-                                                    // defaultValue={inputs.projectId}
+                                                    defaultValue={inputs.projectId}
                                                     onChange={handleChange}
-                                                    {projectfile.map((d, key)=>
+                                                    // {projectfile.map((d, key)=>
 
-                                                    defaultValue={d.id}>{d.id}
+                                                    // defaultValue={d.id}>{d.id}
                                                     
-                                                    )}
+                                                    // )}
                                                     />
                                                 }
-                                                
-                                                
                                                 {errors.projectId && <div className="invalid-feedback">{errors.projectId}</div>}
-                                            </div> */}
-                                            <div className="form-group row">
+                                            </div>
+                                            {/* <div className="form-group row">
 <label htmlFor="fname" className=" ">Country</label>
     
 {projectfile.length > 0 && 
@@ -136,7 +134,7 @@ function ProjectTask() {
             )}
         </select>
         }
-    </div>
+    </div> */}
 
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="customerId" className="form-label">Employe Id<sup className=" text-danger">*</sup></label>

@@ -53,7 +53,9 @@ function NoteList() {
                             <thead>
                                 <tr>
                                     <th>#SL</th>
+                                    <th>Customer Name</th>
                                     <th>Customer Id</th>
+                                    <th>Phone</th>
                                     <th>Employe Id</th>
                                     <th>Note</th>
                                     <th>First Meet</th>
@@ -69,7 +71,9 @@ function NoteList() {
                                 <tr key={d.id} >
                                     {/* <td>{key+1}</td> */}
                                     <td>00{d.id}</td>
+                                    <td>{d.customerName}</td>
                                     <td>{d.customerId}</td>
+                                    <td>{d.phone}</td>
                                     <td>{d.employeeId}</td>
                                     <td>{d.note}</td>
                                     <td>{d.firstMeet}</td>
@@ -79,7 +83,8 @@ function NoteList() {
                                     <td>
                                         <Link to={`/customerNote/edit/${d.id}`} className='btn btn-info'>Edit</Link>
                                         <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger' >Delete</button>
-                                        <Link to='/mail/mailbox/compose' className="btn btn-primary btn-block mb-3">Mail</Link>
+                                        <Link to='#' className="btn btn-success btn-block">Call</Link>
+                                        {/* <Link to='/mail/mailbox/compose' className="btn btn-primary btn-block">Mail</Link> */}
                                     </td>
                                 </tr>
                             )}
