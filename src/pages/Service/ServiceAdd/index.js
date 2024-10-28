@@ -1,17 +1,58 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import AdminLayout from '../../../layouts/AdminLayout';
+import { useNavigate } from 'react-router-dom';
+import {useParams} from "react-router-dom";
 
 function ServiceAdd() {
-    const [formData, setFormData] = useState([]);
     const [errors, setErrors] = useState([]);
 
-    const handleChange = (e) => {
-        return true;
-    };
-
-    const handleSubmit = (e) => {
-        return true;
-    };
+    const [inputs, setInputs] = useState({id:'', customerId:'', employeeId:'', note:'', noteDate:'', nextDay:'', attachment:'', meetLocation:'',});
+        const navigate=useNavigate();
+        const {id} = useParams();
+        
+        function getDatas(){
+            axios.get(`${process.env.REACT_APP_API_URL}/customerNote/${id}`).then(function(response) {
+                setInputs(response.data.data);
+            });
+        }
+    
+        useEffect(() => {
+            if(id){
+                getDatas();
+            }
+        }, []);
+    
+        const handleChange = (event) => {
+            const name = event.target.name;
+            const value = event.target.value;
+            setInputs(values => ({...values, [name]: value}));
+        }
+    
+        const handleSubmit = async(e) => {
+            e.preventDefault();
+            console.log(inputs)
+            
+            try{
+                let apiurl='';
+                if(inputs.id!=''){
+                    apiurl=`/customerNote/edit/${inputs.id}`;
+                }else{
+                    apiurl=`/customerNote/create`;
+                }
+                
+                let response= await axios({
+                    method: 'post',
+                    responsiveTYpe: 'json',
+                    url: `${process.env.REACT_APP_API_URL}${apiurl}`,
+                    data: inputs
+                });
+                navigate('/customerNote/noteList')
+            } 
+            catch(e){
+                console.log(e);
+            }
+        }
 
     return (
         <AdminLayout>
@@ -53,7 +94,7 @@ function ServiceAdd() {
                                                     className={`form-control ${errors.serviceName ? 'is-invalid' : ''}`}
                                                     id="serviceName"
                                                     name="serviceName"
-                                                    value={formData.serviceName}
+                                                    defaultValue={inputs.serviceName}
                                                     onChange={handleChange}
                                                 />
                                                 {errors.serviceName && <div className="invalid-feedback">{errors.serviceName}</div>}
@@ -64,44 +105,112 @@ function ServiceAdd() {
                                                     required
                                                     id="exparts"
                                                     name="exparts"
-                                                    value={formData.exparts}
+                                                    defaultValue={inputs.exparts}
                                                     onChange={handleChange}
                                                     className={`form-control ${errors.exparts ? 'is-invalid' : ''}`}>
-                                                    <option value="0">Select expart</option>
-                                                    <option value="2">Mukut</option>
-                                                    <option value="3">Mamun</option>
-                                                    <option value="4">Raja</option>
-                                                    <option value="5">Buppy</option>
+                                                    <option defaultValue="0">Select expart</option>
+                                                    <option defaultValue="2">Mukut</option>
+                                                    <option defaultValue="3">Mamun</option>
+                                                    <option defaultValue="4">Raja</option>
+                                                    <option defaultValue="5">Buppy</option>
                                                 </select>
                                                 {errors.exparts && <div className="invalid-feedback">{errors.exparts}</div>}
                                             </div>
                                             <div className="col-md-12">
-                                                <div className="form-group">
-                                                    <label><strong>Languages<sup className=" text-danger">*</sup></strong></label><br/>
-                                                    <label htmlFor="javascript">JavaScript </label>
-                                                    <input type="checkbox" id="javascript" placeholder="Project Name" className="me-1"/>
-                                                    <label htmlFor="php">TypeScript</label>
-                                                    <input type="checkbox" id="php" placeholder="Project Name" className="me-1"/>
-                                                    <label htmlFor="vue">Vue.js</label>
-                                                    <input type="checkbox" id="vue" placeholder="Project Name" className="me-1"/>
-                                                    <label htmlFor="php">TypeScript</label>
-                                                    <input type="checkbox" id="php" placeholder="Project Name" className="me-1"/>
-                                                    <label htmlFor="angular">Angular </label>
-                                                    <input type="checkbox" id="angular" placeholder="Project Name" className="me-1"/>
-                                                    <label htmlFor="react">React </label>
-                                                    <input type="checkbox" id="react" placeholder="Project Name" className="me-1"/>
-                                                    <label htmlFor="bootstrap">Bootstrap </label>
-                                                    <input type="checkbox" id="bootstrap" placeholder="Project Name" className="me-1"/>
-                                                    <label htmlFor="jquery">JQuery </label>
-                                                    <input type="checkbox" id="jquery" placeholder="Project Name" className="me-1"/>
-                                                    <label htmlFor="php">PHP </label>
-                                                    <input type="checkbox" id="javascript" placeholder="Project Name" className="me-1"/>
-                                                    <label htmlFor="javascript">JavaScript</label>
-                                                    <input type="checkbox" id="javascript" placeholder="Project Name" className="me-1"/>
-                                                    <label htmlFor="c++">C++</label>
-                                                    <input type="checkbox" id="c++" placeholder="Project Name" className="me-1"/>
-                                                    <label htmlFor="C#">C#</label>
-                                                    <input type="checkbox" id="php" placeholder="Project Name" className="me-1"/>
+                                            <div className="form-group">
+    <label htmlFor='languages'><strong>Languages<sup className="text-danger">*</sup></strong></label><br/>
+    
+    <label htmlFor="javascript">JavaScript </label>
+    <input 
+        defaultChecked={inputs.javascript} // Updated to reflect the JavaScript checkbox
+        name="javascript" 
+        onChange={handleChange} 
+        type="checkbox" 
+        className={`me-1 ${errors.customerId ? 'is-invalid' : ''}`}
+        id="javascript" />
+
+    <label htmlFor="typescript">TypeScript</label>
+    <input
+        defaultChecked={inputs.typescript} // Updated to reflect the TypeScript checkbox
+        name="typescript" 
+        onChange={handleChange} 
+        type="checkbox" 
+        className={`me-1 ${errors.customerId ? 'is-invalid' : ''}`}
+        id="typescript"/>
+
+    <label htmlFor="vue">Vue.js</label>
+    <input 
+        defaultChecked={inputs.vue} // Updated to reflect the Vue.js checkbox
+        name="vue" 
+        onChange={handleChange} 
+        type="checkbox" 
+        className={`me-1 ${errors.customerId ? 'is-invalid' : ''}`}
+        id="vue"/>
+
+    <label htmlFor="angular">Angular </label>
+    <input 
+        defaultChecked={inputs.angular} // Updated to reflect the Angular checkbox
+        name="angular" 
+        onChange={handleChange} 
+        type="checkbox" 
+        className={`me-1 ${errors.customerId ? 'is-invalid' : ''}`}
+        id="angular" />
+
+    <label htmlFor="react">React </label>
+    <input 
+        defaultChecked={inputs.react} // Updated to reflect the React checkbox
+        name="react" 
+        onChange={handleChange} 
+        type="checkbox" 
+        className={`me-1 ${errors.customerId ? 'is-invalid' : ''}`}
+        id="react" />
+
+    <label htmlFor="bootstrap">Bootstrap </label>
+    <input 
+        defaultChecked={inputs.bootstrap} // Updated to reflect the Bootstrap checkbox
+        name="bootstrap" 
+        onChange={handleChange} 
+        type="checkbox" 
+        className={`me-1 ${errors.customerId ? 'is-invalid' : ''}`}
+        id="bootstrap" />
+
+    <label htmlFor="jquery">JQuery </label>
+    <input 
+        defaultChecked={inputs.jquery} // Updated to reflect the JQuery checkbox
+        name="jquery" 
+        onChange={handleChange} 
+        type="checkbox" 
+        className={`me-1 ${errors.customerId ? 'is-invalid' : ''}`}
+        id="jquery" />
+
+    <label htmlFor="php">PHP </label>
+    <input 
+        defaultChecked={inputs.php} // Updated to reflect the PHP checkbox
+        name="php" 
+        onChange={handleChange} 
+        type="checkbox" 
+        className={`me-1 ${errors.customerId ? 'is-invalid' : ''}`}
+        id="php" />
+
+    <label htmlFor="c++">C++</label>
+    <input 
+        defaultChecked={inputs.cplusplus} // Updated to reflect the C++ checkbox
+        name="cplusplus" 
+        onChange={handleChange} 
+        type="checkbox" 
+        className={`me-1 ${errors.customerId ? 'is-invalid' : ''}`}
+        id="c++" />
+
+    <label htmlFor="csharp">C#</label>
+    <input 
+        defaultChecked={inputs.csharp} // Updated to reflect the C# checkbox
+        name="csharp" 
+        onChange={handleChange} 
+        type="checkbox" 
+        className={`me-1 ${errors.customerId ? 'is-invalid' : ''}`}
+        id="csharp" />
+
+
                                                 </div>
                                             </div>
                                         </div>

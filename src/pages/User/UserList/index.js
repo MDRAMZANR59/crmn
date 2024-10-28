@@ -82,7 +82,6 @@ function UserList() {
                                   <td>{d.dob}</td>
                                   <td>{d.email}</td>
                                   <td>{d.phone}</td>
-                                  <td>{d.password}</td>
                                   <td>{d.joiningDate}</td>
                                   <td>{d.designation}</td>
                                   <td>{d.expart}</td>
