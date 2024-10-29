@@ -59,7 +59,7 @@ function UserList() {
                                     <th>User Type</th>
                                     <th>Name</th>
                                     <th>Employe Id</th>
-                                    <th>Customer Id</th>
+                                    {/* <th>Customer Id</th> */}
                                     <th>NID</th>
                                     <th>DOB</th>
                                     <th>Email</th>
