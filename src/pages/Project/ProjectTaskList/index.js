@@ -64,6 +64,7 @@ function ProjectTaskList() {
                             <tr className="text-center">
                                 <th>SL</th>
                                 <th>Project Id</th>
+                                <th>Task Id</th>
                                 <th>Employe Id</th>
                                 <th>Note</th>
                                 <th>Progress</th>
@@ -78,6 +79,7 @@ function ProjectTaskList() {
                         {data && data.map((d, key) =>
                             <tr key={d.id} >
                                 <td>{d.id}</td>
+                                <td>5 Static</td>
                                 {/* <td>{d.projectfile?.id}</td> */}
                                 <td>{d.id}</td>
                                 <td>{d.employeeId}</td>

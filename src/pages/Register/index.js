@@ -16,7 +16,7 @@ function Register() {
         e.preventDefault();
         try{
             await register(inputs);
-            //navigate('/login')
+            navigate('/login')
         } 
         catch(e){
             console.log(e);

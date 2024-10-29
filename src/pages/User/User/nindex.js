@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../../components/axios';
 import AdminLayout from '../../../layouts/AdminLayout';
 import { useNavigate } from 'react-router-dom';
 import {useParams} from "react-router-dom";
@@ -7,10 +7,12 @@ import {useParams} from "react-router-dom";
 
 function AddUser() {
     const [errors, setErrors] = useState([]);
-
-    const [inputs, setInputs] = useState({id:'', name:'',nid:'',dob:'',email:'',phone:'',employeId:'',designation:'',signature:'', password:'', photo:'', country:'',districts:'',upozila:'', post:'', zipCode:'', state:''});
+    const [inputs, setInputs] = useState({id:'',name:'',nid:'',dob:'',email:'',phone:'',password:'',joiningDate:'',designation:'',expart:'',department:'',signature:'',photo:'',country:'',districts:'',upozila:'',post:'',zipCode:'',state:''});
+    // const [inputs, setInputs] = useState({id:'',role_id:'',name:'',nid:'',dob:'',email:'',phone:'',password:'',joiningDate:'',designation:'',expart:'',department:'',signature:'',photo:'',country:'',districts:'',upozila:'',post:'',zipCode:'',state:''});
         const navigate=useNavigate();
         const {id} = useParams();
+        const [selectedfile, setSelectedFile] = useState([]);//for image 
+
         
         function getDatas(){
             axios.get(`${process.env.REACT_APP_API_URL}/user/${id}`).then(function(response) {
@@ -28,12 +30,23 @@ function AddUser() {
             const name = event.target.name;
             const value = event.target.value;
             setInputs(values => ({...values, [name]: value}));
+        } //for image 
+        const handelFile = (e) => {
+            setSelectedFile(e.target.files)
         }
-    
-        const handleSubmit = async(e) => {
+        const handleSubmit = async (e) => {
             e.preventDefault();
-            console.log(inputs)
-            
+    
+            const formData = new FormData();
+    
+            for (let i = 0; i < selectedfile.length; i++) {
+                formData.append('files[]', selectedfile[i])
+            }
+    
+            for (const property in inputs) {
+                formData.append(property, inputs[property])
+            }
+         //
             try{
                 let apiurl='';
                 if(inputs.id!=''){
@@ -48,7 +61,7 @@ function AddUser() {
                     url: `${process.env.REACT_APP_API_URL}${apiurl}`,
                     data: inputs
                 });
-                navigate('/UserList')
+                navigate('/user/userList')
             } 
             catch(e){
                 console.log(e);
@@ -85,7 +98,7 @@ function AddUser() {
                                 <div className="container mt-5">
                                     <form onSubmit={handleSubmit}>
                                         <div className="row md-6">
-                                            <div className="mb-6 col-md-6">
+                                            {/* <div className="mb-6 col-md-6">
                                                 <label htmlFor="role" className="form-label">User Role<sup className=" text-danger">*</sup></label>
                                                 <select
                                                     required
@@ -102,7 +115,7 @@ function AddUser() {
                                                         <option defaultValue="4">Customer</option>
                                                 </select>
                                                 {errors.role_id && <div classrole_id="invalid-feedback">{errors.role_id}</div>}
-                                            </div>
+                                            </div> */}
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="name" className="form-label">Name By NID<sup className=" text-danger">*</sup></label>
                                                 <input
@@ -250,14 +263,14 @@ function AddUser() {
                                             <div className="col-6">
                                                 <label htmlFor="signature" className="form-label">Signature<sup className=" text-danger">*</sup></label>
                                                 <input
-                                                    required
+                                                  
                                                     placeholder="signature"
                                                     type="file"
                                                     className={`form-control ${errors.signature ? 'is-invalid' : ''}`}
                                                     id="signature"
                                                     name="signature"
-                                                    defaultValue={inputs.signature}
-                                                    onChange={handleChange}
+                                                    multiple defaultValue={inputs.signature}
+                                                    onChange={handelFile}
                                                 />
                                                 {errors.signature && <div className="invalid-feedback">{errors.signature}</div>}
                                             </div>
@@ -265,14 +278,14 @@ function AddUser() {
                                             <div className="col-6">
                                                 <label htmlFor="photo" className="form-label">Photo<sup className=" text-danger">*</sup></label>
                                                 <input
-                                                    required
+                                                  
                                                     placeholder="Photo"
                                                     type="file"
                                                     className={`form-control ${errors.photo ? 'is-invalid' : ''}`}
                                                     id="photo"
                                                     name="photo"
-                                                    defaultValue={inputs.photo}
-                                                    onChange={handleChange}
+                                                    multiple defaultValue={inputs.photo}
+                                                    onChange={handelFile}
                                                 />
                                                 {errors.photo && <div className="invalid-feedback">{errors.photo}</div>}
                                             </div>
