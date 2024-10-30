@@ -46,7 +46,7 @@ function Sidebar() {
                                         <img src="../../assets/dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image"/>
                                     </div>
                                     <div className="info">
-                                        <a href="#" className="d-block">Alexander Pierce</a>
+                                        <a href="#" className="d-block">Md Ramzan</a>
                                     </div>
                                 </div>
                             </div>

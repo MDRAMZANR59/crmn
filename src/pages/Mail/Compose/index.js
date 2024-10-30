@@ -60,7 +60,7 @@ function Compose() {
         data: inputs
       });
       
-      navigate('/compose/sent');
+      navigate('/mail/mailBox');
     } catch (error) {
       console.log(error);
     }

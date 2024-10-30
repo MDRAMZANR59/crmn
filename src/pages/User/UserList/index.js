@@ -59,7 +59,7 @@ function UserList() {
                                     <th>User Type</th>
                                     <th>Name</th>
                                     <th>Employe Id</th>
-                                    {/* <th>Customer Id</th> */}
+                                    <th>Customer Id</th>
                                     <th>NID</th>
                                     <th>DOB</th>
                                     <th>Email</th>
@@ -78,20 +78,22 @@ function UserList() {
                               {data && data.map((d, key) =>
                                 <tr key={d.id}>
                                   <td className="text-bold-500">{key+1}</td>
-                                  <td>{d.role_id}</td>
+                                  <td>{d.role.role_name}</td>
                                   <td>{d.name}</td>
-                                  <td>{d.usermeta.employeId}</td>
-                                  <td>{d.usermeta.nid}</td>
-                                  <td>{d.usermeta.dob}</td>
-                                  <td>{d.usermeta.email}</td>
-                                  <td>{d.usermeta.phone}</td>
-                                  <td>{d.usermeta.joiningDate}</td>
-                                  <td>{d.usermeta.designation}</td>
-                                  <td>{d.usermeta.expart}</td>
-                                  <td>{d.usermeta.department}</td>
-                                  <td>{d.usermeta.signature}</td>
-                                  <td>{d.usermeta.photo}</td>
-                                  <td><span>{d.usermeta.state}</span><span>{d.usermeta.post}</span><span>{d.usermeta.zipCode}</span><span>{d.usermeta.upozila}</span><span>{d.usermeta.districts}</span><span>{d.usermeta.country}</span></td>
+                                  {/* <td>{d.usermeta.employeId}</td> */}
+                                  <td>{d.usermeta?.user_id}</td>
+                                  <td>{d.usermeta?.customerId}</td>
+                                  <td>{d.usermeta?.nid}</td>
+                                  <td>{d.usermeta?.dob}</td>
+                                  <td>{d.usermeta?.email}</td>
+                                  <td>{d.usermeta?.phone}</td>
+                                  <td>{d.usermeta?.joiningDate}</td>
+                                  <td>{d.usermeta?.designation}</td>
+                                  <td>{d.usermeta?.expart}</td>
+                                  <td>{d.usermeta?.department}</td>
+                                  <td>{d.usermeta?.signature}</td>
+                                  <td>{d.usermeta?.photo}</td>
+                                  <td><span>{d.usermeta?.state}</span><span>{d.usermeta?.post}</span><span>{d.usermeta?.zipCode}</span><span>{d.usermeta?.upozila}</span><span>{d.usermeta?.districts}</span><span>{d.usermeta?.country}</span></td>
                                   <td>
                                       <Link to={`/user/edit/${d.id}`} className='btn btn-info' >Edit</Link>
                                       <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
