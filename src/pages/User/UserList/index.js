@@ -92,7 +92,13 @@ function UserList() {
                                   <td>{d.usermeta?.expart}</td>
                                   <td>{d.usermeta?.department}</td>
                                   <td>{d.usermeta?.signature}</td>
-                                  <td>{d.usermeta?.photo}</td>
+                                  {/* <td>{d.usermeta?.photo}</td> */}
+                                  <td>
+                                      {d?.photo?.split(',').map((src, i) => (
+                                      <img src={`${process.env.REACT_APP_BACKEND_URL}/adduser/${src}`} alt="No photo" width="50px"/>
+                                      ))
+                                      }
+                                  </td>
                                   <td><span>{d.usermeta?.state}</span><span>{d.usermeta?.post}</span><span>{d.usermeta?.zipCode}</span><span>{d.usermeta?.upozila}</span><span>{d.usermeta?.districts}</span><span>{d.usermeta?.country}</span></td>
                                   <td>
                                       <Link to={`/user/edit/${d.id}`} className='btn btn-info' >Edit</Link>

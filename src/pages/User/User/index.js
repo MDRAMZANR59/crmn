@@ -10,6 +10,7 @@ function AddUser() {
 
     const [inputs, setInputs] = useState({id:'', name:'',nid:'',dob:'',email:'',phone:'',employeId:'',designation:'',signature:'', password:'', photo:'', country:'',districts:'',upozila:'', post:'', zipCode:'', state:''});
         const navigate=useNavigate();
+        const [selectedFiles, setSelectedFiles] = useState([]); // For photo
         const {id} = useParams();
         
         function getDatas(){
@@ -23,7 +24,11 @@ function AddUser() {
                 getDatas();
             }
         }, []);
-    
+        //for photo
+        const handleFileChange = (e) => {
+            setSelectedFiles(e.target.files);
+        }
+        //  
         const handleChange = (event) => {
             const name = event.target.name;
             const value = event.target.value;
@@ -33,6 +38,17 @@ function AddUser() {
         const handleSubmit = async(e) => {
             e.preventDefault();
             console.log(inputs)
+            //for photo
+            const formData = new FormData();
+        // Append photos to formData
+        for (let i = 0; i < selectedFiles.length; i++) {
+            formData.append('files[]', selectedFiles[i]);
+        }
+        // Append other form inputs to formData
+        for (const user in inputs) {
+            formData.append(user, inputs[user]);
+        }
+        //
             
             try{
                 let apiurl='';
@@ -46,8 +62,13 @@ function AddUser() {
                     method: 'post',
                     responsiveTYpe: 'json',
                     url: `${process.env.REACT_APP_API_URL}${apiurl}`,
-                    data: inputs
-                });
+                    //data: inputs
+                    //for photo
+                    data: formData,
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    }
+                });//
                 navigate('/user/userList')
             } 
             catch(e){
@@ -262,7 +283,7 @@ function AddUser() {
                                                 {errors.signature && <div className="invalid-feedback">{errors.signature}</div>}
                                             </div>
 
-                                            <div className="col-6">
+                                           {/* <div className="col-6">
                                                 <label htmlFor="photo" className="form-label">Photo<sup className=" text-danger">*</sup></label>
                                                 <input
                                                     required
@@ -275,6 +296,12 @@ function AddUser() {
                                                     onChange={handleChange}
                                                 />
                                                 {errors.photo && <div className="invalid-feedback">{errors.photo}</div>}
+                                            </div>*/}
+                                            <div className="col-6">
+                                                <div className="form-group">
+                                                    <label for="email-id-vertical">photo</label>
+                                                    <input type="file" id="photo" className="form-control" defaultValue={inputs.photo} name="photo" multiple onChange={handleFileChange} />
+                                                </div>
                                             </div>
 
                                             <div className="col-">
