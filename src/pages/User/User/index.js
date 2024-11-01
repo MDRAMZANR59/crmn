@@ -10,6 +10,7 @@ function AddUser() {
 
     const [inputs, setInputs] = useState({id:'', name:'',nid:'',dob:'',email:'',phone:'',employeId:'',designation:'',signature:'', password:'', photo:'', country:'',districts:'',upozila:'', post:'', zipCode:'', state:''});
         const navigate=useNavigate();
+        //for photo
         const [selectedFiles, setSelectedFiles] = useState([]); // For photo
         const {id} = useParams();
         
@@ -300,7 +301,13 @@ function AddUser() {
                                             <div className="col-6">
                                                 <div className="form-group">
                                                     <label for="email-id-vertical">photo</label>
-                                                    <input type="file" id="photo" className="form-control" defaultValue={inputs.photo} name="photo" multiple onChange={handleFileChange} />
+                                                    <input 
+                                                    type="file" 
+                                                    id="photo" 
+                                                    className="form-control"
+                                                    defaultValue={inputs.photo} 
+                                                    name="photo" 
+                                                    multiple onChange={handleFileChange} />
                                                 </div>
                                             </div>
 

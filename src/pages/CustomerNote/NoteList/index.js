@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../../components/axios';
 import AdminLayout from '../../../layouts/AdminLayout'
 import { Link } from 'react-router-dom';
 
 function NoteList() {
   const[data, setData]=useState([]);
+  const config = {
+    headers: { Authorization: `Bearer ${localStorage.getItem("access_token")}` }
+};
     useEffect(() => {
         getDatas();
     }, []);
@@ -79,6 +82,12 @@ function NoteList() {
                                     <td>{d.firstMeet}</td>
                                     <td>{d.nextMeet}</td>
                                     <td>{d.attachment}</td>
+                                    <td>
+                                      {d?.photo?.split(',').map((src, i) => (
+                                      <img src={`${process.env.REACT_APP_BACKEND_URL}/customerNote/${src}`} alt="No photo" width="50px"/>
+                                      ))
+                                      }
+                                  </td>
                                     <td>{d.meetLocation}</td>
                                     <td>
                                         <Link to={`/customerNote/edit/${d.id}`} className='btn btn-info'>Edit</Link>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../../components/axios';
 import AdminLayout from '../../../layouts/AdminLayout';
 import { useNavigate } from 'react-router-dom';
 import {useParams} from "react-router-dom";
@@ -9,6 +9,7 @@ function CuatomerNote() {
 
     const [inputs, setInputs] = useState({id:'', customerName:'',customerId:'', phone:'', employeeId:'', note:'', noteDate:'', nextDay:'', attachment:'', meetLocation:'',});
         const navigate=useNavigate();
+        const [selectedFiles, setSelectedFiles] = useState([]); // For photo
         const {id} = useParams();
         
         function getDatas(){
@@ -22,7 +23,11 @@ function CuatomerNote() {
                 getDatas();
             }
         }, []);
-    
+        //for photo
+        const handleFileChange = (e) => {
+            setSelectedFiles(e.target.files);
+        }
+        //
         const handleChange = (event) => {
             const name = event.target.name;
             const value = event.target.value;
@@ -32,7 +37,17 @@ function CuatomerNote() {
         const handleSubmit = async(e) => {
             e.preventDefault();
             console.log(inputs)
-            
+             //for photo
+             const formData = new FormData();
+             // Append photos to formData
+             for (let i = 0; i < selectedFiles.length; i++) {
+                 formData.append('files[]', selectedFiles[i]);
+             }
+             // Append other form inputs to formData
+             for (const user in inputs) {
+                 formData.append(user, inputs[user]);
+             }
+             //
             try{
                 let apiurl='';
                 if(inputs.id!=''){
@@ -45,7 +60,12 @@ function CuatomerNote() {
                     method: 'post',
                     responsiveTYpe: 'json',
                     url: `${process.env.REACT_APP_API_URL}${apiurl}`,
-                    data: inputs
+                    // data: inputs
+                //  for photo
+                data:formData,
+                headers:{
+                    'Content-Type':'multipart/form-data'
+                }
                 });
                 navigate('/customerNote/noteList')
             } 
@@ -184,15 +204,13 @@ function CuatomerNote() {
                                             <div className="mb-3 col-md-6">
                                                 <label htmlFor="attachment" className="form-label">Attachment</label>
                                                 <input
-                                                    placeholder="Attachment"
                                                     type="file"
-                                                    className={`form-control ${errors.attachment ? 'is-invalid' : ''}`}
+                                                    className="form-control"
                                                     id="attachment"
                                                     name="attachment"
                                                     defaultValue={inputs.attachment}
-                                                    onChange={handleChange}
+                                                    onChange={handleFileChange}
                                                 />
-                                                {errors.attachment && <div className="invalid-feedback">{errors.attachment}</div>}
                                             </div>
                                             
                                             <div className="mb-3 col-md-6">
