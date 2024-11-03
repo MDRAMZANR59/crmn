@@ -63,7 +63,7 @@ function ProjectTaskList() {
                         <thead className='text-nowrap'>
                             <tr className="text-center">
                                 <th>SL</th>
-                                <th>Project Id</th>
+                                <th>Project Name</th>
                                 <th>Task Id</th>
                                 <th>Employe Id</th>
                                 <th>Note</th>
@@ -79,7 +79,7 @@ function ProjectTaskList() {
                         {data && data.map((d, key) =>
                             <tr key={d.id} >
                                 <td>{d.id}</td>
-                                <td>2</td>
+                                <td>Code Crafter</td>
                                 {/* <td>{d.projectfile?.id}</td> */}
                                 <td>{d.id}</td>
                                 <td>{d.employeeId}</td>

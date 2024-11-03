@@ -7,7 +7,7 @@ import {useParams} from "react-router-dom";
 function ProjectTask() {
     const [errors, setErrors] = useState([]);
 
-    const [inputs, setInputs] = useState({id:'', projectId:'', employeeId:'', note:'', task:'', assignDate:'', finishDate:'', actualDate:'',});
+    const [inputs, setInputs] = useState({id:'', projectName:'', employeeId:'', note:'', task:'', assignDate:'', finishDate:'', actualDate:'',});
     //relation
     const [projectfile,setProjectfile]= useState([]);
     //
@@ -92,16 +92,16 @@ function ProjectTask() {
                                     <form onSubmit={handleSubmit}>
                                         <div className="row md-6">
                                             <div className="mb-6 col-md-6">
-                                                <label htmlFor="projectId" className="form-label">Project Id<sup className=" text-danger">*</sup></label>
+                                                <label htmlFor="projectId" className="form-label">Project Name<sup className=" text-danger">*</sup></label>
                                                
                                                     <input
                                                     readOnly
-                                                    placeholder="Project Id"
-                                                    type="number"
-                                                    className={`form-control ${errors.projectId ? 'is-invalid' : ''}`}
-                                                    id="projectId"
-                                                    name="projectId"
-                                                    value="2"
+                                                    placeholder="Project Name"
+                                                    type="text"
+                                                    className={`form-control ${errors.projectName ? 'is-invalid' : ''}`}
+                                                    id="projectName"
+                                                    name="projectName"
+                                                    value="Code Crafter"
                                                     onChange={handleChange}
                                                     // {projectfile.map((d, key)=>
 
@@ -110,7 +110,7 @@ function ProjectTask() {
                                                     // )}
                                                     />
                                                 
-                                                {errors.projectId && <div className="invalid-feedback">{errors.projectId}</div>}
+                                                {errors.projectName && <div className="invalid-feedback">{errors.projectName}</div>}
                                             </div>
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="customerId" className="form-label">Employe Id<sup className=" text-danger">*</sup></label>
