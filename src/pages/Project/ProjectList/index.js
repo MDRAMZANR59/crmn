@@ -2,8 +2,26 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import AdminLayout from '../../../layouts/AdminLayout'
 import { Link } from 'react-router-dom';
-
+//model
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
+//
 function ProjectList() {
+    //model
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShown = () => setShow(true);
+    //
+//model comment
+    const values = [true, 'lg-down'];
+    const [fullscreen, setFullscreen] = useState(true);
+
+    function handleShow(breakpoint) {
+        setFullscreen(breakpoint);
+        setShow(true);
+    }
+  //
     const[data, setData]=useState([]);
     useEffect(() => {
         getDatas();
@@ -120,7 +138,22 @@ function ProjectList() {
                                     <i className="fas fa-star"></i>
                                     <i className="fas fa-star"></i>
                                     <i className="fas fa-star"></i><br/>
-                                    <a href="#">Comment</a>
+                                    <a href="#">Comment
+                                        {/* <>
+      {values.map((v, idx) => (
+        <Button key={idx} className="me-2 mb-2" onClick={() => handleShow(v)}>
+          Full screen
+          {typeof v === 'string' && `below ${v.split('-')[0]}`}
+        </Button>
+      ))}
+      <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Modal body content</Modal.Body>
+      </Modal>
+    </> */}
+    </a>
                                 </td>
                                 <td className="project-actions text-right">
                                     <Link className="btn btn-success btn-sm" to="/project/projectTaskList">
@@ -135,9 +168,36 @@ function ProjectList() {
                                     <Link to="/project/review" className="btn btn-info btn-sm">
                                         <i className="fas fa-comment-dots"></i>Review
                                     </Link>
-                                    <Link to="/project/review" className="btn btn-danger btn-sm">
-                                        <i class="fas fa-window-close"></i>Cancel
-                                    </Link>
+                                    
+                                <>
+                                    <Button className="btn btn-danger btn-sm" variant="primary" 
+                                    onClick={handleShown}>
+                                    <i class="fas fa-window-close"></i>Cancel
+                                    </Button>
+                                    <Modal show={show} onHide={handleClose}>
+                                        <Modal.Header closeButton>
+                                        <Modal.Title>Cenceling Reason</Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                        <Form>
+                                            <Form.Group
+                                            className="mb-3"
+                                            controlId="exampleForm.ControlTextarea1"
+                                            >
+                                            <Form.Control as="textarea" rows={3} />
+                                            </Form.Group>
+                                        </Form>
+                                        </Modal.Body>
+                                        <Modal.Footer>
+                                        <Button variant="secondary" onClick={handleClose}>
+                                            Close
+                                        </Button>
+                                        <Button variant="primary" onClick={handleClose}>
+                                        Submit
+                                        </Button>
+                                        </Modal.Footer>
+                                    </Modal>
+                                </>
                                 </td>
                             </tr>
                         )}

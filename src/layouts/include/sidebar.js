@@ -28,7 +28,7 @@ function Sidebar() {
     
     const nav=[
             {
-                role:[2],
+                role:[1,2,3,4],
                 name:'Dashboard',
                 link:'',
                 link_text:'dashboard',
@@ -36,21 +36,21 @@ function Sidebar() {
                 sub:[]
             },
             {
-                role:[2],
+                role:[1,2,3,4],
                 name:'User',
                 link:'',
                 link_text:'user',
                 icon:'nav-icon fas fa-user',
                 sub:[
                     {
-                        role:[2],
+                        role:[1,2,3,4],
                         name:'Add User',
                         link:'user/addUser',
                         icon:'far fa-circle nav-icon',
                         sub:[]
                     },
                     {
-                        role:[2],
+                        role:[1,2,3,4],
                         name:'User List',
                         link:'user/userList',
                         icon:'far fa-circle nav-icon',

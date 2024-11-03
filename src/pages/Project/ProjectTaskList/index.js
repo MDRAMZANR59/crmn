@@ -2,8 +2,18 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import AdminLayout from '../../../layouts/AdminLayout'
 import { Link } from 'react-router-dom';
+//model
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
+//
 
 function ProjectTaskList() {
+     //model
+     const [show, setShow] = useState(false);
+     const handleClose = () => setShow(false);
+     const handleShow = () => setShow(true);
+     //
     const[data, setData]=useState([]);
     useEffect(() => {
         getDatas();
@@ -92,6 +102,36 @@ function ProjectTaskList() {
                                 <td>
                                     <Link to={`/project/edit/${d.id}`} className='btn btn-info'>Edit</Link>
                                     <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
+                                    <>
+      <Button variant="primary" onClick={handleShow}>
+        Update Progress
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Task Progress</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Control
+                type="number"
+                placeholder="How Much Compleate"
+                autoFocus
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
                                 </td>
                             </tr>
                              )}
