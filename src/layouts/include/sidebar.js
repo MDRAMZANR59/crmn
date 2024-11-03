@@ -25,6 +25,40 @@ function Sidebar() {
         const toggleDropdown = () => {
           setIsOpen(!isOpen);
         };
+    
+    const nav=[
+            {
+                role:[2],
+                name:'Dashboard',
+                link:'',
+                link_text:'dashboard',
+                icon:'nav-icon fas fa-tachometer-alt',
+                sub:[]
+            },
+            {
+                role:[2],
+                name:'User',
+                link:'',
+                link_text:'user',
+                icon:'nav-icon fas fa-user',
+                sub:[
+                    {
+                        role:[2],
+                        name:'Add User',
+                        link:'user/addUser',
+                        icon:'far fa-circle nav-icon',
+                        sub:[]
+                    },
+                    {
+                        role:[2],
+                        name:'User List',
+                        link:'user/userList',
+                        icon:'far fa-circle nav-icon',
+                        sub:[]
+                    }
+                ]
+            }
+        ]
 
     return (
         <>
@@ -70,41 +104,57 @@ function Sidebar() {
                     {/* Sidebar Menu */}
                     <nav className="mt-2">
                         <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                            {/* Dashboard Section */}
-                            <li className={`nav-item ${openMenu === 'dashboard' ? 'menu-open' : ''}`}>
-                                <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('dashboard')}>
-                                <li className={`nav-item ${isLinkActive('/')}`}>
-                                        <Link to="/" className="nav-link active">
-                                            <i className="nav-icon fas fa-tachometer-alt"></i>
-                                            <p>Dashboard</p>
-                                        </Link>
-                                    </li>
-                                </a>
-                            </li>
+                            {nav && nav.map((d, key) =>
+                                <>
+                                {d.role.find((element) => element == user_role) && 
+                                    <>
+                                        {
+                                            d.sub.length <= 0 ? 
+                                                        <li className={`nav-item ${openMenu === d.link_text ? 'menu-open' : ''}`}>
+                                                            <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick(d.link_text)}>
+                                                            <li className={`nav-item ${isLinkActive('/'+d.link)}`}>
+                                                                    <Link to={`/${d.link}`} className="nav-link active">
+                                                                        <i className={`${d.icon}`}></i>
+                                                                        <p>{d.name}</p>
+                                                                    </Link>
+                                                                </li>
+                                                            </a>
+                                                        </li>
+                                            :
+                                            
+                                            <li className={`nav-item ${openMenu === d.link_text ? 'menu-open' : ''}`}>
+                                                <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick(d.link_text)}>
+                                                    <i className={`${d.icon}`}></i>
+                                                    <p>{d.name}
+                                                        <i className="fas fa-angle-left right"></i>
+                                                    </p>
+                                                </a>
+                                                <ul className="nav nav-treeview">
+                                                    {d.sub && d.sub.map((sd, skey) =>
+                                                        <>
+                                                            {sd.role.find((e) => e == user_role) && 
+                                                                <li className="nav-item">
+                                                                    <Link to={`/${sd.link}`} className="nav-link">
+                                                                        <i className="far fa-circle nav-icon"></i>
+                                                                        <p>{sd.name}</p>
+                                                                    </Link>
+                                                                </li>
+                                                            }
+                                                        </>
+                                                    )}
+                                                </ul>
+                                            </li>
+                                        }
+                                        
+                                    </>
+                                    
+                                }
+                                </>
+                            )}
+                           
                             {/* User Section */}
                             {/* {user_role==1 &&  */}
-                                <li className={`nav-item ${openMenu === 'user' ? 'menu-open' : ''}`}>
-                                    <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('user')}>
-                                        <i className="nav-icon fas fa-user"></i>
-                                        <p>User
-                                            <i className="fas fa-angle-left right"></i>
-                                        </p>
-                                    </a>
-                                    <ul className="nav nav-treeview">
-                                        <li className="nav-item">
-                                            <Link to="/user/addUser" className="nav-link">
-                                                <i className="far fa-circle nav-icon"></i>
-                                                <p>Add User</p>
-                                            </Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link to="/user/userList" className="nav-link">
-                                                <i className="far fa-circle nav-icon"></i>
-                                                <p>User List</p>
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </li>
+                                
                             {/* } */}
                             {/* {user_role==1 || user_role==2 || user_role==3 &&  */}
                                 <li className={`nav-item ${openMenu === 'customerNote' ? 'menu-open' : ''}`}>
