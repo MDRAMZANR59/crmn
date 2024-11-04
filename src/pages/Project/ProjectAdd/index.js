@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 function ProjectAdd() {
     const [errors, setErrors] = useState([]);
 
-    const [inputs, setInputs] = useState({id:'', projectName:'', projectType:'', doHoPr:'', frontLiAndFrame:'', backLib:'', frontEndLan:'', backLang:'',database:'', name:'',customerId:'', phone:'',email:'', description:'', estimatedBudget:'', reciveDate:'', eDuration:'', eEndDate:'',projectLeader:''});
+    const [inputs, setInputs] = useState({id:'', projectName:'', projectType:'', doHoPr:'', frontLiAndFrame:'', backLib:'', frontEndLan:'', backLang:'',database:'',customerId:'', description:'', estimatedBudget:'', reciveDate:'', eDuration:'', eEndDate:'',projectLeader:'', note:'', });
         const navigate=useNavigate();
         const {id} = useParams();
         
@@ -807,7 +807,7 @@ function ProjectAdd() {
                                                         rows="4"></textarea>
                                                     {errors.description && <div className="invalid-feedback">{errors.description}</div>}
                                                 </div>
-                                                 {errors.description && <div className="invalid-feedback">{errors.description}</div>}
+                                                
                                         </div>
                                     </div>
                             </div>
@@ -867,6 +867,19 @@ function ProjectAdd() {
                                             </select>
                                             {errors.projectLeader && <div className="invalid-feedback">{errors.projectLeader}</div>}
                                         </div>
+                                        <div className="form-group">
+                                            <label htmlFor="description">Note</label>
+                                            <textarea
+                                                name="note"
+                                                defaultValue={inputs.note}
+                                                onChange={handleChange}
+                                                className={`form-control ${errors.note ? 'is-invalid' : ''}`} 
+                                                placeholder='Project Description' 
+                                                id="note" 
+                                                rows="4"></textarea>
+                                            {errors.note && <div className="invalid-feedback">{errors.note}</div>}
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>

@@ -7,7 +7,7 @@ import {useParams} from "react-router-dom";
 function CustomerAdd() {
     const [errors, setErrors] = useState([]);
 
-    const [inputs, setInputs] = useState({id:'', name:'', noteId:'', nid:'', email:'', phone:'', password:'', photo:'', companyName:'',country:'', districts:'', upozila:'', post:'', zipCode:'', state:'' });
+    const [inputs, setInputs] = useState({id:'', name:'', nid:'', email:'', phone:'', password:'', photo:'', companyName:'',country:'', districts:'', upozila:'', post:'', zipCode:'', state:'' });
         const navigate=useNavigate();
         const {id} = useParams();
         
@@ -98,19 +98,6 @@ function CustomerAdd() {
                                                     onChange={handleChange}
                                                 />
                                                 {errors.name && <div className="invalid-feedback">{errors.name}</div>}
-                                            </div>
-                                            <div className="mb-6 col-md-6">
-                                                <label htmlFor="noteId" className="form-label">Note Id</label>
-                                                <input
-                                                    placeholder="Note Id (Optional)"
-                                                    type="number"
-                                                    className={`form-control ${errors.noteId ? 'is-invalid' : ''}`}
-                                                    id="noteId"
-                                                    name="noteId"
-                                                    defaultValue={inputs.noteId}
-                                                    onChange={handleChange}
-                                                />
-                                                {errors.noteId && <div className="invalid-feedback">{errors.noteId}</div>}
                                             </div>
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="nid" className="form-label">Nid</label>
