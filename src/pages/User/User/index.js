@@ -3,6 +3,7 @@ import axios from '../../../components/axios';
 import AdminLayout from '../../../layouts/AdminLayout';
 import { useNavigate } from 'react-router-dom';
 import {useParams} from "react-router-dom";
+import { editableInputTypes } from '@testing-library/user-event/dist/utils';
 
 
 function AddUser() {
@@ -11,7 +12,8 @@ function AddUser() {
     const [inputs, setInputs] = useState({id:'', name:'',nid:'',dob:'',email:'',phone:'',employeId:'',designation:'',signature:'', password:'', photo:'', country:'',districts:'',upozila:'', post:'', zipCode:'', state:''});
         const navigate=useNavigate();
         //for photo
-        const [selectedFiles, setSelectedFiles] = useState([]); // For photo
+        const [selectedPhoto, setselectedPhoto] = useState(null); // For photo
+        const [selectedSignature, setselectedSignature] = useState(null); // For photo
         const {id} = useParams();
         
         function getDatas(){
@@ -26,8 +28,11 @@ function AddUser() {
             }
         }, []);
         //for photo
-        const handleFileChange = (e) => {
-            setSelectedFiles(e.target.files);
+        const handlePhotoChange = (e) => {
+            setselectedPhoto(e.target.files);
+        }
+        const handleSignatureChange = (e) => {
+            setselectedSignature(e.target.files);
         }
         //  
         const handleChange = (event) => {
@@ -41,10 +46,11 @@ function AddUser() {
             console.log(inputs)
             //for photo
             const formData = new FormData();
-        // Append photos to formData
-        for (let i = 0; i < selectedFiles.length; i++) {
-            formData.append('files[]', selectedFiles[i]);
-        }
+            // Append photos to formData
+            formData.append('photo', selectedPhoto[0]);
+            formData.append('signature', selectedSignature[0]);
+        
+        
         // Append other form inputs to formData
         for (const user in inputs) {
             formData.append(user, inputs[user]);
@@ -121,7 +127,6 @@ function AddUser() {
                                                         <option value="1">Super Admin</option>
                                                         <option value="2">Customer Exicutive</option>
                                                         <option value="3">Staff</option>
-                                                        <option value="4">Customer</option>
                                                 </select>
                                                 {errors.role_id && <div classrole_id="invalid-feedback">{errors.role_id}</div>}
                                             </div>
@@ -278,8 +283,7 @@ function AddUser() {
                                                     className={`form-control ${errors.signature ? 'is-invalid' : ''}`}
                                                     id="signature"
                                                     name="signature"
-                                                    defaultValue={inputs.signature}
-                                                    onChange={handleChange}
+                                                    onChange={handleSignatureChange}
                                                 />
                                                 {errors.signature && <div className="invalid-feedback">{errors.signature}</div>}
                                             </div>
@@ -307,7 +311,7 @@ function AddUser() {
                                                     className="form-control"
                                                     defaultValue={inputs.photo} 
                                                     name="photo" 
-                                                    multiple onChange={handleFileChange} />
+                                                    multiple onChange={handlePhotoChange} />
                                                 </div>
                                             </div>
 

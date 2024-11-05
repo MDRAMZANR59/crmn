@@ -13,7 +13,7 @@ function ProjectList() {
     const handleClose = () => setShow(false);
     const handleShown = () => setShow(true);
     //
-//model comment
+    //model comment
     const values = [true, 'lg-down'];
     const [fullscreen, setFullscreen] = useState(true);
 
@@ -36,6 +36,9 @@ function ProjectList() {
         axios.delete(`${process.env.REACT_APP_API_URL}/projectfiles/${id}`).then(function(response){
             getDatas();
         });
+    }
+    const countProgress=async (t,d)=>{
+        //return (100/t)*d;
     }
     return (
         <AdminLayout>
@@ -130,7 +133,7 @@ function ProjectList() {
                                 <td>{d.reciveDate}</td>
                                 <td>{d.eDuration}</td>
                                 <td>{d.eEndDate}</td>
-                                <td>57%</td>
+                                <td>{ ((100/d.task.length)*d.comtask.length) }%</td>
                                 <td>{d.projectLeader}</td>
                                 <td>Running</td>
                                 <td><i className="fas fa-star"></i>
@@ -156,7 +159,7 @@ function ProjectList() {
     </a>
                                 </td>
                                 <td className="project-actions text-right">
-                                    <Link className="btn btn-success btn-sm" to="/project/projectTaskList">
+                                    <Link className="btn btn-success btn-sm" to={`/project/projectTaskList/${d.id}`}>
                                         <i class="fas fa-tasks"></i>Task
                                     </Link>
                                     <Link className="btn btn-info btn-sm" to="/mail/mailbox/compose">

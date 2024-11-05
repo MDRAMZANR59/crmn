@@ -8,6 +8,7 @@ function CuatomerNote() {
     const [errors, setErrors] = useState([]);
 
     const [inputs, setInputs] = useState({id:'', customerName:'',customerId:'', phone:'', employeeId:'', note:'', noteDate:'', nextDay:'', attachment:'', meetLocation:'',});
+    const [customer, setCustomer] = useState(null);//reltabale
         const navigate=useNavigate();
         const [selectedFiles, setSelectedFiles] = useState([]); // For photo
         const {id} = useParams();
@@ -17,11 +18,21 @@ function CuatomerNote() {
                 setInputs(response.data.data);
             });
         }
-    
+//rel
+        const getRelational = async () => {
+            axios.get(`${process.env.REACT_APP_API_URL}/customer/index`).then(function(response) {
+                setCustomer(response.data.data);
+            });
+            
+        };
+//
         useEffect(() => {
             if(id){
                 getDatas();
             }
+            //rel
+            getRelational();
+            //
         }, []);
         //for photo
         const handleFileChange = (e) => {
@@ -107,46 +118,19 @@ function CuatomerNote() {
                                         <div className="row md-6">
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="customerName" className="form-label">Customer Name<sup className=" text-danger">*</sup></label>
-                                                <input
-                                                    required
-                                                    placeholder="Customer Name"
-                                                    type="text"
-                                                    className={`form-control ${errors.customerName ? 'is-invalid' : ''}`}
-                                                    id="customerName"
-                                                    name="customerName"
-                                                    defaultValue={inputs.customerName}
-                                                    onChange={handleChange}
-                                                />
+                                               {/* //rel */}
+                                                {customer?.length > 0 && 
+                                                    <select required className="form-control" id="customerId" name='customerId' defaultValue={inputs.customerId} onChange={handleChange}>
+                                                        <option value="">Select Customer</option>
+                                                        {customer.map((d, key) =>
+                                                            <option value={d.id}>{d.name}</option>
+                                                        )}
+                                                    </select>
+                                                }
+                                               
                                                 {errors.customerName && <div className="invalid-feedback">{errors.customerName}</div>}
                                             </div>
-                                            <div className="mb-6 col-md-6">
-                                                <label htmlFor="customerId" className="form-label">Customer Id</label>
-                                                <input
-                                                   
-                                                    placeholder="Customer Id"
-                                                    type="number"
-                                                    className={`form-control ${errors.customerId ? 'is-invalid' : ''}`}
-                                                    id="customerId"
-                                                    name="customerId"
-                                                    defaultValue={inputs.customerId}
-                                                    onChange={handleChange}
-                                                />
-                                                {errors.customerId && <div className="invalid-feedback">{errors.customerId}</div>}
-                                            </div>
-                                            <div className="mb-6 col-md-6">
-                                                <label htmlFor="phone" className="form-label">Phone<sup className=" text-danger">*</sup></label>
-                                                <input
-                                                    required
-                                                    placeholder="Phone"
-                                                    type="number"
-                                                    className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
-                                                    id="phone"
-                                                    name="phone"
-                                                    defaultValue={inputs.phone}
-                                                    onChange={handleChange}
-                                                />
-                                                {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
-                                            </div>
+                                            {/* //rel */}
                                             <div className="mb-6 col-md-6">
                                                 <label htmlFor="employeeId" className="form-label">Employee Id<sup className=" text-danger">*</sup></label>
                                                 <input

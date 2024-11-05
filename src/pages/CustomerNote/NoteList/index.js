@@ -57,7 +57,6 @@ function NoteList() {
                                 <tr>
                                     <th>#SL</th>
                                     <th>Customer Name</th>
-                                    <th>Customer Id</th>
                                     <th>Phone</th>
                                     <th>Employe Id</th>
                                     <th>Note</th>
@@ -74,10 +73,9 @@ function NoteList() {
                                 <tr key={d.id} >
                                     {/* <td>{key+1}</td> */}
                                     <td>00{d.id}</td>
-                                    <td>{d.customerName}</td>
-                                    <td>{d.customerId}</td>
-                                    <td>{d.phone}</td>
-                                    <td>{d.employeeId}</td>
+                                    <td>{d.customer?.name}</td>
+                                    <td>{d.customer?.phone}</td>
+                                    <td>{d.employee?.name}</td>
                                     <td>{d.note}</td>
                                     <td>{d.firstMeet}</td>
                                     <td>{d.nextMeet}</td>
@@ -87,7 +85,7 @@ function NoteList() {
                                       <img src={`${process.env.REACT_APP_BACKEND_URL}/customerNote/${src}`} alt="No photo" width="50px"/>
                                       ))
                                       }
-                                  </td>
+                                    </td>
                                     <td>{d.meetLocation}</td>
                                     <td>
                                         <Link to={`/customerNote/edit/${d.id}`} className='btn btn-info'>Edit</Link>
