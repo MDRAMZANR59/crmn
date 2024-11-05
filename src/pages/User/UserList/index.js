@@ -59,7 +59,7 @@ function UserList() {
                                     <th>User Type</th>
                                     <th>Name</th>
                                     <th>Employe Id</th>
-                                    <th>Customer Id</th>
+                                    {/* <th>Customer Id</th> */}
                                     <th>NID</th>
                                     <th>DOB</th>
                                     <th>Email</th>
@@ -82,7 +82,7 @@ function UserList() {
                                   <td>{d.name}</td>
                                   {/* <td>{d.usermeta.employeId}</td> */}
                                   <td>{d.usermeta?.user_id}</td>
-                                  <td>{d.usermeta?.customerId}</td>
+                                  {/* <td>{d.usermeta?.customerId}</td> */}
                                   <td>{d.usermeta?.nid}</td>
                                   <td>{d.usermeta?.dob}</td>
                                   <td>{d.usermeta?.email}</td>

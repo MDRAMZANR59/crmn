@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../../components/axios';
 import AdminLayout from '../../../layouts/AdminLayout';
 import { useNavigate } from 'react-router-dom';
 import {useParams} from "react-router-dom";
@@ -9,20 +9,26 @@ function CustomerAdd() {
 
     const [inputs, setInputs] = useState({id:'', name:'', nid:'', email:'', phone:'', password:'', photo:'', companyName:'',country:'', districts:'', upozila:'', post:'', zipCode:'', state:'' });
         const navigate=useNavigate();
+        // //for photo
+        // const [selectedPhoto, setselectedPhoto] = useState(null); // For photo
         const {id} = useParams();
         
-        function getDatas(){
-            axios.get(`${process.env.REACT_APP_API_URL}/customer/${id}`).then(function(response) {
-                setInputs(response.data.data);
-            });
-        }
+        // function getDatas(){
+        //     axios.get(`${process.env.REACT_APP_API_URL}/customer/${id}`).then(function(response) {
+        //         setInputs(response.data.data);
+        //     });
+        // }
     
         useEffect(() => {
             if(id){
-                getDatas();
+                // getDatas();
             }
         }, []);
-    
+        //for photo
+        // const handlePhotoChange = (e) => {
+        //     setselectedPhoto(e.target.files);
+        // }
+        //  
         const handleChange = (event) => {
             const name = event.target.name;
             const value = event.target.value;
@@ -32,7 +38,10 @@ function CustomerAdd() {
         const handleSubmit = async(e) => {
             e.preventDefault();
             console.log(inputs)
-            
+        //for photo
+        // const formData = new FormData();
+        // Append photos to formData
+        // formData.append('photo', selectedPhoto[0]);
             try{
                 let apiurl='';
                 if(inputs.id!=''){
@@ -46,6 +55,11 @@ function CustomerAdd() {
                     responsiveTYpe: 'json',
                     url: `${process.env.REACT_APP_API_URL}${apiurl}`,
                     data: inputs
+                     //for photo
+                     // data: formData,
+                    //  headers: {
+                    //      'Content-Type': 'multipart/form-data',
+                    //  }
                 });
                 navigate('/customer/customerList')
             } 
@@ -156,7 +170,8 @@ function CustomerAdd() {
                                                 />
                                                 {errors.password && <div className="invalid-feedback">{errors.password}</div>}
                                             </div>
-                                            <div className="mb-3 col-md-6">
+                                            
+                                                 <div className="mb-3 col-md-6">
                                                 <label htmlFor="photo" className="form-label">Photo</label>
                                                 <input
                                                     type="file"
@@ -168,6 +183,16 @@ function CustomerAdd() {
                                                 />
                                                 {errors.photo && <div className="invalid-feedback">{errors.photo}</div>}
                                             </div>
+                                            {/* <div className="mb-3 col-md-6"> */}
+                                                {/* <label for="email-id-vertical">photo</label>
+                                                <input 
+                                                type="file" 
+                                                id="photo" 
+                                                className="form-control"
+                                                defaultValue={inputs.photo} 
+                                                name="photo" 
+                                                multiple onChange={handlePhotoChange} /> */}
+                                            {/* </div> */}
                                             
                                             <div className="mb-3 col-md-6">
                                                 <label htmlFor="companyName" className="form-label">Company Name</label>

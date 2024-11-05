@@ -56,9 +56,9 @@ function NoteList() {
                             <thead>
                                 <tr>
                                     <th>#SL</th>
-                                    <th>Customer Name</th>
+                                    <th>Customer Name & ID</th>
                                     <th>Phone</th>
-                                    <th>Employe Id</th>
+                                    <th>Employe Name & ID</th>
                                     <th>Note</th>
                                     <th>First Meet</th>
                                     <th>Next Meet</th>
@@ -73,15 +73,14 @@ function NoteList() {
                                 <tr key={d.id} >
                                     {/* <td>{key+1}</td> */}
                                     <td>00{d.id}</td>
-                                    <td>{d.customer?.name}</td>
+                                    <td>{d.customer?.name}{d.customer?.id}</td>
                                     <td>{d.customer?.phone}</td>
-                                    <td>{d.employee?.name}</td>
+                                    <td>{d.employee?.name}{d.employee?.role_id}</td>
                                     <td>{d.note}</td>
                                     <td>{d.firstMeet}</td>
                                     <td>{d.nextMeet}</td>
-                                    <td>{d.attachment}</td>
                                     <td>
-                                      {d?.photo?.split(',').map((src, i) => (
+                                      {d?.attachment?.split(',').map((src, i) => (
                                       <img src={`${process.env.REACT_APP_BACKEND_URL}/customerNote/${src}`} alt="No photo" width="50px"/>
                                       ))
                                       }

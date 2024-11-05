@@ -606,8 +606,6 @@ function ProjectAdd() {
                                          
                                                 <label><strong>Database</strong></label><hr/>
                                                 <div className="form-group" >
-                                                    {/* MySQL */}
-                                                    <label htmlFor="mysql">MySQL</label>
                                                    {/* MySQL */}
                                                     <label htmlFor="mysql">MySQL</label>
                                                     <input
@@ -741,19 +739,6 @@ function ProjectAdd() {
                                                 </div><br/>
                                                 
                                                 <div className="form-group">
-                                                    <label htmlFor="name">Client Name<sup className=" text-danger">*</sup></label>
-                                                    <input
-                                                        name="name"
-                                                        defaultValue={inputs.name}
-                                                        onChange={handleChange}
-                                                        className={`form-control ${errors.name ? 'is-invalid' : ''}`} 
-                                                        placeholder="Client Name" 
-                                                        required 
-                                                        type="text" 
-                                                        id="name" />
-                                                    {errors.name && <div className="invalid-feedback">{errors.name}</div>}
-                                                </div>
-                                                <div className="form-group">
                                                     <label htmlFor="customerId">Customer Id<sup className=" text-danger">*</sup></label>
                                                     <input
                                                         name="customerId"
@@ -767,34 +752,6 @@ function ProjectAdd() {
                                                     {errors.customerId && <div className="invalid-feedback">{errors.customerId}</div>}
                                                 </div>
                                                 
-                                                <div className="form-group">
-                                                    <label htmlFor="phone">Phone<sup className=" text-danger">*</sup></label>
-                                                    <input
-                                                        name="phone"
-                                                        defaultValue={inputs.phone}
-                                                        onChange={handleChange}
-                                                        className={`form-control ${errors.phone ? 'is-invalid' : ''}`} 
-                                                        placeholder="Phone" 
-                                                        required 
-                                                        type="number" 
-                                                        id="phone" />
-                                                    {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
-                                                </div>
-                                                
-                                                <div className="form-group">
-                                                    <label htmlFor="email">Email<sup className=" text-danger">*</sup></label>
-                                                    <input
-                                                        name="email"
-                                                        defaultValue={inputs.email}
-                                                        onChange={handleChange}
-                                                        className={`form-control ${errors.email ? 'is-invalid' : ''}`} 
-                                                        placeholder="Email" 
-                                                        required 
-                                                        type="text" 
-                                                        id="email" />
-                                                    {errors.email && <div className="invalid-feedback">{errors.email}</div>}
-                                                </div>
-                                               
                                                 <div className="form-group">
                                                     <label htmlFor="description">Project Description</label>
                                                     <textarea

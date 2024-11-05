@@ -9,7 +9,7 @@ import { editableInputTypes } from '@testing-library/user-event/dist/utils';
 function AddUser() {
     const [errors, setErrors] = useState([]);
 
-    const [inputs, setInputs] = useState({id:'', name:'',nid:'',dob:'',email:'',phone:'',employeId:'',designation:'',signature:'', password:'', photo:'', country:'',districts:'',upozila:'', post:'', zipCode:'', state:''});
+    const [inputs, setInputs] = useState({id:'', name:'',nid:'',dob:'',email:'',phone:'', joiningDate:'', employeId:'',designation:'', expart:'', signature:'', password:'', photo:'',  country:'',districts:'',upozila:'', post:'', zipCode:'', state:''});
         const navigate=useNavigate();
         //for photo
         const [selectedPhoto, setselectedPhoto] = useState(null); // For photo
@@ -220,7 +220,7 @@ function AddUser() {
                                                 <label htmlFor="joiningDate" className="form-label">Joining Date<sup className=" text-danger">*</sup></label>
                                                 <input
                                                     required
-                                                    placeholder="Joining Date"
+                                                    placeholder="joiningDate"
                                                     type="date"
                                                     className={`form-control ${errors.joiningDate ? 'is-invalid' : ''}`}
                                                     id="joiningDate"
@@ -230,6 +230,7 @@ function AddUser() {
                                                 />
                                                 {errors.joiningDate && <div className="invalid-feedback">{errors.joiningDate}</div>}
                                             </div>
+                                            
                                             <div className="mb-3 col-md-6">
                                                 <label htmlFor="designation" className="form-label">Designation<sup className=" text-danger">*</sup></label>
                                                 <input
@@ -425,3 +426,4 @@ function AddUser() {
 }
 
 export default AddUser;
+

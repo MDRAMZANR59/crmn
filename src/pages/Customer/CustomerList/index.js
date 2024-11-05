@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../../components/axios';
 import AdminLayout from '../../../layouts/AdminLayout'
 import { Link } from 'react-router-dom';
 
@@ -54,8 +54,8 @@ function CustomerList() {
                                 <tr>
                                     <th>#SL</th>
                                     <th>Name</th>
-                                    <th>Note Id</th>
-                                    <th>Nid</th>
+                                    {/* <th>Note Id</th> */}
+                                    {/* <th>Nid</th> */}
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Password</th>
@@ -71,12 +71,18 @@ function CustomerList() {
                                     {/* <td>{key+1}</td> */}
                                     <td>00{d.id}</td>
                                     <td>{d.name}</td>
-                                    <td>{d.noteId}</td>
-                                    <td>{d.nid}</td>
+                                    {/* <td>{d.noteId}</td> */}
+                                    {/* <td>{d.nid}</td> */}
                                     <td>{d.email}</td>
                                     <td>{d.phone}</td>
                                     <td>{d.password}</td>
                                     <td>{d.photo}</td>
+                                    {/* <td>
+                                        {d?.photo?.split(',').map((src, i) => (
+                                        <img src={`${process.env.REACT_APP_BACKEND_URL}/customer/${src}`} alt="No photo" width="50px"/>
+                                        ))
+                                        }
+                                    </td> */}
                                     <td>{d.companyName}</td>
                                     <td><span>State: {d.state} </span><span>Zip Code: {d.zipCode} </span><span>Post: {d.post} </span><br/><span>Upozila: {d.upozila} </span><span>Districts: {d.districts} </span><span>Country: {d.country} </span></td>
                                     <td>

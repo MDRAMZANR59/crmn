@@ -7,8 +7,9 @@ import {useParams} from "react-router-dom";
 function CuatomerNote() {
     const [errors, setErrors] = useState([]);
 
-    const [inputs, setInputs] = useState({id:'', customerName:'',customerId:'', phone:'', employeeId:'', note:'', noteDate:'', nextDay:'', attachment:'', meetLocation:'',});
+    const [inputs, setInputs] = useState({id:'', customerName:'', phone:'', employeeName:'', note:'', noteDate:'', nextDay:'', attachment:'', meetLocation:'',});
     const [customer, setCustomer] = useState(null);//reltabale
+    const [employee, setEmployee] = useState(null);//reltabale
         const navigate=useNavigate();
         const [selectedFiles, setSelectedFiles] = useState([]); // For photo
         const {id} = useParams();
@@ -25,6 +26,12 @@ function CuatomerNote() {
             });
             
         };
+        const getRelational1 = async () => {
+            axios.get(`${process.env.REACT_APP_API_URL}/user/index`).then(function(response) {
+                setEmployee(response.data.data);
+            });
+            
+        };
 //
         useEffect(() => {
             if(id){
@@ -32,6 +39,7 @@ function CuatomerNote() {
             }
             //rel
             getRelational();
+            getRelational1();
             //
         }, []);
         //for photo
@@ -120,18 +128,31 @@ function CuatomerNote() {
                                                 <label htmlFor="customerName" className="form-label">Customer Name<sup className=" text-danger">*</sup></label>
                                                {/* //rel */}
                                                 {customer?.length > 0 && 
-                                                    <select required className="form-control" id="customerId" name='customerId' defaultValue={inputs.customerId} onChange={handleChange}>
+                                                    <select required className="form-control" id="customerName" name='customerName' defaultValue={inputs.customerName} onChange={handleChange}>
                                                         <option value="">Select Customer</option>
                                                         {customer.map((d, key) =>
-                                                            <option value={d.id}>{d.name}</option>
+                                                            <option value={d.id}>{d.name} {d.id}</option>
                                                         )}
                                                     </select>
                                                 }
                                                
                                                 {errors.customerName && <div className="invalid-feedback">{errors.customerName}</div>}
                                             </div>
-                                            {/* //rel */}
                                             <div className="mb-6 col-md-6">
+                                                <label htmlFor="employeeName" className="form-label">Employee Name<sup className=" text-danger">*</sup></label>
+                                               {/* //rel */}
+                                                {employee?.length > 0 && 
+                                                    <select required className="form-control" id="employeeName" name='employeeName' defaultValue={inputs.employeeName} onChange={handleChange}>
+                                                        <option value="">Select Customer</option>
+                                                        {employee.map((d, key) =>
+                                                            <option value={d.id}>{d.name}{d.role_id}</option>
+                                                        )}
+                                                    </select>
+                                                }
+                                                {errors.employeeName && <div className="invalid-feedback">{errors.employeeName}</div>}
+                                            </div>
+                                            {/* //rel */}
+                                            {/* <div className="mb-6 col-md-6">
                                                 <label htmlFor="employeeId" className="form-label">Employee Id<sup className=" text-danger">*</sup></label>
                                                 <input
                                                     required
@@ -144,7 +165,7 @@ function CuatomerNote() {
                                                     onChange={handleChange}
                                                 />
                                                 {errors.employeeId && <div className="invalid-feedback">{errors.employeeId}</div>}
-                                            </div>
+                                            </div> */}
 
                                             
                                             <div className="mb-6 col-md-6">
