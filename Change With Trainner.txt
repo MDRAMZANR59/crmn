@@ -1,0 +1,22 @@
+customer to user role
+
+customer controller 16-20 line
+
+
+
+
+relational table
+
+customer note index 
+line  22-27, 33119-126
+
+controller 117-127
+
+
+-------------------
+rel table 
+
+customer note model 
+custome note controllaer 
+
+React add, list
