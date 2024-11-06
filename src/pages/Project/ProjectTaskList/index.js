@@ -264,13 +264,7 @@ function ProjectTaskList() {
             </form>
         </Modal.Body>
       </Modal>
-
-
-
-
-
     </div>
-            {/* /.content-wrapper */}
 </AdminLayout>
     );
 }

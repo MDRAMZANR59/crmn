@@ -88,7 +88,7 @@ function NoteList() {
                                     <td>{d.meetLocation}</td>
                                     <td>
                                         <Link to={`/customerNote/edit/${d.id}`} className='btn btn-info'>Edit</Link>
-                                        <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger' >Delete</button>
+                                        <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
                                         <Link to='#' className="btn btn-success btn-block">Call</Link>
                                         {/* <Link to='/mail/mailbox/compose' className="btn btn-primary btn-block">Mail</Link> */}
                                     </td>

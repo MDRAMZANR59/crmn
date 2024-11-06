@@ -60,7 +60,7 @@ function CuatomerNote() {
              const formData = new FormData();
              // Append photos to formData
              for (let i = 0; i < selectedFiles.length; i++) {
-                 formData.append('files[]', selectedFiles[i]);
+                //  formData.append('files[]', selectedFiles[i]);
              }
              // Append other form inputs to formData
              for (const user in inputs) {

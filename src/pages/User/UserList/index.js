@@ -83,23 +83,27 @@ function UserList() {
                                   {/* <td>{d.usermeta.employeId}</td> */}
                                   <td>{d.usermeta?.user_id}</td>
                                   {/* <td>{d.usermeta?.customerId}</td> */}
-                                  <td>{d.usermeta?.nid}</td>
-                                  <td>{d.usermeta?.dob}</td>
-                                  <td>{d.usermeta?.email}</td>
-                                  <td>{d.usermeta?.phone}</td>
-                                  <td>{d.usermeta?.joiningDate}</td>
-                                  <td>{d.usermeta?.designation}</td>
-                                  <td>{d.usermeta?.expart}</td>
+                                  <td>{d.nid}</td>
+                                  <td>{d.dob}</td>
+                                  <td>{d.email}</td>
+                                  <td>{d.phone}</td>
+                                  <td>{d.joiningDate}</td>
+                                  <td>{d.designation}</td>
+                                  <td>{d.expart}</td>
                                   <td>{d.usermeta?.department}</td>
-                                  <td>{d.usermeta?.signature}</td>
-                                  {/* <td>{d.usermeta?.photo}</td> */}
+                                  <td>
+                                      {d?.signature?.split(',').map((src, i) => (
+                                      <img src={`${process.env.REACT_APP_BACKEND_URL}/adduser/${src}`} alt="No photo" width="50px"/>
+                                      ))
+                                      }
+                                  </td>
                                   <td>
                                       {d?.photo?.split(',').map((src, i) => (
                                       <img src={`${process.env.REACT_APP_BACKEND_URL}/adduser/${src}`} alt="No photo" width="50px"/>
                                       ))
                                       }
                                   </td>
-                                  <td><span>{d.usermeta?.state}</span><span>{d.usermeta?.post}</span><span>{d.usermeta?.zipCode}</span><span>{d.usermeta?.upozila}</span><span>{d.usermeta?.districts}</span><span>{d.usermeta?.country}</span></td>
+                                  <td><span>{d.state}</span><span>{d.post}</span><span>{d.zipCode}</span><span>{d.upozila}</span><span>{d.districts}</span><span>{d.country}</span></td>
                                   <td>
                                       <Link to={`/user/edit/${d.id}`} className='btn btn-info' >Edit</Link>
                                       <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>

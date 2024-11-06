@@ -5,11 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import {useParams} from "react-router-dom";
 import { editableInputTypes } from '@testing-library/user-event/dist/utils';
 
-
 function AddUser() {
     const [errors, setErrors] = useState([]);
 
-    const [inputs, setInputs] = useState({id:'', name:'',nid:'',dob:'',email:'',phone:'', joiningDate:'', employeId:'',designation:'', expart:'', signature:'', password:'', photo:'',  country:'',districts:'',upozila:'', post:'', zipCode:'', state:''});
+    const [inputs, setInputs] = useState({id:'', name:'',nid:'',dob:'',email:'',phone:'', joiningDate:'', employeId:'',designation:'', expart:'', department:'', signature:'', password:'', photo:'',  country:'',districts:'',upozila:'', post:'', zipCode:'', state:''});
         const navigate=useNavigate();
         //for photo
         const [selectedPhoto, setselectedPhoto] = useState(null); // For photo
@@ -69,7 +68,7 @@ function AddUser() {
                     method: 'post',
                     responsiveTYpe: 'json',
                     url: `${process.env.REACT_APP_API_URL}${apiurl}`,
-                    //data: inputs
+                    // data: inputs
                     //for photo
                     data: formData,
                     headers: {

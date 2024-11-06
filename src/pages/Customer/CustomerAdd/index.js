@@ -9,19 +9,26 @@ function CustomerAdd() {
 
     const [inputs, setInputs] = useState({id:'', name:'', nid:'', email:'', phone:'', password:'', photo:'', companyName:'',country:'', districts:'', upozila:'', post:'', zipCode:'', state:'' });
         const navigate=useNavigate();
+        const [customer, setCustomer] = useState(null);//reltabale
         // //for photo
-        // const [selectedPhoto, setselectedPhoto] = useState(null); // For photo
+       // const [selectedPhoto, setselectedPhoto] = useState(null); // For photo
         const {id} = useParams();
         
-        // function getDatas(){
-        //     axios.get(`${process.env.REACT_APP_API_URL}/customer/${id}`).then(function(response) {
-        //         setInputs(response.data.data);
-        //     });
-        // }
-    
+        function getDatas(){
+            axios.get(`${process.env.REACT_APP_API_URL}/customer/${id}`).then(function(response) {
+                setInputs(response.data.data);
+            });
+        }
+        const getRelational = async () => {
+            axios.get(`${process.env.REACT_APP_API_URL}/customer/index`).then(function(response) {
+                setCustomer(response.data.data);
+            });
+            
+        };
+       
         useEffect(() => {
             if(id){
-                // getDatas();
+                getDatas();
             }
         }, []);
         //for photo
