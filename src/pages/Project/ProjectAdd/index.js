@@ -8,8 +8,10 @@ import { Link } from 'react-router-dom';
 function ProjectAdd() {
     const [errors, setErrors] = useState([]);
 
-    const [inputs, setInputs] = useState({id:'', projectName:'', projectType:'', doHoPr:'', frontLiAndFrame:'', backLib:'', frontEndLan:'', backLang:'',database:'',customerId:'', description:'', estimatedBudget:'', reciveDate:'', eDuration:'', eEndDate:'',projectLeader:'', note:'', });
-        const navigate=useNavigate();
+    const [inputs, setInputs] = useState({id:'', projectName:'', projectType:'', doHoPr:'', frontLiAndFrame:'', backLib:'', frontEndLan:'', backLang:'',database:'',customerNameP:'', description:'', estimatedBudget:'', reciveDate:'', eDuration:'', eEndDate:'',projectLeader:'', note:'', });
+    const [prolider, setProlider] = useState(null);//reltabale  
+    const [customer, setCustomer] = useState(null);//reltabale  
+    const navigate=useNavigate();
         const {id} = useParams();
         
         function getDatas(){
@@ -17,11 +19,26 @@ function ProjectAdd() {
                 setInputs(response.data.data);
             });
         }
-    
+    //rel
+        const getRelational = async () => {
+            axios.get(`${process.env.REACT_APP_API_URL}/user/index`).then(function(response) {
+                setProlider(response.data.data);
+            });
+            
+        };
+        const getRelationalc = async () => {
+            axios.get(`${process.env.REACT_APP_API_URL}/customer/index`).then(function(response) {
+                setCustomer(response.data.data);
+            });
+            
+        };
         useEffect(() => {
             if(id){
                 getDatas();
             }
+    //rel
+            getRelational();
+            getRelationalc();
         }, []);
     
         const handleChange = (event) => {
@@ -739,17 +756,15 @@ function ProjectAdd() {
                                                 </div><br/>
                                                 
                                                 <div className="form-group">
-                                                    <label htmlFor="customerId">Customer Id<sup className=" text-danger">*</sup></label>
-                                                    <input
-                                                        name="customerId"
-                                                        defaultValue={inputs.customerId}
-                                                        onChange={handleChange}
-                                                        className={`form-control ${errors.customerId ? 'is-invalid' : ''}`} 
-                                                        placeholder="Client Name" 
-                                                        required 
-                                                        type="number" 
-                                                        id="customerId" />
-                                                    {errors.customerId && <div className="invalid-feedback">{errors.customerId}</div>}
+                                                    <label htmlFor="customerNameP">Customer Name<sup className=" text-danger">*</sup></label>
+                                                    {customer?.length > 0 && 
+                                                        <select required className="form-control" id="customerNameP" name='customerNameP' defaultValue={inputs.customerNameP} onChange={handleChange}>
+                                                            <option value="">Select Customer</option>
+                                                            {customer.map((d, key) =>
+                                                                <option value={d.id}>{d.name} {d.phone}</option>
+                                                            )}
+                                                        </select>
+                                                        }
                                                 </div>
                                                 
                                                 <div className="form-group">
@@ -813,29 +828,19 @@ function ProjectAdd() {
                                         </div>
                                         <div className="form-group">
                                             <label required htmlFor="projectLeader">Project Leader<sup className=" text-danger">*</sup></label>
-                                            <select
-                                                defaultValue={inputs.projectLeader}
-                                                onChange={handleChange}
-                                                className={`form-control ${errors.projectLeader ? 'is-invalid' : ''}`}
-                                                id="projectLeader" name="projectLeader">
-                                                <option value="Select Type">Select Leader</option>
-                                                <option value="Mukut">Mukut</option>
-                                                <option value="Mamun">Mamun</option>
+                                            {/* //rel */}
+                                            {prolider?.length > 0 && 
+                                            <select required className="form-control" id="projectLeader" name='projectLeader' defaultValue={inputs.projectLeader} onChange={handleChange}>
+                                                <option value="">Select Leader</option>
+                                                    {prolider.map((d, key) =>
+                                                <option value={d.id}>{d.id}{d.name}</option>
+                                                    )}
                                             </select>
+                                            }
+                                            {/*//*/}
                                             {errors.projectLeader && <div className="invalid-feedback">{errors.projectLeader}</div>}
                                         </div>
-                                        <div className="form-group">
-                                            <label htmlFor="description">Note</label>
-                                            <textarea
-                                                name="note"
-                                                defaultValue={inputs.note}
-                                                onChange={handleChange}
-                                                className={`form-control ${errors.note ? 'is-invalid' : ''}`} 
-                                                placeholder='Project Description' 
-                                                id="note" 
-                                                rows="4"></textarea>
-                                            {errors.note && <div className="invalid-feedback">{errors.note}</div>}
-                                        </div>
+                                        
                                         
                                     </div>
                                 </div>

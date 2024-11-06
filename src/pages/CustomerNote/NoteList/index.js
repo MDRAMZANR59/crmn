@@ -57,7 +57,7 @@ function NoteList() {
                                 <tr>
                                     <th>#SL</th>
                                     <th>Customer Name & ID</th>
-                                    <th>Phone</th>
+                                    {/* <th>Phone</th> */}
                                     <th>Employe Name & ID</th>
                                     <th>Note</th>
                                     <th>First Meet</th>
@@ -74,7 +74,7 @@ function NoteList() {
                                     {/* <td>{key+1}</td> */}
                                     <td>00{d.id}</td>
                                     <td>{d.customer?.name}{d.customer?.id}</td>
-                                    <td>{d.customer?.phone}</td>
+                                    {/* <td>{d.customer?.phone}</td> */}
                                     <td>{d.employee?.name}{d.employee?.role_id}</td>
                                     <td>{d.note}</td>
                                     <td>{d.firstMeet}</td>
