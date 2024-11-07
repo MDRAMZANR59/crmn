@@ -2,60 +2,90 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import AdminLayout from '../../../layouts/AdminLayout'
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {useParams} from "react-router-dom";
 //model
-
 import Modal from 'react-bootstrap/Modal';
 //
 
 function ProjectTaskList() {
+    {/*Add Model Data*/}
+ /*add form */
+ const [errors, setErrors] = useState([]);
+ const [inputs, setInputs] = useState({id:'', projectId:'', employeename_Id:'', note:'', task:'', assignDate:'', finishDate:'', actualDate:'',});
+ const [employee, setEmployee] = useState(null);//reltabale
+ const navigate=useNavigate();
+        const {id} = useParams();
+        
+        function getDatas(){
+            axios.get(`${process.env.REACT_APP_API_URL}/task/${id}`).then(function(response) {
+                setInputs(response.data.data);
+            });
+        }
+       
+        //relation
+        const getRelational = async () => {
+            axios.get(`${process.env.REACT_APP_API_URL}/user/index`).then(function(response) {
+                setEmployee(response.data.data);
+            });
+            
+        };
+        useEffect(() => {
+            if(id){
+                getDatas();
+            }
+            //relation
+           getRelational();
+            //
+        }, []);
+        const handleChange = (event) => {
+            const name = event.target.name;
+            const value = event.target.value;
+            setInputs(values => ({...values, [name]: value}));
+        }
+    
+        const handleSubmit = async(e) => {
+            e.preventDefault();
+            console.log(inputs)
+            
+            try{
+                let apiurl='';
+                if(inputs.id!=''){
+                    apiurl=`/task/edit/${inputs.id}`;
+                }else{
+                    apiurl=`/task/create`;
+                }
+                
+                let response= await axios({
+                    method: 'post',
+                    responsiveTYpe: 'json',
+                    url: `${process.env.REACT_APP_API_URL}${apiurl}`,
+                    data: inputs
+                });
+                handleClose();
+                getDatas();
+                //for auto refresh modal after add one task
+                setInputs(values => ({id:'', projectId:projectId, employeeId:'', note:'', task:'', assignDate:'', finishDate:'', actualDate:''}));
+            } 
+            catch(e){
+                console.log(e);
+            }
+        }
+ 
+ {/*Form List */}
      //model
      const [show, setShow] = useState(false);
      const handleClose = () => setShow(false);
      const handleShow = () => setShow(true);
-     /*add form */
-    const [errors, setErrors] = useState([]);
-    const [inputs, setInputs] = useState({id:'', projectId:'', employeeId:'', note:'', task:'', assignDate:'', finishDate:'', actualDate:'',});
+     const {projectId} = useParams();//rel
+    
     /* for edit */
     function getTask(data){
         setInputs(data);
         handleShow();
     }
-    const handleChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setInputs(values => ({...values, [name]: value}));
-    }
-
-    const handleSubmit = async(e) => {
-        e.preventDefault();
-        console.log(inputs)
-        
-        try{
-            let apiurl='';
-            if(inputs.id!=''){
-                apiurl=`/task/edit/${inputs.id}`;
-            }else{
-                apiurl=`/task/create`;
-            }
-            
-            let response= await axios({
-                method: 'post',
-                responsiveTYpe: 'json',
-                url: `${process.env.REACT_APP_API_URL}${apiurl}`,
-                data: inputs
-            });
-            handleClose();
-            getDatas();
-        } 
-        catch(e){
-            console.log(e);
-        }
-    }
     
     //
-    const {projectId} = useParams();
-
     const[data, setData]=useState([]);
     useEffect(() => {
         if(projectId){
@@ -74,6 +104,7 @@ function ProjectTaskList() {
             getDatas();
         });
     }
+    {/*End List*/}
     return (
         <AdminLayout>
             {/* Content Wrapper. Contains page content */}
@@ -134,7 +165,7 @@ function ProjectTaskList() {
                             <tr key={d.id} >
                                 <td>{d.id}</td>
                                 <td>{d.projectfiles?.projectName}</td>
-                                <td>{d.employeeId}</td>
+                                <td>{d.employee?.name}</td>
                                 <td>{d.note}</td>
                                 <td>{d.task}</td>
                                 <td>{d.assignDate}</td>
@@ -166,7 +197,6 @@ function ProjectTaskList() {
                 <div className="row md-6">
                     <div className="mb-6 col-md-6">
                         <label htmlFor="projectId" className="form-label">Project Id<sup className=" text-danger">*</sup></label>
-                        
                             <input
                             readOnly
                             placeholder="Project Id"
@@ -177,7 +207,6 @@ function ProjectTaskList() {
                             defaultValue={inputs.projectId}
                             onChange={handleChange}
                             // {projectfile.map((d, key)=>
-
                             // defaultValue={d.id}>{d.id}
                             
                             // )}
@@ -186,18 +215,17 @@ function ProjectTaskList() {
                         {errors.projectId && <div className="invalid-feedback">{errors.projectId}</div>}
                     </div>
                     <div className="mb-6 col-md-6">
-                        <label htmlFor="customerId" className="form-label">Employe Id<sup className=" text-danger">*</sup></label>
-                        <input
-                            required
-                            placeholder="Employe Id"
-                            type="number"
-                            className={`form-control ${errors.employeeId ? 'is-invalid' : ''}`}
-                            id="employeeId"
-                            name="employeeId"
-                            defaultValue={inputs.employeeId}
-                            onChange={handleChange}
-                        />
-                        {errors.employeeId && <div className="invalid-feedback">{errors.employeeId}</div>}
+                        <label htmlFor="employeename_Id" className="form-label">Employe Name & Id<sup className=" text-danger">*</sup></label>
+                       {/* //rel */}
+                       {employee?.length > 0 && 
+                            <select required className="form-control" id="employeename_Id" name='employeename_Id' defaultValue={inputs.employeename_Id} onChange={handleChange}>
+                                <option value="">Select Customer</option>
+                                {employee.map((d, key) =>
+                                    <option value={d.id}>{d.name}{d.role_id}</option>
+                                )}
+                            </select>
+                        }
+                        {errors.employeename_Id && <div className="invalid-feedback">{errors.employeename_Id}</div>}
                     </div>
                     <div className="mb-6 col-md-6">
                         <label htmlFor="note">Note<sup className=" text-danger">*</sup></label>
