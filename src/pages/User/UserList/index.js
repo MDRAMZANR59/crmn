@@ -58,7 +58,8 @@ function UserList() {
                                     <th>#SL</th>
                                     <th>User Type</th>
                                     <th>Name</th>
-                                    <th>Employe Id</th>
+                                    <th>User Id</th>
+                                    {/* <th></th> */}
                                     {/* <th>Customer Id</th> */}
                                     <th>NID</th>
                                     <th>DOB</th>
@@ -78,10 +79,11 @@ function UserList() {
                               {data && data.map((d, key) =>
                                 <tr key={d.id}>
                                   <td className="text-bold-500">{key+1}</td>
-                                  <td>{d.role.role_name}</td>
+                                  <td>{d.role?.role_name}</td>
                                   <td>{d.name}</td>
                                   {/* <td>{d.usermeta.employeId}</td> */}
-                                  <td>{d.usermeta?.user_id}</td>
+                                  <td>{d.usermeta?.user_id}{d.customer?.user_id}</td>
+                                  {/* <td></td> */}
                                   {/* <td>{d.usermeta?.customerId}</td> */}
                                   <td>{d.nid}</td>
                                   <td>{d.dob}</td>

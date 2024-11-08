@@ -65,7 +65,7 @@ function ProjectAdd() {
                     url: `${process.env.REACT_APP_API_URL}${apiurl}`,
                     data: inputs
                 });
-                navigate('/project/projectList')
+              //  navigate('/project/projectList')
             } 
             catch(e){
                 console.log(e);
@@ -81,7 +81,7 @@ function ProjectAdd() {
         
         let date = new Date(new Date(p.pDate).setDate(p.pDate.getDate() + p.pEDate)).toDateString();
         
-        // console.log(date); // 7 days from today
+        console.log(date); // 7 days from today
     }
 
     return (
