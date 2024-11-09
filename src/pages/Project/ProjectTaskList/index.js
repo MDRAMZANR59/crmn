@@ -25,7 +25,9 @@ function ProjectTaskList() {
        
         //relation
         const getRelational = async () => {
-            axios.get(`${process.env.REACT_APP_API_URL}/user/index`).then(function(response) {
+            //filter roll id
+            axios.get(`${process.env.REACT_APP_API_URL}/user/index?roles=1,2,3`).then(function(response) {
+                //filter roll id
                 setEmployee(response.data.data);
             });
             

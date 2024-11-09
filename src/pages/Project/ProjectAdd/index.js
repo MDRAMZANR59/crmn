@@ -21,7 +21,7 @@ function ProjectAdd() {
         }
     //rel
         const getRelational = async () => {
-            axios.get(`${process.env.REACT_APP_API_URL}/user/index`).then(function(response) {
+            axios.get(`${process.env.REACT_APP_API_URL}/user/index?roles=1,2,3`).then(function(response) {
                 setProlider(response.data.data);
             });
             
@@ -65,7 +65,7 @@ function ProjectAdd() {
                     url: `${process.env.REACT_APP_API_URL}${apiurl}`,
                     data: inputs
                 });
-              //  navigate('/project/projectList')
+               navigate('/project/projectList')
             } 
             catch(e){
                 console.log(e);

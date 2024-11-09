@@ -27,10 +27,9 @@ function CuatomerNote() {
             
         };
         const getRelational1 = async () => {
-            axios.get(`${process.env.REACT_APP_API_URL}/user/index?role_id=${4}`).then(function(response) {
+            axios.get(`${process.env.REACT_APP_API_URL}/user/index?roles=1,2,3`).then(function(response) {
                 setEmployee(response.data.data);
             });
-            
         };
 //
         useEffect(() => {
