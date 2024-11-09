@@ -27,7 +27,7 @@ function CuatomerNote() {
             
         };
         const getRelational1 = async () => {
-            axios.get(`${process.env.REACT_APP_API_URL}/user/index`).then(function(response) {
+            axios.get(`${process.env.REACT_APP_API_URL}/user/index?role_id=${4}`).then(function(response) {
                 setEmployee(response.data.data);
             });
             
