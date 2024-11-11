@@ -64,10 +64,12 @@ function ProjectTaskList() {
                     url: `${process.env.REACT_APP_API_URL}${apiurl}`,
                     data: inputs
                 });
+                //modelId
                 handleClose();
                 getDatas();
                 //for auto refresh modal after add one task
                 setInputs(values => ({id:'', projectId:projectId, employeeId:'', note:'', task:'', assignDate:'', finishDate:'', actualDate:''}));
+                //modelIdEnd
             } 
             catch(e){
                 console.log(e);

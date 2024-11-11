@@ -14,7 +14,7 @@ function UserList() {
   }, []);
 
   function getDatas() {
-      axios.get(`${process.env.REACT_APP_API_URL}/user/index`,config).then(function(response) {
+      axios.get(`${process.env.REACT_APP_API_URL}/user/index?roles=1,2,3`,config).then(function(response) {
           setData(response.data.data);
       });
   }

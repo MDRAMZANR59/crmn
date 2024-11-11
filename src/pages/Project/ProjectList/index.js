@@ -135,7 +135,7 @@ function ProjectList() {
                                 <td>{d.eEndDate}</td>
                                 <td>{ ((100/d.task.length)*d.comtask.length) }%</td>
                                 <td>{d.prolider?.name}</td>
-                                <td>Running</td>
+                                <td>{((100/d.task.length)*d.comtask.length)<100?'Running':'Stock'}</td>
                                 <td><i className="fas fa-star"></i>
                                     <i className="fas fa-star"></i><br/>
                                     <i className="fas fa-star"></i>
