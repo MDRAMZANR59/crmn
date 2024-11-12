@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 function Review() {
   const [errors, setErrors] = useState([]);
   const [inputs, setInputs] = useState({ id: '', projectName:'', massage: '', rating:'' });
-  // console.log(inputs.rating);
+  console.log(inputs.rating);
   const [hoverRating, setHoverRating] = useState(0); // New state for hover effect
   const navigate = useNavigate();
   const { id } = useParams();
@@ -52,51 +52,16 @@ function Review() {
         url: `${process.env.REACT_APP_API_URL}${apiurl}`,
         data: inputs,
       });
-      //modelId
-      handleClose();
-      getDatas();
-      //for auto refresh modal after add one task
-      setInputs(values => ({id:'',  projectName:projectName, massage: '', rating:'' }));
-      //modelIdEnd
+     
       navigate('/project/projectList');
     } catch (e) {
       console.log(e);
     }
   };
-  //projectName//
-  {/*Form List */}
      //model
      const [show, setShow] = useState(false);
      const handleClose = () => setShow(false);
      const handleShow = () => setShow(true);
-     const {projectName} = useParams();//rel
-    
-    /* for edit */
-    function getTask(data){
-        setInputs(data);
-        handleShow();
-    }
-    
-    //
-    const[data, setData]=useState([]);
-    useEffect(() => {
-        if(projectName){
-            setInputs(values => ({...values, ['projectName']: projectName}));
-        }
-        getDatas();
-    }, []);
-  
-    function getDatas() {
-        axios.get(`${process.env.REACT_APP_API_URL}/review/index?projectName=${projectName}`).then(function(response) {
-            setData(response.data.data);
-        });
-    }
-    const deleteData = (id) => {
-        axios.delete(`${process.env.REACT_APP_API_URL}/review/${id}`).then(function(response){
-            getDatas();
-        });
-    }
-    {/*End List*/}
   return (
     <AdminLayout>
       <div className="content-wrapper">

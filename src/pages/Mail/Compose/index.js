@@ -7,14 +7,7 @@ import { Link } from 'react-router-dom';
 
 function Compose() {
   const [errors, setErrors] = useState([]);
-  const [inputs, setInputs] = useState({
-    id: '',
-    mailType: '',
-    reciver: '',
-    subject: '',
-    bodyMassage: '',
-    attachment: ''
-  });
+  const [inputs, setInputs] = useState({id: '',mailType: '',reciver: '',subject: '',bodyMassage: '',attachment: ''});
   
   const navigate = useNavigate();
   const { id } = useParams();

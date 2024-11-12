@@ -60,7 +60,7 @@ function MailBox() {
                         </div>
                         {/* /.col */}
                         <div className="col-md-9">
-                           <MailList />
+                           <MailList name="new mail" />
                         </div>
                     </div>
                 </section>

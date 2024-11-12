@@ -6,7 +6,6 @@ import {useParams} from "react-router-dom";
 
 function CustomerAdd() {
     const [errors, setErrors] = useState([]);
-
     const [inputs, setInputs] = useState({id:'', name:'', nid:'', email:'', phone:'', password:'', photo:'', companyName:'',country:'', districts:'', upozila:'', post:'', zipCode:'', state:'' });
         const navigate=useNavigate();
         const [customer, setCustomer] = useState(null);//reltabale

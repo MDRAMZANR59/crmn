@@ -9,12 +9,12 @@ import Modal from 'react-bootstrap/Modal';
 //
 
 function ProjectTaskList() {
-    {/*Add Model Data*/}
- /*add form */
- const [errors, setErrors] = useState([]);
- const [inputs, setInputs] = useState({id:'', projectId:'', employeename_Id:'', note:'', task:'', assignDate:'', finishDate:'', actualDate:'',});
- const [employee, setEmployee] = useState(null);//reltabale
- const navigate=useNavigate();
+        {/*Add Model Data*/}
+        /*add form */
+        const [errors, setErrors] = useState([]);
+        const [inputs, setInputs] = useState({id:'', projectId:'', employeename_Id:'', note:'', task:'', assignDate:'', finishDate:'', actualDate:'',});
+        const [employee, setEmployee] = useState(null);//reltabale
+        const navigate=useNavigate();
         const {id} = useParams();
         
         function getDatas(){
@@ -30,8 +30,8 @@ function ProjectTaskList() {
                 //filter roll id
                 setEmployee(response.data.data);
             });
-            
         };
+        
         useEffect(() => {
             if(id){
                 getDatas();

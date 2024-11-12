@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-function MailList() {
+function MailList(props) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -24,7 +24,7 @@ function MailList() {
     return (
             <div className="card card-primary card-outline">
                 <div className="card-header">
-                    <h3 className="card-title">New Mail</h3>
+                    <h3 className="card-title">{props.name}</h3>
                     <div className="card-tools">
                         <div className="input-group input-group-sm">
                             <input type="text" className="form-control" placeholder="Search Mail" />
