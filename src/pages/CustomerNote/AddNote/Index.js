@@ -6,7 +6,6 @@ import {useParams} from "react-router-dom";
 
 function CuatomerNote() {
     const [errors, setErrors] = useState([]);
-
     const [inputs, setInputs] = useState({id:'', customerName:'', phone:'', employeeName:'', note:'', noteDate:'', nextDay:'', attachment:'', meetLocation:'',});
     const [customer, setCustomer] = useState(null);//reltabale
     const [employee, setEmployee] = useState(null);//reltabale

@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 function Compose() {
   const [errors, setErrors] = useState([]);
   const [inputs, setInputs] = useState({id: '',mailType: '',reciver: '',subject: '',bodyMassage: '',attachment: ''});
-  
+  const [reciver, setReciver] = useState(null);//reltabale
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -23,10 +23,21 @@ function Compose() {
       setInputs(response.data.data);
     });
   }
+  //relational
+  const getRelational = async () => {
+      axios.get(`${process.env.REACT_APP_API_URL}/user/index`).then(function(response) {
+        setReciver(response.data.data);
+      });
+      
+  };
+  //relational
   useEffect(() => {
     if(id){
         getDatas();
     }
+    //relationla
+    getRelational()
+    //relational
 }, []);
 
   const handleChange = (event) => {
@@ -91,41 +102,55 @@ function Compose() {
                       <h3 className="d-inline card-title me-5">Compose New Message</h3>
                       <label required className="me-2">Mail Type</label>
                       <div className="form-group d-inline">
+                      <div className="form-group">
                         <label htmlFor="rushMail" className="d-inline">Rush Mail</label>
                         <input
-                          defaultValue={inputs.mailType}
-                          onChange={handleChange}
-                          className={`me-3 ${errors.rushMail ? 'is-invalid' : ''}`}
-                          id="rushMail"
-                          type="radio"
-                          name="mailType"
-                          />
+                            value="Rush Mail"
+                            onChange={handleChange}
+                            className={`${errors.rushMail ? 'is-invalid' : ''}`}
+                            id="rushMail" 
+                            type="radio" 
+                            name="mailType"
+                            checked={inputs.mailType === "Rush Mail"} 
+                        />
                         {errors.rushMail && <div className="invalid-feedback">{errors.rushMail}</div>}
-                        
-                        <label htmlFor="notice" className="d-inline">Notice</label>
-                        <input
-                          defaultValue={inputs.mailType}
-                          onChange={handleChange}
-                          className={`${errors.mailType ? 'is-invalid' : ''}`}
-                          id="notice"
-                          type="radio"
-                          name="mailType"
-                           />
+
+                        <label htmlFor="notice">Notice</label>
+                        <input 
+                            value="Notice"
+                            onChange={handleChange}
+                            className={`${errors.notice ? 'is-invalid' : ''}`}
+                            id="notice" 
+                            type="radio" 
+                            name="mailType"
+                            checked={inputs.mailType === "Notice"}
+                        />
                         {errors.notice && <div className="invalid-feedback">{errors.notice}</div>}
+                    </div>
                       </div>
                     </div>
                     {/* /.card-header */}
                     <div className="card-body">
+                      {/*data get by Relational*/}
                       <div className="form-group">
-                        <input
-                          className={`form-control ${errors.reciver ? 'is-invalid' : ''}`}
-                          type="email"
-                          name="reciver"
-                          placeholder="To:"
-                          value={inputs.reciver}
-                          onChange={handleChange} />
-                          {errors.reciver && <div className="invalid-feedback">{errors.reciver}</div>}
+                        {reciver?.length > 0 && 
+                          <select 
+                            required 
+                            className={`form-control ${errors.reciver ? 'is-invalid' : ''}`} 
+                            id="customerName"  
+                            type="email"
+                            name="reciver" 
+                            defaultValue={inputs.reciver} 
+                            onChange={handleChange}>
+                              <option value="">Select Reciver</option>
+                              {reciver.map((d, key) =>
+                                  <option value={d.id}>{d.name}</option>
+                              )}
+                        </select>
+                        }
+                        {errors.customerName && <div className="invalid-feedback">{errors.customerName}</div>}
                       </div>
+                      {/*End Get Data*/}
                       <div className="form-group">
                         <input
                           className={`form-control ${errors.subject ? 'is-invalid' : ''}`}

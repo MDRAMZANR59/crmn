@@ -6,7 +6,30 @@ import { useParams } from 'react-router-dom';
 
 function Review() {
   const [errors, setErrors] = useState([]);
-  const [inputs, setInputs] = useState({ id: '', projectName:'', massage: '', rating:'' });
+  const [inputs, setInputs] = useState({ id: '', projectId:'', massage: '', rating:'' });
+  const {projectId} = useParams();//rel
+
+   /* for edit */
+   function getTask(data){
+    setInputs(data);
+    handleShow();
+}
+
+//
+const[data, setData]=useState([]);
+useEffect(() => {
+    if(projectId){
+        setInputs(values => ({...values, ['projectId']: projectId}));
+    }
+    getDatas();
+}, []);
+
+function getDatas() {
+  axios.get(`${process.env.REACT_APP_API_URL}/review/index?projectId=${projectId}`).then(function(response) {
+      setData(response.data.data);
+  });
+}
+
   console.log(inputs.rating);
   const [hoverRating, setHoverRating] = useState(0); // New state for hover effect
   const navigate = useNavigate();
@@ -113,20 +136,25 @@ function Review() {
                   </div>
                 </div>
               </div>
-              <div className='col-md-6' >
-              <label htmlFor="projectName" className="form-label">Project Name</label>
+              <div className="mb-6 col-md-6">
+                        <label htmlFor="projectId" className="form-label">Project Id<sup className=" text-danger">*</sup></label>
                             <input
                             readOnly
-                            placeholder="Project Name"
-                            type="text"
-                            className={`form-control ${errors.projectName ? 'is-invalid' : ''}`}
-                            id="projectName"
-                            name="projectName"
-                            defaultValue={inputs.projectName}
+                            placeholder="Project Id"
+                            type="number"
+                            className={`form-control ${errors.projectId ? 'is-invalid' : ''}`}
+                            id="projectId"
+                            name="projectId"
+                            defaultValue={inputs.projectId}
                             onChange={handleChange}
+                            // {projectfile.map((d, key)=>
+                            // defaultValue={d.id}>{d.id}
+                            
+                            // )}
                             />
-                        {errors.projectName && <div className="invalid-feedback">{errors.projectName}</div>}
-              </div>
+                        
+                        {errors.projectId && <div className="invalid-feedback">{errors.projectId}</div>}
+                    </div>
               {/* Form Section */}
               <div className="col-md-12">
                 <form onSubmit={handleSubmit}>
