@@ -169,7 +169,10 @@ function ProjectList() {
                                     <Link to="/project/invoice" className="btn btn-info btn-sm">
                                         <i className="fas fa-receipt"></i>Invoice
                                     </Link>
-                                    <Link to="/project/review" className="btn btn-info btn-sm">
+
+                                    {/* sent project id to review page url*/}
+                                    <Link to={`/project/review/${d.id}`} className="btn btn-info btn-sm">
+                                    {/* Sent Project Id End*/}
                                         <i className="fas fa-comment-dots"></i>Review
                                     </Link>
                                     

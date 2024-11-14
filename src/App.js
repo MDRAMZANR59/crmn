@@ -99,7 +99,10 @@ function App() {
         
           <Route path="/project/CancalingProject" element={<CancalingProject/>} />
           <Route path="/project/invoice" element={<Invoice/>} />
+          
           <Route path="/project/review" element={<Review/>} />
+          {/*Recive Project Id*/}
+          <Route path="/project/review/:projectId" element={<Review/>} />
         </Routes>
     </BrowserRouter>
   );

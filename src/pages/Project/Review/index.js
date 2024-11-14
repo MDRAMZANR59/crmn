@@ -6,85 +6,100 @@ import { useParams } from 'react-router-dom';
 
 function Review() {
   const [errors, setErrors] = useState([]);
-  const [inputs, setInputs] = useState({ id: '', projectId:'', massage: '', rating:'' });
-  const {projectId} = useParams();//rel
-
-   /* for edit */
-   function getTask(data){
-    setInputs(data);
-    handleShow();
-}
-
-//
-const[data, setData]=useState([]);
-useEffect(() => {
-    if(projectId){
-        setInputs(values => ({...values, ['projectId']: projectId}));
-    }
-    getDatas();
-}, []);
-
-function getDatas() {
-  axios.get(`${process.env.REACT_APP_API_URL}/review/index?projectId=${projectId}`).then(function(response) {
-      setData(response.data.data);
-  });
-}
-
-  console.log(inputs.rating);
-  const [hoverRating, setHoverRating] = useState(0); // New state for hover effect
+  const [inputs, setInputs] = useState({ id: '', projectId: '', massage: '', rating: '' });
+  //employee dropdown 
+  const {projectId} = useParams();//recive project Id
+    //projectfiles dropdown 
+  const [projectfiles, setProjectfiles] = useState(null);
   const navigate = useNavigate();
   const { id } = useParams();
 
   function getDatas() {
     axios.get(`${process.env.REACT_APP_API_URL}/review/${id}`).then(function (response) {
-      setInputs(response.data.data);
-    });
+        setInputs(response.data.data);
+      });
   }
+  //rel
+  const getRelational = async () => {
+    axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/index`).then(function(response) {
+      setProjectfiles(response.data.data);
+    });
+    
+};
 
   useEffect(() => {
     if (id) {
       getDatas();
     }
+    getRelational();
   }, [id]);
-
+  
   const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
+    const { name, value } = event.target;
     setInputs((values) => ({ ...values, [name]: value }));
   };
-//rev
-  const handleRating = (rating) => {
-    setInputs((values) => ({ ...values, rating }));
-  };
-//
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputs);
+    console.log(inputs); 
 
     try {
       let apiurl = '';
       if (inputs.id !== '') {
         apiurl = `/review/edit/${inputs.id}`;
       } else {
-        apiurl = `/review/create`;
+        apiurl = `/review/create`; // Create new review
       }
-
       let response = await axios({
         method: 'post',
         responseType: 'json',
         url: `${process.env.REACT_APP_API_URL}${apiurl}`,
         data: inputs,
       });
-     
+      setInputs(values => ({id: '', projectId: projectId, massage: '', rating: '' }));
+
+
       navigate('/project/projectList');
     } catch (e) {
-      console.log(e);
+      console.log(e); // Log error if the API request fails
     }
   };
-     //model
-     const [show, setShow] = useState(false);
-     const handleClose = () => setShow(false);
-     const handleShow = () => setShow(true);
+  
+    /* for edit */
+    function getTask(data){
+      setInputs(data);
+      handleShow();
+  }
+  //get project Id
+   //
+   const[data, setData]=useState([]);
+   useEffect(() => {
+       if(projectId){
+           setInputs(values => ({...values, ['projectId']: projectId}));
+       }
+       getDatas();
+   }, []);
+ 
+   function getDatas() {
+       axios.get(`${process.env.REACT_APP_API_URL}/review/index?projectId=${projectId}`).then(function(response) {
+           setData(response.data.data);
+       });
+   }
+
+
+  // Function to handle rating selection
+  const handleRating = (rating) => {
+    setInputs((values) => ({ ...values, rating }));
+  };
+
+  // Modal
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [hoverRating, setHoverRating] = useState(0);
+
+  console.log(inputs.rating);
+
   return (
     <AdminLayout>
       <div className="content-wrapper">
@@ -106,8 +121,8 @@ function getDatas() {
             </div>
           </div>
         </section>
-
-        {/* Main content */}
+        
+        {/* Main Content */}
         <section className="content">
           <div className="card">
             <div className="card-body row">
@@ -118,24 +133,32 @@ function getDatas() {
                     <strong>Overall Rating</strong>
                   </h2>
                   <div className="star-rating">
+                    {/* Render stars dynamically */}
                     {[...Array(5)].map((_, index) => (
                       <span
                         key={index}
                         className={`fa fa-star ${inputs.rating >= index + 1 || hoverRating >= index + 1 ? 'text-warning' : 'text-muted'}`}
-                        onClick={() => handleRating(index + 1)}
-                        onMouseEnter={() => setHoverRating(index + 1)}
-                        onMouseLeave={() => setHoverRating(0)}
-                        style={{fontSize: '36px',cursor: 'pointer',transition: 'transform 0.2s ease, color 0.2s ease',}}
-                        name='rating'
+                        onClick={() => handleRating(index + 1)} // Set rating on click
+                        onMouseEnter={() => setHoverRating(index + 1)} // Hover effect
+                        onMouseLeave={() => setHoverRating(0)} // Reset hover effect
+                        style={{
+                          fontSize: '36px',
+                          cursor: 'pointer',
+                          transition: 'transform 0.2s ease, color 0.2s ease',
+                        }}
+                        name="rating"
                         defaultValue={inputs.rating}
-                        onChange={handleChange}
+                        onChange={handleChange} // Handle change for other inputs
                       >
+                        {/* Show validation error message if applicable */}
                         {errors.rating && <div className="invalid-feedback">{errors.rating}</div>}
                       </span>
                     ))}
                   </div>
                 </div>
               </div>
+
+              {/* Project Selection Section */}
               <div className="mb-6 col-md-6">
                         <label htmlFor="projectId" className="form-label">Project Id<sup className=" text-danger">*</sup></label>
                             <input
@@ -172,8 +195,10 @@ function getDatas() {
                       id="massage"
                       rows="3"
                     ></textarea>
+                    {/* Show validation error for massage field */}
                     {errors.massage && <div className="invalid-feedback">{errors.massage}</div>}
                   </div>
+
                   <div className="form-group">
                     <button type="submit" className="btn btn-primary w-25 float-right" style={{ padding: '10px 20px' }}>
                       Send Feedback
