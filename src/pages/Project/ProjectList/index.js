@@ -10,53 +10,49 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 //
 function ProjectList() {
-    //data add to modal
+    const {projectId} = useParams();//recive project Id
     const [errors, setErrors] = useState([]);
-    const [inputs, setInputs] = useState({id:'', projectId:'', employeename_Id:'', note:'', task:'', assignDate:'', finishDate:'', actualDate:'',});
-    const navigate=useNavigate();
-    const {id} = useParams();
-    {/* Common Use*/}
-    // const getDatas = () => {
-    //     axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/${id}`).then(function(response) {
-    //     setInputs(response.data.data);
-    //     });
-    // }
-    {/*Common Use*/}
-    useEffect(() => {
-        if(id){
-            getDatas();
-        }
-    }, []);
-    
-    const handleChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setInputs(values => ({...values, [name]: value}));
+    const [inputs, setInputs] = useState({ id:projectId, cancelReason:'', status:'' });
+    //employee dropdown 
+      //projectfiles dropdown 
+    const [projectfiles, setProjectfiles] = useState(null);
+    const navigate = useNavigate();
+  
+    function getDatas() {
+      axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/${projectId}`).then(function(response) {
+        setProjectfiles(response.data.data);
+      });
     }
-    const handleSubmit = async(e) => {
-        e.preventDefault();
-        console.log(inputs)
-        
-        try{
-            let apiurl='';
-            if(inputs.id!=''){
-                apiurl=`/projectfiles/edit/${inputs.id}`;
-            }else{
-                apiurl=`/projectfiles/create`;
-            }
-            
-                await axios({
-                method: 'post',
-                responsiveTYpe: 'json',
-                url: `${process.env.REACT_APP_API_URL}${apiurl}`,
-                data: inputs
-            });
-            navigate('/project/projectList')
-        } 
-        catch(e){
-            console.log(e);
+    useEffect(() => {
+        if (projectId) {
+          getDatas();
         }
-    };
+      }, [projectId]);
+      
+      const handleChange = (event) => {
+        const { name, value } = event.target;
+        setInputs((values) => ({ ...values, [name]: value }));
+      };
+    
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(inputs); 
+    
+        try {
+          let apiurl = `/project_review/${inputs.id}`;
+          let response = await axios({
+            method: 'post',
+            responseType: 'json',
+            url: `${process.env.REACT_APP_API_URL}${apiurl}`,
+            data: inputs,
+          });
+          
+          navigate('/project/projectList');
+        } catch (e) {
+          console.log(e); // Log error if the API request fails
+        }
+      };
+    
     //Data add End to model
   
     // show data of list start
@@ -78,7 +74,10 @@ function ProjectList() {
     //Show data of list End
     //for modal
     const handleClose = () => setShow(false);
-    const handleShown = () => setShow(true);
+    const handleShown = (id) =>{
+        setInputs((values) => ({ ...values, ['id']: id }));
+        setShow(true);
+    } 
     const[data, setData]=useState([]);
     
     return (
@@ -205,48 +204,31 @@ function ProjectList() {
                                     
                                 <>
                                     <Button className="btn btn-danger btn-sm" variant="primary" 
-                                        onClick={handleShown}><i class="fas fa-window-close"></i>Cancel
+                                        onClick={(e)=>handleShown(d.id)}><i class="fas fa-window-close"></i>Cancel
                                     </Button>
                                     <Modal show={show} onHide={handleClose}>
                                         <Modal.Header closeButton>
-                                            <Modal.Title>Cenceling Reason
-                                                <form onSubmit={handleSubmit} className='float-right ms-5'>
-                                                    <div className="row-md-6 ">
-                                                        <label htmlFor="projectId" className="form-label">Project Id<sup className=" text-danger">*</sup></label>
-                                                        <input
-                                                        readOnly
-                                                        placeholder="Project Id"
-                                                        type="number"
-                                                        className={`form-control ${errors.projectId ? 'is-invalid' : ''}`}
-                                                        id="projectId"
-                                                        name="projectId"
-                                                        defaultValue={inputs.projectId}
-                                                        onChange={handleChange}
-                                                        />
-                                                        {errors.projectId && <div className="invalid-feedback">{errors.projectId}</div>}
-                                                    </div>
-                                                </form>
-                                            </Modal.Title>
+                                            <Modal.Title>Cenceling Reason</Modal.Title>
                                         </Modal.Header>
                                         <Modal.Body>
                                             <form onSubmit={handleSubmit}>
                                                 <div className="row md-12">
                                                     <div className="mb-6 col-md-12">
-                                                        <label htmlFor="note">Note<sup className=" text-danger">*</sup></label>
                                                         <textarea
-                                                        name="note"
-                                                        defaultValue={inputs.note}
+                                                        name="cancelReason"
+                                                        defaultValue={inputs.cancelReason}
                                                         onChange={handleChange}
-                                                        className={`form-control ${errors.note ? 'is-invalid' : ''}`} placeholder='Write Note' required id="note" rows="1"></textarea>
-                                                        {errors.note && <div className="invalid-feedback">{errors.note}</div>}
+                                                        className={`form-control ${errors.cancelReason ? 'is-invalid' : ''}`} placeholder='Write Reason' required id="cancelReason" rows="5"></textarea>
+                                                        {errors.cancelReason && <div className="invalid-feedback">{errors.cancelReason}</div>}
                                                     </div>
                                                 </div>
                                                 <input
                                                     type="checkbox"
-                                                    className={`d-inlineBlock ${errors.projectId ? 'is-invalid' : ''}`}
-                                                    id="projectId"
-                                                    name="projectId"
-                                                    defaultValue={inputs.projectId}
+                                                    className={`d-inlineBlock ${errors.status ? 'is-invalid' : ''}`}
+                                                    id="status"
+                                                    name="status"
+                                                    // defaultValue={inputs.status}
+                                                    value='cancel'
                                                     onChange={handleChange}
                                                     /><span> I Sure For Cancel This Project</span>
                                                     

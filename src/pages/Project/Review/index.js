@@ -5,34 +5,26 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 function Review() {
-  const [errors, setErrors] = useState([]);
-  const [inputs, setInputs] = useState({ id: '', projectId: '', massage: '', rating: '' });
-  //employee dropdown 
   const {projectId} = useParams();//recive project Id
+  const [errors, setErrors] = useState([]);
+  const [inputs, setInputs] = useState({ id:projectId, massage: '', rating:'' });
+  //employee dropdown 
     //projectfiles dropdown 
   const [projectfiles, setProjectfiles] = useState(null);
   const navigate = useNavigate();
-  const { id } = useParams();
 
   function getDatas() {
-    axios.get(`${process.env.REACT_APP_API_URL}/review/${id}`).then(function (response) {
-        setInputs(response.data.data);
-      });
-  }
-  //rel
-  const getRelational = async () => {
-    axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/index`).then(function(response) {
+    axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/${projectId}`).then(function(response) {
       setProjectfiles(response.data.data);
     });
-    
-};
+  }
+  
 
   useEffect(() => {
-    if (id) {
+    if (projectId) {
       getDatas();
     }
-    getRelational();
-  }, [id]);
+  }, [projectId]);
   
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -44,49 +36,20 @@ function Review() {
     console.log(inputs); 
 
     try {
-      let apiurl = '';
-      if (inputs.id !== '') {
-        apiurl = `/review/edit/${inputs.id}`;
-      } else {
-        apiurl = `/review/create`; // Create new review
-      }
+      let apiurl = `/project_review/${inputs.id}`;
       let response = await axios({
         method: 'post',
         responseType: 'json',
         url: `${process.env.REACT_APP_API_URL}${apiurl}`,
         data: inputs,
       });
-      setInputs(values => ({id: '', projectId: projectId, massage: '', rating: '' }));
-
-
+      
       navigate('/project/projectList');
     } catch (e) {
       console.log(e); // Log error if the API request fails
     }
   };
   
-    /* for edit */
-    function getTask(data){
-      setInputs(data);
-      handleShow();
-  }
-  //get project Id
-   //
-   const[data, setData]=useState([]);
-   useEffect(() => {
-       if(projectId){
-           setInputs(values => ({...values, ['projectId']: projectId}));
-       }
-       getDatas();
-   }, []);
- 
-   function getDatas() {
-       axios.get(`${process.env.REACT_APP_API_URL}/review/index?projectId=${projectId}`).then(function(response) {
-           setData(response.data.data);
-       });
-   }
-
-
   // Function to handle rating selection
   const handleRating = (rating) => {
     setInputs((values) => ({ ...values, rating }));
@@ -157,27 +120,6 @@ function Review() {
                   </div>
                 </div>
               </div>
-
-              {/* Project Selection Section */}
-              <div className="mb-6 col-md-6">
-                        <label htmlFor="projectId" className="form-label">Project Id<sup className=" text-danger">*</sup></label>
-                            <input
-                            readOnly
-                            placeholder="Project Id"
-                            type="number"
-                            className={`form-control ${errors.projectId ? 'is-invalid' : ''}`}
-                            id="projectId"
-                            name="projectId"
-                            defaultValue={inputs.projectId}
-                            onChange={handleChange}
-                            // {projectfile.map((d, key)=>
-                            // defaultValue={d.id}>{d.id}
-                            
-                            // )}
-                            />
-                        
-                        {errors.projectId && <div className="invalid-feedback">{errors.projectId}</div>}
-                    </div>
               {/* Form Section */}
               <div className="col-md-12">
                 <form onSubmit={handleSubmit}>
