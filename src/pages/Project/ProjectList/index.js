@@ -9,11 +9,14 @@ import {useParams} from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 //
+//ratting 
+
 function ProjectList() {
+    //command show
+    const [smShow, setSmShow] = useState(false);
     const {projectId} = useParams();//recive project Id
     const [errors, setErrors] = useState([]);
     const [inputs, setInputs] = useState({ id:projectId, cancelReason:'', status:'' });
-    //employee dropdown 
       //projectfiles dropdown 
     const [projectfiles, setProjectfiles] = useState(null);
     const navigate = useNavigate();
@@ -46,6 +49,9 @@ function ProjectList() {
             url: `${process.env.REACT_APP_API_URL}${apiurl}`,
             data: inputs,
           });
+           //modelId
+           handleClose();
+           getDatas();
           
           navigate('/project/projectList');
         } catch (e) {
@@ -183,7 +189,20 @@ function ProjectList() {
                                     <i className="fas fa-star"></i>
                                     <i className="fas fa-star"></i>
                                     <i className="fas fa-star"></i><br/>
-                                    <a href="#">Comment</a>
+                                    <a onClick={() => setSmShow(true)} className="me-2 btn text-primary ">Comment</a>
+                                    {/*Comment Show modal*/}
+                                    <Modal
+                                        size="sm"
+                                        show={smShow}
+                                        onHide={() => setSmShow(false)}
+                                        aria-labelledby="example-modal-sizes-title-sm"
+                                    >
+                                        <Modal.Header closeButton>
+                                            <Modal.Title id="example-modal-sizes-title-sm">Comment</Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>{d.massage}</Modal.Body>
+                                    </Modal>
+                                {/*End Command show modal*/}
                                 </td>
                                 <td className="project-actions text-right">
                                     <Link className="btn btn-success btn-sm" to={`/project/projectTaskList/${d.id}`}>
@@ -230,7 +249,7 @@ function ProjectList() {
                                                     // defaultValue={inputs.status}
                                                     value='cancel'
                                                     onChange={handleChange}
-                                                    /><span> I Sure For Cancel This Project</span>
+                                                    /><span htmlFor="status" > I Sure For Cancel This Project</span>
                                                     
                                                 <button type="submit" className="btn d-block btn-primary mt-3">Save Task</button>
                                             </form>
