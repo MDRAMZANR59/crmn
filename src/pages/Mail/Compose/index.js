@@ -12,17 +12,12 @@ function Compose() {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  useEffect(() => {
-    if (id) {
-      getDatas();
-    }
-  }, [id]);
-
   const getDatas = () => {
     axios.get(`${process.env.REACT_APP_API_URL}/compose/${id}`).then(function(response) {
       setInputs(response.data.data);
     });
   }
+  
   //relational
   const getRelational = async () => {
       axios.get(`${process.env.REACT_APP_API_URL}/user/index`).then(function(response) {

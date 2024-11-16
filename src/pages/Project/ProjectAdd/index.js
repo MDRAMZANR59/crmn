@@ -6,84 +6,85 @@ import {useParams} from "react-router-dom";
 import { Link } from 'react-router-dom';
 
 function ProjectAdd() {
-    const [errors, setErrors] = useState([]);
-
+    //for date    
     const [inputs, setInputs] = useState({id:'', projectName:'', projectType:'', doHoPr:'', frontLiAndFrame:'', backLib:'', frontEndLan:'', backLang:'',database:'',customerNameP:'', description:'', estimatedBudget:'', reciveDate:'', eDuration:'', eEndDate:'',projectLeader:'', note:'', });
+    const [errors, setErrors] = useState([]);
     const [prolider, setProlider] = useState(null);//reltabale  
     const [customer, setCustomer] = useState(null);//reltabale  
     const navigate=useNavigate();
-        const {id} = useParams();
+    const {id} = useParams();
         
-        function getDatas(){
-            axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/${id}`).then(function(response) {
-                setInputs(response.data.data);
-            });
+    function getDatas(){
+        axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/${id}`).then(function(response) {
+            setInputs(response.data.data);
+        });
+    }
+    //rel
+    const getRelational = async () => {
+        axios.get(`${process.env.REACT_APP_API_URL}/user/index?roles=1,2,3`).then(function(response) {
+            setProlider(response.data.data);
+        });
+        
+    };
+    const getRelationalc = async () => {
+        axios.get(`${process.env.REACT_APP_API_URL}/customer/index`).then(function(response) {
+            setCustomer(response.data.data);
+        });
+        
+    };
+    useEffect(() => {
+        if(id){
+            getDatas();
         }
     //rel
-        const getRelational = async () => {
-            axios.get(`${process.env.REACT_APP_API_URL}/user/index?roles=1,2,3`).then(function(response) {
-                setProlider(response.data.data);
-            });
-            
-        };
-        const getRelationalc = async () => {
-            axios.get(`${process.env.REACT_APP_API_URL}/customer/index`).then(function(response) {
-                setCustomer(response.data.data);
-            });
-            
-        };
-        useEffect(() => {
-            if(id){
-                getDatas();
-            }
-    //rel
-            getRelational();
-            getRelationalc();
-        }, []);
-    
-        const handleChange = (event) => {
-            const name = event.target.name;
-            const value = event.target.value;
-            setInputs(values => ({...values, [name]: value}));
-        }
-    
-        const handleSubmit = async(e) => {
-            e.preventDefault();
-            console.log(inputs)
-            
-            try{
-                let apiurl='';
-                if(inputs.id!=''){
-                    apiurl=`/projectfiles/edit/${inputs.id}`;
-                }else{
-                    apiurl=`/projectfiles/create`;
-                }
-                
-                let response= await axios({
-                    method: 'post',
-                    responsiveTYpe: 'json',
-                    url: `${process.env.REACT_APP_API_URL}${apiurl}`,
-                    data: inputs
-                });
-               navigate('/project/projectList')
-            } 
-            catch(e){
-                console.log(e);
-            }
-        }
+        getRelational();
+        getRelationalc();
+    }, []);
 
-    const calDate= (e)=>{
-        e=parseInt(e.target.value)
-            let p = {
-            pDate: new Date(),  // Today
-            pEDate: e  // Days to add
-        };
-        
-        let date = new Date(new Date(p.pDate).setDate(p.pDate.getDate() + p.pEDate)).toDateString();
-        
-        console.log(date); // 7 days from today
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({...values, [name]: value}));
     }
 
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        console.log(inputs)
+        
+        try{
+            let apiurl='';
+            if(inputs.id!=''){
+                apiurl=`/projectfiles/edit/${inputs.id}`;
+            }else{
+                apiurl=`/projectfiles/create`;
+            }
+            
+            let response= await axios({
+                method: 'post',
+                responsiveTYpe: 'json',
+                url: `${process.env.REACT_APP_API_URL}${apiurl}`,
+                data: inputs
+            });
+            navigate('/project/projectList')
+        } 
+        catch(e){
+            console.log(e);
+        }
+    }
+    const calDate = (e) => {
+        const daysToAdd = parseInt(e.target.value, 10);
+        if (isNaN(daysToAdd)) return;
+    
+        const currentDate = new Date(); 
+        const futureDate = new Date(currentDate.setDate(currentDate.getDate() + daysToAdd));
+        const formattedDate = futureDate.toISOString().split('T')[0];
+        setInputs({
+            ...inputs,
+            eEndDate: formattedDate
+        });
+    
+        console.log(formattedDate);
+        };
     return (
         <AdminLayout>
             <div className="content-wrapper">
@@ -809,21 +810,30 @@ function ProjectAdd() {
                                         </div>
                                         
                                         <div className="form-group">
-                                            <label htmlFor="eDuration">Estimated project duration</label>
+                                            <label htmlFor="eDuration">Estimated project duration<sup className=" text-danger">*</sup></label>
                                             <input
-                                             name="eDuration"
-                                             defaultValue={inputs.eDuration}
-                                             onChange={handleChange}
-                                             className={`form-control ${errors.eDuration ? 'is-invalid' : ''}`} onClick={calDate} placeholder="Estimated duration" type="number" id="eDuration" />
+                                                required
+                                                type="number"
+                                                name="eDuration"
+                                                defaultValue={inputs.eDuration}
+                                                placeholder="Enter days to add"
+                                                onChange={calDate}
+                                                className={`form-control mt-2 ${errors.eDuration ? 'is-invalid' : ''}`}
+                                                id="eDuration" 
+                                            />
                                             {errors.eDuration && <div className="invalid-feedback">{errors.eDuration}</div>}
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="eEndDate">Estimated End Date</label>
                                             <input
-                                             name="eEndDate"
-                                             defaultValue={inputs.eEndDate}
-                                             onChange={handleChange}
-                                             className={`form-control ${errors.eEndDate ? 'is-invalid' : ''}`} placeholder="Estimated End Date" type="date" id="eEndDate"/>
+                                                name="eEndDate"
+                                                value={inputs.eEndDate}
+                                                onChange={handleChange}
+                                                className={`form-control ${errors.eEndDate ? 'is-invalid' : ''}`}
+                                                placeholder="Estimated End Date"
+                                                type="date"
+                                                id="eEndDate"
+                                            />
                                             {errors.eEndDate && <div className="invalid-feedback">{errors.eEndDate}</div>}
                                         </div>
                                         <div className="form-group">

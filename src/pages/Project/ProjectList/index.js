@@ -2,45 +2,85 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../../components/axios';
 import AdminLayout from '../../../layouts/AdminLayout'
 import { Link } from 'react-router-dom';
+//data add
+import { useNavigate } from 'react-router-dom';
+import {useParams} from "react-router-dom";
 //model
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 //
 function ProjectList() {
-    //model
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShown = () => setShow(true);
-    //
-    //model comment
-    const values = [true, 'lg-down'];
-    const [fullscreen, setFullscreen] = useState(true);
-
-    function handleShow(breakpoint) {
-        setFullscreen(breakpoint);
-        setShow(true);
+    //data add to modal
+    const [errors, setErrors] = useState([]);
+    const [inputs, setInputs] = useState({id:'', projectId:'', employeename_Id:'', note:'', task:'', assignDate:'', finishDate:'', actualDate:'',});
+    const navigate=useNavigate();
+    const {id} = useParams();
+    {/* Common Use*/}
+    // const getDatas = () => {
+    //     axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/${id}`).then(function(response) {
+    //     setInputs(response.data.data);
+    //     });
+    // }
+    {/*Common Use*/}
+    useEffect(() => {
+        if(id){
+            getDatas();
+        }
+    }, []);
+    
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({...values, [name]: value}));
     }
-  //
-    const[data, setData]=useState([]);
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        console.log(inputs)
+        
+        try{
+            let apiurl='';
+            if(inputs.id!=''){
+                apiurl=`/projectfiles/edit/${inputs.id}`;
+            }else{
+                apiurl=`/projectfiles/create`;
+            }
+            
+                await axios({
+                method: 'post',
+                responsiveTYpe: 'json',
+                url: `${process.env.REACT_APP_API_URL}${apiurl}`,
+                data: inputs
+            });
+            navigate('/project/projectList')
+        } 
+        catch(e){
+            console.log(e);
+        }
+    };
+    //Data add End to model
+  
+    // show data of list start
+    const [show, setShow] = useState(false);
     useEffect(() => {
         getDatas();
     }, []);
-  //rel
-  
     function getDatas() {
         axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/index`).then(function(response) {
             setData(response.data.data);
         });
     }
+   
     const deleteData = (id) => {
         axios.delete(`${process.env.REACT_APP_API_URL}/projectfiles/${id}`).then(function(response){
             getDatas();
         });
     }
-    const countProgress=async (t,d)=>{
-        //return (100/t)*d;
-    }
+    //Show data of list End
+    //for modal
+    const handleClose = () => setShow(false);
+    const handleShown = () => setShow(true);
+    const[data, setData]=useState([]);
+    
     return (
         <AdminLayout>
             {/* Content Wrapper. Contains page content */}
@@ -89,6 +129,7 @@ function ProjectList() {
                         <thead className='text-nowrap'>
                             <tr className="text-center">
                                 <th>SL</th>
+                                <th>Project Id</th>
                                 <th>Project Name</th>
                                 <th>Project Type</th>
                                 <th>Domain & Hosting Pro</th>
@@ -116,6 +157,7 @@ function ProjectList() {
                         <tbody className="text-center">
                         {data && data.map((d, key) =>
                             <tr key={d.id}>
+                                <td>0{key+1}</td>
                                 <td>00{d.id}</td>
                                 <td>{d.projectName}</td>
                                 <td>{d.projectType}</td>
@@ -130,34 +172,19 @@ function ProjectList() {
                                 {/* <td>{d.phone}</td> */}
                                 {/* <td>{d.email}</td> */}
                                 <td>{d.description}</td>
-                                <td>{d.estimatedBudget}</td>
+                                <td>{d.estimatedBudget} $</td>
                                 <td>{d.reciveDate}</td>
-                                <td>{d.eDuration}</td>
+                                <td>{d.eDuration}Day</td>
                                 <td>{d.eEndDate}</td>
-                                <td>{ ((100/d.task.length)*d.comtask.length) }%</td>
+                                <td>{ ((100/d.task.length)*d.comtask.length)}%</td>
                                 <td>{d.prolider?.name}</td>
-                                <td>{((100/d.task.length)*d.comtask.length)<100?'Running':'Stock'}</td>
+                                <td>{((100/d.task.length)*d.comtask.length)===100 ?'Stock' : 'Running'}</td>
                                 <td><i className="fas fa-star"></i>
                                     <i className="fas fa-star"></i><br/>
                                     <i className="fas fa-star"></i>
                                     <i className="fas fa-star"></i>
                                     <i className="fas fa-star"></i><br/>
-                                    <a href="#">Comment
-                                        {/* <>
-      {values.map((v, idx) => (
-        <Button key={idx} className="me-2 mb-2" onClick={() => handleShow(v)}>
-          Full screen
-          {typeof v === 'string' && `below ${v.split('-')[0]}`}
-        </Button>
-      ))}
-      <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Modal body content</Modal.Body>
-      </Modal>
-    </> */}
-    </a>
+                                    <a href="#">Comment</a>
                                 </td>
                                 <td className="project-actions text-right">
                                     <Link className="btn btn-success btn-sm" to={`/project/projectTaskList/${d.id}`}>
@@ -178,37 +205,54 @@ function ProjectList() {
                                     
                                 <>
                                     <Button className="btn btn-danger btn-sm" variant="primary" 
-                                    onClick={handleShown}>
-                                    <i class="fas fa-window-close"></i>Cancel
+                                        onClick={handleShown}><i class="fas fa-window-close"></i>Cancel
                                     </Button>
                                     <Modal show={show} onHide={handleClose}>
                                         <Modal.Header closeButton>
-                                        <Modal.Title>Cenceling Reason</Modal.Title>
+                                            <Modal.Title>Cenceling Reason
+                                                <form onSubmit={handleSubmit} className='float-right ms-5'>
+                                                    <div className="row-md-6 ">
+                                                        <label htmlFor="projectId" className="form-label">Project Id<sup className=" text-danger">*</sup></label>
+                                                        <input
+                                                        readOnly
+                                                        placeholder="Project Id"
+                                                        type="number"
+                                                        className={`form-control ${errors.projectId ? 'is-invalid' : ''}`}
+                                                        id="projectId"
+                                                        name="projectId"
+                                                        defaultValue={inputs.projectId}
+                                                        onChange={handleChange}
+                                                        />
+                                                        {errors.projectId && <div className="invalid-feedback">{errors.projectId}</div>}
+                                                    </div>
+                                                </form>
+                                            </Modal.Title>
                                         </Modal.Header>
                                         <Modal.Body>
-                                        <Form>
-                                            <Form.Group
-                                            className="mb-3"
-                                            controlId="exampleForm.ControlTextarea1"
-                                            >
-                                            <Form.Control as="textarea" rows={3} />
-                                            </Form.Group>
-                                            <Form.Group
-                                            className="mb-3"
-                                            controlId="exampleForm.ControlTextarea1"
-                                            >
-                                            <Form.Control as="textarea" rows={3} />
-                                            </Form.Group>
-                                        </Form>
+                                            <form onSubmit={handleSubmit}>
+                                                <div className="row md-12">
+                                                    <div className="mb-6 col-md-12">
+                                                        <label htmlFor="note">Note<sup className=" text-danger">*</sup></label>
+                                                        <textarea
+                                                        name="note"
+                                                        defaultValue={inputs.note}
+                                                        onChange={handleChange}
+                                                        className={`form-control ${errors.note ? 'is-invalid' : ''}`} placeholder='Write Note' required id="note" rows="1"></textarea>
+                                                        {errors.note && <div className="invalid-feedback">{errors.note}</div>}
+                                                    </div>
+                                                </div>
+                                                <input
+                                                    type="checkbox"
+                                                    className={`d-inlineBlock ${errors.projectId ? 'is-invalid' : ''}`}
+                                                    id="projectId"
+                                                    name="projectId"
+                                                    defaultValue={inputs.projectId}
+                                                    onChange={handleChange}
+                                                    /><span> I Sure For Cancel This Project</span>
+                                                    
+                                                <button type="submit" className="btn d-block btn-primary mt-3">Save Task</button>
+                                            </form>
                                         </Modal.Body>
-                                        <Modal.Footer>
-                                        <Button variant="secondary" onClick={handleClose}>
-                                            Close
-                                        </Button>
-                                        <Button variant="primary" onClick={handleClose}>
-                                        Submit
-                                        </Button>
-                                        </Modal.Footer>
                                     </Modal>
                                 </>
                                 </td>
@@ -230,3 +274,4 @@ function ProjectList() {
 }
 
 export default ProjectList;
+
