@@ -222,7 +222,7 @@ function ProjectList() {
                                         <Modal.Header closeButton>
                                             <Modal.Title id="example-modal-sizes-title-sm">Comment</Modal.Title>
                                         </Modal.Header>
-                                        <Modal.Body className='d-block mt-2'>{d.massage}</Modal.Body>
+                                        <h1>{d.massage}</h1>
                                     </Modal>
                                 {/*End Command show modal*/}
                                 </td>

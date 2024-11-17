@@ -56,55 +56,53 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
 
-         
-            <Route path="/" element={ <Protected isSignedIn={isSignedIn}><Dashboard />  </Protected>} />
-        
+            <Route path="/" element={ <Protected isSignedIn={isSignedIn}><Dashboard /> </Protected>} />
+      
+            <Route path="/user/addUser" element={<Protected isSignedIn={isSignedIn}><AddUser /></Protected>} />
+            <Route path="/user/userList" element={<Protected isSignedIn={isSignedIn}><UserList /></Protected>} />
+            <Route path="/user/userProfile" element={<Protected isSignedIn={isSignedIn}><UserProfile /></Protected>} />
+            <Route path="/user/edit/:id" element={<Protected isSignedIn={isSignedIn}><AddUser /></Protected>} />
 
-            <Route path="/user/addUser" element={<AddUser />} />
-            <Route path="/user/userList" element={<UserList />} />
-            <Route path="/user/userProfile" element={<UserProfile />} />
-            <Route path="/user/edit/:id" element={<AddUser />} />
+            <Route path="/mail/mailbox" element={<Protected isSignedIn={isSignedIn}><MailBox /></Protected>} />
+            <Route path="/mail/mailbox/compose" element={<Protected isSignedIn={isSignedIn}><Compose /></Protected>} />
+            <Route path="/mail/mailbox/compose/edit/:id" element={<Protected isSignedIn={isSignedIn}><Compose /></Protected>} />
 
-            <Route path="/mail/mailbox" element={<MailBox/>} />
-            <Route path="/mail/mailbox/compose" element={<Compose/>} />
-            <Route path="/mail/mailbox/compose/edit/:id" element={<Compose/>} />
+            <Route path="/project/projectAdd" element={<Protected isSignedIn={isSignedIn}><ProjectAdd /></Protected>} />
+            <Route path="/project/projectList" element={<Protected isSignedIn={isSignedIn}><ProjectList /></Protected>} />
 
-            <Route path="/project/projectAdd" element={<ProjectAdd/>} />
-            <Route path="/project/projectList" element={<ProjectList/>} />
+            <Route path="/project/projectTask" element={<Protected isSignedIn={isSignedIn}><ProjectTask /></Protected>} />
+            <Route path="/project/projectTaskList/:projectId" element={<Protected isSignedIn={isSignedIn}><ProjectTaskList /></Protected>} />
+            <Route path="/project/edit/:id" element={<Protected isSignedIn={isSignedIn}><ProjectTask /></Protected>} />
 
-            <Route path="/project/projectTask" element={<ProjectTask/>} />
-            <Route path="/project/projectTaskList/:projectId" element={<ProjectTaskList/>} />
-            <Route path="/project/edit/:id" element={<ProjectTask/>} />
+            <Route path="/project/rushMail" element={<Protected isSignedIn={isSignedIn}><RushMail /></Protected>} />
 
-            <Route path="/project/rushMail" element={<RushMail/>} />
+            <Route path="/mail/mailbox/ComSug" element={<Protected isSignedIn={isSignedIn}><ComSug /></Protected>} />
 
-            <Route path="/mail/mailbox/ComSug" element={<ComSug/>} />
+            <Route path="/customer/customerAdd" element={<Protected isSignedIn={isSignedIn}><CustomerAdd /></Protected>} />
+            <Route path="/customer/customerList" element={<Protected isSignedIn={isSignedIn}><CustomerList /></Protected>} />
+            <Route path="/customer/edit/:id" element={<Protected isSignedIn={isSignedIn}><CustomerAdd /></Protected>} />
 
-            <Route path="/customer/customerAdd" element={<CustomerAdd />} />
-            <Route path="/customer/customerList" element={<CustomerList />} />
-            <Route path="/customer/edit/:id" element={<CustomerAdd />} />
+            <Route path="/customerNote/addNote" element={<Protected isSignedIn={isSignedIn}><CuatomerNote /></Protected>} />
+            <Route path="/customerNote/noteList" element={<Protected isSignedIn={isSignedIn}><NoteList /></Protected>} />
+            <Route path="/customerNote/edit/:id" element={<Protected isSignedIn={isSignedIn}><CuatomerNote /></Protected>} />
 
-            <Route path="/customerNote/addNote" element={<CuatomerNote />} />
-            <Route path="/customerNote/noteList" element={<NoteList />} />
-            <Route path="/customerNote/edit/:id" element={<CuatomerNote />} />
-            
-            <Route path="/staff/warningStaffList" element={<WarningStaffList/>} />
-            <Route path="/staff/warningStaff/WarningNotice" element={<WarningNotice/>} />
+            <Route path="/staff/warningStaffList" element={<Protected isSignedIn={isSignedIn}><WarningStaffList /></Protected>} />
+            <Route path="/staff/warningStaff/WarningNotice" element={<Protected isSignedIn={isSignedIn}><WarningNotice /></Protected>} />
 
-            <Route path="/service/serviceAdd" element={<ServiceAdd/>} />
-            <Route path="/service/serviceList/AndroidAppDevolopment" element={<AndroidAppDev/>}/>
-            <Route path="/service/serviceList/WebAppDevolopment" element={<WebAppDev/>} />
-            <Route path="/service/serviceList/PcAppDevolopment" element={<PcAppDev/>} />
-            
-            <Route path="/report/ExpensesReport" element={<ExpensesReport/>} />
-            <Route path="/report/IncomeReport" element={<IncomeReport/>} />
-          
-            <Route path="/project/CancalingProject" element={<CancalingProject/>} />
-            <Route path="/project/invoice" element={<Invoice/>} />
-            
-            <Route path="/project/review" element={<Review/>} />
-            {/*Recive Project Id*/}
-            <Route path="/project/review/:projectId" element={<Review/>} />
+            <Route path="/service/serviceAdd" element={<Protected isSignedIn={isSignedIn}><ServiceAdd /></Protected>} />
+            <Route path="/service/serviceList/AndroidAppDevolopment" element={<Protected isSignedIn={isSignedIn}><AndroidAppDev /></Protected>} />
+            <Route path="/service/serviceList/WebAppDevolopment" element={<Protected isSignedIn={isSignedIn}><WebAppDev /></Protected>} />
+            <Route path="/service/serviceList/PcAppDevolopment" element={<Protected isSignedIn={isSignedIn}><PcAppDev /></Protected>} />
+
+            <Route path="/report/ExpensesReport" element={<Protected isSignedIn={isSignedIn}><ExpensesReport /></Protected>} />
+            <Route path="/report/IncomeReport" element={<Protected isSignedIn={isSignedIn}><IncomeReport /></Protected>} />
+
+            <Route path="/project/CancalingProject" element={<Protected isSignedIn={isSignedIn}><CancalingProject /></Protected>} />
+            <Route path="/project/invoice" element={<Protected isSignedIn={isSignedIn}><Invoice /></Protected>} />
+
+            <Route path="/project/review" element={<Protected isSignedIn={isSignedIn}><Review /></Protected>} />
+            <Route path="/project/review/:projectId" element={<Protected isSignedIn={isSignedIn}><Review /></Protected>} />
+
         </Routes>
     </BrowserRouter>
   );

@@ -103,21 +103,7 @@ function Register() {
                     />
                     {errors.password && <div className="invalid-feedback">{errors.password}</div>}
                 </div>
-                
-                <div className="mb-3 col-md-6">
-                    <label htmlFor="companyName" className="form-label">Company Name</label>
-                    <input
-                        placeholder="Company Name"
-                        type="text"
-                        className={`form-control ${errors.companyName ? 'is-invalid' : ''}`}
-                        id="companyName"
-                        name="companyName"
-                        defaultValue={inputs.companyName}
-                        onChange={handleChange}
-                    />
-                    {errors.companyName && <div className="invalid-feedback">{errors.companyName}</div>}
-                </div>
-
+            
                 <div className="mb-3 col-12">
                     <label htmlFor="currentAddress" className="form-label display-6">Current Address</label>
                 </div>
