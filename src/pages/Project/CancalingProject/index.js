@@ -62,7 +62,9 @@ function CancalingProject() {
         getDatas();
     }, []);
     function getDatas() {
-        axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/index`).then(function(response) {
+        //filter
+        axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/index?status=cancel`).then(function(response) {
+           //filter
             setData(response.data.data);
         });
     }

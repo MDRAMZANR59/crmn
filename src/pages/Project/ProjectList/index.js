@@ -13,11 +13,14 @@ import Modal from 'react-bootstrap/Modal';
 
 function ProjectList() {
     //command show
+    const[data, setData]=useState([]);
     const [smShow, setSmShow] = useState(false);
     const {projectId} = useParams();//recive project Id
     const [errors, setErrors] = useState([]);
     const [inputs, setInputs] = useState({ id:projectId, cancelReason:'', status:'' });
-      //projectfiles dropdown 
+    //rating
+    const [hoverRating, setHoverRating] = useState(0);  
+    //projectfiles dropdown 
     const [projectfiles, setProjectfiles] = useState(null);
     const navigate = useNavigate();
   
@@ -67,7 +70,7 @@ function ProjectList() {
         getDatas();
     }, []);
     function getDatas() {
-        axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/index`).then(function(response) {
+        axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/index?status=Active`).then(function(response) {
             setData(response.data.data);
         });
     }
@@ -84,7 +87,11 @@ function ProjectList() {
         setInputs((values) => ({ ...values, ['id']: id }));
         setShow(true);
     } 
-    const[data, setData]=useState([]);
+
+    //rating
+    const handleRating = (rating) => {
+        setInputs((values) => ({ ...values, rating }));
+      };
     
     return (
         <AdminLayout>
@@ -184,11 +191,26 @@ function ProjectList() {
                                 <td>{ ((100/d.task.length)*d.comtask.length)}%</td>
                                 <td>{d.prolider?.name}</td>
                                 <td>{((100/d.task.length)*d.comtask.length)===100 ?'Stock' : 'Running'}</td>
-                                <td><i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i><br/>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i><br/>
+                                <td>{[...Array(5)].map((_, index) => (
+                                    <span
+                                        key={index}
+                                        className={`fa fa-star ${inputs.rating >= index + 1 || hoverRating >= index + 1 ? 'text-warning' : 'text-muted'}`}
+                                        onClick={() => handleRating(index + 1)} // Set rating on click
+                                        onMouseEnter={() => setHoverRating(index + 1)} // Hover effect
+                                        onMouseLeave={() => setHoverRating(0)} // Reset hover effect
+                                        style={{
+                                        fontSize: '16px',
+                                        cursor: 'pointer',
+                                        transition: 'transform 0.2s ease, color 0.2s ease',
+                                        }}
+                                        name="rating"
+                                        defaultValue={inputs.rating}
+                                        onChange={handleChange} // Handle change for other inputs
+                                    >
+                                        {/* Show validation error message if applicable */}
+                                        {errors.rating && <div className="invalid-feedback">{errors.rating}</div>}
+                                    </span>
+                                    ))}
                                     <a onClick={() => setSmShow(true)} className="me-2 btn text-primary ">Comment</a>
                                     {/*Comment Show modal*/}
                                     <Modal
@@ -200,7 +222,7 @@ function ProjectList() {
                                         <Modal.Header closeButton>
                                             <Modal.Title id="example-modal-sizes-title-sm">Comment</Modal.Title>
                                         </Modal.Header>
-                                        <Modal.Body>{d.massage}</Modal.Body>
+                                        <Modal.Body className='d-block mt-2'>{d.massage}</Modal.Body>
                                     </Modal>
                                 {/*End Command show modal*/}
                                 </td>
