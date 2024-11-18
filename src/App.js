@@ -42,6 +42,7 @@ import IncomeReport from './pages/Report/Income'
 
 
 import CancalingProject from './pages/Project/CancalingProject'
+import DeliveryProject from './pages/Project/DeliveryProject';
 
 
 import Register from './pages/Register';
@@ -98,6 +99,7 @@ function App() {
             <Route path="/report/IncomeReport" element={<Protected isSignedIn={isSignedIn}><IncomeReport /></Protected>} />
 
             <Route path="/project/CancalingProject" element={<Protected isSignedIn={isSignedIn}><CancalingProject /></Protected>} />
+            <Route path="/project/DeliveryProject" element={<Protected isSignedIn={isSignedIn}><DeliveryProject /></Protected>} />
             <Route path="/project/invoice" element={<Protected isSignedIn={isSignedIn}><Invoice /></Protected>} />
 
             <Route path="/project/review" element={<Protected isSignedIn={isSignedIn}><Review /></Protected>} />

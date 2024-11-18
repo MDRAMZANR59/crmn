@@ -228,6 +228,12 @@ function Sidebar() {
                                         </Link>
                                     </li>
                                     <li className="nav-item">
+                                        <Link to='/project/DeliveryProject' className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Delivery Project</p>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
                                         <Link to='/project/CancalingProject' className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
                                             <p>Cancaled Project</p>
