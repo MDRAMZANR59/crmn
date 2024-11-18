@@ -204,16 +204,16 @@ function ProjectList() {
                                         transition: 'transform 0.2s ease, color 0.2s ease',
                                         }}
                                         name="rating"
-                                        defaultValue={inputs.rating}
+                                        value={d.rating}
                                         onChange={handleChange} // Handle change for other inputs
                                     >
                                         {/* Show validation error message if applicable */}
                                         {errors.rating && <div className="invalid-feedback">{errors.rating}</div>}
                                     </span>
                                     ))}
-                                    <a onClick={() => setSmShow(true)} className="me-2 btn text-primary ">Comment</a>
+                                    <a onClick={() => setSmShow(true)} className="me-2 btn text-primary ">{d.massage}</a>
                                     {/*Comment Show modal*/}
-                                    <Modal
+                                    {/* <Modal
                                         size="sm"
                                         show={smShow}
                                         onHide={() => setSmShow(false)}
@@ -223,7 +223,7 @@ function ProjectList() {
                                             <Modal.Title id="example-modal-sizes-title-sm">Comment</Modal.Title>
                                         </Modal.Header>
                                         <h1>{d.massage}</h1>
-                                    </Modal>
+                                    </Modal> */}
                                 {/*End Command show modal*/}
                                 </td>
                                 <td className="project-actions text-right">
