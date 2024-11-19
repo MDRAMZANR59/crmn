@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { logout } from '../../Api/AllApi';
 
 
 function Sidebar() {
@@ -25,6 +26,11 @@ function Sidebar() {
         const toggleDropdown = () => {
           setIsOpen(!isOpen);
         };
+        const handleLogout = async () => {
+            await logout();
+            window.location.href = "/login"; // Optionally, redirect to homepage after logout
+        };
+    
     
     const nav=[
             {
@@ -87,7 +93,7 @@ function Sidebar() {
                         </div>
                         <div className={`dropdown-menu ms-3 me-2 top-2 w-50 text-center bg-primary bg-gradient ${isOpen ? 'show' : ''}`} aria-labelledby="dropdownMenuButton">
                             <Link to="/user/userProfile" className="dropdown-item text-dark">Profile</Link>
-                            <a className="dropdown-item text-dark" href="#action2">Log Out</a>
+                            <button onClick={handleLogout} className="dropdown-item text-white">Logout</button>
                         </div>
                     </div>
                     {/* Sidebar Search Form */}
@@ -256,12 +262,6 @@ function Sidebar() {
                                         <Link to="/mail/mailBox" className="nav-link">
                                             <i className="far fa-circle nav-icon"></i>
                                             <p>Mail Box</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link to="/mail/mailbox/ComSug" className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Complain/Suggestion</p>
                                         </Link>
                                     </li>
                                 </ul>

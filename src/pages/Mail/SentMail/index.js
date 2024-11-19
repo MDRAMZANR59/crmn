@@ -52,17 +52,6 @@ function SentMail(props) {
                         <button type="button" className="btn btn-default btn-sm">
                             <i className="fas fa-sync-alt"></i>
                         </button>
-                        <div className="float-right">
-                            1-50/200
-                            <div className="btn-group">
-                                <button type="button" className="btn btn-default btn-sm">
-                                    <i className="fas fa-chevron-left"></i>
-                                </button>
-                                <button type="button" className="btn btn-default btn-sm">
-                                    <i className="fas fa-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
                     </div>
                     {/* Mailbox Messages */}
                     <div className="table-responsive mailbox-messages">
@@ -70,7 +59,7 @@ function SentMail(props) {
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th className="mailbox-name"><strong>Sender</strong></th>
+                                    <th className="mailbox-name"><strong>Reciver</strong></th>
                                     <th className="mailbox-subject"><b>Subject</b></th>
                                     <th className="mailbox-message">Message</th>
                                     <th className="mailbox-attachment">Attachment</th>
