@@ -13,47 +13,34 @@ function ProjectList() {
     const [showCancelModal, setShowCancelModal] = useState(false); 
     const [selectedMessage, setSelectedMessage] = useState(''); 
     const [hoverRating, setHoverRating] = useState(0);
-    const { projectId } = useParams(); // Get projectId from URL
-    const [inputs, setInputs] = useState({ id: projectId, cancelReason: '', status: '' });
+    
+    const [inputs, setInputs] = useState({ id: '', cancelReason: '', status: '' });
     const [errors, setErrors] = useState({}); // State for errors
     const navigate = useNavigate();
 
-    // Fetch project files based on projectId
     const getDatas = () => {
-        axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/${projectId}`).then(response => {
-            setProjectfiles(response.data.data);
-        });
-    };
-
-    useEffect(() => {
-        if (projectId) {
-            getDatas();
-        }
-    }, [projectId]);
-
-    // Fetch project list
-    useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/index?status=Active`).then(response => {
             setData(response.data.data);
         });
-    }, []);
-
-    // Handle form input changes
+    };
+  //relational
+  useEffect(() => {
+    getDatas()
+}, []);
+    
     const handleChange = (event) => {
         const { name, value, type, checked } = event.target;
         setInputs(prevValues => ({
             ...prevValues,
-            [name]: type === 'checkbox' ? checked : value,
+            [name]: type === 'checkbox' ? 'cancel' : value,
         }));
     };
 
-    // Handle form submit for project review
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         let formErrors = {};
         
-        // Validate the cancel reason and status fields
         if (!inputs.cancelReason) {
             formErrors.cancelReason = "Cancel reason is required";
         }
@@ -61,13 +48,11 @@ function ProjectList() {
             formErrors.status = "You must confirm cancellation";
         }
 
-        // If there are errors, set the errors state and stop form submission
         if (Object.keys(formErrors).length > 0) {
             setErrors(formErrors);
             return;
         }
 
-        // If no errors, submit the data
         try {
             const apiurl = `/project_review/${inputs.id}`;
             await axios({
@@ -84,33 +69,31 @@ function ProjectList() {
         }
     };
 
-    // Show comment modal with project-specific message
     const handleShowCommentModal = (message) => {
-        setSelectedMessage(message); // Set the selected message for the modal
-        setShowCommentModal(true); // Show the comment modal
+        setSelectedMessage(message);
+        setShowCommentModal(true);
     };
 
-    // Show cancel modal
-    const handleShowCancelModal = () => {
-        setShowCancelModal(true); // Show the cancel modal
+    const handleShowCancelModal = (d) => {
+        setShowCancelModal(true);
+        setInputs(prevValues => ({
+            ...prevValues,
+            ['id']: d.id,
+        }));
     };
 
-    // Handle rating click
     const handleRating = (rating) => {
         setInputs(values => ({ ...values, rating }));
     };
 
-    // Delete project file
     const deleteData = (id) => {
         axios.delete(`${process.env.REACT_APP_API_URL}/projectfiles/${id}`).then(() => {
             getDatas();
         });
     };
 
-    // Close the comment modal
     const handleCloseCommentModal = () => setShowCommentModal(false);
 
-    // Close the cancel modal
     const handleCloseCancelModal = () => setShowCancelModal(false);
 
     return (
@@ -216,7 +199,7 @@ function ProjectList() {
                                                     </Link>
                                                 )}
                                                 <Button className="btn btn-danger btn-sm" variant="primary" 
-                                                    onClick={handleShowCancelModal}><i className="fas fa-window-close"></i> Cancel
+                                                    onClick={(e)=>{handleShowCancelModal(d)}}><i className="fas fa-window-close"></i> Cancel
                                                 </Button>
                                             </td>
                                         </tr>
@@ -249,7 +232,7 @@ function ProjectList() {
                             <div className="mb-6 col-md-12">
                                 <textarea
                                     name="cancelReason"
-                                    value={inputs.cancelReason} // Use value instead of defaultValue
+                                    value={inputs.cancelReason}
                                     onChange={handleChange}
                                     className={`form-control ${errors.cancelReason ? 'is-invalid' : ''}`} 
                                     placeholder="Write Reason" 
@@ -265,7 +248,7 @@ function ProjectList() {
                             className={`d-inline-block ${errors.status ? 'is-invalid' : ''}`}
                             id="status"
                             name="status"
-                            checked={inputs.status} // Use checked for checkboxes
+                            checked={inputs.status} 
                             onChange={handleChange}
                         />
                         <span> I am sure to cancel this project</span>

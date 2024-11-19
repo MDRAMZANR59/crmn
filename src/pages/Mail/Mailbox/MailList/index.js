@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 function MailList(props) {
+    const userdata=JSON.parse(localStorage.getItem('userdata'));
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -10,7 +11,7 @@ function MailList(props) {
     }, []);
 
     function getDatas() {
-        axios.get(`${process.env.REACT_APP_API_URL}/compose/index`).then(function(response) {
+        axios.get(`${process.env.REACT_APP_API_URL}/compose/index?receverId=${userdata.id}`).then(function(response) {
             setData(response.data.data);
         });
     }
@@ -69,7 +70,7 @@ function MailList(props) {
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th className="mailbox-name"><strong>Receiver</strong></th>
+                                    <th className="mailbox-name"><strong>Sender</strong></th>
                                     <th className="mailbox-subject"><b>Subject</b></th>
                                     <th className="mailbox-message">Message</th>
                                     <th className="mailbox-attachment">Attachment</th>
@@ -86,7 +87,7 @@ function MailList(props) {
                                                 <label htmlFor={`check${d.id}`}></label>
                                             </div>
                                         </td>
-                                        <td className="mailbox-name"><Link to="#">{d.sender}</Link></td>
+                                        <td className="mailbox-name"><Link to="#">{d.sender?.name}</Link></td>
                                         <td className="mailbox-subject"><b>{d.subject}</b></td>
                                         <td className="mailbox-message"><Link to="#">{d.bodyMassage}</Link></td>
                                         <td className="mailbox-attachment">attachment</td>

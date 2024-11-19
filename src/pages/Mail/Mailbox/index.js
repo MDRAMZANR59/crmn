@@ -2,11 +2,14 @@ import React,{useState} from "react";
 import { Link } from 'react-router-dom';
 import AdminLayout from '../../../layouts/AdminLayout';
 import MailList from './MailList';
-
+import SentMail from "../SentMail";
+import Trash from "../Trash";
 function MailBox() {
     // const [header, setHeader ] = useState("inbox");
-    // const [mailType, setMailType ] = useState("inbox");
-    
+    const [mailType, setMailType ] = useState("inbox");
+    const changeTab=(e)=>{
+        setMailType(e)
+    }
     return (
         <AdminLayout>
             <div className="content-wrapper">
@@ -39,20 +42,20 @@ function MailBox() {
                                 <div className="card-body p-0">
                                     <ul className="nav nav-pills flex-column">
                                         <li className="nav-item active">
-                                            <Link to="#" className="nav-link">
+                                            <button onClick={(e)=>{changeTab('inbox')}} className="nav-link">
                                                 <i className="fas fa-inbox"></i> Inbox
-                                            </Link>
+                                            </button>
                                         </li>
                                         
                                         <li className="nav-item">
-                                            <Link to="#" className="nav-link">
-                                                <i className="far fa-envelope"></i> Sent
-                                            </Link>
+                                            <button onClick={(e)=>{changeTab('sent')}} className="nav-link">
+                                                <i className="fas fa-envelope"></i> Sent
+                                            </button>
                                         </li>
                                         <li className="nav-item">
-                                            <Link to="#" className="nav-link">
-                                                <i className="far fa-envelope"></i> Trash
-                                            </Link>
+                                            <button onClick={(e)=>{changeTab('trash')}} className="nav-link">
+                                                <i className="fas fa-envelope"></i> Trash
+                                            </button>
                                         </li>
                                     </ul>
                                 </div>
@@ -60,7 +63,16 @@ function MailBox() {
                         </div>
                         {/* /.col */}
                         <div className="col-md-9">
-                           <MailList name="new mail" />
+                            {mailType=='inbox' && 
+                                <MailList name="mail Inbox" />
+                            }
+                            {mailType=='sent' && 
+                                <SentMail name="Sent mail" />
+                            }
+                            {mailType=='trash' && 
+                                <Trash name="Trash mail" />
+                            }
+                           
                         </div>
                     </div>
                 </section>

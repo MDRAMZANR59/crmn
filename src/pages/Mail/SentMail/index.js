@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-function Trash(props) {
+function SentMail(props) {
     const userdata=JSON.parse(localStorage.getItem('userdata'));
     const [data, setData] = useState([]);
 
@@ -11,7 +11,7 @@ function Trash(props) {
     }, []);
 
     function getDatas() {
-        axios.get(`${process.env.REACT_APP_API_URL}/compose/index?status=1`).then(function(response) {
+        axios.get(`${process.env.REACT_APP_API_URL}/compose/index?senderId=${userdata.id}`).then(function(response) {
             setData(response.data.data);
         });
     }
@@ -105,4 +105,4 @@ function Trash(props) {
     );
 }
 
-export default Trash;
+export default SentMail;

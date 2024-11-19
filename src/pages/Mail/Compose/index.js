@@ -6,8 +6,9 @@ import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
 function Compose() {
+  const userdata=JSON.parse(localStorage.getItem('userdata'));
   const [errors, setErrors] = useState([]);
-  const [inputs, setInputs] = useState({id: '',mailType: '',reciver: '',subject: '',bodyMassage: '',attachment: ''});
+  const [inputs, setInputs] = useState({id: '',senderId:userdata?.id,mailType: '',receverId: '',subject: '',bodyMassage: '',attachment: ''});
   const [reciver, setReciver] = useState(null);//reltabale
   const navigate = useNavigate();
   const { id } = useParams();
@@ -134,12 +135,17 @@ function Compose() {
                             className={`form-control ${errors.reciver ? 'is-invalid' : ''}`} 
                             id="customerName"  
                             type="email"
-                            name="reciver" 
-                            defaultValue={inputs.reciver} 
+                            name="receverId" 
+                            defaultValue={inputs.receverId} 
                             onChange={handleChange}>
                               <option value="">Select Reciver</option>
                               {reciver.map((d, key) =>
+                                <>
+                                { d.id!=userdata.id &&
                                   <option value={d.id}>{d.name}</option>
+                                }
+                                </>
+                                  
                               )}
                         </select>
                         }
