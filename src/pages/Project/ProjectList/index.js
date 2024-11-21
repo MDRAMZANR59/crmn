@@ -14,7 +14,7 @@ function ProjectList() {
     const [selectedMessage, setSelectedMessage] = useState(''); 
     const [hoverRating, setHoverRating] = useState(0);
     
-    const [inputs, setInputs] = useState({ id: '', cancelReason: '', status: '' });
+    const [inputs, setInputs] = useState({ id: '', cancelReason: '', status: '',});
     const [errors, setErrors] = useState({}); // State for errors
     const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ function ProjectList() {
         const { name, value, type, checked } = event.target;
         setInputs(prevValues => ({
             ...prevValues,
-            [name]: type === 'checkbox' ? 'cancel' : value,
+            [name]: type === 'checkbox' ? 'cancel' : value
         }));
     };
 
@@ -88,6 +88,11 @@ function ProjectList() {
 
     const deleteData = (id) => {
         axios.delete(`${process.env.REACT_APP_API_URL}/projectfiles/${id}`).then(() => {
+            getDatas();
+        });
+    };
+    const updatestatus = (id) => {
+        axios.post(`${process.env.REACT_APP_API_URL}/projectfiles/updatestatus/${id}`).then(() => {
             getDatas();
         });
     };
@@ -166,7 +171,7 @@ function ProjectList() {
                                             <td>{d.reciveDate}</td>
                                             <td>{d.eDuration} Day</td>
                                             <td>{d.eEndDate}</td>
-                                            <td>{((100 / d.task.length) * d.comtask.length)}%</td>
+                                            <td>{ d.comtask.length > 0 && d.task.length > 0 ? ((100 / d.task.length) * d.comtask.length) : 0 }%</td>
                                             <td>{d.prolider?.name}</td>
                                             <td>{((100 / d.task.length) * d.comtask.length) === 100 ? 'Stock' : 'Running'}</td>
                                             <td>
@@ -193,11 +198,16 @@ function ProjectList() {
                                                 <Link to="/project/invoice" className="btn btn-info btn-sm">
                                                     <i className="fas fa-receipt"></i> Invoice
                                                 </Link>
+                                               
                                                 {!d.massage && (
                                                     <Link to={`/project/review/${d.id}`} className="btn btn-info btn-sm">
                                                         <i className="fas fa-comment-dots"></i> Review
                                                     </Link>
                                                 )}
+                                                 {((100 / d.task.length) * d.comtask.length)===100 && (
+                                                <button type='button' onClick={() => updatestatus(d.id)} className='btn btn-success btn-sm'> <i class="fas fa-check"></i> Dalivard</button>
+                                                 )}
+
                                                 <Button className="btn btn-danger btn-sm" variant="primary" 
                                                     onClick={(e)=>{handleShowCancelModal(d)}}><i className="fas fa-window-close"></i> Cancel
                                                 </Button>

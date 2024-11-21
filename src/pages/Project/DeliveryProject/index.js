@@ -63,7 +63,7 @@ function DeliveryProject() {
     }, []);
     function getDatas() {
         //filter
-        axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/index?status=cancel`).then(function(response) {
+        axios.get(`${process.env.REACT_APP_API_URL}/projectfiles/index?status=dalivard`).then(function(response) {
            //filter
             setData(response.data.data);
         });
@@ -92,12 +92,12 @@ function DeliveryProject() {
                 <div className="container-fluid">
                 <div className="row mb-2">
                     <div className="col-sm-6">
-                    <h1>Canceled Projects</h1>
+                    <h1>Dalivard Projects</h1>
                     </div>
                     <div className="col-sm-6">
                     <ol className="breadcrumb float-sm-right">
                         <li className="breadcrumb-item"><a> Project</a></li>
-                        <li className="breadcrumb-item active">Canceled Project</li>
+                        <li className="breadcrumb-item active">Dalivard Project</li>
                     </ol>
                     </div>
                 </div>
@@ -138,7 +138,7 @@ function DeliveryProject() {
                                 <th>Recive Date</th>
                                 <th>Estimated End Date</th>
                                 <th>Project Leader</th>
-                                <th>Canceling Reason</th>
+                                <th>Dalivary Date And Time</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -153,7 +153,7 @@ function DeliveryProject() {
                                 <td>{d.reciveDate}</td>
                                 <td>{d.eEndDate}</td>
                                 <td>{d.prolider?.name}</td>
-                                <td>{d.cancelReason}</td>
+                                <td>{d.updated_at}</td>
                                 <td> <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button></td>
                             </tr>
                         )}
