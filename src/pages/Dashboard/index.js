@@ -1,6 +1,10 @@
 import React from 'react'
 import AdminLayout from '../../layouts/AdminLayout'
-import ApexCharts from 'apexcharts'
+// import ApexCharts from './pai'
+
+// import Chart from 'primevue/chart';
+
+
 
 function Dashboard() {
   return (
@@ -26,7 +30,7 @@ function Dashboard() {
             <div className='row'>
               <div className='col-md-12'>
                 <div className='col-md-6'>
-                  <ApexChart/>
+                  {/* <ApexCharts/> */}
                 </div>
                 <div className='col-md-6'>
 

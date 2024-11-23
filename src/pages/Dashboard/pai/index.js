@@ -36,7 +36,7 @@ const ApexChart = () => {
   );
 };
 
-// const domContainer = document.querySelector('#app');
+const domContainer = document.querySelector('#app');
 // ReactDOM.render(<ApexChart />, domContainer);
 
 export default ApexChart;
