@@ -4,7 +4,7 @@ import { logout } from '../../Api/AllApi';
 
 
 function Sidebar() {
-    const user_role=localStorage.getItem("user_role");
+    const user_role=sessionStorage.getItem("user_role");
     // State to track open menus
     const [openMenu, setOpenMenu] = useState(null);
 

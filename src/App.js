@@ -50,7 +50,7 @@ import Login from './pages/Login';
 import Protected from './components/protected'
 
 function App() {
-  const isSignedIn = localStorage.getItem("access_token") || false;
+  const isSignedIn = sessionStorage.getItem("access_token") || false;
   return (
     <BrowserRouter>
         <Routes>
