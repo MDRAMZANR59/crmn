@@ -195,9 +195,12 @@ function ProjectList() {
                                                 <Link className="btn btn-info btn-sm" to="/mail/mailbox/compose">
                                                     <i className="fas fa-pencil-alt"></i> Send Rush
                                                 </Link>
-                                                <Link to="/project/invoice" className="btn btn-info btn-sm">
+                                                <a href={`http://localhost:8081/invoice/${d.id}`} className="btn btn-info btn-sm">
                                                     <i className="fas fa-receipt"></i> Invoice
-                                                </Link>
+                                                </a>
+                                                {/* <Link to="/project/invoice" className="btn btn-info btn-sm">
+                                                    <i className="fas fa-receipt"></i> Invoice
+                                                </Link> */}
                                                
                                                 {!d.massage && (
                                                     <Link to={`/project/review/${d.id}`} className="btn btn-info btn-sm">
