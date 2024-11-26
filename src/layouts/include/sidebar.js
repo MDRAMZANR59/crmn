@@ -5,20 +5,17 @@ import { logout } from '../../Api/AllApi';
 
 function Sidebar() {
     const user_role=sessionStorage.getItem("user_role");
-    // State to track open menus
+
     const [openMenu, setOpenMenu] = useState(null);
 
-    // Hook to get the current path location
     const location = useLocation();
 
-    // Function to handle menu click
     const handleMenuClick = (menu) => {
         console.log(menu)
         // setOpenMenu(openMenu === menu ? null : menu);
          setOpenMenu(menu);
     };
 
-    // Function to check if the link is active
     const isLinkActive = (path) => {
         return location.pathname === path ? 'active' : '';
     };
@@ -30,7 +27,7 @@ function Sidebar() {
         };
         const handleLogout = async () => {
             await logout();
-            window.location.href = "/login"; // Optionally, redirect to homepage after logout
+            window.location.href = "/login";
         };
     
     
@@ -158,6 +155,22 @@ function Sidebar() {
             },
             {
                 role:[1,2,3,4],
+                name:"Mail",
+                link:'',
+                link_text:'mail',
+                icon:'nav-icon fas fa-envelope',
+                sub:[
+                    {
+                        role:[1,2,3,4],
+                        name:'Mail Box',
+                        link:'mail/mailBox',
+                        icon:'far fa-circle nav-icon',
+                        sub:[]
+                    },
+                ]
+            },
+            {
+                role:[1,2,3,4],
                 name:"Service Add",
                 link:'service/serviceAdd',
                 icon:'fas fa-circle nav-icon',
@@ -195,25 +208,7 @@ function Sidebar() {
                     
                 ]
             },
-            
-            {
-                role:[1,2,3,4],
-                name:"Mail",
-                link:'',
-                link_text:'mail',
-                icon:'nav-icon fas fa-envelope',
-                sub:[
-                    {
-                        role:[1,2,3,4],
-                        name:'Mail Box',
-                        link:'mail/mailBox',
-                        icon:'far fa-circle nav-icon',
-                        sub:[]
-                    },
-                ]
-            },
-            
-            
+   
         ]
 
     return (
