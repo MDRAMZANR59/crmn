@@ -13,7 +13,9 @@ function Sidebar() {
 
     // Function to handle menu click
     const handleMenuClick = (menu) => {
-        setOpenMenu(openMenu === menu ? null : menu);
+        console.log(menu)
+        // setOpenMenu(openMenu === menu ? null : menu);
+         setOpenMenu(menu);
     };
 
     // Function to check if the link is active
@@ -42,28 +44,175 @@ function Sidebar() {
                 sub:[]
             },
             {
-                role:[1,2,3,4],
+                role:[1,2],
                 name:'User',
                 link:'',
                 link_text:'user',
                 icon:'nav-icon fas fa-user',
                 sub:[
                     {
-                        role:[1,2,3,4],
+                        role:[1,2],
                         name:'Add User',
                         link:'user/addUser',
+                        link_text:'user',
                         icon:'far fa-circle nav-icon',
                         sub:[]
                     },
                     {
-                        role:[1,2,3,4],
+                        role:[1,2],
                         name:'User List',
                         link:'user/userList',
+                        link_text:'user',
                         icon:'far fa-circle nav-icon',
                         sub:[]
                     }
                 ]
             },
+            {
+                role:[1,2,3],
+                name:'Customer Note',
+                link:'',
+                link_text:'customerNote',
+                icon:'nav-icon fas fa-sticky-note',
+                sub:[
+                    {
+                        role:[1,2,3,],
+                        name:'Customer Note Add',
+                        link:'customerNote/addNote',
+                        icon:'far fa-circle nav-icon',
+                        link_text:'customerNote',
+                        sub:[]
+                    },
+                    {
+                        role:[1,2],
+                        name:'Note List',
+                        link:'customerNote/noteList',
+                        link_text:'customerNote',
+                        icon:'far fa-circle nav-icon',
+                        sub:[]
+                    }
+                ]
+            },
+            {
+                role:[1,3],
+                name:"Customer's",
+                link:'',
+                link_text:'customer',
+                icon:'nav-icon fas fa-restroom',
+                sub:[
+                    {
+                        role:[1,2,3],
+                        name:'Customer Add',
+                        link:'customer/customerAdd',
+                        link_text:'customer',
+                        icon:'far fa-circle nav-icon',
+                        sub:[]
+                    },
+                    {
+                        role:[1,2,],
+                        name:'Customer List',
+                        link:'customer/customerList',
+                        link_text:'customer',
+                        icon:'far fa-circle nav-icon',
+                        sub:[]
+                    }
+                ]
+            },
+            {
+                role:[1,2,3,4],
+                name:"Project",
+                link:'',
+                link_text:'project',
+                icon:'nav-icon fas fa-folder',
+                sub:[
+                    {
+                        role:[1,2,],
+                        name:'Add Project',
+                        link:'project/projectAdd',
+                        icon:'far fa-circle nav-icon',
+                        sub:[]
+                    },
+                    {
+                        role:[1,2,3,4],
+                        name:'Project Files',
+                        link:'project/projectList',
+                        icon:'far fa-circle nav-icon',
+                        sub:[]
+                    },
+                    {
+                        role:[1,2],
+                        name:'Delivery Project',
+                        link:'project/DeliveryProject',
+                        icon:'far fa-circle nav-icon',
+                        sub:[]
+                    },
+                    {
+                        role:[1,2],
+                        name:'Cancaled Project',
+                        link:'project/CancalingProject',
+                        icon:'far fa-circle nav-icon',
+                        sub:[]
+                    },
+                ]
+                
+            },
+            {
+                role:[1,2,3,4],
+                name:"Service Add",
+                link:'service/serviceAdd',
+                icon:'fas fa-circle nav-icon',
+                link_text:'serviceAdd',
+                sub:[]
+            },
+            {
+                role:[1,2,3,4],
+                name:"Service List",
+                link:'',
+                link_text:'serviceList',
+                icon:'nav-icon fas fa-envelope',
+                sub:[
+                    {
+                        role:[1,2,3,4],
+                        name:'Android App Development',
+                        link:'service/serviceList/AndroidAppDevolopment',
+                        icon:'far fa-circle nav-icon',
+                        sub:[]
+                    },
+                    {
+                        role:[1,2,3,4],
+                        name:'Web Application Development',
+                        link:'service/serviceList/WebAppDevolopment',
+                        icon:'far fa-circle nav-icon',
+                        sub:[]
+                    },
+                    {
+                        role:[1,2,3,4],
+                        name:'PC App Development',
+                        link:'service/serviceList/PcAppDevolopment',
+                        icon:'far fa-circle nav-icon',
+                        sub:[]
+                    }
+                    
+                ]
+            },
+            
+            {
+                role:[1,2,3,4],
+                name:"Mail",
+                link:'',
+                link_text:'mail',
+                icon:'nav-icon fas fa-envelope',
+                sub:[
+                    {
+                        role:[1,2,3,4],
+                        name:'Mail Box',
+                        link:'mail/mailBox',
+                        icon:'far fa-circle nav-icon',
+                        sub:[]
+                    },
+                ]
+            },
+            
             
         ]
 
@@ -120,7 +269,7 @@ function Sidebar() {
                                                         <li className={`nav-item ${openMenu === d.link_text ? 'menu-open' : ''}`}>
                                                             <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick(d.link_text)}>
                                                             <li className={`nav-item ${isLinkActive('/'+d.link)}`}>
-                                                                    <Link to={`/${d.link}`} className="nav-link active">
+                                                                    <Link to={`/${d.link}`} className={`nav-link ggg ${openMenu} ${openMenu === d.link_text ? 'active' : ''}`}>
                                                                         <i className={`${d.icon}`}></i>
                                                                         <p>{d.name}</p>
                                                                     </Link>
@@ -130,7 +279,7 @@ function Sidebar() {
                                             :
                                             
                                             <li className={`nav-item ${openMenu === d.link_text ? 'menu-open' : ''}`}>
-                                                <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick(d.link_text)}>
+                                                <a href="javascript:void(0)" className={`nav-link ${openMenu} ${openMenu === d.link_text ? 'active' : ''}`} onClick={() => handleMenuClick(d.link_text)}>
                                                     <i className={`${d.icon}`}></i>
                                                     <p>{d.name}
                                                         <i className="fas fa-angle-left right"></i>
@@ -164,187 +313,13 @@ function Sidebar() {
                                 
                             {/* } */}
                             {/* {user_role==1 || user_role==2 || user_role==3 &&  */}
-                                <li className={`nav-item ${openMenu === 'customerNote' ? 'menu-open' : ''}`}>
-                                    <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('customerNote')}>
-                                        <i className="nav-icon fas fa-sticky-note"></i>
-                                        <p>
-                                        Customer Note
-                                            <i className="fas fa-angle-left right"></i>
-                                        </p>
-                                    </a>
-                                    <ul className="nav nav-treeview">
-                                        <li className="nav-item">
-                                            <Link to="/customerNote/addNote" className="nav-link">
-                                                <i className="far fa-circle nav-icon"></i>
-                                                <p>Customer Note Add</p>
-                                            </Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link to="/customerNote/noteList" className="nav-link">
-                                                <i className="far fa-circle nav-icon"></i>
-                                                <p>Note List</p>
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </li>
+                                
                             {/* } */}
                             
-                            <li className={`nav-item ${openMenu === 'customer' ? 'menu-open' : ''}`}>
-                                <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('customer')}>
-                                    <i className="nav-icon fas fa-restroom"></i>
-                                    <p>
-                                    Customer's
-                                        <i className="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul className="nav nav-treeview">
-                                    <li className="nav-item">
-                                        <Link to="/customer/customerAdd" className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Customer Add</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link to="/customer/customerList" className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Customer List</p>
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </li>
-                            
-                             <li className={`nav-item ${openMenu === 'project' ? 'menu-open' : ''}`}>
-                                <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('project')}>
-                                    <i className="nav-icon fas fa-folder"></i>
-                                    <p>
-                                        Project
-                                        <i className="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul className="nav nav-treeview">
-                                    <li className="nav-item">
-                                        <Link to="/project/projectAdd" className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Add Project</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link to='/project/projectList' className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Project Files</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link to='/project/DeliveryProject' className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Delivery Project</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link to='/project/CancalingProject' className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Cancaled Project</p>
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </li>
+                     
                             {/* Project Section */}
                             {/* Mail Section */}
-                            <li className={`nav-item ${openMenu === 'mail' ? 'menu-open' : ''}`}>
-                                <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('mail')}>
-                                    <i className="nav-icon fas fa-envelope"></i>
-                                    <p>
-                                        Mail
-                                        <i className="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul className="nav nav-treeview">
-                                    <li className="nav-item">
-                                        <Link to="/mail/mailBox" className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Mail Box</p>
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li className="nav-header">Service</li>
-                            <li className="nav-item">
-                                <a href="javascript:void(0)" className="nav-link">
-                                    <i className="fas fa-circle nav-icon"></i>
-                                    <Link to='/service/serviceAdd'>Service Add</Link>
-                                </a>
-                            </li>
-                            <li className={`nav-item ${openMenu === 'serviceList' ? 'menu-open' : ''}`}>
-                                <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('serviceList')}>
-                                    <i className="nav-icon fas fa-circle"></i>
-                                    <p>
-                                        Service List
-                                        <i className="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul className="nav nav-treeview">
-                                    <li className="nav-item">
-                                        <Link to='/service/serviceList/AndroidAppDevolopment' className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Android App Development</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link to='/service/serviceList/WebAppDevolopment' href="javascript:void(0)" className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Web Application Development</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link to='/service/serviceList/PcAppDevolopment' className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>PC App Development</p>
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </li>
-                            {/* Income Section */}
-                            {/* <li className={`nav-item ${openMenu === 'income' ? 'menu-open' : ''}`}>
-                                <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('income')}>
-                                    <i className="nav-icon fas fa-copy"></i>
-                                    <p>
-                                        Income
-                                        <i className="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul className="nav nav-treeview">
-                                    <li className="nav-item">
-                                        <Link to='/income/DailyIncome' className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Input Daily Income</p>
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </li> */}
-                            {/* Income Section */}
-                            {/* <li className={`nav-item ${openMenu === 'expense' ? 'menu-open' : ''}`}>
-                                <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('expense')}>
-                                    <i className="nav-icon fas fa-copy"></i>
-                                    <p>
-                                    Expense
-                                        <i className="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul className="nav nav-treeview">
-                                    <li className="nav-item">
-                                        <Link to='/expense/DailyExpense' className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Input Daily expense</p>
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link to='/expense/CapitalOut' className="nav-link">
-                                            <i className="far fa-circle nav-icon"></i>
-                                            <p>Capital Out</p>
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </li> */}
+                          
                             {/* Report Section */}
                             {/* <li className={`nav-item ${openMenu === 'report' ? 'menu-open' : ''}`}>
                                 <a href="javascript:void(0)" className="nav-link" onClick={() => handleMenuClick('report')}>
