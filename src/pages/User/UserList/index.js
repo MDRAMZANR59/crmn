@@ -92,7 +92,7 @@ function UserList() {
                                   <td>{d.joiningDate}</td>
                                   <td>{d.designation}</td>
                                   <td>{d.expart}</td>
-                                  <td>{d.usermeta?.department}</td>
+                                  <td>{d.department}</td>
                                   <td>
                                       {d?.signature?.split(',').map((src, i) => (
                                       <img src={`${process.env.REACT_APP_BACKEND_URL}/adduser/${src}`} alt="No photo" width="50px"/>

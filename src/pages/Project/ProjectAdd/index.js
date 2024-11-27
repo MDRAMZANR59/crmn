@@ -817,7 +817,7 @@ function ProjectAdd() {
                                                 name="eDuration"
                                                 defaultValue={inputs.eDuration}
                                                 placeholder="Enter days to add"
-                                                onChange={calDate}
+                                                onChange={ e =>{calDate(e);handleChange(e)}}
                                                 className={`form-control mt-2 ${errors.eDuration ? 'is-invalid' : ''}`}
                                                 id="eDuration" 
                                             />

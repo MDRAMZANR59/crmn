@@ -4,7 +4,20 @@ import { logout } from '../../Api/AllApi';
 
 
 function Sidebar() {
-    const user_role=sessionStorage.getItem("user_role");
+    const user_role=localStorage.getItem("user_role");
+    //get user data
+    let userdata = localStorage.getItem("userdata");
+
+    // Check if 'userdata' is a string before parsing, otherwise use it as is
+    let parsedUserData = null;
+    try {
+        parsedUserData = userdata ? JSON.parse(userdata) : null;
+    } catch (e) {
+        // If it's already an object (or the string is malformed), handle the error gracefully
+        console.error("Error parsing userdata:", e);
+        parsedUserData = userdata;
+    }
+    //close get user data
 
     const [openMenu, setOpenMenu] = useState(null);
 
@@ -228,10 +241,10 @@ function Sidebar() {
                             <div id="dropdownMenuButton" onClick={toggleDropdown} aria-haspopup="true" aria-expanded={isOpen}>
                                 <div className="user-panel d-flex">
                                     <div className="image">
-                                        <img src="../../assets/dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image"/>
+                                        <img src={`http://127.0.0.1:8000/adduser/${parsedUserData.photo}`} className="img-circle elevation-2" alt="User Image"/>
                                     </div>
                                     <div className="info">
-                                        <a href="#" className="d-block">Md Ramzan</a>
+                                        <a href="#" className="d-block">{parsedUserData ? `Hi, ${parsedUserData.name}` : ''}</a>
                                     </div>
                                 </div>
                             </div>

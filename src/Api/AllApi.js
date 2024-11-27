@@ -10,9 +10,9 @@ const login = async (data) => {
         });
 
         if(response.data.data.token){
-            sessionStorage.setItem("access_token", response.data.data.token);
-            sessionStorage.setItem("userdata", JSON.stringify(response.data.data.data));
-            sessionStorage.setItem("user_role", response.data.data.data.role_id);
+            localStorage.setItem("access_token", response.data.data.token);
+            localStorage.setItem("userdata", JSON.stringify(response.data.data.data));
+            localStorage.setItem("user_role", response.data.data.data.role_id);
             return true;
         }else{
             return false;
@@ -38,8 +38,8 @@ const register = async (data)=> {
     }
 }
 const logout = ()=>{
-    sessionStorage.removeItem("access_token");
-    sessionStorage.removeItem("userdata");
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("userdata");
 }
 
 export  { login, register, logout  }
