@@ -101,6 +101,7 @@ function App() {
             <Route path="/project/CancalingProject" element={<Protected isSignedIn={isSignedIn}><CancalingProject /></Protected>} />
             <Route path="/project/DeliveryProject" element={<Protected isSignedIn={isSignedIn}><DeliveryProject /></Protected>} />
             <Route path="/project/invoice" element={<Protected isSignedIn={isSignedIn}><Invoice /></Protected>} />
+            <Route path="/project/invoice/:projectId" element={<Protected isSignedIn={isSignedIn}><Invoice /></Protected>} />
 
             <Route path="/project/review" element={<Protected isSignedIn={isSignedIn}><Review /></Protected>} />
             <Route path="/project/review/:projectId" element={<Protected isSignedIn={isSignedIn}><Review /></Protected>} />
