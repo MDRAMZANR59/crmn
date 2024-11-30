@@ -230,7 +230,7 @@ function Sidebar() {
             <aside className="main-sidebar sidebar-dark-primary elevation-4">
                 {/* Brand Logo */}
                 <a href="javascript:void(0)" className="brand-link">
-                    <img src="../assets/dist/img/logo.jpg" alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{ opacity: '.8' }} />
+                    <img src="../assets/dist/img/logo.jpg" alt="Logo" className="brand-image img-circle elevation-3" style={{ opacity: '.8' }} />
                     <span className="brand-text font-weight-light"> Code Crafters</span>
                 </a>
                 {/* Sidebar */}
