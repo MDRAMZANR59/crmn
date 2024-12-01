@@ -2,9 +2,6 @@ import React from 'react'
 import AdminLayout from '../../layouts/AdminLayout'
 import ApexCharts from './pai'
 
-// import Chart from 'primevue/chart';
-
-
 function Dashboard() {
   return (
     <AdminLayout>
