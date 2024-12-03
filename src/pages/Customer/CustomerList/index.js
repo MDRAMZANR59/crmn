@@ -58,7 +58,6 @@ function CustomerList() {
                                     {/* <th>Nid</th> */}
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Password</th>
                                     <th>Photo</th>
                                     <th>Company Name</th>
                                     <th>Address</th>
@@ -75,7 +74,6 @@ function CustomerList() {
                                     {/* <td>{d.nid}</td> */}
                                     <td>{d.email}</td>
                                     <td>{d.phone}</td>
-                                    <td>{d.password}</td>
                                     <td>{d.photo}</td>
                                     {/* <td>
                                         {d?.photo?.split(',').map((src, i) => (
