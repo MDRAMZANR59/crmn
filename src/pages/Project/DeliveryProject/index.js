@@ -153,10 +153,10 @@ function DeliveryProject() {
                                 <td>{d.reciveDate}</td>
                                 <td>{d.eEndDate}</td>
                                 <td>{d.prolider?.name}</td>
-                                <td>{d.updated_at}</td>
+                                <td>{new Date(d.updated_at).toLocaleDateString('en-GB')}</td>
                                 <td>
                                     <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
-                                    <a href={`http://192.168.0.114:8081/invoice/${d.id}`&&`http://172.16.20.143:8081/invoice/${d.id}`} className="btn btn-info btn-sm">
+                                    <a href={`http://192.168.0.114:8081/invoice/${d.id}`||`http://172.16.20.143:8081/invoice/${d.id}`} className="btn btn-info btn-sm">
                                                     <i className="fas fa-receipt"></i> Invoice
                                                 </a>
                                     </td>
