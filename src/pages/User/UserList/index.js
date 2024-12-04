@@ -31,12 +31,12 @@ function UserList() {
           <div className="container-fluid">
             <div className="row mb-2">
               <div className="col-sm-6">
-                <h1 className="m-0">Add New User</h1>
+                <h1 className="m-0">User List</h1>
               </div>{/* /.col */}
               <div className="col-sm-6">
                 <ol className="breadcrumb float-sm-right">
                   <li className="breadcrumb-item"><a href="#">User</a></li>
-                  <li className="breadcrumb-item active">Add</li>
+                  <li className="breadcrumb-item active">List</li>
                 </ol>
               </div>{/* /.col */}
             </div>{/* /.row */}
@@ -48,7 +48,7 @@ function UserList() {
           <div className="container-fluid">
             <div class="card card-default">
                 <div class="card-header">
-                    <h3 class="card-title">User form</h3>
+                    <h3 class="card-title">User List</h3>
                 </div>
                 <div class="card-body">
                     <div className="container mt-1">

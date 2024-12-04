@@ -26,7 +26,7 @@ function Register() {
   return (
     <AuthLayout>
         <div className="text-center mb-1">
-            <img src="assets_admin/images/hospital-logo.png" height="48" className='mb-4'/>
+            <img src="../../assets/dist/img/logo.JPG" height="100" className='mb-4 rounded-circle'/>
             <h3>Sign Up</h3>
             <p>Please fill the form to register.</p>
         </div>

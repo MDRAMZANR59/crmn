@@ -58,7 +58,7 @@ function CustomerList() {
                                     {/* <th>Nid</th> */}
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Photo</th>
+                                    {/* <th>Photo</th> */}
                                     <th>Company Name</th>
                                     <th>Address</th>
                                     <th>Action</th>
@@ -74,7 +74,7 @@ function CustomerList() {
                                     {/* <td>{d.nid}</td> */}
                                     <td>{d.email}</td>
                                     <td>{d.phone}</td>
-                                    <td>{d.photo}</td>
+                                    {/* <td>{d.photo}</td> */}
                                     {/* <td>
                                         {d?.photo?.split(',').map((src, i) => (
                                         <img src={`${process.env.REACT_APP_BACKEND_URL}/customer/${src}`} alt="No photo" width="50px"/>
