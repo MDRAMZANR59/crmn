@@ -57,12 +57,12 @@ function NoteList() {
                                 <tr>
                                     <th>#SL</th>
                                     <th>Customer Name & ID</th>
-                                    {/* <th>Phone</th> */}
+                                    <th>Phone</th>
                                     <th>Employe Name & ID</th>
                                     <th>Note</th>
                                     <th>First Meet</th>
                                     <th>Next Meet</th>
-                                    {/* <th>Attachment</th> */}
+                                    <th>Attachment</th>
                                     <th>Meetup Location</th>
                                     <th>Action</th>
                                   
@@ -74,17 +74,17 @@ function NoteList() {
                                     {/* <td>{key+1}</td> */}
                                     <td>00{d.id}</td>
                                     <td>{d.customer?.name}{d.customer?.id}</td>
-                                    {/* <td>{d.customer?.phone}</td> */}
+                                    <td>{d.customer?.phone}</td>
                                     <td>{d.employee?.name}{d.employee?.role_id}</td>
                                     <td>{d.note}</td>
                                     <td>{d.firstMeet}</td>
                                     <td>{d.nextMeet}</td>
-                                    {/* <td>
+                                    <td>
                                       {d?.attachment?.split(',').map((src, i) => (
                                       <img src={`${process.env.REACT_APP_BACKEND_URL}/customerNote/${src}`} alt="No photo" width="50px"/>
                                       ))
                                       }
-                                    </td> */}
+                                    </td>
                                     <td>{d.meetLocation}</td>
                                     <td>
                                         <Link to={`/customerNote/edit/${d.id}`} className='btn btn-info'>Edit</Link>
